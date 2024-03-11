@@ -1,5 +1,5 @@
 [package]
-name = "verification"
+name = "unionfind"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,6 +7,4 @@ edition = "2021"
 
 [dependencies]
 proconio = { version = "0.4.5", features = ["derive"] }
-segment-tree = { path = '../../data-structure/segment-tree' }
-union-find = { path = "../../data-structure/union-find" }
-ford-fulkerson = { path = '../../graph/ford-fulkerson' }
+union-find = { path = "../../../data-structure/union-find" }
