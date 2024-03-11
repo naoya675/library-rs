@@ -1,7 +1,7 @@
 {
-"verification/aizu-online-judge/src/bin/dsl_2_a.rs": "2024-03-11 21:34:22 +0900",
-"verification/aizu-online-judge/src/bin/grl_6_a.rs": "2024-03-11 21:34:22 +0900",
-"verification/library-checker/src/bin/static_range_sum.rs": "2024-03-11 21:34:22 +0900",
-"verification/library-checker/src/bin/staticrmq.rs": "2024-03-11 21:34:22 +0900",
-"verification/library-checker/src/bin/unionfind.rs": "2024-03-11 21:34:22 +0900"
+"verification/aizu-online-judge/dsl_2_a/src/main.rs": "2024-03-11 21:49:40 +0900",
+"verification/aizu-online-judge/grl_6_a/src/main.rs": "2024-03-11 21:49:40 +0900",
+"verification/library-checker/static_range_sum/src/main.rs": "2024-03-11 21:49:40 +0900",
+"verification/library-checker/staticrmq/src/main.rs": "2024-03-11 21:49:40 +0900",
+"verification/library-checker/unionfind/src/main.rs": "2024-03-11 21:49:40 +0900"
 }
