@@ -3,11 +3,7 @@
 version = 3
 
 [[package]]
-name = "data-structure"
-version = "0.1.0"
-
-[[package]]
-name = "graph"
+name = "ford-fulkerson"
 version = "0.1.0"
 
 [[package]]
@@ -49,6 +45,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "segment-tree"
+version = "0.1.0"
+
+[[package]]
 name = "syn"
 version = "1.0.109"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -66,10 +66,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 
 [[package]]
+name = "union-find"
+version = "0.1.0"
+
+[[package]]
 name = "verification"
 version = "0.1.0"
 dependencies = [
- "data-structure",
- "graph",
+ "ford-fulkerson",
  "proconio",
+ "segment-tree",
+ "union-find",
 ]
