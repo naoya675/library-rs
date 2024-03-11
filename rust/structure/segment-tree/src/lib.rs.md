@@ -40,7 +40,7 @@ data:
   path: rust/structure/segment-tree/src/lib.rs
   requiredBy:
   - rust/structure/segment-tree/src/segment_tree.rs
-  timestamp: '2024-03-11 14:31:54+09:00'
+  timestamp: '2024-03-11 15:30:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - rust/verification/library-checker/src/bin/staticrmq.rs

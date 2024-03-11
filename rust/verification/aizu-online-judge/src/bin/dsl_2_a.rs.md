@@ -44,7 +44,7 @@ data:
   isVerificationFile: true
   path: rust/verification/aizu-online-judge/src/bin/dsl_2_a.rs
   requiredBy: []
-  timestamp: '2024-03-11 14:31:54+09:00'
+  timestamp: '2024-03-11 15:30:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: rust/verification/aizu-online-judge/src/bin/dsl_2_a.rs
