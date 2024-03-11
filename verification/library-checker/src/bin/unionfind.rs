@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use data_structure::UnionFind;
+use union_find::UnionFind;
 
 fn main() {
     input! {

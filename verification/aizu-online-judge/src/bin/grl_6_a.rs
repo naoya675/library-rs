@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use graph::FordFulkerson;
+use ford_fulkerson::FordFulkerson;
 
 fn main() {
     input! {

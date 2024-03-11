@@ -7,5 +7,6 @@ edition = "2021"
 
 [dependencies]
 proconio = { version = "0.4.5", features = ["derive"] }
-data-structure = { path = '../../data-structure' }
-graph = { path = '../../graph' }
+segment-tree = { path = '../../data-structure/segment-tree' }
+union-find = { path = "../../data-structure/union-find" }
+ford-fulkerson = { path = '../../graph/ford-fulkerson' }

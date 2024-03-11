@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use data_structure::SegmentTree;
+use segment_tree::SegmentTree;
 
 fn main() {
     input! {
