@@ -42,6 +42,7 @@ impl UnionFind {
     }
 
     pub fn size(&mut self, a: usize) -> usize {
+        let a = self.leader(a);
         self.siz[a]
     }
 
