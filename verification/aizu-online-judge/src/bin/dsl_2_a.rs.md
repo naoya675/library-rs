@@ -2,20 +2,23 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data-structure/src/lib.rs
-    title: data-structure/src/lib.rs
+    path: data-structure/segment-tree/src/lib.rs
+    title: data-structure/segment-tree/src/lib.rs
   - icon: ':heavy_check_mark:'
-    path: data-structure/src/segment_tree.rs
-    title: data-structure/src/segment_tree.rs
+    path: data-structure/segment-tree/src/segment_tree.rs
+    title: data-structure/segment-tree/src/segment_tree.rs
   - icon: ':heavy_check_mark:'
-    path: data-structure/src/union_find.rs
-    title: data-structure/src/union_find.rs
+    path: data-structure/union-find/src/lib.rs
+    title: data-structure/union-find/src/lib.rs
   - icon: ':heavy_check_mark:'
-    path: graph/src/ford_fulkerson.rs
-    title: graph/src/ford_fulkerson.rs
+    path: data-structure/union-find/src/union_find.rs
+    title: data-structure/union-find/src/union_find.rs
   - icon: ':heavy_check_mark:'
-    path: graph/src/lib.rs
-    title: graph/src/lib.rs
+    path: graph/ford-fulkerson/src/ford_fulkerson.rs
+    title: graph/ford-fulkerson/src/ford_fulkerson.rs
+  - icon: ':heavy_check_mark:'
+    path: graph/ford-fulkerson/src/lib.rs
+    title: graph/ford-fulkerson/src/lib.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -32,7 +35,7 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A\n\
-    \nuse proconio::input;\nuse std::cmp::min;\n\nuse data_structure::SegmentTree;\n\
+    \nuse proconio::input;\nuse std::cmp::min;\n\nuse segment_tree::SegmentTree;\n\
     \nfn main() {\n    input! {\n        n: usize,\n        q: usize,\n        com:\
     \ [(usize, usize, usize); q],\n    }\n    let mut st = SegmentTree::new(n, |a,\
     \ b| min(a, b), (1 << 31) - 1);\n    for (com, x, y) in com {\n        match com\
@@ -40,15 +43,16 @@ data:
     {}\", st.prod(x, y + 1));\n            }\n            _ => unreachable!(),\n \
     \       }\n    }\n}\n"
   dependsOn:
-  - data-structure/src/lib.rs
-  - data-structure/src/segment_tree.rs
-  - data-structure/src/union_find.rs
-  - graph/src/ford_fulkerson.rs
-  - graph/src/lib.rs
+  - data-structure/segment-tree/src/lib.rs
+  - data-structure/segment-tree/src/segment_tree.rs
+  - data-structure/union-find/src/lib.rs
+  - data-structure/union-find/src/union_find.rs
+  - graph/ford-fulkerson/src/ford_fulkerson.rs
+  - graph/ford-fulkerson/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/src/bin/dsl_2_a.rs
   requiredBy: []
-  timestamp: '2024-03-11 21:07:23+09:00'
+  timestamp: '2024-03-11 21:34:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/src/bin/dsl_2_a.rs

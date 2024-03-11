@@ -1,55 +1,31 @@
 ---
 data:
   libraryCategories:
-  - name: data-structure/src
+  - name: data-structure/segment-tree/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: data-structure/src/lib.rs
-      title: data-structure/src/lib.rs
+      path: data-structure/segment-tree/src/lib.rs
+      title: data-structure/segment-tree/src/lib.rs
     - icon: ':heavy_check_mark:'
-      path: data-structure/src/segment_tree.rs
-      title: data-structure/src/segment_tree.rs
-    - icon: ':heavy_check_mark:'
-      path: data-structure/src/union_find.rs
-      title: data-structure/src/union_find.rs
-  - name: graph/src
+      path: data-structure/segment-tree/src/segment_tree.rs
+      title: data-structure/segment-tree/src/segment_tree.rs
+  - name: data-structure/union-find/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: graph/src/ford_fulkerson.rs
-      title: graph/src/ford_fulkerson.rs
+      path: data-structure/union-find/src/lib.rs
+      title: data-structure/union-find/src/lib.rs
     - icon: ':heavy_check_mark:'
-      path: graph/src/lib.rs
-      title: graph/src/lib.rs
-  - name: rust/structure/segment-tree/src
+      path: data-structure/union-find/src/union_find.rs
+      title: data-structure/union-find/src/union_find.rs
+  - name: graph/ford-fulkerson/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: rust/structure/segment-tree/src/lib.rs
-      title: rust/structure/segment-tree/src/lib.rs
+      path: graph/ford-fulkerson/src/ford_fulkerson.rs
+      title: graph/ford-fulkerson/src/ford_fulkerson.rs
     - icon: ':heavy_check_mark:'
-      path: rust/structure/segment-tree/src/segment_tree.rs
-      title: rust/structure/segment-tree/src/segment_tree.rs
-  - name: rust/structure/union-find/src
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: rust/structure/union-find/src/lib.rs
-      title: rust/structure/union-find/src/lib.rs
-    - icon: ':heavy_check_mark:'
-      path: rust/structure/union-find/src/union_find.rs
-      title: rust/structure/union-find/src/union_find.rs
+      path: graph/ford-fulkerson/src/lib.rs
+      title: graph/ford-fulkerson/src/lib.rs
   verificationCategories:
-  - name: rust/verification/aizu-online-judge/src/bin
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: rust/verification/aizu-online-judge/src/bin/dsl_2_a.rs
-      title: rust/verification/aizu-online-judge/src/bin/dsl_2_a.rs
-  - name: rust/verification/library-checker/src/bin
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: rust/verification/library-checker/src/bin/staticrmq.rs
-      title: rust/verification/library-checker/src/bin/staticrmq.rs
-    - icon: ':heavy_check_mark:'
-      path: rust/verification/library-checker/src/bin/unionfind.rs
-      title: rust/verification/library-checker/src/bin/unionfind.rs
   - name: verification/aizu-online-judge/src/bin
     pages:
     - icon: ':heavy_check_mark:'

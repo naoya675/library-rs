@@ -2,20 +2,23 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data-structure/src/lib.rs
-    title: data-structure/src/lib.rs
+    path: data-structure/segment-tree/src/lib.rs
+    title: data-structure/segment-tree/src/lib.rs
   - icon: ':heavy_check_mark:'
-    path: data-structure/src/segment_tree.rs
-    title: data-structure/src/segment_tree.rs
+    path: data-structure/segment-tree/src/segment_tree.rs
+    title: data-structure/segment-tree/src/segment_tree.rs
   - icon: ':heavy_check_mark:'
-    path: data-structure/src/union_find.rs
-    title: data-structure/src/union_find.rs
+    path: data-structure/union-find/src/lib.rs
+    title: data-structure/union-find/src/lib.rs
   - icon: ':heavy_check_mark:'
-    path: graph/src/ford_fulkerson.rs
-    title: graph/src/ford_fulkerson.rs
+    path: data-structure/union-find/src/union_find.rs
+    title: data-structure/union-find/src/union_find.rs
   - icon: ':heavy_check_mark:'
-    path: graph/src/lib.rs
-    title: graph/src/lib.rs
+    path: graph/ford-fulkerson/src/ford_fulkerson.rs
+    title: graph/ford-fulkerson/src/ford_fulkerson.rs
+  - icon: ':heavy_check_mark:'
+    path: graph/ford-fulkerson/src/lib.rs
+    title: graph/ford-fulkerson/src/lib.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -32,21 +35,22 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A\n\
-    \nuse proconio::input;\n\nuse graph::FordFulkerson;\n\nfn main() {\n    input!\
-    \ {\n        n: usize,\n        m: usize,\n        uvc: [(usize, usize, usize);\
-    \ m],\n    }\n    let mut ff = FordFulkerson::new(n);\n    for (u, v, c) in uvc\
-    \ {\n        ff.add_edge(u, v, c);\n    }\n    println!(\"{}\", ff.max_flow(0,\
+    \nuse proconio::input;\n\nuse ford_fulkerson::FordFulkerson;\n\nfn main() {\n\
+    \    input! {\n        n: usize,\n        m: usize,\n        uvc: [(usize, usize,\
+    \ usize); m],\n    }\n    let mut ff = FordFulkerson::new(n);\n    for (u, v,\
+    \ c) in uvc {\n        ff.add_edge(u, v, c);\n    }\n    println!(\"{}\", ff.max_flow(0,\
     \ n - 1));\n}\n"
   dependsOn:
-  - data-structure/src/lib.rs
-  - data-structure/src/segment_tree.rs
-  - data-structure/src/union_find.rs
-  - graph/src/ford_fulkerson.rs
-  - graph/src/lib.rs
+  - data-structure/segment-tree/src/lib.rs
+  - data-structure/segment-tree/src/segment_tree.rs
+  - data-structure/union-find/src/lib.rs
+  - data-structure/union-find/src/union_find.rs
+  - graph/ford-fulkerson/src/ford_fulkerson.rs
+  - graph/ford-fulkerson/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/src/bin/grl_6_a.rs
   requiredBy: []
-  timestamp: '2024-03-11 21:07:23+09:00'
+  timestamp: '2024-03-11 21:34:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/src/bin/grl_6_a.rs
