@@ -41,18 +41,19 @@ data:
     \ -> bool {\n        self.leader(a) == self.leader(b)\n    }\n\n    pub fn leader(&mut\
     \ self, a: usize) -> usize {\n        if self.par[a] == a {\n            return\
     \ a;\n        }\n        self.par[a] = self.leader(self.par[a]);\n        self.par[a]\n\
-    \    }\n\n    pub fn size(&mut self, a: usize) -> usize {\n        self.siz[a]\n\
-    \    }\n\n    pub fn groups(&mut self) -> Vec<Vec<usize>> {\n        let mut res\
-    \ = vec![vec![]; self.n];\n        for i in 0..self.n {\n            res[self.leader(i)].push(i);\n\
-    \        }\n        res.into_iter()\n            .filter(|f| !f.is_empty())\n\
-    \            .collect::<Vec<_>>()\n    }\n}\n"
+    \    }\n\n    pub fn size(&mut self, a: usize) -> usize {\n        let a = self.leader(a);\n\
+    \        self.siz[a]\n    }\n\n    pub fn groups(&mut self) -> Vec<Vec<usize>>\
+    \ {\n        let mut res = vec![vec![]; self.n];\n        for i in 0..self.n {\n\
+    \            res[self.leader(i)].push(i);\n        }\n        res.into_iter()\n\
+    \            .filter(|f| !f.is_empty())\n            .collect::<Vec<_>>()\n  \
+    \  }\n}\n"
   dependsOn:
   - rust/structure/union-find/src/lib.rs
   isVerificationFile: false
   path: rust/structure/union-find/src/union_find.rs
   requiredBy:
   - rust/structure/union-find/src/lib.rs
-  timestamp: '2024-03-11 15:30:14+09:00'
+  timestamp: '2024-03-11 18:53:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - rust/verification/library-checker/src/bin/staticrmq.rs

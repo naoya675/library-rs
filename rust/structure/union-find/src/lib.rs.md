@@ -40,7 +40,7 @@ data:
   path: rust/structure/union-find/src/lib.rs
   requiredBy:
   - rust/structure/union-find/src/union_find.rs
-  timestamp: '2024-03-11 15:30:14+09:00'
+  timestamp: '2024-03-11 18:53:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - rust/verification/library-checker/src/bin/staticrmq.rs

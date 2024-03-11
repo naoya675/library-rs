@@ -44,7 +44,7 @@ data:
   isVerificationFile: true
   path: rust/verification/library-checker/src/bin/unionfind.rs
   requiredBy: []
-  timestamp: '2024-03-11 15:30:14+09:00'
+  timestamp: '2024-03-11 18:53:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: rust/verification/library-checker/src/bin/unionfind.rs
