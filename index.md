@@ -5,12 +5,12 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/segment-tree/src/lib.rs
-      title: data-structure/segment-tree/src/lib.rs
+      title: Segment Tree
   - name: data-structure/union-find/src
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/union-find/src/lib.rs
-      title: data-structure/union-find/src/lib.rs
+      title: Union Find
   - name: graph/ford-fulkerson/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -27,16 +27,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_6_a/src/main.rs
       title: verification/aizu-online-judge/grl_6_a/src/main.rs
-  - name: verification/library-checker/static_range_sum/src
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verification/library-checker/static_range_sum/src/main.rs
-      title: verification/library-checker/static_range_sum/src/main.rs
-  - name: verification/library-checker/staticrmq/src
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verification/library-checker/staticrmq/src/main.rs
-      title: verification/library-checker/staticrmq/src/main.rs
   - name: verification/library-checker/unionfind/src
     pages:
     - icon: ':heavy_check_mark:'

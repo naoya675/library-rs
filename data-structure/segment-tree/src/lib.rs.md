@@ -6,12 +6,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_a/src/main.rs
     title: verification/aizu-online-judge/dsl_2_a/src/main.rs
-  - icon: ':heavy_check_mark:'
-    path: verification/library-checker/static_range_sum/src/main.rs
-    title: verification/library-checker/static_range_sum/src/main.rs
-  - icon: ':heavy_check_mark:'
-    path: verification/library-checker/staticrmq/src/main.rs
-    title: verification/library-checker/staticrmq/src/main.rs
   _isVerificationFailed: false
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -45,13 +39,10 @@ data:
   timestamp: '2024-03-11 21:49:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verification/library-checker/staticrmq/src/main.rs
-  - verification/library-checker/static_range_sum/src/main.rs
   - verification/aizu-online-judge/dsl_2_a/src/main.rs
 documentation_of: data-structure/segment-tree/src/lib.rs
 layout: document
-redirect_from:
-- /library/data-structure/segment-tree/src/lib.rs
-- /library/data-structure/segment-tree/src/lib.rs.html
-title: data-structure/segment-tree/src/lib.rs
+title: Segment Tree
 ---
+
+## Description

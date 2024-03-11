@@ -46,8 +46,7 @@ data:
   - verification/library-checker/unionfind/src/main.rs
 documentation_of: data-structure/union-find/src/lib.rs
 layout: document
-redirect_from:
-- /library/data-structure/union-find/src/lib.rs
-- /library/data-structure/union-find/src/lib.rs.html
-title: data-structure/union-find/src/lib.rs
+title: Union Find
 ---
+
+## Description
