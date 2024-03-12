@@ -18,12 +18,19 @@ impl<T: Copy> SegmentTree<T> {
     }
 
     pub fn set(&mut self, mut k: usize, x: T) {
+        assert!(k < self.size);
         k += self.size;
         self.tree[k] = x;
         while k > 0 {
             k /= 2;
             self.tree[k] = (self.op)(self.tree[2 * k], self.tree[2 * k + 1]);
         }
+    }
+
+    pub fn get(&mut self, mut k: usize) -> T {
+        assert!(k < self.size);
+        k += self.size;
+        self.tree[k]
     }
 
     pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {
