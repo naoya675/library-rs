@@ -23,14 +23,14 @@ impl<T: Copy> SegmentTree<T> {
         self.tree[k] = x;
         while k > 0 {
             k /= 2;
-            self.tree[k] = (self.op)(self.tree[2 * k], self.tree[2 * k + 1]);
+            self.tree[k] = (self.op)(self.tree[k << 1 | 0], self.tree[k << 1 | 1]);
         }
     }
 
     pub fn get(&mut self, mut k: usize) -> T {
         assert!(k < self.size);
         k += self.size;
-        self.tree[k]
+        self.tree[k].clone()
     }
 
     pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {
@@ -44,11 +44,15 @@ impl<T: Copy> SegmentTree<T> {
             }
             l /= 2;
             if r % 2 == 1 {
-                res = (self.op)(res, self.tree[r - 1]);
                 r -= 1;
+                res = (self.op)(res, self.tree[r]);
             }
             r /= 2;
         }
         res
+    }
+
+    pub fn all_prod(&mut self) -> T {
+        self.tree[1].clone()
     }
 }
