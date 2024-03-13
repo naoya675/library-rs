@@ -36,20 +36,21 @@ impl<T: Copy> SegmentTree<T> {
     pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {
         l += self.size;
         r += self.size;
-        let mut res = self.e;
+        let mut l_res = self.e;
+        let mut r_res = self.e;
         while l < r {
             if l % 2 == 1 {
-                res = (self.op)(res, self.tree[l]);
+                l_res = (self.op)(l_res, self.tree[l]);
                 l += 1;
             }
             l /= 2;
             if r % 2 == 1 {
                 r -= 1;
-                res = (self.op)(res, self.tree[r]);
+                r_res = (self.op)(self.tree[r], r_res);
             }
             r /= 2;
         }
-        res
+        (self.op)(l_res, r_res)
     }
 
     pub fn all_prod(&mut self) -> T {
