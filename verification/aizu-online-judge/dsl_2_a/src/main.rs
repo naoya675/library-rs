@@ -9,13 +9,25 @@ fn main() {
     input! {
         n: usize,
         q: usize,
-        com: [(usize, usize, usize); q],
     }
     let mut st = SegmentTree::new(n, |a, b| min(a, b), (1 << 31) - 1);
-    for (com, x, y) in com {
-        match com {
-            0 => st.set(x, y),
+    for _ in 0..q {
+        input! {
+            query: usize,
+        }
+        match query {
+            0 => {
+                input! {
+                    x: usize,
+                    y: usize,
+                }
+                st.set(x, y);
+            }
             1 => {
+                input! {
+                    x: usize,
+                    y: usize,
+                }
                 println!("{}", st.prod(x, y + 1));
             }
             _ => unreachable!(),
