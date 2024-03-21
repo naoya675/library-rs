@@ -59,4 +59,14 @@ impl<T: Copy> SegmentTree<T> {
     pub fn all_prod(&mut self) -> T {
         self.tree[1].clone()
     }
+
+    pub fn apply(&mut self, mut k: usize, x: T) {
+        assert!(k < self.size);
+        k += self.size;
+        self.tree[k] = (self.op)(self.tree[k], x);
+        while k > 0 {
+            k /= 2;
+            self.tree[k] = (self.op)(self.tree[k << 1 | 0], self.tree[k << 1 | 1]);
+        }
+    }
 }
