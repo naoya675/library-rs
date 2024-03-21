@@ -34,6 +34,9 @@ impl<T: Copy> SegmentTree<T> {
     }
 
     pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {
+        if l == r {
+            return self.e;
+        }
         l += self.size;
         r += self.size;
         let mut l_res = self.e;
@@ -43,11 +46,11 @@ impl<T: Copy> SegmentTree<T> {
                 l_res = (self.op)(l_res, self.tree[l]);
                 l += 1;
             }
-            l /= 2;
             if r % 2 == 1 {
                 r -= 1;
                 r_res = (self.op)(self.tree[r], r_res);
             }
+            l /= 2;
             r /= 2;
         }
         (self.op)(l_res, r_res)
