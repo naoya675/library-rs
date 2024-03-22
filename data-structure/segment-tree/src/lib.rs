@@ -17,13 +17,19 @@ impl<T: Copy> SegmentTree<T> {
         }
     }
 
+    pub fn build(&mut self, v: Vec<T>) {
+        for i in 0..v.len() {
+            self.set(i, v[i]);
+        }
+    }
+
     pub fn set(&mut self, mut k: usize, x: T) {
         assert!(k < self.size);
         k += self.size;
         self.tree[k] = x;
         while k > 0 {
             k /= 2;
-            self.tree[k] = (self.op)(self.tree[k << 1 | 0], self.tree[k << 1 | 1]);
+            self.update(k);
         }
     }
 
@@ -68,5 +74,9 @@ impl<T: Copy> SegmentTree<T> {
             k /= 2;
             self.tree[k] = (self.op)(self.tree[k << 1 | 0], self.tree[k << 1 | 1]);
         }
+    }
+
+    fn update(&mut self, k: usize) {
+        self.tree[k] = (self.op)(self.tree[k << 1 | 0], self.tree[k << 1 | 1]);
     }
 }
