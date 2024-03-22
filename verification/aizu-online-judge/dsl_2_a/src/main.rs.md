@@ -21,18 +21,21 @@ data:
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A\n\
     \nuse proconio::input;\nuse std::cmp::min;\n\nuse segment_tree::SegmentTree;\n\
-    \nfn main() {\n    input! {\n        n: usize,\n        q: usize,\n        com:\
-    \ [(usize, usize, usize); q],\n    }\n    let mut st = SegmentTree::new(n, |a,\
-    \ b| min(a, b), (1 << 31) - 1);\n    for (com, x, y) in com {\n        match com\
-    \ {\n            0 => st.set(x, y),\n            1 => {\n                println!(\"\
-    {}\", st.prod(x, y + 1));\n            }\n            _ => unreachable!(),\n \
-    \       }\n    }\n}\n"
+    \nfn main() {\n    input! {\n        n: usize,\n        q: usize,\n    }\n   \
+    \ let mut st = SegmentTree::new(n, |a, b| min(a, b), (1 << 31) - 1);\n    for\
+    \ _ in 0..q {\n        input! {\n            query: usize,\n        }\n      \
+    \  match query {\n            0 => {\n                input! {\n             \
+    \       x: usize,\n                    y: usize,\n                }\n        \
+    \        st.set(x, y);\n            }\n            1 => {\n                input!\
+    \ {\n                    x: usize,\n                    y: usize,\n          \
+    \      }\n                println!(\"{}\", st.prod(x, y + 1));\n            }\n\
+    \            _ => unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/segment-tree/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_a/src/main.rs
   requiredBy: []
-  timestamp: '2024-03-11 21:49:40+09:00'
+  timestamp: '2024-03-22 08:01:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_a/src/main.rs
