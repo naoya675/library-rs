@@ -24,21 +24,21 @@ data:
     \nfn main() {\n    input! {\n        n: usize,\n        q: usize,\n    }\n   \
     \ let mut lst = LazySegmentTree::<i64, i64>::new(\n        n,\n        |a, b|\
     \ min(a, b),\n        1 << 31,\n        |a, b| a + b,\n        |a, b| a + b,\n\
-    \        0,\n    );\n    for i in 0..n {\n        lst.set(i, 0);\n    }\n    for\
-    \ _ in 0..q {\n        input! {\n            query: usize,\n        }\n      \
-    \  match query {\n            0 => {\n                input! {\n             \
-    \       s: usize,\n                    t: usize,\n                    x: i64,\n\
-    \                }\n                lst.apply(s, t + 1, x);\n            }\n \
-    \           1 => {\n                input! {\n                    s: usize,\n\
-    \                    t: usize,\n                }\n                println!(\"\
-    {}\", lst.prod(s, t + 1));\n            }\n            _ => unreachable!(),\n\
-    \        }\n    }\n}\n"
+    \        0,\n    );\n    lst.build(vec![0; n]);\n    for _ in 0..q {\n       \
+    \ input! {\n            query: usize,\n        }\n        match query {\n    \
+    \        0 => {\n                input! {\n                    s: usize,\n   \
+    \                 t: usize,\n                    x: i64,\n                }\n\
+    \                lst.apply(s, t + 1, x);\n            }\n            1 => {\n\
+    \                input! {\n                    s: usize,\n                   \
+    \ t: usize,\n                }\n                println!(\"{}\", lst.prod(s, t\
+    \ + 1));\n            }\n            _ => unreachable!(),\n        }\n    }\n\
+    }\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_h/src/main.rs
   requiredBy: []
-  timestamp: '2024-03-22 18:13:18+09:00'
+  timestamp: '2024-03-22 18:42:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_h/src/main.rs

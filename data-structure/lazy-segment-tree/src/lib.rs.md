@@ -37,19 +37,21 @@ data:
     \        Self {\n            tree: vec![e; 2 * size],\n            lazy: vec![id;\
     \ 2 * size],\n            size,\n            size_log,\n            op,\n    \
     \        e,\n            mapping,\n            composition,\n            id,\n\
-    \        }\n    }\n\n    pub fn set(&mut self, mut k: usize, x: T) {\n       \
-    \ assert!(k < self.size);\n        k += self.size;\n        for i in (1..self.size_log\
-    \ + 1).rev() {\n            self.push(k >> i);\n        }\n        self.tree[k]\
-    \ = x;\n        for i in 1..self.size_log + 1 {\n            self.update(k >>\
-    \ i);\n        }\n    }\n\n    pub fn get(&mut self, mut k: usize) -> T {\n  \
-    \      assert!(k < self.size);\n        k += self.size;\n        for i in (1..self.size_log\
-    \ + 1).rev() {\n            self.push(k >> i);\n        }\n        self.tree[k].clone()\n\
-    \    }\n\n    pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {\n    \
-    \    if l == r {\n            return self.e;\n        }\n        l += self.size;\n\
-    \        r += self.size;\n        for i in (1..self.size_log + 1).rev() {\n  \
-    \          if ((l >> i) << i) != l {\n                self.push(l >> i);\n   \
-    \         }\n            if ((r >> i) << i) != r {\n                self.push(r\
-    \ >> i);\n            }\n        }\n        let mut l_res = self.e;\n        let\
+    \        }\n    }\n\n    pub fn build(&mut self, v: Vec<T>) {\n        for i in\
+    \ 0..v.len() {\n            self.set(i, v[i]);\n        }\n    }\n\n    pub fn\
+    \ set(&mut self, mut k: usize, x: T) {\n        assert!(k < self.size);\n    \
+    \    k += self.size;\n        for i in (1..self.size_log + 1).rev() {\n      \
+    \      self.push(k >> i);\n        }\n        self.tree[k] = x;\n        for i\
+    \ in 1..self.size_log + 1 {\n            self.update(k >> i);\n        }\n   \
+    \ }\n\n    pub fn get(&mut self, mut k: usize) -> T {\n        assert!(k < self.size);\n\
+    \        k += self.size;\n        for i in (1..self.size_log + 1).rev() {\n  \
+    \          self.push(k >> i);\n        }\n        self.tree[k].clone()\n    }\n\
+    \n    pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {\n        if l\
+    \ == r {\n            return self.e;\n        }\n        l += self.size;\n   \
+    \     r += self.size;\n        for i in (1..self.size_log + 1).rev() {\n     \
+    \       if ((l >> i) << i) != l {\n                self.push(l >> i);\n      \
+    \      }\n            if ((r >> i) << i) != r {\n                self.push(r >>\
+    \ i);\n            }\n        }\n        let mut l_res = self.e;\n        let\
     \ mut r_res = self.e;\n        while l < r {\n            if l % 2 == 1 {\n  \
     \              l_res = (self.op)(l_res, self.tree[l]);\n                l += 1;\n\
     \            }\n            if r % 2 == 1 {\n                r -= 1;\n       \
@@ -85,7 +87,7 @@ data:
   isVerificationFile: false
   path: data-structure/lazy-segment-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2024-03-22 08:01:41+09:00'
+  timestamp: '2024-03-22 18:42:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_h/src/main.rs
