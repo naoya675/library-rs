@@ -36,6 +36,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
     }
 
     pub fn build(&mut self, v: Vec<T>) {
+        assert!(v.len() <= self.size);
         for i in 0..v.len() {
             self.set(i, v[i]);
         }
@@ -63,6 +64,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
     }
 
     pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {
+        assert!(l <= r && r <= self.size);
         if l == r {
             return self.e;
         }
@@ -110,6 +112,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
     // }
 
     pub fn apply(&mut self, mut l: usize, mut r: usize, f: F) {
+        assert!(l <= r && r <= self.size);
         if l == r {
             return;
         }
