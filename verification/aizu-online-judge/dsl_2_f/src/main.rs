@@ -18,9 +18,7 @@ fn main() {
         |a, b| if a == -1 { b } else { a },
         -1,
     );
-    for i in 0..n {
-        lst.set(i, (1 << 31) - 1);
-    }
+    lst.build(vec![(1 << 31) - 1; n]);
     for _ in 0..q {
         input! {
             query: usize,

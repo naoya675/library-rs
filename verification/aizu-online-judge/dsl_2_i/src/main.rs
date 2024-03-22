@@ -17,9 +17,7 @@ fn main() {
         |a, b| if a == 1 << 31 { b } else { a },
         1 << 31,
     );
-    for i in 0..n {
-        lst.set(i, (0, 1));
-    }
+    lst.build(vec![(0, 1); n]);
     for _ in 0..q {
         input! {
             query: usize,

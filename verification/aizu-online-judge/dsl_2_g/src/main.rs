@@ -17,9 +17,7 @@ fn main() {
         |a, b| a + b,
         0,
     );
-    for i in 0..n {
-        lst.set(i, (0, 1));
-    }
+    lst.build(vec![(0, 1); n]);
     for _ in 0..q {
         input! {
             query: usize,

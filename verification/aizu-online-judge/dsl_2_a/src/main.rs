@@ -10,7 +10,8 @@ fn main() {
         n: usize,
         q: usize,
     }
-    let mut st = SegmentTree::new(n, |a, b| min(a, b), (1 << 31) - 1);
+    let mut st = SegmentTree::<i64>::new(n, |a, b| min(a, b), (1 << 31) - 1);
+    st.build(vec![(1 << 31) - 1; n]);
     for _ in 0..q {
         input! {
             query: usize,
@@ -19,7 +20,7 @@ fn main() {
             0 => {
                 input! {
                     x: usize,
-                    y: usize,
+                    y: i64,
                 }
                 st.set(x, y);
             }
