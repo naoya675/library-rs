@@ -15,6 +15,8 @@ impl UnionFind {
     }
 
     pub fn merge(&mut self, a: usize, b: usize) -> bool {
+        assert!(a < self.n);
+        assert!(b < self.n);
         let a = self.leader(a);
         let b = self.leader(b);
         if a == b {
@@ -31,10 +33,13 @@ impl UnionFind {
     }
 
     pub fn same(&mut self, a: usize, b: usize) -> bool {
+        assert!(a < self.n);
+        assert!(b < self.n);
         self.leader(a) == self.leader(b)
     }
 
     pub fn leader(&mut self, a: usize) -> usize {
+        assert!(a < self.n);
         if self.par[a] == a {
             return a;
         }
@@ -43,6 +48,7 @@ impl UnionFind {
     }
 
     pub fn size(&mut self, a: usize) -> usize {
+        assert!(a < self.n);
         let a = self.leader(a);
         self.siz[a]
     }
