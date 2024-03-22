@@ -1,4 +1,4 @@
-// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F
+// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
 
 use proconio::input;
 use std::cmp::min;
@@ -14,12 +14,12 @@ fn main() {
         n,
         |a, b| min(a, b),
         1 << 31,
-        |a, b| if a == -1 { b } else { a },
-        |a, b| if a == -1 { b } else { a },
-        -1,
+        |a, b| a + b,
+        |a, b| a + b,
+        0,
     );
     for i in 0..n {
-        lst.set(i, (1 << 31) - 1);
+        lst.set(i, 0);
     }
     for _ in 0..q {
         input! {
