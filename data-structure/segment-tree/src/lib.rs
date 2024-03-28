@@ -29,7 +29,7 @@ impl<T: Copy> SegmentTree<T> {
         k += self.size;
         self.tree[k] = x;
         while k > 0 {
-            k /= 2;
+            k >>= 1;
             self.update(k);
         }
     }
@@ -50,16 +50,16 @@ impl<T: Copy> SegmentTree<T> {
         let mut l_res = self.e;
         let mut r_res = self.e;
         while l < r {
-            if l % 2 == 1 {
+            if l & 1 != 0 {
                 l_res = (self.op)(l_res, self.tree[l]);
                 l += 1;
             }
-            if r % 2 == 1 {
+            if r & 1 != 0 {
                 r -= 1;
                 r_res = (self.op)(self.tree[r], r_res);
             }
-            l /= 2;
-            r /= 2;
+            l >>= 1;
+            r >>= 1;
         }
         (self.op)(l_res, r_res)
     }
@@ -73,7 +73,7 @@ impl<T: Copy> SegmentTree<T> {
         k += self.size;
         self.tree[k] = (self.op)(self.tree[k], x);
         while k > 0 {
-            k /= 2;
+            k >>= 1;
             self.update(k);
         }
     }

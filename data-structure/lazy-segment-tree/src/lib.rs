@@ -81,16 +81,16 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         let mut l_res = self.e;
         let mut r_res = self.e;
         while l < r {
-            if l % 2 == 1 {
+            if l & 1 != 0 {
                 l_res = (self.op)(l_res, self.tree[l]);
                 l += 1;
             }
-            if r % 2 == 1 {
+            if r & 1 != 0 {
                 r -= 1;
                 r_res = (self.op)(self.tree[r], r_res);
             }
-            l /= 2;
-            r /= 2;
+            l >>= 1;
+            r >>= 1;
         }
         (self.op)(l_res, r_res)
     }
@@ -129,16 +129,16 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         let l2 = l;
         let r2 = r;
         while l < r {
-            if l % 2 == 1 {
+            if l & 1 != 0 {
                 self.all_apply(l, f);
                 l += 1;
             }
-            if r % 2 == 1 {
+            if r & 1 != 0 {
                 r -= 1;
                 self.all_apply(r, f);
             }
-            l /= 2;
-            r /= 2;
+            l >>= 1;
+            r >>= 1;
         }
         l = l2;
         r = r2;
