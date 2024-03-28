@@ -1,5 +1,7 @@
 use rand::Rng;
 
+use segment_tree::SegmentTree;
+
 #[derive(Debug, Clone)]
 pub struct RollingHash {
     base: u64,
@@ -20,6 +22,22 @@ impl RollingHash {
             base,
             power: vec![1],
         }
+    }
+
+    pub fn build_segment_tree(&mut self, s: &Vec<char>) -> SegmentTree<(u64, u64)> {
+        let size = s.len();
+        let mut st = SegmentTree::<(u64, u64)>::new(
+            size,
+            |a, b| {
+                (
+                    Self::calc_mod(Self::calc_mul(a.1, b.0) + a.0),
+                    Self::calc_mod(Self::calc_mul(a.1, b.1)),
+                )
+            },
+            (0, 1),
+        );
+        st.build(s.into_iter().map(|&f| (f as u64, self.base)).collect());
+        st
     }
 
     pub fn build(&mut self, s: &Vec<char>) -> Vec<u64> {
