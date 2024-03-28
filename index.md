@@ -21,7 +21,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/ford-fulkerson/src/lib.rs
       title: graph/ford-fulkerson/src/lib.rs
+  - name: string/rolling-hash/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: string/rolling-hash/src/lib.rs
+      title: Rolling Hash
   verificationCategories:
+  - name: verification/aizu-online-judge/alds1_14_b/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/alds1_14_b/src/main.rs
+      title: verification/aizu-online-judge/alds1_14_b/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_a/src
     pages:
     - icon: ':heavy_check_mark:'
