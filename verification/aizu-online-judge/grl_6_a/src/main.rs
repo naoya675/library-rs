@@ -14,5 +14,5 @@ fn main() {
     for (u, v, c) in uvc {
         ff.add_edge(u, v, c);
     }
-    println!("{}", ff.max_flow(0, n - 1));
+    println!("{}", ff.flow(0, n - 1));
 }

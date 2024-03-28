@@ -34,7 +34,22 @@ impl FordFulkerson {
         self.graph[b].push(Edge::new(a, 0, alen));
     }
 
-    pub fn dfs(&mut self, v: usize, t: usize, f: usize) -> usize {
+    pub fn flow(&mut self, s: usize, t: usize) -> usize {
+        let mut total_flow = 0;
+        loop {
+            for i in 0..self.size {
+                self.used[i] = false;
+            }
+            let flow = self.dfs(s, t, usize::MAX);
+            if flow == 0 {
+                break;
+            }
+            total_flow += flow;
+        }
+        total_flow
+    }
+
+    fn dfs(&mut self, v: usize, t: usize, f: usize) -> usize {
         if v == t {
             return f;
         }
@@ -55,20 +70,5 @@ impl FordFulkerson {
             }
         }
         0
-    }
-
-    pub fn max_flow(&mut self, s: usize, t: usize) -> usize {
-        let mut total_flow = 0;
-        loop {
-            for i in 0..self.size {
-                self.used[i] = false;
-            }
-            let flow = self.dfs(s, t, usize::MAX);
-            if flow == 0 {
-                break;
-            }
-            total_flow += flow;
-        }
-        total_flow
     }
 }
