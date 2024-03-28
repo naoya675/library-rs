@@ -7,4 +7,4 @@ documentation_of: //string/rolling-hash/src/lib.rs
 
 ## Reference
 
-[https://ei1333.github.io/library/string/rolling-hash.hpp](https://ei1333.github.io/library/string/rolling-hash.hpp)
+[https://qiita.com/keymoon/items/11fac5627672a6d6a9f6](https://qiita.com/keymoon/items/11fac5627672a6d6a9f6)
