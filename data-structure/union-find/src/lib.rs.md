@@ -51,3 +51,7 @@ title: Union Find
 ---
 
 ## Description
+
+## Reference
+
+[https://atcoder.github.io/ac-library/production/document_en/dsu.html](https://atcoder.github.io/ac-library/production/document_en/dsu.html)

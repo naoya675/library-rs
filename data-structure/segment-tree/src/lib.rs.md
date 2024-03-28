@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: string/rolling-hash-segment-tree/src/lib.rs
+    title: Rolling Hash + Segment Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_a/src/main.rs
@@ -50,7 +53,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data-structure/segment-tree/src/lib.rs
-  requiredBy: []
+  requiredBy:
+  - string/rolling-hash-segment-tree/src/lib.rs
   timestamp: '2024-03-22 18:55:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -62,3 +66,7 @@ title: Segment Tree
 ---
 
 ## Description
+
+## Reference
+
+[https://atcoder.github.io/ac-library/production/document_en/segtree.html](https://atcoder.github.io/ac-library/production/document_en/segtree.html)

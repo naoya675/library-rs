@@ -20,13 +20,28 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: graph/ford-fulkerson/src/lib.rs
-      title: graph/ford-fulkerson/src/lib.rs
+      title: Ford Fulkerson
+  - name: heuristic/time-keeper/src
+    pages:
+    - icon: ':warning:'
+      path: heuristic/time-keeper/src/lib.rs
+      title: heuristic/time-keeper/src/lib.rs
   - name: string/rolling-hash/src
     pages:
     - icon: ':heavy_check_mark:'
       path: string/rolling-hash/src/lib.rs
       title: Rolling Hash
+  - name: string/rolling-hash-segment-tree/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: string/rolling-hash-segment-tree/src/lib.rs
+      title: Rolling Hash + Segment Tree
   verificationCategories:
+  - name: verification/aizu-online-judge/alds1_14_a/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/alds1_14_a/src/main.rs
+      title: verification/aizu-online-judge/alds1_14_a/src/main.rs
   - name: verification/aizu-online-judge/alds1_14_b/src
     pages:
     - icon: ':heavy_check_mark:'

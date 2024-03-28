@@ -27,32 +27,30 @@ data:
     \ fn add_edge(&mut self, a: usize, b: usize, c: usize) {\n        let alen = self.graph[a].len();\n\
     \        let blen = self.graph[b].len();\n        self.graph[a].push(Edge::new(b,\
     \ c, blen));\n        self.graph[b].push(Edge::new(a, 0, alen));\n    }\n\n  \
-    \  pub fn dfs(&mut self, v: usize, t: usize, f: usize) -> usize {\n        if\
-    \ v == t {\n            return f;\n        }\n        self.used[v] = true;\n \
-    \       for i in 0..self.graph[v].len() {\n            let u = self.graph[v][i];\n\
-    \            if u.cap == 0 {\n                continue;\n            }\n     \
-    \       if self.used[u.to] {\n                continue;\n            }\n     \
-    \       let flow = self.dfs(u.to, t, f.min(u.cap));\n            if flow > 0 {\n\
-    \                self.graph[v][i].cap -= flow;\n                self.graph[u.to][u.rev].cap\
-    \ += flow;\n                return flow;\n            }\n        }\n        0\n\
-    \    }\n\n    pub fn max_flow(&mut self, s: usize, t: usize) -> usize {\n    \
-    \    let mut total_flow = 0;\n        loop {\n            for i in 0..self.size\
-    \ {\n                self.used[i] = false;\n            }\n            let flow\
-    \ = self.dfs(s, t, usize::MAX);\n            if flow == 0 {\n                break;\n\
-    \            }\n            total_flow += flow;\n        }\n        total_flow\n\
-    \    }\n}\n"
+    \  pub fn flow(&mut self, s: usize, t: usize) -> usize {\n        let mut total_flow\
+    \ = 0;\n        loop {\n            for i in 0..self.size {\n                self.used[i]\
+    \ = false;\n            }\n            let flow = self.dfs(s, t, usize::MAX);\n\
+    \            if flow == 0 {\n                break;\n            }\n         \
+    \   total_flow += flow;\n        }\n        total_flow\n    }\n\n    fn dfs(&mut\
+    \ self, v: usize, t: usize, f: usize) -> usize {\n        if v == t {\n      \
+    \      return f;\n        }\n        self.used[v] = true;\n        for i in 0..self.graph[v].len()\
+    \ {\n            let u = self.graph[v][i];\n            if u.cap == 0 {\n    \
+    \            continue;\n            }\n            if self.used[u.to] {\n    \
+    \            continue;\n            }\n            let flow = self.dfs(u.to, t,\
+    \ f.min(u.cap));\n            if flow > 0 {\n                self.graph[v][i].cap\
+    \ -= flow;\n                self.graph[u.to][u.rev].cap += flow;\n           \
+    \     return flow;\n            }\n        }\n        0\n    }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: graph/ford-fulkerson/src/lib.rs
   requiredBy: []
-  timestamp: '2024-03-11 21:49:40+09:00'
+  timestamp: '2024-03-28 18:09:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_6_a/src/main.rs
 documentation_of: graph/ford-fulkerson/src/lib.rs
 layout: document
-redirect_from:
-- /library/graph/ford-fulkerson/src/lib.rs
-- /library/graph/ford-fulkerson/src/lib.rs.html
-title: graph/ford-fulkerson/src/lib.rs
+title: Ford Fulkerson
 ---
+
+## Description

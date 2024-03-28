@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/ford-fulkerson/src/lib.rs
-    title: graph/ford-fulkerson/src/lib.rs
+    title: Ford Fulkerson
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -23,14 +23,14 @@ data:
     \nuse proconio::input;\n\nuse ford_fulkerson::FordFulkerson;\n\nfn main() {\n\
     \    input! {\n        n: usize,\n        m: usize,\n        uvc: [(usize, usize,\
     \ usize); m],\n    }\n    let mut ff = FordFulkerson::new(n);\n    for (u, v,\
-    \ c) in uvc {\n        ff.add_edge(u, v, c);\n    }\n    println!(\"{}\", ff.max_flow(0,\
+    \ c) in uvc {\n        ff.add_edge(u, v, c);\n    }\n    println!(\"{}\", ff.flow(0,\
     \ n - 1));\n}\n"
   dependsOn:
   - graph/ford-fulkerson/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_6_a/src/main.rs
   requiredBy: []
-  timestamp: '2024-03-11 21:49:40+09:00'
+  timestamp: '2024-03-28 18:09:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_6_a/src/main.rs
