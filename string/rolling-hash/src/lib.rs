@@ -39,13 +39,11 @@ impl RollingHash {
         }
     }
 
+    // [l, r)
     pub fn rolling_hash(&mut self, hash: &Vec<u64>, l: usize, r: usize) -> u64 {
-        assert!(l <= hash.len());
-        assert!(r <= hash.len());
-        self.build_power(r - l + 1);
-        Self::calc_mod(
-            hash[r] + Self::POSITIVIZER - Self::calc_mul(hash[l - 1], self.power[r - l + 1]),
-        )
+        assert!(l <= r && r <= hash.len());
+        self.build_power(r - l);
+        Self::calc_mod(hash[r] + Self::POSITIVIZER - Self::calc_mul(hash[l], self.power[r - l]))
     }
 
     fn calc_add(a: u64, b: u64) -> u64 {

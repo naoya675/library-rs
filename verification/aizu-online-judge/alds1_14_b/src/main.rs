@@ -16,7 +16,7 @@ fn main() {
         if i + p.len() > t.len() {
             break;
         }
-        if rh.rolling_hash(&ht, i + 1, i + p.len()) == rh.rolling_hash(&hp, 1, p.len()) {
+        if rh.rolling_hash(&ht, i, i + p.len()) == rh.rolling_hash(&hp, 0, p.len()) {
             println!("{}", i);
         }
     }
