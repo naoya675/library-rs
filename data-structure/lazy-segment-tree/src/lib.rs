@@ -21,7 +21,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         id: F,
     ) -> Self {
         let size = n.next_power_of_two();
-        let size_log = format!("{:b}", size).to_string().len();
+        let size_log = (size.ilog2() + 1) as usize;
         Self {
             tree: vec![e; 2 * size],
             lazy: vec![id; 2 * size],
