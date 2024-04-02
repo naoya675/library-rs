@@ -48,9 +48,7 @@ impl<const MOD: u64> std::ops::Add for ModInt<MOD> {
 
 impl<const MOD: u64> std::ops::AddAssign for ModInt<MOD> {
     fn add_assign(&mut self, rhs: Self) {
-        *self = Self {
-            value: (self.value + rhs.value) % MOD,
-        };
+        *self = *self + rhs;
     }
 }
 
@@ -68,12 +66,7 @@ impl<const MOD: u64> std::ops::Sub for ModInt<MOD> {
 
 impl<const MOD: u64> std::ops::SubAssign for ModInt<MOD> {
     fn sub_assign(&mut self, rhs: Self) {
-        if self.value < rhs.value {
-            self.value += MOD;
-        }
-        *self = Self {
-            value: (self.value - rhs.value) % MOD,
-        };
+        *self = *self - rhs;
     }
 }
 
@@ -88,9 +81,7 @@ impl<const MOD: u64> std::ops::Mul for ModInt<MOD> {
 
 impl<const MOD: u64> std::ops::MulAssign for ModInt<MOD> {
     fn mul_assign(&mut self, rhs: Self) {
-        *self = Self {
-            value: (self.value * rhs.value) % MOD,
-        };
+        *self = *self * rhs;
     }
 }
 
@@ -106,10 +97,7 @@ impl<const MOD: u64> std::ops::Div for ModInt<MOD> {
 
 impl<const MOD: u64> std::ops::DivAssign for ModInt<MOD> {
     fn div_assign(&mut self, rhs: Self) {
-        if rhs.value == 0 {
-            panic!();
-        }
-        *self *= rhs.inv();
+        *self = *self / rhs;
     }
 }
 
@@ -118,3 +106,32 @@ impl<const MOD: u64> std::fmt::Display for ModInt<MOD> {
         write!(f, "{}", self.value)
     }
 }
+
+// macro_rules! impl_from {
+//     ($($type:ty), *) => {
+//         $(
+//             impl<const MOD: u64> From<$type> for ModInt<MOD> {
+//                 fn from(value: $type) -> Self {
+//                     Self::new(value as u64)
+//                 }
+//             }
+//         )*
+//     };
+// }
+
+// impl_from!(i8, u8, i16, u16, i32, u32, u64, i64, isize, usize);
+
+// macro_rules! impl_ops {
+//     ($trait:ident, $fn:ident, $op:tt) => {
+//         impl<const MOD: u64> std::ops::$trait for ModInt<MOD> {
+//             fn $fn(&mut self, rhs: Self) {
+//                 *self = *self $op rhs;
+//             }
+//         }
+//     };
+// }
+
+// impl_ops!(AddAssign, add_assign, +);
+// impl_ops!(SubAssign, sub_assign, -);
+// impl_ops!(MulAssign, mul_assign, *);
+// impl_ops!(DivAssign, div_assign, /);
