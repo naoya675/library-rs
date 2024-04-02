@@ -26,6 +26,16 @@ data:
     - icon: ':warning:'
       path: heuristic/time-keeper/src/lib.rs
       title: heuristic/time-keeper/src/lib.rs
+  - name: math/modint/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: math/modint/src/lib.rs
+      title: ModInt
+  - name: math/modint_test/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: math/modint_test/src/lib.rs
+      title: math/modint_test/src/lib.rs
   - name: string/rolling-hash/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -82,6 +92,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_6_a/src/main.rs
       title: verification/aizu-online-judge/grl_6_a/src/main.rs
+  - name: verification/library-checker/range_affine_point_get/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/range_affine_point_get/src/main.rs
+      title: verification/library-checker/range_affine_point_get/src/main.rs
+  - name: verification/library-checker/range_affine_range_sum/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/range_affine_range_sum/src/main.rs
+      title: verification/library-checker/range_affine_range_sum/src/main.rs
   - name: verification/library-checker/unionfind/src
     pages:
     - icon: ':heavy_check_mark:'
