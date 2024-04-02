@@ -3,9 +3,11 @@
 use proconio::input;
 
 use lazy_segment_tree::LazySegmentTree;
-use modint::ModInt;
+use mod_int::ModInt;
 
-type Mint = ModInt<998244353>;
+const MOD: u64 = 998_244_353;
+
+type Mint = ModInt<MOD>;
 
 fn main() {
     input! {
