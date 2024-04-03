@@ -21,10 +21,12 @@ impl<const MOD: u64> ModCombinatorial<MOD> {
     }
 
     pub fn fact(&self, n: usize) -> ModInt<MOD> {
+        assert!(n <= self.fact.len());
         self.fact[n]
     }
 
     pub fn finv(&self, n: usize) -> ModInt<MOD> {
+        assert!(n <= self.finv.len());
         self.finv[n]
     }
 
@@ -39,7 +41,7 @@ impl<const MOD: u64> ModCombinatorial<MOD> {
 
     // combination
     pub fn comb(&self, n: usize, r: usize) -> ModInt<MOD> {
-        assert!(r <= n);
+        // assert!(r <= n);
         if r > n {
             return ModInt::<MOD>::new(0);
         }
