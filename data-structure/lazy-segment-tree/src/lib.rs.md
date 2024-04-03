@@ -16,9 +16,6 @@ data:
     path: verification/aizu-online-judge/dsl_2_i/src/main.rs
     title: verification/aizu-online-judge/dsl_2_i/src/main.rs
   - icon: ':heavy_check_mark:'
-    path: verification/library-checker/range_affine_point_get/src/main.rs
-    title: verification/library-checker/range_affine_point_get/src/main.rs
-  - icon: ':heavy_check_mark:'
     path: verification/library-checker/range_affine_range_sum/src/main.rs
     title: verification/library-checker/range_affine_range_sum/src/main.rs
   _isVerificationFailed: false
@@ -98,12 +95,11 @@ data:
   timestamp: '2024-03-29 23:59:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verification/library-checker/range_affine_range_sum/src/main.rs
   - verification/aizu-online-judge/dsl_2_h/src/main.rs
   - verification/aizu-online-judge/dsl_2_i/src/main.rs
   - verification/aizu-online-judge/dsl_2_g/src/main.rs
   - verification/aizu-online-judge/dsl_2_f/src/main.rs
-  - verification/library-checker/range_affine_range_sum/src/main.rs
-  - verification/library-checker/range_affine_point_get/src/main.rs
 documentation_of: data-structure/lazy-segment-tree/src/lib.rs
 layout: document
 title: Lazy Segment Tree

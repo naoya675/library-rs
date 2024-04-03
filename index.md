@@ -26,16 +26,16 @@ data:
     - icon: ':warning:'
       path: heuristic/time-keeper/src/lib.rs
       title: heuristic/time-keeper/src/lib.rs
-  - name: math/modint/src
+  - name: math/mod-combinatorial/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: math/modint/src/lib.rs
-      title: ModInt
-  - name: math/modint_test/src
+      path: math/mod-combinatorial/src/lib.rs
+      title: Mod Combinatorial
+  - name: math/mod-int/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: math/modint_test/src/lib.rs
-      title: math/modint_test/src/lib.rs
+      path: math/mod-int/src/lib.rs
+      title: Mod Int
   - name: string/rolling-hash/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -57,6 +57,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/alds1_14_b/src/main.rs
       title: verification/aizu-online-judge/alds1_14_b/src/main.rs
+  - name: verification/aizu-online-judge/dpl_5_d/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/dpl_5_d/src/main.rs
+      title: verification/aizu-online-judge/dpl_5_d/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_a/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -92,11 +97,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_6_a/src/main.rs
       title: verification/aizu-online-judge/grl_6_a/src/main.rs
-  - name: verification/library-checker/range_affine_point_get/src
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: verification/library-checker/range_affine_point_get/src/main.rs
-      title: verification/library-checker/range_affine_point_get/src/main.rs
   - name: verification/library-checker/range_affine_range_sum/src
     pages:
     - icon: ':heavy_check_mark:'
