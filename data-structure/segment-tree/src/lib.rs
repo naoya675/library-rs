@@ -2,6 +2,7 @@
 pub struct SegmentTree<T> {
     tree: Vec<T>,
     size: usize,
+    size_log: usize,
     op: fn(T, T) -> T, // evaluation funciton
     e: T,              // identity element
 }
@@ -9,9 +10,11 @@ pub struct SegmentTree<T> {
 impl<T: Copy> SegmentTree<T> {
     pub fn new(n: usize, op: fn(T, T) -> T, e: T) -> Self {
         let size = n.next_power_of_two();
+        let size_log = (size.ilog2() + 1) as usize;
         Self {
             tree: vec![e; 2 * size],
             size,
+            size_log,
             op,
             e,
         }
@@ -28,10 +31,13 @@ impl<T: Copy> SegmentTree<T> {
         assert!(k < self.size);
         k += self.size;
         self.tree[k] = x;
-        while k > 0 {
-            k >>= 1;
-            self.update(k);
+        for i in 1..self.size_log + 1 {
+            self.update(k >> i);
         }
+        // while k > 0 {
+        //     k >>= 1;
+        //     self.update(k);
+        // }
     }
 
     pub fn get(&mut self, mut k: usize) -> T {
@@ -76,6 +82,70 @@ impl<T: Copy> SegmentTree<T> {
             k >>= 1;
             self.update(k);
         }
+    }
+
+    pub fn max_right<F>(&mut self, mut l: usize, f: F) -> usize
+    where
+        F: Fn(T) -> bool,
+    {
+        assert!(l <= self.size);
+        assert!(f(self.e));
+        if l == self.size {
+            return self.size;
+        }
+        l += self.size;
+        let mut res = self.e;
+        while {
+            while l % 2 == 0 {
+                l >>= 1;
+            }
+            if !f((self.op)(res, self.tree[l])) {
+                while l < self.size {
+                    l = 2 * l;
+                    if f((self.op)(res, self.tree[l])) {
+                        res = (self.op)(res, self.tree[l]);
+                        l += 1;
+                    }
+                }
+                return l - self.size;
+            }
+            res = (self.op)(res, self.tree[l]);
+            l += 1;
+            l & l.wrapping_neg() != l
+        } {}
+        self.size
+    }
+
+    pub fn min_left<F>(&mut self, mut r: usize, f: F) -> usize
+    where
+        F: Fn(T) -> bool,
+    {
+        assert!(r <= self.size);
+        assert!(f(self.e));
+        if r == 0 {
+            return 0;
+        }
+        r += self.size;
+        let mut res = self.e;
+        while {
+            r -= 1;
+            while r > 1 && r % 2 != 0 {
+                r >>= 1;
+            }
+            if !f((self.op)(self.tree[r], res)) {
+                while r < self.size {
+                    r = 2 * r + 1;
+                    if f((self.op)(self.tree[r], res)) {
+                        res = (self.op)(self.tree[r], res);
+                        r -= 1;
+                    }
+                }
+                return r + 1 - self.size;
+            }
+            res = (self.op)(self.tree[r], res);
+            r & r.wrapping_neg() != r
+        } {}
+        0
     }
 
     fn update(&mut self, k: usize) {
