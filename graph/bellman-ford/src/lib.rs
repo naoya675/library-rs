@@ -20,7 +20,7 @@ pub struct BellmanFord {
 }
 
 impl BellmanFord {
-    const INF: Cost = Cost::MAX / 2;
+    pub const INF: Cost = Cost::MAX / 2;
 
     pub fn new(size: usize) -> Self {
         Self { size, edge: vec![] }
