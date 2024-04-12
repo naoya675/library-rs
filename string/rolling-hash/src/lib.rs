@@ -15,7 +15,7 @@ impl RollingHash {
 
     pub fn new() -> Self {
         let mut rng = rand::thread_rng();
-        let base = rng.gen_range(1..Self::MOD);
+        let base = rng.gen_range(Self::MASK31..Self::MASK61);
         Self {
             base,
             power: vec![1],

@@ -1,4 +1,4 @@
-pub type Cap = usize;
+pub type Cap = i64;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Edge {

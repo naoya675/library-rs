@@ -1,4 +1,4 @@
-use internal_type::Zero;
+use internal_trait::Zero;
 
 #[derive(Debug, Clone)]
 pub struct WeightedUnionFind<T> {

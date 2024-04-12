@@ -8,7 +8,7 @@ fn main() {
     input! {
         n: usize,
         m: usize,
-        uvc: [(usize, usize, usize); m],
+        uvc: [(usize, usize, i64); m],
     }
     let mut ff = FordFulkerson::new(n);
     for (u, v, c) in uvc {
