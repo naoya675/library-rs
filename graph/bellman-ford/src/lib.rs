@@ -45,7 +45,7 @@ impl BellmanFord {
                 }
             }
             if !update {
-                return (true, dist);
+                return (false, dist);
             }
         }
         for _ in 0..self.size {
@@ -58,6 +58,6 @@ impl BellmanFord {
                 }
             }
         }
-        (false, dist)
+        (true, dist)
     }
 }
