@@ -38,7 +38,7 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_h/src/main.rs
   requiredBy: []
-  timestamp: '2024-03-29 23:59:42+09:00'
+  timestamp: '2024-04-09 23:57:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_h/src/main.rs

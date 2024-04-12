@@ -29,22 +29,23 @@ data:
     \        finv[n] = fact[n].inv();\n        for i in (0..n).rev() {\n         \
     \   finv[i] = finv[i + 1] * ModInt::<MOD>::new((i + 1) as u64);\n        }\n \
     \       Self { fact, finv }\n    }\n\n    pub fn fact(&self, n: usize) -> ModInt<MOD>\
-    \ {\n        self.fact[n]\n    }\n\n    pub fn finv(&self, n: usize) -> ModInt<MOD>\
-    \ {\n        self.finv[n]\n    }\n\n    // permutation\n    pub fn perm(&self,\
-    \ n: usize, r: usize) -> ModInt<MOD> {\n        // assert!(r <= n);\n        if\
-    \ r > n {\n            return ModInt::<MOD>::new(0);\n        }\n        self.fact[n]\
+    \ {\n        assert!(n <= self.fact.len());\n        self.fact[n]\n    }\n\n \
+    \   pub fn finv(&self, n: usize) -> ModInt<MOD> {\n        assert!(n <= self.finv.len());\n\
+    \        self.finv[n]\n    }\n\n    // permutation\n    pub fn perm(&self, n:\
+    \ usize, r: usize) -> ModInt<MOD> {\n        // assert!(r <= n);\n        if r\
+    \ > n {\n            return ModInt::<MOD>::new(0);\n        }\n        self.fact[n]\
     \ * self.finv[n - r]\n    }\n\n    // combination\n    pub fn comb(&self, n: usize,\
-    \ r: usize) -> ModInt<MOD> {\n        assert!(r <= n);\n        if r > n {\n \
-    \           return ModInt::<MOD>::new(0);\n        }\n        self.fact[n] * self.finv[r]\
-    \ * self.finv[n - r]\n    }\n\n    // homogeneous product\n    pub fn homo(&self,\
-    \ n: usize, r: usize) -> ModInt<MOD> {\n        self.comb(n + r - 1, r)\n    }\n\
-    }\n"
+    \ r: usize) -> ModInt<MOD> {\n        // assert!(r <= n);\n        if r > n {\n\
+    \            return ModInt::<MOD>::new(0);\n        }\n        self.fact[n] *\
+    \ self.finv[r] * self.finv[n - r]\n    }\n\n    // homogeneous product\n    pub\
+    \ fn homo(&self, n: usize, r: usize) -> ModInt<MOD> {\n        self.comb(n + r\
+    \ - 1, r)\n    }\n}\n"
   dependsOn:
   - math/mod-int/src/lib.rs
   isVerificationFile: false
   path: math/mod-combinatorial/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-03 02:27:54+09:00'
+  timestamp: '2024-04-03 21:31:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dpl_5_d/src/main.rs

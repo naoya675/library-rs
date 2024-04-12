@@ -80,26 +80,52 @@ data:
     \ r2;\n        for i in 1..self.size_log + 1 {\n            if ((l >> i) << i)\
     \ != l {\n                self.update(l >> i);\n            }\n            if\
     \ ((r >> i) << i) != r {\n                self.update((r - 1) >> i);\n       \
-    \     }\n        }\n    }\n\n    fn all_apply(&mut self, k: usize, f: F) {\n \
-    \       self.tree[k] = (self.mapping)(f, self.tree[k]);\n        if k < self.size\
-    \ {\n            self.lazy[k] = (self.composition)(f, self.lazy[k]);\n       \
-    \ }\n    }\n\n    fn push(&mut self, k: usize) {\n        self.all_apply(k <<\
-    \ 1 | 0, self.lazy[k]);\n        self.all_apply(k << 1 | 1, self.lazy[k]);\n \
-    \       self.lazy[k] = self.id;\n    }\n\n    fn update(&mut self, k: usize) {\n\
-    \        self.tree[k] = (self.op)(self.tree[k << 1 | 0], self.tree[k << 1 | 1]);\n\
-    \    }\n}\n"
+    \     }\n        }\n    }\n\n    pub fn max_right<G>(&mut self, mut l: usize,\
+    \ g: G) -> usize\n    where\n        G: Fn(T) -> bool,\n    {\n        assert!(l\
+    \ <= self.size);\n        assert!(g(self.e));\n        if l == self.size {\n \
+    \           return self.size;\n        }\n        l += self.size;\n        for\
+    \ i in (1..self.size_log + 1).rev() {\n            self.push(l >> i);\n      \
+    \  }\n        let mut res = self.e;\n        while {\n            while l % 2\
+    \ == 0 {\n                l >>= 1;\n            }\n            if !g((self.op)(res,\
+    \ self.tree[l])) {\n                while l < self.size {\n                  \
+    \  self.push(l);\n                    l = 2 * l;\n                    if g((self.op)(res,\
+    \ self.tree[l])) {\n                        res = (self.op)(res, self.tree[l]);\n\
+    \                        l += 1;\n                    }\n                }\n \
+    \               return l - self.size;\n            }\n            res = (self.op)(res,\
+    \ self.tree[l]);\n            l += 1;\n            l & l.wrapping_neg() != l\n\
+    \        } {}\n        self.size\n    }\n\n    pub fn min_left<G>(&mut self, mut\
+    \ r: usize, g: G) -> usize\n    where\n        G: Fn(T) -> bool,\n    {\n    \
+    \    assert!(r <= self.size);\n        assert!(g(self.e));\n        if r == 0\
+    \ {\n            return 0;\n        }\n        r += self.size;\n        for i\
+    \ in (1..self.size_log + 1).rev() {\n            self.push((r - 1) >> i);\n  \
+    \      }\n        let mut res = self.e;\n        while {\n            r -= 1;\n\
+    \            while r > 1 && r % 2 != 0 {\n                r >>= 1;\n         \
+    \   }\n            if !g((self.op)(self.tree[r], res)) {\n                while\
+    \ r < self.size {\n                    self.push(r);\n                    r =\
+    \ 2 * r + 1;\n                    if g((self.op)(self.tree[r], res)) {\n     \
+    \                   res = (self.op)(self.tree[r], res);\n                    \
+    \    r -= 1;\n                    }\n                }\n                return\
+    \ r + 1 - self.size;\n            }\n            res = (self.op)(self.tree[r],\
+    \ res);\n            r & r.wrapping_neg() != r\n        } {}\n        0\n    }\n\
+    \n    fn all_apply(&mut self, k: usize, f: F) {\n        self.tree[k] = (self.mapping)(f,\
+    \ self.tree[k]);\n        if k < self.size {\n            self.lazy[k] = (self.composition)(f,\
+    \ self.lazy[k]);\n        }\n    }\n\n    fn push(&mut self, k: usize) {\n   \
+    \     self.all_apply(k << 1 | 0, self.lazy[k]);\n        self.all_apply(k << 1\
+    \ | 1, self.lazy[k]);\n        self.lazy[k] = self.id;\n    }\n\n    fn update(&mut\
+    \ self, k: usize) {\n        self.tree[k] = (self.op)(self.tree[k << 1 | 0], self.tree[k\
+    \ << 1 | 1]);\n    }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/lazy-segment-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2024-03-29 23:59:42+09:00'
+  timestamp: '2024-04-09 23:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verification/library-checker/range_affine_range_sum/src/main.rs
   - verification/aizu-online-judge/dsl_2_h/src/main.rs
   - verification/aizu-online-judge/dsl_2_i/src/main.rs
   - verification/aizu-online-judge/dsl_2_g/src/main.rs
   - verification/aizu-online-judge/dsl_2_f/src/main.rs
+  - verification/library-checker/range_affine_range_sum/src/main.rs
 documentation_of: data-structure/lazy-segment-tree/src/lib.rs
 layout: document
 title: Lazy Segment Tree

@@ -1,8 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: graph/kruskal/src/lib.rs
+    title: Kruskal
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verification/aizu-online-judge/dsl_1_a/src/main.rs
+    title: verification/aizu-online-judge/dsl_1_a/src/main.rs
   - icon: ':heavy_check_mark:'
     path: verification/library-checker/unionfind/src/main.rs
     title: verification/library-checker/unionfind/src/main.rs
@@ -40,10 +46,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data-structure/union-find/src/lib.rs
-  requiredBy: []
+  requiredBy:
+  - graph/kruskal/src/lib.rs
   timestamp: '2024-03-22 18:13:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verification/aizu-online-judge/dsl_1_a/src/main.rs
   - verification/library-checker/unionfind/src/main.rs
 documentation_of: data-structure/union-find/src/lib.rs
 layout: document
