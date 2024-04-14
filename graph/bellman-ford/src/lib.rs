@@ -61,3 +61,34 @@ impl BellmanFord {
         (true, dist)
     }
 }
+
+pub fn bellman_ford(size: usize, edge: &Vec<Edge>, s: usize) -> (bool, Vec<Cost>) {
+    let mut dist = vec![Cost::MAX / 2; size];
+    dist[s] = 0;
+    for _ in 0..size {
+        let mut update = false;
+        for edge in edge {
+            if dist[edge.from] == Cost::MAX / 2 {
+                continue;
+            }
+            if dist[edge.from] + edge.cost < dist[edge.to] {
+                dist[edge.to] = dist[edge.from] + edge.cost;
+                update = true;
+            }
+        }
+        if !update {
+            return (false, dist);
+        }
+    }
+    for _ in 0..size {
+        for edge in edge {
+            if dist[edge.from] == Cost::MAX / 2 {
+                continue;
+            }
+            if dist[edge.from] + edge.cost < dist[edge.to] {
+                dist[edge.to] = -(Cost::MAX / 2);
+            }
+        }
+    }
+    (true, dist)
+}

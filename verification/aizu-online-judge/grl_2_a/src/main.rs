@@ -2,7 +2,8 @@
 
 use proconio::input;
 
-use kruskal::Kruskal;
+use kruskal::minimum_spanning_tree;
+use kruskal::Edge;
 
 fn main() {
     input! {
@@ -10,9 +11,9 @@ fn main() {
         e: usize,
         stw: [(usize, usize, i64); e],
     }
-    let mut kruskal = Kruskal::new(v);
+    let mut edge = vec![];
     for (s, t, w) in stw {
-        kruskal.add_edge(s, t, w);
+        edge.push(Edge::new(s, t, w));
     }
-    println!("{}", kruskal.minimum_spanning_tree().0);
+    println!("{}", minimum_spanning_tree(v, &mut edge).0);
 }

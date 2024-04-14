@@ -4,7 +4,8 @@ use itertools::Itertools;
 
 use proconio::input;
 
-use warshall_floyd::WarshallFloyd;
+use warshall_floyd::warshall_floyd;
+use warshall_floyd::Edge;
 
 fn main() {
     input! {
@@ -12,11 +13,11 @@ fn main() {
         e: usize,
         std: [(usize, usize, i64); e],
     }
-    let mut wf = WarshallFloyd::new(v);
+    let mut edge = vec![];
     for (s, t, d) in std {
-        wf.add_edge(s, t, d);
+        edge.push(Edge::new(s, t, d));
     }
-    let (cycle, res) = wf.warshall_floyd();
+    let (cycle, res) = warshall_floyd(v, &edge);
     if cycle {
         println!("NEGATIVE CYCLE");
     } else {
@@ -24,7 +25,7 @@ fn main() {
             let res = res[i]
                 .iter()
                 .map(|&r| {
-                    if r < WarshallFloyd::INF / 2 {
+                    if r < i64::MAX / 4 {
                         r.to_string()
                     } else {
                         "INF".to_string()

@@ -53,3 +53,22 @@ impl Dijkstra {
         dist
     }
 }
+
+pub fn dijkstra(size: usize, graph: &Vec<Vec<Edge>>, s: usize) -> Vec<Cost> {
+    let mut dist = vec![Cost::MAX / 2; size];
+    dist[s] = 0;
+    let mut heap = BinaryHeap::new();
+    heap.push((-dist[s], s));
+    while let Some((d, from)) = heap.pop() {
+        if dist[from] < -d {
+            continue;
+        }
+        for edge in &graph[from] {
+            if dist[edge.to] > dist[from] + edge.cost {
+                dist[edge.to] = dist[from] + edge.cost;
+                heap.push((-dist[edge.to], edge.to));
+            }
+        }
+    }
+    dist
+}

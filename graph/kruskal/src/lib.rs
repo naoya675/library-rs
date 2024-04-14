@@ -58,3 +58,31 @@ impl Kruskal {
         (res, res_edge)
     }
 }
+
+pub fn minimum_spanning_tree(size: usize, edge: &mut Vec<Edge>) -> (Cost, Vec<Edge>) {
+    edge.sort_by(|a, b| a.cost.cmp(&b.cost));
+    let mut uf = UnionFind::new(size);
+    let mut res = 0;
+    let mut res_edge = vec![];
+    for edge in edge {
+        if uf.merge(edge.to, edge.from) {
+            res += edge.cost;
+            res_edge.push(edge.clone());
+        }
+    }
+    (res, res_edge)
+}
+
+pub fn maximum_spanning_tree(size: usize, edge: &mut Vec<Edge>) -> (Cost, Vec<Edge>) {
+    edge.sort_by(|a, b| b.cost.cmp(&a.cost));
+    let mut uf = UnionFind::new(size);
+    let mut res = 0;
+    let mut res_edge = vec![];
+    for edge in edge {
+        if uf.merge(edge.to, edge.from) {
+            res += edge.cost;
+            res_edge.push(edge.clone());
+        }
+    }
+    (res, res_edge)
+}

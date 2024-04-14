@@ -53,3 +53,27 @@ impl WarshallFloyd {
         (false, dist)
     }
 }
+
+pub fn warshall_floyd(size: usize, edge: &Vec<Edge>) -> (bool, Vec<Vec<Cost>>) {
+    let mut dist = vec![vec![Cost::MAX / 2; size]; size];
+    for i in 0..size {
+        dist[i][i] = 0;
+    }
+    for edge in edge {
+        dist[edge.from][edge.to] = edge.cost;
+    }
+    for k in 0..size {
+        for i in 0..size {
+            for j in 0..size {
+                dist[i][j] = dist[i][j].min(dist[i][k] + dist[k][j])
+            }
+        }
+    }
+    let mut cycle = false;
+    for i in 0..size {
+        if dist[i][i] < 0 {
+            cycle = true;
+        }
+    }
+    (cycle, dist)
+}
