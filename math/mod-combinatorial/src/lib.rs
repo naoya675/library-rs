@@ -48,7 +48,7 @@ impl<const MOD: u64> ModCombinatorial<MOD> {
         self.fact[n] * self.finv[r] * self.finv[n - r]
     }
 
-    // homogeneous product
+    // combinations with replacement (homogeneous product)
     pub fn homo(&self, n: usize, r: usize) -> ModInt<MOD> {
         self.comb(n + r - 1, r)
     }

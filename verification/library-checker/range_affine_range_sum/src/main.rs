@@ -5,9 +5,7 @@ use proconio::input;
 use lazy_segment_tree::LazySegmentTree;
 use mod_int::ModInt;
 
-const MOD: u64 = 998_244_353;
-
-type Mint = ModInt<MOD>;
+type Mint = ModInt<998244353>;
 
 fn main() {
     input! {
