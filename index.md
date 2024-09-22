@@ -1,11 +1,16 @@
 ---
 data:
   libraryCategories:
-  - name: algebra/internal-type/src
+  - name: algebra/internal-trait/src
     pages:
     - icon: ':warning:'
-      path: algebra/internal-type/src/lib.rs
-      title: algebra/internal-type/src/lib.rs
+      path: algebra/internal-trait/src/lib.rs
+      title: algebra/internal-trait/src/lib.rs
+  - name: data-structure/fenwick-tree/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: data-structure/fenwick-tree/src/lib.rs
+      title: data-structure/fenwick-tree/src/lib.rs
   - name: data-structure/lazy-segment-tree/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -46,6 +51,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/kruskal/src/lib.rs
       title: Kruskal
+  - name: graph/topological-sort/src
+    pages:
+    - icon: ':warning:'
+      path: graph/topological-sort/src/lib.rs
+      title: graph/topological-sort/src/lib.rs
   - name: graph/warshall-floyd/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -76,6 +86,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/rolling-hash-segment-tree/src/lib.rs
       title: Rolling Hash + Segment Tree
+  - name: string/z-algorithm/src
+    pages:
+    - icon: ':warning:'
+      path: string/z-algorithm/src/lib.rs
+      title: string/z-algorithm/src/lib.rs
   verificationCategories:
   - name: verification/aizu-online-judge/alds1_14_a/src
     pages:

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':warning:'
-    path: algebra/internal-type/src/lib.rs
-    title: algebra/internal-type/src/lib.rs
+    path: algebra/internal-trait/src/lib.rs
+    title: algebra/internal-trait/src/lib.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -20,7 +20,7 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "use internal_type::Zero;\n\n#[derive(Debug, Clone)]\npub struct WeightedUnionFind<T>\
+  code: "use internal_trait::Zero;\n\n#[derive(Debug, Clone)]\npub struct WeightedUnionFind<T>\
     \ {\n    n: usize,\n    par: Vec<usize>,\n    siz: Vec<usize>,\n    diff_weight:\
     \ Vec<T>,\n}\n\nimpl<T: Copy + Zero> WeightedUnionFind<T>\nwhere\n    T: std::ops::Neg<Output\
     \ = T>,\n    T: std::ops::Add<T, Output = T>,\n    T: std::ops::AddAssign,\n \
@@ -52,11 +52,11 @@ data:
     \            .collect::<Vec<_>>()\n    }\n\n    fn weight(&mut self, a: usize)\
     \ -> T {\n        self.leader(a);\n        self.diff_weight[a]\n    }\n}\n"
   dependsOn:
-  - algebra/internal-type/src/lib.rs
+  - algebra/internal-trait/src/lib.rs
   isVerificationFile: false
   path: data-structure/weighted-union-find/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-12 20:06:17+09:00'
+  timestamp: '2024-04-13 01:08:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_1_b/src/main.rs

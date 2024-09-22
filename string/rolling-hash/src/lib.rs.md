@@ -22,7 +22,7 @@ data:
     \ = (1_u64 << 61) - 1;\n    const MASK30: u64 = (1_u64 << 30) - 1;\n    const\
     \ MASK31: u64 = (1_u64 << 31) - 1;\n    const MASK61: u64 = Self::MOD;\n    const\
     \ POSITIVIZER: u64 = Self::MOD * 4;\n\n    pub fn new() -> Self {\n        let\
-    \ mut rng = rand::thread_rng();\n        let base = rng.gen_range(1..Self::MOD);\n\
+    \ mut rng = rand::thread_rng();\n        let base = rng.gen_range(Self::MASK31..Self::MASK61);\n\
     \        Self {\n            base,\n            power: vec![1],\n        }\n \
     \   }\n\n    pub fn build(&mut self, s: &Vec<char>) -> Vec<u64> {\n        let\
     \ size = s.len();\n        let mut hash = vec![0; size + 1];\n        for i in\
@@ -50,7 +50,7 @@ data:
   isVerificationFile: false
   path: string/rolling-hash/src/lib.rs
   requiredBy: []
-  timestamp: '2024-03-29 02:35:11+09:00'
+  timestamp: '2024-04-13 01:08:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_b/src/main.rs

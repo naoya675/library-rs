@@ -37,15 +37,15 @@ data:
     \ * self.finv[n - r]\n    }\n\n    // combination\n    pub fn comb(&self, n: usize,\
     \ r: usize) -> ModInt<MOD> {\n        // assert!(r <= n);\n        if r > n {\n\
     \            return ModInt::<MOD>::new(0);\n        }\n        self.fact[n] *\
-    \ self.finv[r] * self.finv[n - r]\n    }\n\n    // homogeneous product\n    pub\
-    \ fn homo(&self, n: usize, r: usize) -> ModInt<MOD> {\n        self.comb(n + r\
-    \ - 1, r)\n    }\n}\n"
+    \ self.finv[r] * self.finv[n - r]\n    }\n\n    // combinations with replacement\
+    \ (homogeneous product)\n    pub fn homo(&self, n: usize, r: usize) -> ModInt<MOD>\
+    \ {\n        self.comb(n + r - 1, r)\n    }\n}\n"
   dependsOn:
   - math/mod-int/src/lib.rs
   isVerificationFile: false
   path: math/mod-combinatorial/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-03 21:31:25+09:00'
+  timestamp: '2024-04-24 17:20:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dpl_5_d/src/main.rs

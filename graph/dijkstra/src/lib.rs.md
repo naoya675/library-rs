@@ -27,18 +27,35 @@ data:
     \  }\n\n    pub fn add_edge(&mut self, from: usize, to: usize, cost: Cost) {\n\
     \        self.graph[from].push(Edge::new(to, cost));\n    }\n\n    pub fn dijkstra(&mut\
     \ self, s: usize) -> Vec<Cost> {\n        let mut dist = vec![Self::INF; self.size];\n\
-    \        dist[s] = 0;\n        let mut heap = BinaryHeap::new();\n        heap.push((-dist[s],\
-    \ s));\n        while let Some((d, from)) = heap.pop() {\n            if dist[from]\
-    \ < -d {\n                continue;\n            }\n            for edge in &self.graph[from]\
-    \ {\n                if dist[edge.to] > dist[from] + edge.cost {\n           \
-    \         dist[edge.to] = dist[from] + edge.cost;\n                    heap.push((-dist[edge.to],\
-    \ edge.to));\n                }\n            }\n        }\n        dist\n    }\n\
-    }\n"
+    \        dist[s] = 0;\n        let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();\n\
+    \        heap.push((-dist[s], s));\n        while let Some((d, from)) = heap.pop()\
+    \ {\n            if dist[from] < -d {\n                continue;\n           \
+    \ }\n            for edge in &self.graph[from] {\n                if dist[edge.to]\
+    \ > dist[from] + edge.cost {\n                    dist[edge.to] = dist[from] +\
+    \ edge.cost;\n                    heap.push((-dist[edge.to], edge.to));\n    \
+    \            }\n            }\n        }\n        dist\n    }\n\n    pub fn dijkstra_prev(&mut\
+    \ self, s: usize) -> (Vec<Cost>, Vec<usize>) {\n        let mut dist = vec![Self::INF;\
+    \ self.size];\n        let mut prev = vec![self.size; self.size];\n        dist[s]\
+    \ = 0;\n        let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();\n\
+    \        heap.push((-dist[s], s));\n        while let Some((d, from)) = heap.pop()\
+    \ {\n            if dist[from] < -d {\n                continue;\n           \
+    \ }\n            for edge in &self.graph[from] {\n                if dist[edge.to]\
+    \ > dist[from] + edge.cost {\n                    dist[edge.to] = dist[from] +\
+    \ edge.cost;\n                    prev[edge.to] = from;\n                    heap.push((-dist[edge.to],\
+    \ edge.to));\n                }\n            }\n        }\n        (dist, prev)\n\
+    \    }\n}\n\npub fn dijkstra(size: usize, graph: &Vec<Vec<Edge>>, s: usize) ->\
+    \ Vec<Cost> {\n    let mut dist = vec![Cost::MAX / 2; size];\n    dist[s] = 0;\n\
+    \    let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();\n    heap.push((-dist[s],\
+    \ s));\n    while let Some((d, from)) = heap.pop() {\n        if dist[from] <\
+    \ -d {\n            continue;\n        }\n        for edge in &graph[from] {\n\
+    \            if dist[edge.to] > dist[from] + edge.cost {\n                dist[edge.to]\
+    \ = dist[from] + edge.cost;\n                heap.push((-dist[edge.to], edge.to));\n\
+    \            }\n        }\n    }\n    dist\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: graph/dijkstra/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-12 23:47:43+09:00'
+  timestamp: '2024-09-23 04:04:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_1_a/src/main.rs

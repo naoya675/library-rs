@@ -22,15 +22,15 @@ data:
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A\n\
     \nuse proconio::input;\n\nuse ford_fulkerson::FordFulkerson;\n\nfn main() {\n\
     \    input! {\n        n: usize,\n        m: usize,\n        uvc: [(usize, usize,\
-    \ usize); m],\n    }\n    let mut ff = FordFulkerson::new(n);\n    for (u, v,\
-    \ c) in uvc {\n        ff.add_edge(u, v, c);\n    }\n    println!(\"{}\", ff.flow(0,\
+    \ i64); m],\n    }\n    let mut ff = FordFulkerson::new(n);\n    for (u, v, c)\
+    \ in uvc {\n        ff.add_edge(u, v, c);\n    }\n    println!(\"{}\", ff.flow(0,\
     \ n - 1));\n}\n"
   dependsOn:
   - graph/ford-fulkerson/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_6_a/src/main.rs
   requiredBy: []
-  timestamp: '2024-03-29 23:59:42+09:00'
+  timestamp: '2024-04-13 01:08:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_6_a/src/main.rs

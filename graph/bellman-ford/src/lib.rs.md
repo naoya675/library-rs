@@ -37,12 +37,24 @@ data:
     \ in &self.edge {\n                if dist[edge.from] == Self::INF {\n       \
     \             continue;\n                }\n                if dist[edge.from]\
     \ + edge.cost < dist[edge.to] {\n                    dist[edge.to] = -Self::INF;\n\
-    \                }\n            }\n        }\n        (true, dist)\n    }\n}\n"
+    \                }\n            }\n        }\n        (true, dist)\n    }\n}\n\
+    \npub fn bellman_ford(size: usize, edge: &Vec<Edge>, s: usize) -> (bool, Vec<Cost>)\
+    \ {\n    let mut dist = vec![Cost::MAX / 2; size];\n    dist[s] = 0;\n    for\
+    \ _ in 0..size {\n        let mut update = false;\n        for edge in edge {\n\
+    \            if dist[edge.from] == Cost::MAX / 2 {\n                continue;\n\
+    \            }\n            if dist[edge.from] + edge.cost < dist[edge.to] {\n\
+    \                dist[edge.to] = dist[edge.from] + edge.cost;\n              \
+    \  update = true;\n            }\n        }\n        if !update {\n          \
+    \  return (false, dist);\n        }\n    }\n    for _ in 0..size {\n        for\
+    \ edge in edge {\n            if dist[edge.from] == Cost::MAX / 2 {\n        \
+    \        continue;\n            }\n            if dist[edge.from] + edge.cost\
+    \ < dist[edge.to] {\n                dist[edge.to] = -(Cost::MAX / 2);\n     \
+    \       }\n        }\n    }\n    (true, dist)\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: graph/bellman-ford/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-12 23:47:43+09:00'
+  timestamp: '2024-04-14 21:35:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_1_b/src/main.rs

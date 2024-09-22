@@ -29,7 +29,7 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/dpl_5_d/src/main.rs
   requiredBy: []
-  timestamp: '2024-04-03 21:31:25+09:00'
+  timestamp: '2024-04-24 17:20:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dpl_5_d/src/main.rs

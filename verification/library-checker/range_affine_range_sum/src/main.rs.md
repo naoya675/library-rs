@@ -24,29 +24,28 @@ data:
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_affine_range_sum\n\
     \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\nuse mod_int::ModInt;\n\
-    \nconst MOD: u64 = 998_244_353;\n\ntype Mint = ModInt<MOD>;\n\nfn main() {\n \
-    \   input! {\n        n: usize,\n        q: usize,\n        a: [u64; n],\n   \
-    \ }\n    let mut lst = LazySegmentTree::<(Mint, Mint), (Mint, Mint)>::new(\n \
-    \       n,\n        |a, b| (a.0 + b.0, a.1 + b.1),\n        (Mint::new(0), Mint::new(0)),\n\
-    \        |a, b| (a.0 * b.0 + a.1 * b.1, b.1),\n        |a, b| (a.0 * b.0, a.0\
-    \ * b.1 + a.1),\n        (Mint::new(1), Mint::new(0)),\n    );\n    let a = a\n\
-    \        .iter()\n        .map(|&a| (Mint::new(a), Mint::new(1)))\n        .collect::<Vec<_>>();\n\
-    \    lst.build(a);\n    for _ in 0..q {\n        input! {\n            query:\
-    \ usize,\n        }\n        match query {\n            0 => {\n             \
-    \   input! {\n                    l: usize,\n                    r: usize,\n \
-    \                   b: u64,\n                    c: u64,\n                }\n\
-    \                lst.apply(l, r, (Mint::new(b), Mint::new(c)));\n            }\n\
-    \            1 => {\n                input! {\n                    l: usize,\n\
-    \                    r: usize,\n                }\n                println!(\"\
-    {}\", lst.prod(l, r).0);\n            }\n            _ => unreachable!(),\n  \
-    \      }\n    }\n}\n"
+    \ntype Mint = ModInt<998244353>;\n\nfn main() {\n    input! {\n        n: usize,\n\
+    \        q: usize,\n        a: [u64; n],\n    }\n    let mut lst = LazySegmentTree::<(Mint,\
+    \ Mint), (Mint, Mint)>::new(\n        n,\n        |a, b| (a.0 + b.0, a.1 + b.1),\n\
+    \        (Mint::new(0), Mint::new(0)),\n        |a, b| (a.0 * b.0 + a.1 * b.1,\
+    \ b.1),\n        |a, b| (a.0 * b.0, a.0 * b.1 + a.1),\n        (Mint::new(1),\
+    \ Mint::new(0)),\n    );\n    let a = a\n        .iter()\n        .map(|&a| (Mint::new(a),\
+    \ Mint::new(1)))\n        .collect::<Vec<_>>();\n    lst.build(a);\n    for _\
+    \ in 0..q {\n        input! {\n            query: usize,\n        }\n        match\
+    \ query {\n            0 => {\n                input! {\n                    l:\
+    \ usize,\n                    r: usize,\n                    b: u64,\n       \
+    \             c: u64,\n                }\n                lst.apply(l, r, (Mint::new(b),\
+    \ Mint::new(c)));\n            }\n            1 => {\n                input! {\n\
+    \                    l: usize,\n                    r: usize,\n              \
+    \  }\n                println!(\"{}\", lst.prod(l, r).0);\n            }\n   \
+    \         _ => unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
   - math/mod-int/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/range_affine_range_sum/src/main.rs
   requiredBy: []
-  timestamp: '2024-04-09 23:57:06+09:00'
+  timestamp: '2024-04-24 17:20:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/range_affine_range_sum/src/main.rs

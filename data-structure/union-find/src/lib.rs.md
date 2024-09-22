@@ -51,8 +51,8 @@ data:
   timestamp: '2024-03-22 18:13:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verification/aizu-online-judge/dsl_1_a/src/main.rs
   - verification/library-checker/unionfind/src/main.rs
+  - verification/aizu-online-judge/dsl_1_a/src/main.rs
 documentation_of: data-structure/union-find/src/lib.rs
 layout: document
 title: Union Find

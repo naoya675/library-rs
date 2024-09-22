@@ -9,9 +9,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_a/src/main.rs
     title: verification/aizu-online-judge/dsl_2_a/src/main.rs
-  - icon: ':heavy_check_mark:'
-    path: verification/aizu-online-judge/dsl_2_b/src/main.rs
-    title: verification/aizu-online-judge/dsl_2_b/src/main.rs
   _isVerificationFailed: false
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,7 +81,6 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_a/src/main.rs
-  - verification/aizu-online-judge/dsl_2_b/src/main.rs
 documentation_of: data-structure/segment-tree/src/lib.rs
 layout: document
 title: Segment Tree

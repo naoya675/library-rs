@@ -25,7 +25,7 @@ data:
     \ {\n    const MOD: u64 = (1_u64 << 61) - 1;\n    const MASK30: u64 = (1_u64 <<\
     \ 30) - 1;\n    const MASK31: u64 = (1_u64 << 31) - 1;\n    const MASK61: u64\
     \ = Self::MOD;\n    const POSITIVIZER: u64 = Self::MOD * 4;\n\n    pub fn new()\
-    \ -> Self {\n        let mut rng = rand::thread_rng();\n        let base = rng.gen_range(1..Self::MOD);\n\
+    \ -> Self {\n        let mut rng = rand::thread_rng();\n        let base = rng.gen_range(Self::MASK31..Self::MASK61);\n\
     \        Self {\n            base,\n            power: vec![1],\n        }\n \
     \   }\n\n    pub fn build_segment_tree(&mut self, s: &Vec<char>) -> SegmentTree<(u64,\
     \ u64)> {\n        let size = s.len();\n        let mut st = SegmentTree::<(u64,\
@@ -61,7 +61,7 @@ data:
   isVerificationFile: false
   path: string/rolling-hash-segment-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-09 23:57:06+09:00'
+  timestamp: '2024-04-13 01:08:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_a/src/main.rs

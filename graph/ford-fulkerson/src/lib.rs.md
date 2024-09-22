@@ -17,7 +17,7 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "pub type Cap = usize;\n\n#[derive(Debug, Clone, Copy)]\npub struct Edge {\n\
+  code: "pub type Cap = i64;\n\n#[derive(Debug, Clone, Copy)]\npub struct Edge {\n\
     \    to: usize,\n    cap: Cap,\n    rev: usize,\n}\n\nimpl Edge {\n    pub fn\
     \ new(to: usize, cap: Cap, rev: usize) -> Self {\n        Self { to, cap, rev\
     \ }\n    }\n}\n\n#[derive(Debug, Clone)]\npub struct FordFulkerson {\n    size:\
@@ -45,7 +45,7 @@ data:
   isVerificationFile: false
   path: graph/ford-fulkerson/src/lib.rs
   requiredBy: []
-  timestamp: '2024-03-29 23:59:42+09:00'
+  timestamp: '2024-04-13 01:08:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_6_a/src/main.rs
