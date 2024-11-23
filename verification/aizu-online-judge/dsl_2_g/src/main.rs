@@ -19,23 +19,14 @@ fn main() {
     );
     lst.build(vec![(0, 1); n]);
     for _ in 0..q {
-        input! {
-            query: usize,
-        }
+        input! { query: usize, }
         match query {
             0 => {
-                input! {
-                    s: usize,
-                    t: usize,
-                    x: i64,
-                }
+                input! { s: usize, t: usize, x: i64, }
                 lst.apply(s - 1, t, x);
             }
             1 => {
-                input! {
-                    s: usize,
-                    t: usize,
-                }
+                input! { s: usize, t: usize, }
                 println!("{}", lst.prod(s - 1, t).0);
             }
             _ => unreachable!(),

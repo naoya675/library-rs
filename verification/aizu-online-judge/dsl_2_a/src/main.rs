@@ -13,22 +13,14 @@ fn main() {
     let mut st = SegmentTree::<i64>::new(n, |a, b| min(a, b), (1 << 31) - 1);
     st.build(vec![(1 << 31) - 1; n]);
     for _ in 0..q {
-        input! {
-            query: usize,
-        }
+        input! { query: usize, }
         match query {
             0 => {
-                input! {
-                    x: usize,
-                    y: i64,
-                }
+                input! { x: usize, y: i64, }
                 st.set(x, y);
             }
             1 => {
-                input! {
-                    x: usize,
-                    y: usize,
-                }
+                input! { x: usize, y: usize, }
                 println!("{}", st.prod(x, y + 1));
             }
             _ => unreachable!(),

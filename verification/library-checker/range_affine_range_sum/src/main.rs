@@ -27,24 +27,14 @@ fn main() {
         .collect::<Vec<_>>();
     lst.build(a);
     for _ in 0..q {
-        input! {
-            query: usize,
-        }
+        input! { query: usize, }
         match query {
             0 => {
-                input! {
-                    l: usize,
-                    r: usize,
-                    b: u64,
-                    c: u64,
-                }
+                input! { l: usize, r: usize, b: u64, c: u64, }
                 lst.apply(l, r, (Mint::new(b), Mint::new(c)));
             }
             1 => {
-                input! {
-                    l: usize,
-                    r: usize,
-                }
+                input! { l: usize, r: usize, }
                 println!("{}", lst.prod(l, r).0);
             }
             _ => unreachable!(),

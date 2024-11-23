@@ -16,18 +16,12 @@ fn main() {
         input! { query: usize, }
         match query {
             0 => {
-                input! {
-                    x: usize,
-                    y: i64,
-                }
+                input! { x: usize, y: i64, }
                 // st.apply(x - 1, y);
                 ft.add(x - 1, y);
             }
             1 => {
-                input! {
-                    x: usize,
-                    y: usize,
-                }
+                input! { x: usize, y: usize, }
                 // println!("{}", st.prod(x - 1, y));
                 println!("{}", ft.sum(x - 1, y));
             }
