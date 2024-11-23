@@ -10,7 +10,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/fenwick-tree/src/lib.rs
-      title: data-structure/fenwick-tree/src/lib.rs
+      title: Fenwick Tree
   - name: data-structure/lazy-segment-tree/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -66,6 +66,21 @@ data:
     - icon: ':warning:'
       path: heuristic/time-keeper/src/lib.rs
       title: heuristic/time-keeper/src/lib.rs
+  - name: macro/chmax/src
+    pages:
+    - icon: ':warning:'
+      path: macro/chmax/src/lib.rs
+      title: macro/chmax/src/lib.rs
+  - name: macro/chmin/src
+    pages:
+    - icon: ':warning:'
+      path: macro/chmin/src/lib.rs
+      title: macro/chmin/src/lib.rs
+  - name: macro/input/src
+    pages:
+    - icon: ':warning:'
+      path: macro/input/src/lib.rs
+      title: macro/input/src/lib.rs
   - name: math/mod-combinatorial/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -90,7 +105,7 @@ data:
     pages:
     - icon: ':warning:'
       path: string/z-algorithm/src/lib.rs
-      title: string/z-algorithm/src/lib.rs
+      title: Z Algorithm
   verificationCategories:
   - name: verification/aizu-online-judge/alds1_14_a/src
     pages:

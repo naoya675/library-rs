@@ -31,8 +31,7 @@ data:
   verifiedWith: []
 documentation_of: string/z-algorithm/src/lib.rs
 layout: document
-redirect_from:
-- /library/string/z-algorithm/src/lib.rs
-- /library/string/z-algorithm/src/lib.rs.html
-title: string/z-algorithm/src/lib.rs
+title: Z Algorithm
 ---
+
+## Description

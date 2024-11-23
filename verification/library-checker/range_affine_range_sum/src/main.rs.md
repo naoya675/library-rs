@@ -45,7 +45,7 @@ data:
   isVerificationFile: true
   path: verification/library-checker/range_affine_range_sum/src/main.rs
   requiredBy: []
-  timestamp: '2024-04-24 17:20:29+09:00'
+  timestamp: '2024-11-23 20:15:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/range_affine_range_sum/src/main.rs

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/fenwick-tree/src/lib.rs
-    title: data-structure/fenwick-tree/src/lib.rs
+    title: Fenwick Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -26,16 +26,18 @@ data:
     \ = FenwickTree::<i64>::new(n);\n    for _ in 0..q {\n        input! { query:\
     \ usize, }\n        match query {\n            0 => {\n                input!\
     \ {\n                    x: usize,\n                    y: i64,\n            \
-    \    }\n                ft.add(x - 1, y);\n            }\n            1 => {\n\
-    \                input! {\n                    x: usize,\n                   \
-    \ y: usize,\n                }\n                println!(\"{}\", ft.sum(x - 1,\
-    \ y));\n            }\n            _ => unreachable!(),\n        }\n    }\n}\n"
+    \    }\n                // st.apply(x - 1, y);\n                ft.add(x - 1,\
+    \ y);\n            }\n            1 => {\n                input! {\n         \
+    \           x: usize,\n                    y: usize,\n                }\n    \
+    \            // println!(\"{}\", st.prod(x - 1, y));\n                println!(\"\
+    {}\", ft.sum(x - 1, y));\n            }\n            _ => unreachable!(),\n  \
+    \      }\n    }\n}\n"
   dependsOn:
   - data-structure/fenwick-tree/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_b/src/main.rs
   requiredBy: []
-  timestamp: '2024-09-23 04:03:48+09:00'
+  timestamp: '2024-11-23 20:15:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_b/src/main.rs

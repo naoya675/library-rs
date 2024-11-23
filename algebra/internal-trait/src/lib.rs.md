@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: data-structure/fenwick-tree/src/lib.rs
-    title: data-structure/fenwick-tree/src/lib.rs
+    title: Fenwick Tree
   - icon: ':heavy_check_mark:'
     path: data-structure/weighted-union-find/src/lib.rs
     title: Weighted Union Find
@@ -46,8 +46,8 @@ data:
   isVerificationFile: false
   path: algebra/internal-trait/src/lib.rs
   requiredBy:
-  - data-structure/weighted-union-find/src/lib.rs
   - data-structure/fenwick-tree/src/lib.rs
+  - data-structure/weighted-union-find/src/lib.rs
   timestamp: '2024-04-13 01:08:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

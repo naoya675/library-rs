@@ -47,8 +47,7 @@ data:
   - verification/aizu-online-judge/dsl_2_b/src/main.rs
 documentation_of: data-structure/fenwick-tree/src/lib.rs
 layout: document
-redirect_from:
-- /library/data-structure/fenwick-tree/src/lib.rs
-- /library/data-structure/fenwick-tree/src/lib.rs.html
-title: data-structure/fenwick-tree/src/lib.rs
+title: Fenwick Tree
 ---
+
+## Description

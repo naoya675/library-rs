@@ -61,7 +61,7 @@ data:
   isVerificationFile: false
   path: string/rolling-hash-segment-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-13 01:08:14+09:00'
+  timestamp: '2024-11-23 20:15:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_a/src/main.rs
