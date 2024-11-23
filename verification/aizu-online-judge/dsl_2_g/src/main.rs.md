@@ -25,20 +25,18 @@ data:
     \ = LazySegmentTree::<(i64, i64), i64>::new(\n        n,\n        |a, b| (a.0\
     \ + b.0, a.1 + b.1),\n        (0, 0),\n        |a, b| (b.0 + a * b.1, b.1),\n\
     \        |a, b| a + b,\n        0,\n    );\n    lst.build(vec![(0, 1); n]);\n\
-    \    for _ in 0..q {\n        input! {\n            query: usize,\n        }\n\
-    \        match query {\n            0 => {\n                input! {\n       \
-    \             s: usize,\n                    t: usize,\n                    x:\
-    \ i64,\n                }\n                lst.apply(s - 1, t, x);\n         \
-    \   }\n            1 => {\n                input! {\n                    s: usize,\n\
-    \                    t: usize,\n                }\n                println!(\"\
-    {}\", lst.prod(s - 1, t).0);\n            }\n            _ => unreachable!(),\n\
-    \        }\n    }\n}\n"
+    \    for _ in 0..q {\n        input! { query: usize, }\n        match query {\n\
+    \            0 => {\n                input! { s: usize, t: usize, x: i64, }\n\
+    \                lst.apply(s - 1, t, x);\n            }\n            1 => {\n\
+    \                input! { s: usize, t: usize, }\n                println!(\"{}\"\
+    , lst.prod(s - 1, t).0);\n            }\n            _ => unreachable!(),\n  \
+    \      }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_g/src/main.rs
   requiredBy: []
-  timestamp: '2024-11-23 20:15:14+09:00'
+  timestamp: '2024-11-23 20:47:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_g/src/main.rs

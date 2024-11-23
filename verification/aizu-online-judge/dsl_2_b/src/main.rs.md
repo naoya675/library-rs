@@ -25,19 +25,17 @@ data:
     \ // let mut st = SegmentTree::<i64>::new(n, |a, b| a + b, 0);\n    let mut ft\
     \ = FenwickTree::<i64>::new(n);\n    for _ in 0..q {\n        input! { query:\
     \ usize, }\n        match query {\n            0 => {\n                input!\
-    \ {\n                    x: usize,\n                    y: i64,\n            \
-    \    }\n                // st.apply(x - 1, y);\n                ft.add(x - 1,\
-    \ y);\n            }\n            1 => {\n                input! {\n         \
-    \           x: usize,\n                    y: usize,\n                }\n    \
-    \            // println!(\"{}\", st.prod(x - 1, y));\n                println!(\"\
-    {}\", ft.sum(x - 1, y));\n            }\n            _ => unreachable!(),\n  \
-    \      }\n    }\n}\n"
+    \ { x: usize, y: i64, }\n                // st.apply(x - 1, y);\n            \
+    \    ft.add(x - 1, y);\n            }\n            1 => {\n                input!\
+    \ { x: usize, y: usize, }\n                // println!(\"{}\", st.prod(x - 1,\
+    \ y));\n                println!(\"{}\", ft.sum(x - 1, y));\n            }\n \
+    \           _ => unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/fenwick-tree/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_b/src/main.rs
   requiredBy: []
-  timestamp: '2024-11-23 20:15:14+09:00'
+  timestamp: '2024-11-23 20:47:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_b/src/main.rs

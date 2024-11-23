@@ -31,21 +31,19 @@ data:
     \ b.1),\n        |a, b| (a.0 * b.0, a.0 * b.1 + a.1),\n        (Mint::new(1),\
     \ Mint::new(0)),\n    );\n    let a = a\n        .iter()\n        .map(|&a| (Mint::new(a),\
     \ Mint::new(1)))\n        .collect::<Vec<_>>();\n    lst.build(a);\n    for _\
-    \ in 0..q {\n        input! {\n            query: usize,\n        }\n        match\
-    \ query {\n            0 => {\n                input! {\n                    l:\
-    \ usize,\n                    r: usize,\n                    b: u64,\n       \
-    \             c: u64,\n                }\n                lst.apply(l, r, (Mint::new(b),\
-    \ Mint::new(c)));\n            }\n            1 => {\n                input! {\n\
-    \                    l: usize,\n                    r: usize,\n              \
-    \  }\n                println!(\"{}\", lst.prod(l, r).0);\n            }\n   \
-    \         _ => unreachable!(),\n        }\n    }\n}\n"
+    \ in 0..q {\n        input! { query: usize, }\n        match query {\n       \
+    \     0 => {\n                input! { l: usize, r: usize, b: u64, c: u64, }\n\
+    \                lst.apply(l, r, (Mint::new(b), Mint::new(c)));\n            }\n\
+    \            1 => {\n                input! { l: usize, r: usize, }\n        \
+    \        println!(\"{}\", lst.prod(l, r).0);\n            }\n            _ =>\
+    \ unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
   - math/mod-int/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/range_affine_range_sum/src/main.rs
   requiredBy: []
-  timestamp: '2024-11-23 20:15:14+09:00'
+  timestamp: '2024-11-23 20:47:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/range_affine_range_sum/src/main.rs
