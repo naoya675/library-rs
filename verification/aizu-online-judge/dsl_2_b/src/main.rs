@@ -20,6 +20,7 @@ fn main() {
                     x: usize,
                     y: i64,
                 }
+                // st.apply(x - 1, y);
                 ft.add(x - 1, y);
             }
             1 => {
@@ -27,6 +28,7 @@ fn main() {
                     x: usize,
                     y: usize,
                 }
+                // println!("{}", st.prod(x - 1, y));
                 println!("{}", ft.sum(x - 1, y));
             }
             _ => unreachable!(),

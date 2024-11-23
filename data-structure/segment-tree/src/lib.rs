@@ -5,6 +5,7 @@ pub struct SegmentTree<T> {
     size_log: usize,
     op: fn(T, T) -> T, // evaluation funciton
     e: T,              // identity element
+    n: usize,
 }
 
 impl<T: Copy> SegmentTree<T> {
@@ -17,18 +18,19 @@ impl<T: Copy> SegmentTree<T> {
             size_log,
             op,
             e,
+            n,
         }
     }
 
     pub fn build(&mut self, v: Vec<T>) {
-        assert!(v.len() <= self.size);
+        assert!(v.len() <= self.n);
         for i in 0..v.len() {
             self.set(i, v[i]);
         }
     }
 
     pub fn set(&mut self, mut k: usize, x: T) {
-        assert!(k < self.size);
+        assert!(k < self.n);
         k += self.size;
         self.tree[k] = x;
         for i in 1..self.size_log + 1 {
@@ -41,13 +43,13 @@ impl<T: Copy> SegmentTree<T> {
     }
 
     pub fn get(&mut self, mut k: usize) -> T {
-        assert!(k < self.size);
+        assert!(k < self.n);
         k += self.size;
         self.tree[k].clone()
     }
 
     pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {
-        assert!(l <= r && r <= self.size);
+        assert!(l <= r && r <= self.n);
         if l == r {
             return self.e;
         }
@@ -75,7 +77,7 @@ impl<T: Copy> SegmentTree<T> {
     }
 
     pub fn apply(&mut self, mut k: usize, x: T) {
-        assert!(k < self.size);
+        assert!(k < self.n);
         k += self.size;
         self.tree[k] = (self.op)(self.tree[k], x);
         while k > 0 {
@@ -88,10 +90,10 @@ impl<T: Copy> SegmentTree<T> {
     where
         F: Fn(T) -> bool,
     {
-        assert!(l <= self.size);
+        assert!(l <= self.n);
         assert!(f(self.e));
-        if l == self.size {
-            return self.size;
+        if l == self.n {
+            return self.n;
         }
         l += self.size;
         let mut res = self.e;
@@ -113,14 +115,14 @@ impl<T: Copy> SegmentTree<T> {
             l += 1;
             l & l.wrapping_neg() != l
         } {}
-        self.size
+        self.n
     }
 
     pub fn min_left<F>(&mut self, mut r: usize, f: F) -> usize
     where
         F: Fn(T) -> bool,
     {
-        assert!(r <= self.size);
+        assert!(r <= self.n);
         assert!(f(self.e));
         if r == 0 {
             return 0;
