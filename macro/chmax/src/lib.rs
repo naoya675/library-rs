@@ -17,7 +17,7 @@ macro_rules! max {
     ($exa:expr, $exb:expr $(,)*) => {
         std::cmp::max($exa, $exb)
     };
-    ($exa:expr, $(ex:expr),+ $(,)*) => {
+    ($exa:expr, $($ex:expr),+ $(,)*) => {
         std::cmp::max($exa, max!($($ex),+))
     };
 }
