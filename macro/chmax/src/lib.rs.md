@@ -19,13 +19,13 @@ data:
     \            true\n        } else {\n            false\n        }\n    };\n}\n\
     \nmacro_rules! max {\n    ($exa:expr $(,)*) => {\n        $exa\n    };\n    ($exa:expr,\
     \ $exb:expr $(,)*) => {\n        std::cmp::max($exa, $exb)\n    };\n    ($exa:expr,\
-    \ $(ex:expr),+ $(,)*) => {\n        std::cmp::max($exa, max!($($ex),+))\n    };\n\
-    }\n"
+    \ $($ex:expr),+ $(,)*) => {\n        std::cmp::max($exa, max!($($ex),+))\n   \
+    \ };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: macro/chmax/src/lib.rs
   requiredBy: []
-  timestamp: '2024-11-23 20:21:13+09:00'
+  timestamp: '2025-01-12 00:31:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: macro/chmax/src/lib.rs

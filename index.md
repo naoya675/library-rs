@@ -21,6 +21,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/segment-tree/src/lib.rs
       title: Segment Tree
+  - name: data-structure/trie/src
+    pages:
+    - icon: ':warning:'
+      path: data-structure/trie/src/lib.rs
+      title: data-structure/trie/src/lib.rs
   - name: data-structure/union-find/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -76,6 +81,11 @@ data:
     - icon: ':warning:'
       path: macro/chmin/src/lib.rs
       title: macro/chmin/src/lib.rs
+  - name: macro/debug/src
+    pages:
+    - icon: ':warning:'
+      path: macro/debug/src/lib.rs
+      title: macro/debug/src/lib.rs
   - name: macro/input/src
     pages:
     - icon: ':warning:'
