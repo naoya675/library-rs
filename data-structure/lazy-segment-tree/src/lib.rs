@@ -101,17 +101,19 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         self.tree[1].clone()
     }
 
-    // pub fn apply(&mut self, mut k: usize, f: F) {
-    //     assert!(k < self.n);
-    //     k += self.size;
-    //     for i in (1..self.size_log + 1).rev() {
-    //         self.push(k >> i);
-    //     }
-    //     self.tree[k] = (self.mapping)(f, self.tree[k]);
-    //     for i in 1..self.size_log + 1 {
-    //         self.update(k >> i);
-    //     }
-    // }
+    /*
+    pub fn apply(&mut self, mut k: usize, f: F) {
+        assert!(k < self.n);
+        k += self.size;
+        for i in (1..self.size_log + 1).rev() {
+            self.push(k >> i);
+        }
+        self.tree[k] = (self.mapping)(f, self.tree[k]);
+        for i in 1..self.size_log + 1 {
+            self.update(k >> i);
+        }
+    }
+    */
 
     pub fn apply(&mut self, mut l: usize, mut r: usize, f: F) {
         assert!(l <= r && r <= self.n);

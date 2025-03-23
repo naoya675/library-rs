@@ -64,13 +64,15 @@ impl RollingHash {
         Self::calc_mod(hash[r] + Self::POSITIVIZER - Self::calc_mul(hash[l], self.power[r - l]))
     }
 
-    // fn calc_add(a: u64, b: u64) -> u64 {
-    //     let mut res = a + b;
-    //     if res >= Self::MOD {
-    //         res -= Self::MOD;
-    //     }
-    //     res
-    // }
+    /*
+    fn calc_add(a: u64, b: u64) -> u64 {
+        let mut res = a + b;
+        if res >= Self::MOD {
+            res -= Self::MOD;
+        }
+        res
+    }
+    */
 
     fn calc_mul(a: u64, b: u64) -> u64 {
         let au = a >> 31;

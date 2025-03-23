@@ -107,31 +107,35 @@ impl<const MOD: u64> std::fmt::Display for ModInt<MOD> {
     }
 }
 
-// macro_rules! impl_from {
-//     ($($type:ty), *) => {
-//         $(
-//             impl<const MOD: u64> From<$type> for ModInt<MOD> {
-//                 fn from(value: $type) -> Self {
-//                     Self::new(value as u64)
-//                 }
-//             }
-//         )*
-//     };
-// }
+/*
+macro_rules! impl_from {
+    ($($type:ty), *) => {
+        $(
+            impl<const MOD: u64> From<$type> for ModInt<MOD> {
+                fn from(value: $type) -> Self {
+                    Self::new(value as u64)
+                }
+            }
+        )*
+    };
+}
 
-// impl_from!(i8, u8, i16, u16, i32, u32, u64, i64, isize, usize);
+impl_from!(i8, u8, i16, u16, i32, u32, u64, i64, isize, usize);
+*/
 
-// macro_rules! impl_ops {
-//     ($trait:ident, $fn:ident, $op:tt) => {
-//         impl<const MOD: u64> std::ops::$trait for ModInt<MOD> {
-//             fn $fn(&mut self, rhs: Self) {
-//                 *self = *self $op rhs;
-//             }
-//         }
-//     };
-// }
+/*
+macro_rules! impl_ops {
+    ($trait:ident, $fn:ident, $op:tt) => {
+        impl<const MOD: u64> std::ops::$trait for ModInt<MOD> {
+            fn $fn(&mut self, rhs: Self) {
+                *self = *self $op rhs;
+            }
+        }
+    };
+}
 
-// impl_ops!(AddAssign, add_assign, +);
-// impl_ops!(SubAssign, sub_assign, -);
-// impl_ops!(MulAssign, mul_assign, *);
-// impl_ops!(DivAssign, div_assign, /);
+impl_ops!(AddAssign, add_assign, +);
+impl_ops!(SubAssign, sub_assign, -);
+impl_ops!(MulAssign, mul_assign, *);
+impl_ops!(DivAssign, div_assign, /);
+*/
