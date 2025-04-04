@@ -15,7 +15,7 @@ impl<const MOD: u64> ModInt<MOD> {
         self.value % MOD
     }
 
-    pub fn power(&self, mut n: u64) -> Self {
+    pub fn pow(&self, mut n: u64) -> Self {
         let mut value = self.value;
         let mut res = 1;
         while n > 0 {
@@ -28,12 +28,8 @@ impl<const MOD: u64> ModInt<MOD> {
         Self { value: res }
     }
 
-    pub fn pow(&self, n: Self) -> Self {
-        self.power(n.value)
-    }
-
     pub fn inv(&self) -> Self {
-        self.power(MOD - 2)
+        self.pow(MOD - 2)
     }
 }
 
