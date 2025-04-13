@@ -2,15 +2,16 @@
 
 use proconio::input;
 
-use mod_combinatorial::ModCombinatorial;
+use enumeration::Enumeration;
+use modint::ModInt;
 
-type Mcomb = ModCombinatorial<1000000007>;
+type Mint = ModInt<1000000007>;
 
 fn main() {
     input! {
         n: usize,
         k: usize,
     }
-    let mc = Mcomb::new(n + k);
-    println!("{}", mc.homo(k, n));
+    let mut e = Enumeration::<Mint>::new(n + k);
+    println!("{}", e.homo(k, n));
 }

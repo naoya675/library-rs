@@ -3,7 +3,7 @@
 use proconio::input;
 
 use lazy_segment_tree::LazySegmentTree;
-use mod_int::ModInt;
+use modint::ModInt;
 
 type Mint = ModInt<998244353>;
 

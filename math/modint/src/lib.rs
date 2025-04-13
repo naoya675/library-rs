@@ -97,6 +97,35 @@ impl<const MOD: u64> std::ops::DivAssign for ModInt<MOD> {
     }
 }
 
+impl<const MOD: u64> std::ops::Neg for ModInt<MOD> {
+    type Output = Self;
+    fn neg(self) -> Self {
+        Self::new(0) - self
+    }
+}
+
+impl<const MOD: u64> num_traits::Zero for ModInt<MOD> {
+    fn zero() -> Self {
+        Self::new(0)
+    }
+
+    fn is_zero(&self) -> bool {
+        Self::new(0) == *self
+    }
+}
+
+impl<const MOD: u64> num_traits::One for ModInt<MOD> {
+    fn one() -> Self {
+        Self::new(1)
+    }
+}
+
+impl<const MOD: u64> From<u64> for ModInt<MOD> {
+    fn from(value: u64) -> Self {
+        Self::new(value)
+    }
+}
+
 impl<const MOD: u64> std::fmt::Display for ModInt<MOD> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.value)
