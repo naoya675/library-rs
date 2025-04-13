@@ -1,7 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A
 
 use proconio::input;
-use std::cmp::min;
 
 use segment_tree::SegmentTree;
 
@@ -10,7 +9,7 @@ fn main() {
         n: usize,
         q: usize,
     }
-    let mut st = SegmentTree::<i64>::new(n, |a, b| min(a, b), (1 << 31) - 1);
+    let mut st = SegmentTree::<i64>::new(n, |a, b| std::cmp::min(a, b), (1 << 31) - 1);
     st.build(vec![(1 << 31) - 1; n]);
     for _ in 0..q {
         input! { query: usize, }

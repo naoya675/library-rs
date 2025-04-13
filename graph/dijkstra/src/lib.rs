@@ -4,13 +4,14 @@ pub type Cost = i64;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Edge {
+    from: usize,
     to: usize,
     cost: Cost,
 }
 
 impl Edge {
-    pub fn new(to: usize, cost: Cost) -> Self {
-        Self { to, cost }
+    pub fn new(from: usize, to: usize, cost: Cost) -> Self {
+        Self { from, to, cost }
     }
 }
 
@@ -21,8 +22,6 @@ pub struct Dijkstra {
 }
 
 impl Dijkstra {
-    pub const INF: Cost = Cost::MAX / 2;
-
     pub fn new(size: usize) -> Self {
         Self {
             size,
@@ -31,13 +30,13 @@ impl Dijkstra {
     }
 
     pub fn add_edge(&mut self, from: usize, to: usize, cost: Cost) {
-        self.graph[from].push(Edge::new(to, cost));
+        self.graph[from].push(Edge::new(from, to, cost));
     }
 
     pub fn dijkstra(&mut self, s: usize) -> Vec<Cost> {
-        let mut dist = vec![Self::INF; self.size];
+        let mut dist = vec![Cost::MAX / 4; self.size];
         dist[s] = 0;
-        let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();
+        let mut heap: BinaryHeap<(Cost, usize)> = BinaryHeap::new();
         heap.push((-dist[s], s));
         while let Some((d, from)) = heap.pop() {
             if dist[from] < -d {
@@ -54,10 +53,10 @@ impl Dijkstra {
     }
 
     pub fn dijkstra_prev(&mut self, s: usize) -> (Vec<Cost>, Vec<usize>) {
-        let mut dist = vec![Self::INF; self.size];
+        let mut dist = vec![Cost::MAX / 4; self.size];
         let mut prev = vec![self.size; self.size];
         dist[s] = 0;
-        let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();
+        let mut heap: BinaryHeap<(Cost, usize)> = BinaryHeap::new();
         heap.push((-dist[s], s));
         while let Some((d, from)) = heap.pop() {
             if dist[from] < -d {
@@ -75,8 +74,9 @@ impl Dijkstra {
     }
 }
 
-pub fn dijkstra(size: usize, graph: &Vec<Vec<Edge>>, s: usize) -> Vec<Cost> {
-    let mut dist = vec![Cost::MAX / 2; size];
+/*
+pub fn dijkstra(size: usize, graph: &Vec<Vec<(usize, i64)>>, s: usize) -> Vec<i64> {
+    let mut dist = vec![i64::MAX / 4; size];
     dist[s] = 0;
     let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();
     heap.push((-dist[s], s));
@@ -84,12 +84,13 @@ pub fn dijkstra(size: usize, graph: &Vec<Vec<Edge>>, s: usize) -> Vec<Cost> {
         if dist[from] < -d {
             continue;
         }
-        for edge in &graph[from] {
-            if dist[edge.to] > dist[from] + edge.cost {
-                dist[edge.to] = dist[from] + edge.cost;
-                heap.push((-dist[edge.to], edge.to));
+        for &(to, cost) in &graph[from] {
+            if dist[to] > dist[from] + cost {
+                dist[to] = dist[from] + cost;
+                heap.push((-dist[to], to));
             }
         }
     }
     dist
 }
+*/

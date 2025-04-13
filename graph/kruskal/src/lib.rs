@@ -59,30 +59,38 @@ impl Kruskal {
     }
 }
 
-pub fn minimum_spanning_tree(size: usize, edge: &mut Vec<Edge>) -> (Cost, Vec<Edge>) {
-    edge.sort_by(|a, b| a.cost.cmp(&b.cost));
+/*
+pub fn minimum_spanning_tree(
+    size: usize,
+    edge: &mut Vec<(usize, usize, i64)>,
+) -> (Cost, Vec<(usize, usize, i64)>) {
+    edge.sort_by(|a, b| a.2.cmp(&b.2));
     let mut uf = UnionFind::new(size);
     let mut res = 0;
     let mut res_edge = vec![];
-    for edge in edge {
-        if uf.merge(edge.to, edge.from) {
-            res += edge.cost;
-            res_edge.push(edge.clone());
+    for &mut (from, to, cost) in edge {
+        if uf.merge(to, from) {
+            res += cost;
+            res_edge.push((from, to, cost));
         }
     }
     (res, res_edge)
 }
 
-pub fn maximum_spanning_tree(size: usize, edge: &mut Vec<Edge>) -> (Cost, Vec<Edge>) {
-    edge.sort_by(|a, b| b.cost.cmp(&a.cost));
+pub fn maximum_spanning_tree(
+    size: usize,
+    edge: &mut Vec<(usize, usize, i64)>,
+) -> (Cost, Vec<(usize, usize, i64)>) {
+    edge.sort_by(|a, b| b.2.cmp(&a.2));
     let mut uf = UnionFind::new(size);
     let mut res = 0;
     let mut res_edge = vec![];
-    for edge in edge {
-        if uf.merge(edge.to, edge.from) {
-            res += edge.cost;
-            res_edge.push(edge.clone());
+    for &mut (from, to, cost) in edge {
+        if uf.merge(to, from) {
+            res += cost;
+            res_edge.push((from, to, cost));
         }
     }
     (res, res_edge)
 }
+*/

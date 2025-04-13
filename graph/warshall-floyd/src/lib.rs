@@ -20,8 +20,6 @@ pub struct WarshallFloyd {
 }
 
 impl WarshallFloyd {
-    pub const INF: Cost = Cost::MAX / 2;
-
     pub fn new(size: usize) -> Self {
         Self { size, edge: vec![] }
     }
@@ -31,7 +29,7 @@ impl WarshallFloyd {
     }
 
     pub fn warshall_floyd(&mut self) -> (bool, Vec<Vec<Cost>>) {
-        let mut dist = vec![vec![Self::INF; self.size]; self.size];
+        let mut dist = vec![vec![Cost::MAX / 4; self.size]; self.size];
         for i in 0..self.size {
             dist[i][i] = 0;
         }
@@ -54,13 +52,14 @@ impl WarshallFloyd {
     }
 }
 
-pub fn warshall_floyd(size: usize, edge: &Vec<Edge>) -> (bool, Vec<Vec<Cost>>) {
-    let mut dist = vec![vec![Cost::MAX / 2; size]; size];
+/*
+pub fn warshall_floyd(size: usize, edge: &Vec<(usize, usize, i64)>) -> (bool, Vec<Vec<i64>>) {
+    let mut dist = vec![vec![i64::MAX / 4; size]; size];
     for i in 0..size {
         dist[i][i] = 0;
     }
-    for edge in edge {
-        dist[edge.from][edge.to] = edge.cost;
+    for &(from, to, cost) in edge {
+        dist[from][to] = cost;
     }
     for k in 0..size {
         for i in 0..size {
@@ -77,3 +76,4 @@ pub fn warshall_floyd(size: usize, edge: &Vec<Edge>) -> (bool, Vec<Vec<Cost>>) {
     }
     (cycle, dist)
 }
+*/

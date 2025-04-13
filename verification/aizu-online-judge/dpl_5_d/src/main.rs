@@ -4,13 +4,13 @@ use proconio::input;
 
 use mod_combinatorial::ModCombinatorial;
 
-const MOD: u64 = 1_000_000_007;
+type Mcomb = ModCombinatorial<1000000007>;
 
 fn main() {
     input! {
         n: usize,
         k: usize,
     }
-    let mc = ModCombinatorial::<MOD>::new(n + k);
+    let mc = Mcomb::new(n + k);
     println!("{}", mc.homo(k, n));
 }

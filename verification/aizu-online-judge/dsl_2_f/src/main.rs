@@ -1,7 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F
 
 use proconio::input;
-use std::cmp::min;
 
 use lazy_segment_tree::LazySegmentTree;
 
@@ -12,7 +11,7 @@ fn main() {
     }
     let mut lst = LazySegmentTree::<i64, i64>::new(
         n,
-        |a, b| min(a, b),
+        |a, b| std::cmp::min(a, b),
         1 << 31,
         |a, b| if a == -1 { b } else { a },
         |a, b| if a == -1 { b } else { a },
