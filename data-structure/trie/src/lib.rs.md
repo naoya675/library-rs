@@ -54,8 +54,7 @@ data:
   verifiedWith: []
 documentation_of: data-structure/trie/src/lib.rs
 layout: document
-redirect_from:
-- /library/data-structure/trie/src/lib.rs
-- /library/data-structure/trie/src/lib.rs.html
-title: data-structure/trie/src/lib.rs
+title: Trie
 ---
+
+## Description

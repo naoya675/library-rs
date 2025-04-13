@@ -1,9 +1,6 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':warning:'
-    path: algebra/internal-trait/src/lib.rs
-    title: algebra/internal-trait/src/lib.rs
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -20,18 +17,18 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "use internal_trait::Zero;\n\n#[derive(Debug, Clone)]\npub struct WeightedUnionFind<T>\
-    \ {\n    n: usize,\n    par: Vec<usize>,\n    siz: Vec<usize>,\n    diff_weight:\
-    \ Vec<T>,\n}\n\nimpl<T: Copy + Zero> WeightedUnionFind<T>\nwhere\n    T: std::ops::Neg<Output\
-    \ = T>,\n    T: std::ops::Add<T, Output = T>,\n    T: std::ops::AddAssign,\n \
-    \   T: std::ops::Sub<T, Output = T>,\n    T: std::ops::SubAssign,\n{\n    pub\
-    \ fn new(n: usize) -> Self {\n        Self {\n            n,\n            par:\
-    \ (0..n).collect::<Vec<usize>>(),\n            siz: vec![1; n],\n            diff_weight:\
-    \ vec![T::zero(); n],\n        }\n    }\n\n    pub fn merge(&mut self, a: usize,\
-    \ b: usize, mut w: T) -> bool {\n        assert!(a < self.n);\n        assert!(b\
-    \ < self.n);\n        w += self.weight(a);\n        w -= self.weight(b);\n   \
-    \     let a = self.leader(a);\n        let b = self.leader(b);\n        if a ==\
-    \ b {\n            return false;\n        }\n        if self.siz[a] > self.siz[b]\
+  code: "#[derive(Debug, Clone)]\npub struct WeightedUnionFind<T> {\n    n: usize,\n\
+    \    par: Vec<usize>,\n    siz: Vec<usize>,\n    diff_weight: Vec<T>,\n}\n\nimpl<T:\
+    \ Copy> WeightedUnionFind<T>\nwhere\n    T: std::ops::Neg<Output = T>,\n    T:\
+    \ std::ops::Add<T, Output = T>,\n    T: std::ops::AddAssign,\n    T: std::ops::Sub<T,\
+    \ Output = T>,\n    T: std::ops::SubAssign,\n    T: num_traits::Zero,\n{\n   \
+    \ pub fn new(n: usize) -> Self {\n        Self {\n            n,\n           \
+    \ par: (0..n).collect::<Vec<usize>>(),\n            siz: vec![1; n],\n       \
+    \     diff_weight: vec![T::zero(); n],\n        }\n    }\n\n    pub fn merge(&mut\
+    \ self, a: usize, b: usize, mut w: T) -> bool {\n        assert!(a < self.n);\n\
+    \        assert!(b < self.n);\n        w += self.weight(a);\n        w -= self.weight(b);\n\
+    \        let a = self.leader(a);\n        let b = self.leader(b);\n        if\
+    \ a == b {\n            return false;\n        }\n        if self.siz[a] > self.siz[b]\
     \ {\n            self.par[b] = a;\n            self.siz[a] += self.siz[b];\n \
     \           self.diff_weight[b] = w;\n        } else {\n            self.par[a]\
     \ = b;\n            self.siz[b] += self.siz[a];\n            self.diff_weight[a]\
@@ -51,12 +48,11 @@ data:
     \        }\n        res.into_iter()\n            .filter(|f| !f.is_empty())\n\
     \            .collect::<Vec<_>>()\n    }\n\n    fn weight(&mut self, a: usize)\
     \ -> T {\n        self.leader(a);\n        self.diff_weight[a]\n    }\n}\n"
-  dependsOn:
-  - algebra/internal-trait/src/lib.rs
+  dependsOn: []
   isVerificationFile: false
   path: data-structure/weighted-union-find/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-13 01:08:14+09:00'
+  timestamp: '2025-04-14 00:11:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_1_b/src/main.rs

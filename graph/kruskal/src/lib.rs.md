@@ -39,23 +39,24 @@ data:
     \  let mut res_edge = vec![];\n        for edge in &self.edge {\n            if\
     \ uf.merge(edge.to, edge.from) {\n                res += edge.cost;\n        \
     \        res_edge.push(edge.clone());\n            }\n        }\n        (res,\
-    \ res_edge)\n    }\n}\n\npub fn minimum_spanning_tree(size: usize, edge: &mut\
-    \ Vec<Edge>) -> (Cost, Vec<Edge>) {\n    edge.sort_by(|a, b| a.cost.cmp(&b.cost));\n\
-    \    let mut uf = UnionFind::new(size);\n    let mut res = 0;\n    let mut res_edge\
-    \ = vec![];\n    for edge in edge {\n        if uf.merge(edge.to, edge.from) {\n\
-    \            res += edge.cost;\n            res_edge.push(edge.clone());\n   \
-    \     }\n    }\n    (res, res_edge)\n}\n\npub fn maximum_spanning_tree(size: usize,\
-    \ edge: &mut Vec<Edge>) -> (Cost, Vec<Edge>) {\n    edge.sort_by(|a, b| b.cost.cmp(&a.cost));\n\
-    \    let mut uf = UnionFind::new(size);\n    let mut res = 0;\n    let mut res_edge\
-    \ = vec![];\n    for edge in edge {\n        if uf.merge(edge.to, edge.from) {\n\
-    \            res += edge.cost;\n            res_edge.push(edge.clone());\n   \
-    \     }\n    }\n    (res, res_edge)\n}\n"
+    \ res_edge)\n    }\n}\n\n/*\npub fn minimum_spanning_tree(\n    size: usize,\n\
+    \    edge: &mut Vec<(usize, usize, i64)>,\n) -> (Cost, Vec<(usize, usize, i64)>)\
+    \ {\n    edge.sort_by(|a, b| a.2.cmp(&b.2));\n    let mut uf = UnionFind::new(size);\n\
+    \    let mut res = 0;\n    let mut res_edge = vec![];\n    for &mut (from, to,\
+    \ cost) in edge {\n        if uf.merge(to, from) {\n            res += cost;\n\
+    \            res_edge.push((from, to, cost));\n        }\n    }\n    (res, res_edge)\n\
+    }\n\npub fn maximum_spanning_tree(\n    size: usize,\n    edge: &mut Vec<(usize,\
+    \ usize, i64)>,\n) -> (Cost, Vec<(usize, usize, i64)>) {\n    edge.sort_by(|a,\
+    \ b| b.2.cmp(&a.2));\n    let mut uf = UnionFind::new(size);\n    let mut res\
+    \ = 0;\n    let mut res_edge = vec![];\n    for &mut (from, to, cost) in edge\
+    \ {\n        if uf.merge(to, from) {\n            res += cost;\n            res_edge.push((from,\
+    \ to, cost));\n        }\n    }\n    (res, res_edge)\n}\n*/\n"
   dependsOn:
   - data-structure/union-find/src/lib.rs
   isVerificationFile: false
   path: graph/kruskal/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-14 21:35:32+09:00'
+  timestamp: '2025-04-13 18:21:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_2_a/src/main.rs

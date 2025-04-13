@@ -25,7 +25,7 @@ data:
     pages:
     - icon: ':warning:'
       path: data-structure/trie/src/lib.rs
-      title: data-structure/trie/src/lib.rs
+      title: Trie
   - name: data-structure/union-find/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -36,6 +36,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/weighted-union-find/src/lib.rs
       title: Weighted Union Find
+  - name: dynamic-programming/rerooting/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: dynamic-programming/rerooting/src/lib.rs
+      title: Rerooting
   - name: graph/bellman-ford/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -113,7 +118,7 @@ data:
       title: Rolling Hash + Segment Tree
   - name: string/z-algorithm/src
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: string/z-algorithm/src/lib.rs
       title: Z Algorithm
   verificationCategories:
@@ -192,6 +197,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_2_a/src/main.rs
       title: verification/aizu-online-judge/grl_2_a/src/main.rs
+  - name: verification/aizu-online-judge/grl_5_a/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_5_a/src/main.rs
+      title: verification/aizu-online-judge/grl_5_a/src/main.rs
   - name: verification/aizu-online-judge/grl_6_a/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -207,6 +217,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/library-checker/unionfind/src/main.rs
       title: verification/library-checker/unionfind/src/main.rs
+  - name: verification/library-checker/zalgorithm/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/zalgorithm/src/main.rs
+      title: verification/library-checker/zalgorithm/src/main.rs
 layout: toppage
 ---
 [![naoya675](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Fnaoya675)](https://atcoder.jp/users/naoya675)

@@ -31,7 +31,7 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/alds1_14_b/src/main.rs
   requiredBy: []
-  timestamp: '2024-04-13 01:08:14+09:00'
+  timestamp: '2025-03-23 19:23:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/alds1_14_b/src/main.rs

@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verification/library-checker/zalgorithm/src/main.rs
+    title: verification/library-checker/zalgorithm/src/main.rs
   _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -27,8 +30,9 @@ data:
   path: string/z-algorithm/src/lib.rs
   requiredBy: []
   timestamp: '2024-05-01 01:43:10+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verification/library-checker/zalgorithm/src/main.rs
 documentation_of: string/z-algorithm/src/lib.rs
 layout: document
 title: Z Algorithm

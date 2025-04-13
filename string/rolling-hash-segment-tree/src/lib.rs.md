@@ -44,13 +44,13 @@ data:
     \ self, hash: &Vec<u64>, l: usize, r: usize) -> u64 {\n        assert!(l <= r\
     \ && r <= hash.len());\n        self.build_power(r - l);\n        Self::calc_mod(hash[r]\
     \ + Self::POSITIVIZER - Self::calc_mul(hash[l], self.power[r - l]))\n    }\n\n\
-    \    // fn calc_add(a: u64, b: u64) -> u64 {\n    //     let mut res = a + b;\n\
-    \    //     if res >= Self::MOD {\n    //         res -= Self::MOD;\n    //  \
-    \   }\n    //     res\n    // }\n\n    fn calc_mul(a: u64, b: u64) -> u64 {\n\
-    \        let au = a >> 31;\n        let ad = a & Self::MASK31;\n        let bu\
-    \ = b >> 31;\n        let bd = b & Self::MASK31;\n        let mid = ad * bu +\
-    \ au * bd;\n        let midu = mid >> 30;\n        let midd = mid & Self::MASK30;\n\
-    \        ((au * bu) << 1) + midu + (midd << 31) + ad * bd\n        // Self::calc_mod(((au\
+    \    /*\n    fn calc_add(a: u64, b: u64) -> u64 {\n        let mut res = a + b;\n\
+    \        if res >= Self::MOD {\n            res -= Self::MOD;\n        }\n   \
+    \     res\n    }\n    */\n\n    fn calc_mul(a: u64, b: u64) -> u64 {\n       \
+    \ let au = a >> 31;\n        let ad = a & Self::MASK31;\n        let bu = b >>\
+    \ 31;\n        let bd = b & Self::MASK31;\n        let mid = ad * bu + au * bd;\n\
+    \        let midu = mid >> 30;\n        let midd = mid & Self::MASK30;\n     \
+    \   ((au * bu) << 1) + midu + (midd << 31) + ad * bd\n        // Self::calc_mod(((au\
     \ * bu) << 1) + midu + (midd << 31) + ad * bd)\n    }\n\n    fn calc_mod(a: u64)\
     \ -> u64 {\n        let au = a >> 61;\n        let ad = a & Self::MASK61;\n  \
     \      let mut res = au + ad;\n        if res >= Self::MOD {\n            res\
@@ -61,7 +61,7 @@ data:
   isVerificationFile: false
   path: string/rolling-hash-segment-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2024-11-23 20:15:14+09:00'
+  timestamp: '2025-04-14 00:11:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_a/src/main.rs

@@ -45,7 +45,7 @@ data:
   isVerificationFile: false
   path: math/mod-combinatorial/src/lib.rs
   requiredBy: []
-  timestamp: '2024-04-24 17:20:29+09:00'
+  timestamp: '2025-04-04 10:54:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dpl_5_d/src/main.rs

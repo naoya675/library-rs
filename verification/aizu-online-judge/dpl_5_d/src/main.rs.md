@@ -20,16 +20,16 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_D\n\
-    \nuse proconio::input;\n\nuse mod_combinatorial::ModCombinatorial;\n\nconst MOD:\
-    \ u64 = 1_000_000_007;\n\nfn main() {\n    input! {\n        n: usize,\n     \
-    \   k: usize,\n    }\n    let mc = ModCombinatorial::<MOD>::new(n + k);\n    println!(\"\
-    {}\", mc.homo(k, n));\n}\n"
+    \nuse proconio::input;\n\nuse mod_combinatorial::ModCombinatorial;\n\ntype Mcomb\
+    \ = ModCombinatorial<1000000007>;\n\nfn main() {\n    input! {\n        n: usize,\n\
+    \        k: usize,\n    }\n    let mc = Mcomb::new(n + k);\n    println!(\"{}\"\
+    , mc.homo(k, n));\n}\n"
   dependsOn:
   - math/mod-combinatorial/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dpl_5_d/src/main.rs
   requiredBy: []
-  timestamp: '2024-04-24 17:20:29+09:00'
+  timestamp: '2025-04-13 18:21:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dpl_5_d/src/main.rs
