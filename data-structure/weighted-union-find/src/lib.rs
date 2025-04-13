@@ -1,5 +1,3 @@
-use internal_trait::Zero;
-
 #[derive(Debug, Clone)]
 pub struct WeightedUnionFind<T> {
     n: usize,
@@ -8,13 +6,14 @@ pub struct WeightedUnionFind<T> {
     diff_weight: Vec<T>,
 }
 
-impl<T: Copy + Zero> WeightedUnionFind<T>
+impl<T: Copy> WeightedUnionFind<T>
 where
     T: std::ops::Neg<Output = T>,
     T: std::ops::Add<T, Output = T>,
     T: std::ops::AddAssign,
     T: std::ops::Sub<T, Output = T>,
     T: std::ops::SubAssign,
+    T: num_traits::Zero,
 {
     pub fn new(n: usize) -> Self {
         Self {

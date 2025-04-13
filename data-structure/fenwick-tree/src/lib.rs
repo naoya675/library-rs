@@ -1,18 +1,17 @@
-use internal_trait::Zero;
-
 #[derive(Debug, Clone)]
 pub struct FenwickTree<T> {
     tree: Vec<T>,
     size: usize,
 }
 
-impl<T: Copy + Zero> FenwickTree<T>
+impl<T: Copy> FenwickTree<T>
 where
     T: std::ops::Neg<Output = T>,
     T: std::ops::Add<T, Output = T>,
     T: std::ops::AddAssign,
     T: std::ops::Sub<T, Output = T>,
     T: std::ops::SubAssign,
+    T: num_traits::Zero,
 {
     pub fn new(n: usize) -> Self {
         let size = n;

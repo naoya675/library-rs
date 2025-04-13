@@ -1,5 +1,3 @@
-use std::i64;
-
 #[derive(Debug, Clone)]
 pub struct LazySegmentTree<T, F> {
     tree: Vec<T>,
