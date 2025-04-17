@@ -44,31 +44,43 @@ data:
     \             self.memo[c],\n                (self.apply)(self.memo[edge.to],\
     \ edge.to, c, edge.cost),\n            );\n        }\n        if !upd {\n    \
     \        self.memo[c] = (self.leaf)();\n        }\n    }\n\n    fn dfs2(&mut self,\
-    \ c: usize, p: usize, val: Data) {\n        let mut ds = vec![val];\n        for\
-    \ edge in self.graph[c].clone() {\n            if edge.to == p {\n           \
-    \     continue;\n            }\n            ds.push((self.apply)(self.memo[edge.to],\
-    \ edge.to, c, edge.cost));\n        }\n        let n = ds.len();\n        let\
-    \ mut idx = 1;\n        let mut head = vec![(self.e)(); n + 1];\n        let mut\
-    \ tail = vec![(self.e)(); n + 1];\n        for i in 0..n {\n            head[i\
-    \ + 1] = (self.merge)(head[i], ds[i]);\n        }\n        for i in (0..n).rev()\
-    \ {\n            tail[i] = (self.merge)(tail[i + 1], ds[i]);\n        }\n    \
-    \    self.dp[c] = head[n];\n        for edge in self.graph[c].clone() {\n    \
-    \        if edge.to == p {\n                continue;\n            }\n       \
-    \     let sub = (self.merge)(head[idx], tail[idx + 1]);\n            self.dfs2(edge.to,\
-    \ c, (self.apply)(sub, c, edge.to, edge.cost));\n            idx += 1;\n     \
-    \   }\n    }\n}\n\npub struct RerootingDiameter;\n\nimpl RerootingDiameter {\n\
-    \    pub fn new(\n        n: usize,\n    ) -> Rerooting<\n        usize,\n   \
-    \     usize,\n        impl Fn(usize, usize) -> usize,\n        impl Fn() -> usize,\n\
-    \        impl Fn() -> usize,\n        impl Fn(usize, usize, usize, usize) -> usize,\n\
-    \    > {\n        let merge = |a: usize, b: usize| std::cmp::max(a, b);\n    \
-    \    let e = || 0;\n        let leaf = || 0;\n        let apply = |a: usize, _:\
-    \ usize, _: usize, w: usize| a + w;\n        Rerooting::new(n, merge, e, leaf,\
-    \ apply)\n    }\n}\n\n// reference: https://atcoder.jp/contests/abc222/editorial/2749\n"
+    \ c: usize, p: usize, val: Data) {\n        let mut ds = vec![(self.e)()];\n \
+    \       for edge in self.graph[c].clone() {\n            if edge.to != p {\n \
+    \               ds.push((self.apply)(self.memo[edge.to], edge.to, c, edge.cost));\n\
+    \            } else {\n                ds.push((self.apply)(val, edge.to, c, edge.cost));\n\
+    \            }\n        }\n        let n = ds.len();\n        let mut idx = 1;\n\
+    \        let mut head = vec![(self.e)(); n + 1];\n        let mut tail = vec![(self.e)();\
+    \ n + 1];\n        for i in 0..n {\n            head[i + 1] = (self.merge)(head[i],\
+    \ ds[i]);\n        }\n        for i in (0..n).rev() {\n            tail[i] = (self.merge)(tail[i\
+    \ + 1], ds[i]);\n        }\n        self.dp[c] = head[n];\n        for edge in\
+    \ self.graph[c].clone() {\n            if edge.to != p {\n                self.dfs2(edge.to,\
+    \ c, (self.merge)(head[idx], tail[idx + 1]));\n            }\n            idx\
+    \ += 1;\n        }\n    }\n\n    /* [warning]\n    fn dfs2(&mut self, c: usize,\
+    \ p: usize, val: Data) {\n        let mut ds = vec![val];\n        for edge in\
+    \ self.graph[c].clone() {\n            if edge.to == p {\n                continue;\n\
+    \            }\n            ds.push((self.apply)(self.memo[edge.to], edge.to,\
+    \ c, edge.cost));\n        }\n        let n = ds.len();\n        let mut idx =\
+    \ 1;\n        let mut head = vec![(self.e)(); n + 1];\n        let mut tail =\
+    \ vec![(self.e)(); n + 1];\n        for i in 0..n {\n            head[i + 1] =\
+    \ (self.merge)(head[i], ds[i]);\n        }\n        for i in (0..n).rev() {\n\
+    \            tail[i] = (self.merge)(tail[i + 1], ds[i]);\n        }\n        self.dp[c]\
+    \ = head[n];\n        for edge in self.graph[c].clone() {\n            if edge.to\
+    \ == p {\n                continue;\n            }\n            let sub = (self.merge)(head[idx],\
+    \ tail[idx + 1]);\n            self.dfs2(edge.to, c, (self.apply)(sub, c, edge.to,\
+    \ edge.cost));\n            idx += 1;\n        }\n    }\n    */\n}\n\npub struct\
+    \ RerootingDiameter;\n\nimpl RerootingDiameter {\n    pub fn new(\n        n:\
+    \ usize,\n    ) -> Rerooting<\n        usize,\n        usize,\n        impl Fn(usize,\
+    \ usize) -> usize,\n        impl Fn() -> usize,\n        impl Fn() -> usize,\n\
+    \        impl Fn(usize, usize, usize, usize) -> usize,\n    > {\n        let merge\
+    \ = |a: usize, b: usize| std::cmp::max(a, b);\n        let e = || 0;\n       \
+    \ let leaf = || 0;\n        let apply = |a: usize, _: usize, _: usize, w: usize|\
+    \ a + w;\n        Rerooting::new(n, merge, e, leaf, apply)\n    }\n}\n\n// reference:\
+    \ https://atcoder.jp/contests/abc222/editorial/2749\n"
   dependsOn: []
   isVerificationFile: false
   path: dynamic-programming/rerooting/src/lib.rs
   requiredBy: []
-  timestamp: '2025-04-14 00:12:24+09:00'
+  timestamp: '2025-04-18 00:17:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_5_a/src/main.rs

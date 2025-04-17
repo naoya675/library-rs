@@ -39,8 +39,11 @@ data:
   verifiedWith: []
 documentation_of: macro/input/src/lib.rs
 layout: document
-redirect_from:
-- /library/macro/input/src/lib.rs
-- /library/macro/input/src/lib.rs.html
-title: macro/input/src/lib.rs
+title: input
 ---
+
+## Description
+
+## Reference
+
+[https://qiita.com/tanakh/items/0ba42c7ca36cd29d0ac8](https://qiita.com/tanakh/items/0ba42c7ca36cd29d0ac8)

@@ -1,11 +1,6 @@
 ---
 data:
   libraryCategories:
-  - name: algebra/internal-trait/src
-    pages:
-    - icon: ':warning:'
-      path: algebra/internal-trait/src/lib.rs
-      title: algebra/internal-trait/src/lib.rs
   - name: data-structure/fenwick-tree/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -80,12 +75,12 @@ data:
     pages:
     - icon: ':warning:'
       path: macro/chmax/src/lib.rs
-      title: macro/chmax/src/lib.rs
+      title: chmax
   - name: macro/chmin/src
     pages:
     - icon: ':warning:'
       path: macro/chmin/src/lib.rs
-      title: macro/chmin/src/lib.rs
+      title: chmin
   - name: macro/debug/src
     pages:
     - icon: ':warning:'
@@ -95,17 +90,22 @@ data:
     pages:
     - icon: ':warning:'
       path: macro/input/src/lib.rs
-      title: macro/input/src/lib.rs
-  - name: math/mod-combinatorial/src
+      title: input
+  - name: math/enumeration/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: math/mod-combinatorial/src/lib.rs
-      title: Mod Combinatorial
-  - name: math/mod-int/src
+      path: math/enumeration/src/lib.rs
+      title: Enumeration
+  - name: math/mersenne-modint/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: math/mod-int/src/lib.rs
-      title: Mod Int
+      path: math/mersenne-modint/src/lib.rs
+      title: Mersenne Modint
+  - name: math/modint/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: math/modint/src/lib.rs
+      title: Modint
   - name: string/rolling-hash/src
     pages:
     - icon: ':heavy_check_mark:'

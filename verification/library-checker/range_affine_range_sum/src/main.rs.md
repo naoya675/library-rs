@@ -5,8 +5,8 @@ data:
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
   - icon: ':heavy_check_mark:'
-    path: math/mod-int/src/lib.rs
-    title: Mod Int
+    path: math/modint/src/lib.rs
+    title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -23,9 +23,9 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_affine_range_sum\n\
-    \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\nuse mod_int::ModInt;\n\
-    \ntype Mint = ModInt<998244353>;\n\nfn main() {\n    input! {\n        n: usize,\n\
-    \        q: usize,\n        a: [u64; n],\n    }\n    let mut lst = LazySegmentTree::<(Mint,\
+    \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\nuse modint::StaticModint;\n\
+    \ntype Mint = StaticModint<998244353>;\n\nfn main() {\n    input! {\n        n:\
+    \ usize,\n        q: usize,\n        a: [u64; n],\n    }\n    let mut lst = LazySegmentTree::<(Mint,\
     \ Mint), (Mint, Mint)>::new(\n        n,\n        |a, b| (a.0 + b.0, a.1 + b.1),\n\
     \        (Mint::new(0), Mint::new(0)),\n        |a, b| (a.0 * b.0 + a.1 * b.1,\
     \ b.1),\n        |a, b| (a.0 * b.0, a.0 * b.1 + a.1),\n        (Mint::new(1),\
@@ -39,11 +39,11 @@ data:
     \ unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
-  - math/mod-int/src/lib.rs
+  - math/modint/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/range_affine_range_sum/src/main.rs
   requiredBy: []
-  timestamp: '2025-04-14 00:11:45+09:00'
+  timestamp: '2025-04-18 00:17:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/range_affine_range_sum/src/main.rs

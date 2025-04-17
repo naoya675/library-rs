@@ -2,8 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: math/mod-combinatorial/src/lib.rs
-    title: Mod Combinatorial
+    path: math/enumeration/src/lib.rs
+    title: Enumeration
+  - icon: ':heavy_check_mark:'
+    path: math/modint/src/lib.rs
+    title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -20,16 +23,17 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_D\n\
-    \nuse proconio::input;\n\nuse mod_combinatorial::ModCombinatorial;\n\ntype Mcomb\
-    \ = ModCombinatorial<1000000007>;\n\nfn main() {\n    input! {\n        n: usize,\n\
-    \        k: usize,\n    }\n    let mc = Mcomb::new(n + k);\n    println!(\"{}\"\
-    , mc.homo(k, n));\n}\n"
+    \nuse proconio::input;\n\nuse enumeration::Enumeration;\nuse modint::StaticModint;\n\
+    \ntype Mint = StaticModint<1000000007>;\n\nfn main() {\n    input! {\n       \
+    \ n: usize,\n        k: usize,\n    }\n    let mut e = Enumeration::<Mint>::new(n\
+    \ + k);\n    println!(\"{}\", e.homo(k, n));\n}\n"
   dependsOn:
-  - math/mod-combinatorial/src/lib.rs
+  - math/enumeration/src/lib.rs
+  - math/modint/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dpl_5_d/src/main.rs
   requiredBy: []
-  timestamp: '2025-04-13 18:21:44+09:00'
+  timestamp: '2025-04-18 00:17:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dpl_5_d/src/main.rs

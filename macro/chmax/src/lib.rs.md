@@ -30,8 +30,11 @@ data:
   verifiedWith: []
 documentation_of: macro/chmax/src/lib.rs
 layout: document
-redirect_from:
-- /library/macro/chmax/src/lib.rs
-- /library/macro/chmax/src/lib.rs.html
-title: macro/chmax/src/lib.rs
+title: chmax
 ---
+
+## Description
+
+## Reference
+
+[https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7](https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7)

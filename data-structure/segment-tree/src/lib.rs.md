@@ -85,14 +85,18 @@ data:
     \            n,\n            |a, b| {\n                (\n                   \
     \ a.0 + std::cmp::max(b.0 - a.1, 0),\n                    std::cmp::max(a.1 -\
     \ b.0, 0) + b.1,\n                )\n            },\n            (0, 0),\n   \
-    \     )\n    }\n}\n\n// reference: https://atcoder.jp/contests/abc223/editorial/2774\n\
-    // '(' == (0, 1)\n// ')' == (1, 0)\n"
+    \     )\n    }\n}\n\n// '(' == (0, 1)\n// ')' == (1, 0)\n\n/*\npub struct ParenthesisCheckQuery;\n\
+    \nimpl ParenthesisCheckQuery {\n    pub fn new(n: usize) -> SegmentTree<(i64,\
+    \ i64)> {\n        SegmentTree::new(\n            n,\n            |a, b| (std::cmp::min(a.0,\
+    \ a.1 + b.0), a.1 + b.1),\n            (0, 0),\n        )\n    }\n}\n\n// '('\
+    \ == (0, 1)\n// ')' == (-1, -1)\n// reference: https://atcoder.jp/contests/abc223/editorial/2774\n\
+    */\n"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/segment-tree/src/lib.rs
   requiredBy:
   - string/rolling-hash-segment-tree/src/lib.rs
-  timestamp: '2025-04-14 00:11:45+09:00'
+  timestamp: '2025-04-18 00:17:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_a/src/main.rs
