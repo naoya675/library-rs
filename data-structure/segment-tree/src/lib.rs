@@ -196,6 +196,23 @@ impl ParenthesisCheckQuery {
     }
 }
 
-// reference: https://atcoder.jp/contests/abc223/editorial/2774
 // '(' == (0, 1)
 // ')' == (1, 0)
+
+/*
+pub struct ParenthesisCheckQuery;
+
+impl ParenthesisCheckQuery {
+    pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
+        SegmentTree::new(
+            n,
+            |a, b| (std::cmp::min(a.0, a.1 + b.0), a.1 + b.1),
+            (0, 0),
+        )
+    }
+}
+
+// '(' == (0, 1)
+// ')' == (-1, -1)
+// reference: https://atcoder.jp/contests/abc223/editorial/2774
+*/

@@ -1,31 +1,23 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub struct StaticModint<const MOD: u64> {
+pub struct MersenneModint {
     value: u64,
 }
 
-impl<const MOD: u64> StaticModint<MOD> {
+impl MersenneModint {
+    const MOD: u64 = (1_u64 << 61) - 1;
+    const MASK30: u64 = (1_u64 << 30) - 1;
+    const MASK31: u64 = (1_u64 << 31) - 1;
+    const MASK61: u64 = Self::MOD;
+
     pub fn new(n: u64) -> Self {
         Self {
-            value: (n % MOD),
-            // value: (n.rem_euclid(MOD)),
+            value: (n % Self::MOD),
+            // value: (n.rem_euclid(Self::MOD)),
         }
     }
 
     pub fn value(&self) -> u64 {
         self.value
-    }
-
-    fn ext_gcd(&self, a: i64, m: i64) -> (i64, i64) {
-        let (mut a, mut b) = (a, m);
-        let (mut u, mut v) = (1, 0);
-        while b != 0 {
-            let t = a / b;
-            a -= t * b;
-            u -= t * v;
-            std::mem::swap(&mut a, &mut b);
-            std::mem::swap(&mut u, &mut v);
-        }
-        (u.rem_euclid(m), v.rem_euclid(m))
     }
 
     pub fn pow(&self, mut n: u64) -> Self {
@@ -42,61 +34,73 @@ impl<const MOD: u64> StaticModint<MOD> {
     }
 
     pub fn inv(&self) -> Self {
-        // self.pow(MOD - 2)
-        let (x, _) = self.ext_gcd(self.value() as i64, MOD as i64);
-        Self { value: x as u64 }
+        self.pow(Self::MOD - 2)
+    }
+
+    pub fn rand() -> Self {
+        use rand::Rng;
+        let mut rng = rand::thread_rng();
+        Self::new(rng.gen_range(Self::MASK31..Self::MASK61))
     }
 }
 
-impl<const MOD: u64> std::ops::Add for StaticModint<MOD> {
+impl std::ops::Add for MersenneModint {
     type Output = Self;
     fn add(self, rhs: Self) -> Self {
         Self {
-            value: (self.value + rhs.value) % MOD,
+            value: (self.value + rhs.value) % Self::MOD,
         }
     }
 }
 
-impl<const MOD: u64> std::ops::AddAssign for StaticModint<MOD> {
+impl std::ops::AddAssign for MersenneModint {
     fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
 
-impl<const MOD: u64> std::ops::Sub for StaticModint<MOD> {
+impl std::ops::Sub for MersenneModint {
     type Output = Self;
     fn sub(mut self, rhs: Self) -> Self {
         if self.value < rhs.value {
-            self.value += MOD;
+            self.value += Self::MOD;
         }
         Self {
-            value: (self.value - rhs.value) % MOD,
+            value: (self.value - rhs.value) % Self::MOD,
         }
     }
 }
 
-impl<const MOD: u64> std::ops::SubAssign for StaticModint<MOD> {
+impl std::ops::SubAssign for MersenneModint {
     fn sub_assign(&mut self, rhs: Self) {
         *self = *self - rhs;
     }
 }
 
-impl<const MOD: u64> std::ops::Mul for StaticModint<MOD> {
+impl std::ops::Mul for MersenneModint {
     type Output = Self;
     fn mul(self, rhs: Self) -> Self {
+        let au = self.value >> 31;
+        let ad = self.value & Self::MASK31;
+        let bu = rhs.value() >> 31;
+        let bd = rhs.value() & Self::MASK31;
+        let mid = ad * bu + au * bd;
+        let midu = mid >> 30;
+        let midd = mid & Self::MASK30;
+        let su = ((au * bu) << 1) + midu + (midd << 31) + ad * bd;
         Self {
-            value: (self.value * rhs.value) % MOD,
+            value: (su >> 61) + (su & Self::MASK61),
         }
     }
 }
 
-impl<const MOD: u64> std::ops::MulAssign for StaticModint<MOD> {
+impl std::ops::MulAssign for MersenneModint {
     fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
 
-impl<const MOD: u64> std::ops::Div for StaticModint<MOD> {
+impl std::ops::Div for MersenneModint {
     type Output = Self;
     fn div(self, rhs: Self) -> Self {
         if rhs.value == 0 {
@@ -106,20 +110,20 @@ impl<const MOD: u64> std::ops::Div for StaticModint<MOD> {
     }
 }
 
-impl<const MOD: u64> std::ops::DivAssign for StaticModint<MOD> {
+impl std::ops::DivAssign for MersenneModint {
     fn div_assign(&mut self, rhs: Self) {
         *self = *self / rhs;
     }
 }
 
-impl<const MOD: u64> std::ops::Neg for StaticModint<MOD> {
+impl std::ops::Neg for MersenneModint {
     type Output = Self;
     fn neg(self) -> Self {
         Self::new(0) - self
     }
 }
 
-impl<const MOD: u64> num_traits::Zero for StaticModint<MOD> {
+impl num_traits::Zero for MersenneModint {
     fn zero() -> Self {
         Self::new(0)
     }
@@ -129,19 +133,19 @@ impl<const MOD: u64> num_traits::Zero for StaticModint<MOD> {
     }
 }
 
-impl<const MOD: u64> num_traits::One for StaticModint<MOD> {
+impl num_traits::One for MersenneModint {
     fn one() -> Self {
         Self::new(1)
     }
 }
 
-impl<const MOD: u64> std::fmt::Display for StaticModint<MOD> {
+impl std::fmt::Display for MersenneModint {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.value)
     }
 }
 
-impl<const MOD: u64> From<u64> for StaticModint<MOD> {
+impl From<u64> for MersenneModint {
     fn from(value: u64) -> Self {
         Self::new(value)
     }
@@ -151,7 +155,7 @@ impl<const MOD: u64> From<u64> for StaticModint<MOD> {
 macro_rules! impl_from {
     ($($type:ty), *) => {
         $(
-            impl<const MOD: u64> From<$type> for StaticModint<MOD> {
+            impl From<$type> for MersenneModint {
                 fn from(value: $type) -> Self {
                     Self::new(value as u64)
                 }
@@ -166,7 +170,7 @@ impl_from!(i8, u8, i16, u16, i32, u32, u64, i64, isize, usize);
 /*
 macro_rules! impl_ops {
     ($trait:ident, $fn:ident, $op:tt) => {
-        impl<const MOD: u64> std::ops::$trait for StaticModint<MOD> {
+        impl std::ops::$trait for MersenneModint {
             fn $fn(&mut self, rhs: Self) {
                 *self = *self $op rhs;
             }

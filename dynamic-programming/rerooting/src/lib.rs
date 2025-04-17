@@ -83,6 +83,35 @@ impl<
     }
 
     fn dfs2(&mut self, c: usize, p: usize, val: Data) {
+        let mut ds = vec![(self.e)()];
+        for edge in self.graph[c].clone() {
+            if edge.to != p {
+                ds.push((self.apply)(self.memo[edge.to], edge.to, c, edge.cost));
+            } else {
+                ds.push((self.apply)(val, edge.to, c, edge.cost));
+            }
+        }
+        let n = ds.len();
+        let mut idx = 1;
+        let mut head = vec![(self.e)(); n + 1];
+        let mut tail = vec![(self.e)(); n + 1];
+        for i in 0..n {
+            head[i + 1] = (self.merge)(head[i], ds[i]);
+        }
+        for i in (0..n).rev() {
+            tail[i] = (self.merge)(tail[i + 1], ds[i]);
+        }
+        self.dp[c] = head[n];
+        for edge in self.graph[c].clone() {
+            if edge.to != p {
+                self.dfs2(edge.to, c, (self.merge)(head[idx], tail[idx + 1]));
+            }
+            idx += 1;
+        }
+    }
+
+    /* [warning]
+    fn dfs2(&mut self, c: usize, p: usize, val: Data) {
         let mut ds = vec![val];
         for edge in self.graph[c].clone() {
             if edge.to == p {
@@ -110,6 +139,7 @@ impl<
             idx += 1;
         }
     }
+    */
 }
 
 pub struct RerootingDiameter;

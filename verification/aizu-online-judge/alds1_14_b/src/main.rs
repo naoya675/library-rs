@@ -2,21 +2,22 @@
 
 use proconio::{input, marker::Chars};
 
-use rolling_hash::RollingHash;
+use mersenne_modint::MersenneModint;
+use rolling_hash_segment_tree::RollingHash;
 
 fn main() {
     input! {
         t: Chars,
         p: Chars,
     }
-    let mut rh = RollingHash::new();
-    let ht = rh.build(&t);
-    let hp = rh.build(&p);
+    let mut rh = RollingHash::<MersenneModint>::new(MersenneModint::rand());
+    let mut ht = rh.build_segment_tree(&t);
+    let mut hp = rh.build_segment_tree(&p);
     for i in 0.. {
         if i + p.len() > t.len() {
             break;
         }
-        if rh.rolling_hash(&ht, i, i + p.len()) == rh.rolling_hash(&hp, 0, p.len()) {
+        if ht.prod(i, i + p.len()) == hp.prod(0, p.len()) {
             println!("{}", i);
         }
     }

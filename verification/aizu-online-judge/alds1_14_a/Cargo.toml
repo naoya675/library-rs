@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 proconio = { version = "0.4.5", features = ["derive"] }
-rolling-hash-segment-tree = { path = '../../../string/rolling-hash-segment-tree' }
+mersenne-modint = { path = '../../../math/mersenne-modint' }
+rolling-hash = { path = '../../../string/rolling-hash' }

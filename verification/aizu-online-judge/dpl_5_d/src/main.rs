@@ -3,9 +3,9 @@
 use proconio::input;
 
 use enumeration::Enumeration;
-use modint::ModInt;
+use modint::StaticModint;
 
-type Mint = ModInt<1000000007>;
+type Mint = StaticModint<1000000007>;
 
 fn main() {
     input! {
