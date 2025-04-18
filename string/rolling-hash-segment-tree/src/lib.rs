@@ -27,16 +27,8 @@ where
 
     pub fn build_segment_tree(&mut self, s: &Vec<char>) -> SegmentTree<(T, T)> {
         let size = s.len();
-        let mut st = SegmentTree::<(T, T)>::new(
-            size,
-            |a, b| (a.0 + (a.1 * b.0), a.1 * b.1),
-            (T::from(0u64), T::from(1u64)),
-        );
-        st.build(
-            s.into_iter()
-                .map(|&f| (T::from(f as u64), self.base))
-                .collect(),
-        );
+        let mut st = SegmentTree::<(T, T)>::new(size, |a, b| (a.0 + (a.1 * b.0), a.1 * b.1), (T::from(0u64), T::from(1u64)));
+        st.build(s.into_iter().map(|&f| (T::from(f as u64), self.base)).collect());
         st
     }
 

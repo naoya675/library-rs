@@ -13,14 +13,7 @@ pub struct LazySegmentTree<T, F> {
 }
 
 impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
-    pub fn new(
-        n: usize,
-        op: fn(T, T) -> T,
-        e: T,
-        mapping: fn(F, T) -> T,
-        composition: fn(F, F) -> F,
-        id: F,
-    ) -> Self {
+    pub fn new(n: usize, op: fn(T, T) -> T, e: T, mapping: fn(F, T) -> T, composition: fn(F, F) -> F, id: F) -> Self {
         let size = n.next_power_of_two();
         let size_log = (size.ilog2() + 1) as usize;
         Self {
@@ -250,14 +243,7 @@ pub struct RangeAddRangeMinimumQuery;
 
 impl RangeAddRangeMinimumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
-        LazySegmentTree::new(
-            n,
-            |a, b| std::cmp::min(a, b),
-            i64::MAX,
-            |f, x| f + x,
-            |f, g| f + g,
-            0,
-        )
+        LazySegmentTree::new(n, |a, b| std::cmp::min(a, b), i64::MAX, |f, x| f + x, |f, g| f + g, 0)
     }
 }
 
@@ -265,14 +251,7 @@ pub struct RangeAddRangeMaximumQuery;
 
 impl RangeAddRangeMaximumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
-        LazySegmentTree::new(
-            n,
-            |a, b| std::cmp::max(a, b),
-            i64::MIN,
-            |f, x| f + x,
-            |f, g| f + g,
-            0,
-        )
+        LazySegmentTree::new(n, |a, b| std::cmp::max(a, b), i64::MIN, |f, x| f + x, |f, g| f + g, 0)
     }
 }
 
@@ -280,14 +259,7 @@ pub struct RangeAddRangeSumQuery;
 
 impl RangeAddRangeSumQuery {
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), i64> {
-        LazySegmentTree::new(
-            n,
-            |a, b| (a.0 + b.0, a.1 + b.1),
-            (0, 0),
-            |f, x| (x.0 + f * x.1, x.1),
-            |f, x| f + x,
-            0,
-        )
+        LazySegmentTree::new(n, |a, b| (a.0 + b.0, a.1 + b.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, x| f + x, 0)
     }
 }
 

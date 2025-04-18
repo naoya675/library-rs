@@ -79,6 +79,7 @@ where
         self.comb(n + r - 1, r)
     }
 
+    // catalan number
     pub fn catalan(&mut self, n: usize) -> T {
         self.comb(2 * n, n) - self.comb(2 * n, n - 1)
     }

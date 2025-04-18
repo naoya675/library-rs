@@ -22,13 +22,7 @@ fn main() {
         for i in 0..v {
             let res = res[i]
                 .iter()
-                .map(|&res| {
-                    if res < i64::MAX / 8 {
-                        res.to_string()
-                    } else {
-                        "INF".to_string()
-                    }
-                })
+                .map(|&res| if res < i64::MAX / 8 { res.to_string() } else { "INF".to_string() })
                 .join(" ");
             println!("{}", res);
         }

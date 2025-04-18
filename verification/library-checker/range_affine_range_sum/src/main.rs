@@ -21,10 +21,7 @@ fn main() {
         |a, b| (a.0 * b.0, a.0 * b.1 + a.1),
         (Mint::new(1), Mint::new(0)),
     );
-    let a = a
-        .iter()
-        .map(|&a| (Mint::new(a), Mint::new(1)))
-        .collect::<Vec<_>>();
+    let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();
     lst.build(a);
     for _ in 0..q {
         input! { query: usize, }

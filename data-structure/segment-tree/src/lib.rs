@@ -183,16 +183,7 @@ pub struct ParenthesisCheckQuery;
 
 impl ParenthesisCheckQuery {
     pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
-        SegmentTree::new(
-            n,
-            |a, b| {
-                (
-                    a.0 + std::cmp::max(b.0 - a.1, 0),
-                    std::cmp::max(a.1 - b.0, 0) + b.1,
-                )
-            },
-            (0, 0),
-        )
+        SegmentTree::new(n, |a, b| (a.0 + std::cmp::max(b.0 - a.1, 0), std::cmp::max(a.1 - b.0, 0) + b.1), (0, 0))
     }
 }
 
@@ -204,11 +195,7 @@ pub struct ParenthesisCheckQuery;
 
 impl ParenthesisCheckQuery {
     pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
-        SegmentTree::new(
-            n,
-            |a, b| (std::cmp::min(a.0, a.1 + b.0), a.1 + b.1),
-            (0, 0),
-        )
+        SegmentTree::new(n, |a, b| (std::cmp::min(a.0, a.1 + b.0), a.1 + b.1), (0, 0))
     }
 }
 

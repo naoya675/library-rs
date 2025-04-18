@@ -81,9 +81,7 @@ where
         for i in 0..self.n {
             res[self.leader(i)].push(i);
         }
-        res.into_iter()
-            .filter(|f| !f.is_empty())
-            .collect::<Vec<_>>()
+        res.into_iter().filter(|f| !f.is_empty()).collect::<Vec<_>>()
     }
 
     fn weight(&mut self, a: usize) -> T {

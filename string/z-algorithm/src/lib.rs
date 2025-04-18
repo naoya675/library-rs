@@ -125,11 +125,7 @@ pub fn z_algorithm(s: &Vec<char>) -> Vec<usize> {
     let mut i = 1;
     let mut j = 0;
     while i < s.len() {
-        res[i] = if res[j] + j <= i {
-            0
-        } else {
-            std::cmp::min(res[j] + j - i, res[i - j])
-        };
+        res[i] = if res[j] + j <= i { 0 } else { std::cmp::min(res[j] + j - i, res[i - j]) };
         while i + res[i] < s.len() && s[res[i]] == s[i + res[i]] {
             res[i] += 1;
         }
