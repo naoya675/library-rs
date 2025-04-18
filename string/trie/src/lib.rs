@@ -55,20 +55,21 @@ impl Trie {
         self.nodes[node_id].accept.push(word_id);
     }
 
-    fn search_internal(&self, word: &Vec<char>, prefix: bool) -> bool {
+    fn search_internal(&self, word: &Vec<char>, prefix: bool) -> (bool, usize) {
         let mut node_id = self.root;
         for &w in word {
             let c = (w as usize) - (self.base as usize);
             if let Some(next_id) = self.nodes[node_id].next[c] {
                 node_id = next_id;
             } else {
-                return false;
+                return (false, 0);
             }
         }
         if prefix {
-            true
+            (true, self.nodes[node_id].common)
         } else {
-            !self.nodes[node_id].accept.is_empty()
+            let empty = !self.nodes[node_id].accept.is_empty();
+            (empty, self.nodes[node_id].common)
         }
     }
 
@@ -76,11 +77,11 @@ impl Trie {
         self.insert_internal(word, self.nodes[0].common);
     }
 
-    pub fn search(&self, word: &Vec<char>) -> bool {
+    pub fn search(&self, word: &Vec<char>) -> (bool, usize) {
         self.search_internal(word, false)
     }
 
-    pub fn search_prefix(&self, word: &Vec<char>) -> bool {
+    pub fn search_prefix(&self, word: &Vec<char>) -> (bool, usize) {
         self.search_internal(word, true)
     }
 

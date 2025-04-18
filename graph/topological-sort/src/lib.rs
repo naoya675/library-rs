@@ -50,9 +50,6 @@ impl TopologicalSort {
     }
 }
 
-/* lexicographic order
-use std::{cmp::Reverse, collections::BinaryHeap};
-
 pub fn topological_sort(size: usize, graph: &Vec<Vec<usize>>) -> Vec<usize> {
     let mut indegree = vec![0; size];
     for from in 0..size {
@@ -83,4 +80,3 @@ pub fn topological_sort(size: usize, graph: &Vec<Vec<usize>>) -> Vec<usize> {
     }
     res
 }
-*/

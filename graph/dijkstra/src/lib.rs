@@ -74,7 +74,6 @@ impl Dijkstra {
     }
 }
 
-/*
 pub fn dijkstra(size: usize, graph: &Vec<Vec<(usize, i64)>>, s: usize) -> Vec<i64> {
     let mut dist = vec![i64::MAX / 4; size];
     dist[s] = 0;
@@ -93,4 +92,3 @@ pub fn dijkstra(size: usize, graph: &Vec<Vec<(usize, i64)>>, s: usize) -> Vec<i6
     }
     dist
 }
-*/

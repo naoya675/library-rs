@@ -60,7 +60,6 @@ impl BellmanFord {
     }
 }
 
-/*
 pub fn bellman_ford(size: usize, edge: &Vec<(usize, usize, i64)>, s: usize) -> (bool, Vec<i64>) {
     let mut dist = vec![i64::MAX / 4; size];
     dist[s] = 0;
@@ -91,4 +90,3 @@ pub fn bellman_ford(size: usize, edge: &Vec<(usize, usize, i64)>, s: usize) -> (
     }
     (true, dist)
 }
-*/

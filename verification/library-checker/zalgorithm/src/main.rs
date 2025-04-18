@@ -3,11 +3,15 @@
 use itertools::Itertools;
 use proconio::{input, marker::Chars};
 
-use z_algorithm::z_algorithm;
+use z_algorithm::ZAlgorithm;
+// use z_algorithm::z_algorithm;
 
 fn main() {
     input! {
         s: Chars,
     }
-    println!("{}", z_algorithm(&s).iter().join(" "));
+    let mut za = ZAlgorithm::<char>::new();
+    za.build(&s);
+    println!("{}", za.get().iter().join(" "));
+    // println!("{}", z_algorithm(&s).iter().join(" "));
 }

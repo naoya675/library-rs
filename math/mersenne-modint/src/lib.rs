@@ -4,9 +4,9 @@ pub struct MersenneModint {
 }
 
 impl MersenneModint {
-    const MOD: u64 = (1_u64 << 61) - 1;
-    const MASK30: u64 = (1_u64 << 30) - 1;
-    const MASK31: u64 = (1_u64 << 31) - 1;
+    const MOD: u64 = (1u64 << 61) - 1;
+    const MASK30: u64 = (1u64 << 30) - 1;
+    const MASK31: u64 = (1u64 << 31) - 1;
     const MASK61: u64 = Self::MOD;
 
     pub fn new(n: u64) -> Self {

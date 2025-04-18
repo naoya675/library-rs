@@ -59,7 +59,6 @@ impl Kruskal {
     }
 }
 
-/*
 pub fn minimum_spanning_tree(
     size: usize,
     edge: &mut Vec<(usize, usize, i64)>,
@@ -93,4 +92,3 @@ pub fn maximum_spanning_tree(
     }
     (res, res_edge)
 }
-*/
