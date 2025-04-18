@@ -1,3 +1,6 @@
+mod wrapper;
+pub use wrapper::*;
+
 #[derive(Debug, Clone)]
 pub struct Edge<Cost> {
     from: usize,
@@ -12,14 +15,7 @@ impl<Cost: Copy> Edge<Cost> {
 }
 
 #[derive(Debug, Clone)]
-pub struct Rerooting<
-    Cost,
-    Data,
-    Merge: Fn(Data, Data) -> Data,
-    E: Fn() -> Data,
-    Leaf: Fn() -> Data,
-    Apply: Fn(Data, usize, usize, Cost) -> Data,
-> {
+pub struct Rerooting<Cost, Data, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Leaf: Fn() -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data> {
     graph: Vec<Vec<Edge<Cost>>>,
     dp: Vec<Data>,
     memo: Vec<Data>,
@@ -30,14 +26,8 @@ pub struct Rerooting<
     n: usize,
 }
 
-impl<
-        Cost: Copy + Default,
-        Data: Copy,
-        Merge: Fn(Data, Data) -> Data,
-        E: Fn() -> Data,
-        Leaf: Fn() -> Data,
-        Apply: Fn(Data, usize, usize, Cost) -> Data,
-    > Rerooting<Cost, Data, Merge, E, Leaf, Apply>
+impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Leaf: Fn() -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data>
+    Rerooting<Cost, Data, Merge, E, Leaf, Apply>
 {
     pub fn new(n: usize, merge: Merge, e: E, leaf: Leaf, apply: Apply) -> Self {
         Self {
@@ -72,10 +62,7 @@ impl<
             }
             self.dfs1(edge.to, c);
             upd = true;
-            self.memo[c] = (self.merge)(
-                self.memo[c],
-                (self.apply)(self.memo[edge.to], edge.to, c, edge.cost),
-            );
+            self.memo[c] = (self.merge)(self.memo[c], (self.apply)(self.memo[edge.to], edge.to, c, edge.cost));
         }
         if !upd {
             self.memo[c] = (self.leaf)();
@@ -141,26 +128,3 @@ impl<
     }
     */
 }
-
-pub struct RerootingDiameter;
-
-impl RerootingDiameter {
-    pub fn new(
-        n: usize,
-    ) -> Rerooting<
-        usize,
-        usize,
-        impl Fn(usize, usize) -> usize,
-        impl Fn() -> usize,
-        impl Fn() -> usize,
-        impl Fn(usize, usize, usize, usize) -> usize,
-    > {
-        let merge = |a: usize, b: usize| std::cmp::max(a, b);
-        let e = || 0;
-        let leaf = || 0;
-        let apply = |a: usize, _: usize, _: usize, w: usize| a + w;
-        Rerooting::new(n, merge, e, leaf, apply)
-    }
-}
-
-// reference: https://atcoder.jp/contests/abc222/editorial/2749
