@@ -87,6 +87,9 @@ impl<T: Copy + PartialEq> ZAlgorithm<T> {
 }
 
 pub fn z_algorithm(s: &Vec<char>) -> Vec<usize> {
+    if s.len() == 0 {
+        return vec![];
+    }
     let mut res = vec![0; s.len()];
     let mut i = 1;
     let mut j = 0;
@@ -110,3 +113,32 @@ pub fn z_algorithm(s: &Vec<char>) -> Vec<usize> {
     res[0] = s.len();
     res
 }
+
+/*
+reference: https://github.com/atcoder/ac-library/blob/master/atcoder/string.hpp
+
+pub fn z_algorithm(s: &Vec<char>) -> Vec<usize> {
+    if s.len() == 0 {
+        return vec![];
+    }
+    let mut res = vec![0; s.len()];
+    let mut i = 1;
+    let mut j = 0;
+    while i < s.len() {
+        res[i] = if res[j] + j <= i {
+            0
+        } else {
+            std::cmp::min(res[j] + j - i, res[i - j])
+        };
+        while i + res[i] < s.len() && s[res[i]] == s[i + res[i]] {
+            res[i] += 1;
+        }
+        if res[j] + j < res[i] + i {
+            j = i;
+        }
+        i += 1;
+    }
+    res[0] = s.len();
+    res
+}
+*/
