@@ -7,5 +7,5 @@ edition = "2021"
 
 [dependencies]
 proconio = { version = "0.4.5", features = ["derive"] }
-enumeration = { path = "../../../math/enumeration" }
+combinatorics = { path = "../../../math/combinatorics" }
 modint = { path = "../../../math/modint" }

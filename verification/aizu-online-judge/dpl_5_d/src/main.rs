@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use enumeration::Enumeration;
+use combinatorics::Combinatorics;
 use modint::StaticModint;
 
 type Mint = StaticModint<1000000007>;
@@ -12,6 +12,6 @@ fn main() {
         n: usize,
         k: usize,
     }
-    let mut e = Enumeration::<Mint>::new(n + k);
+    let mut e = Combinatorics::<Mint>::new(n + k);
     println!("{}", e.homo(k, n));
 }

@@ -1,10 +1,11 @@
 #[derive(Debug, Clone)]
-pub struct Enumeration<T> {
+pub struct Combinatorics<T> {
     fact: Vec<T>,
     finv: Vec<T>,
+    inv: Vec<T>,
 }
 
-impl<T: Copy + From<u64>> Enumeration<T>
+impl<T: Copy + From<u64>> Combinatorics<T>
 where
     T: std::ops::Neg<Output = T>,
     T: std::ops::Add<T, Output = T>,
@@ -19,6 +20,7 @@ where
     pub fn new(n: usize) -> Self {
         let mut fact = vec![T::from(1u64); n + 1];
         let mut finv = vec![T::from(1u64); n + 1];
+        let mut inv = vec![T::from(1u64); n + 1];
         for i in 0..n {
             fact[i + 1] = fact[i] * T::from((i + 1) as u64);
         }
@@ -26,20 +28,27 @@ where
         for i in (0..n).rev() {
             finv[i] = finv[i + 1] * T::from((i + 1) as u64);
         }
-        Self { fact, finv }
+        for i in 0..n {
+            inv[i + 1] = finv[i + 1] * fact[i];
+        }
+        Self { fact, finv, inv }
     }
 
     fn update(&mut self, n: usize) {
         if self.fact.len() < n + 1 {
-            let len = self.fact.len();
+            let len = std::cmp::max(self.fact.len(), 1);
             self.fact.resize(n + 1, T::from(1u64));
             self.finv.resize(n + 1, T::from(1u64));
+            self.inv.resize(n + 1, T::from(1u64));
             for i in len - 1..n {
                 self.fact[i + 1] = self.fact[i] * T::from((i + 1) as u64);
             }
             self.finv[n] = T::from(1u64) / self.fact[n];
             for i in (len - 1..n).rev() {
                 self.finv[i] = self.finv[i + 1] * T::from((i + 1) as u64);
+            }
+            for i in len - 1..n {
+                self.inv[i + 1] = self.finv[i + 1] * self.fact[i - 1];
             }
         }
     }
@@ -59,7 +68,7 @@ where
     // permutation
     pub fn perm(&mut self, n: usize, r: usize) -> T {
         // assert!(r <= n);
-        if r > n {
+        if n < r {
             return T::from(0u64);
         }
         self.fact(n) * self.finv(n - r)
@@ -68,7 +77,7 @@ where
     // combination
     pub fn comb(&mut self, n: usize, r: usize) -> T {
         // assert!(r <= n);
-        if r > n {
+        if n < r {
             return T::from(0u64);
         }
         self.fact(n) * self.finv(r) * self.finv(n - r)
