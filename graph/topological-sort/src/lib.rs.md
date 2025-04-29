@@ -30,8 +30,7 @@ data:
     \ {\n                let to = self.graph[from][i];\n                indegree[to]\
     \ -= 1;\n                if indegree[to] == 0 {\n                    heap.push(Reverse(to));\n\
     \                }\n            }\n        }\n        if res.len() != self.size\
-    \ {\n            return vec![];\n        }\n        res\n    }\n}\n\n/* lexicographic\
-    \ order\nuse std::{cmp::Reverse, collections::BinaryHeap};\n\npub fn topological_sort(size:\
+    \ {\n            return vec![];\n        }\n        res\n    }\n}\n\npub fn topological_sort(size:\
     \ usize, graph: &Vec<Vec<usize>>) -> Vec<usize> {\n    let mut indegree = vec![0;\
     \ size];\n    for from in 0..size {\n        for i in 0..graph[from].len() {\n\
     \            let to = graph[from][i];\n            indegree[to] += 1;\n      \
@@ -42,12 +41,12 @@ data:
     \ {\n            let to = graph[from][i];\n            indegree[to] -= 1;\n  \
     \          if indegree[to] == 0 {\n                heap.push(Reverse(to));\n \
     \           }\n        }\n    }\n    if res.len() != size {\n        return vec![];\n\
-    \    }\n    res\n}\n*/\n"
+    \    }\n    res\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: graph/topological-sort/src/lib.rs
   requiredBy: []
-  timestamp: '2025-04-13 18:21:44+09:00'
+  timestamp: '2025-04-18 21:05:47+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/topological-sort/src/lib.rs

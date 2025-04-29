@@ -26,17 +26,15 @@ data:
     \    for (s, t, d) in std {\n        wf.add_edge(s, t, d);\n    }\n    let (cycle,\
     \ res) = wf.warshall_floyd();\n    if cycle {\n        println!(\"NEGATIVE CYCLE\"\
     );\n    } else {\n        for i in 0..v {\n            let res = res[i]\n    \
-    \            .iter()\n                .map(|&res| {\n                    if res\
-    \ < i64::MAX / 8 {\n                        res.to_string()\n                \
-    \    } else {\n                        \"INF\".to_string()\n                 \
-    \   }\n                })\n                .join(\" \");\n            println!(\"\
-    {}\", res);\n        }\n    }\n}\n"
+    \            .iter()\n                .map(|&res| if res < i64::MAX / 8 { res.to_string()\
+    \ } else { \"INF\".to_string() })\n                .join(\" \");\n           \
+    \ println!(\"{}\", res);\n        }\n    }\n}\n"
   dependsOn:
   - graph/warshall-floyd/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_1_c/src/main.rs
   requiredBy: []
-  timestamp: '2025-04-13 18:21:44+09:00'
+  timestamp: '2025-04-19 04:57:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_1_c/src/main.rs

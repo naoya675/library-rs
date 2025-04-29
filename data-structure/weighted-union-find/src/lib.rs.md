@@ -45,14 +45,14 @@ data:
     \ assert!(self.same(a, b));\n        self.weight(b) - self.weight(a)\n    }\n\n\
     \    pub fn groups(&mut self) -> Vec<Vec<usize>> {\n        let mut res = vec![vec![];\
     \ self.n];\n        for i in 0..self.n {\n            res[self.leader(i)].push(i);\n\
-    \        }\n        res.into_iter()\n            .filter(|f| !f.is_empty())\n\
-    \            .collect::<Vec<_>>()\n    }\n\n    fn weight(&mut self, a: usize)\
-    \ -> T {\n        self.leader(a);\n        self.diff_weight[a]\n    }\n}\n"
+    \        }\n        res.into_iter().filter(|f| !f.is_empty()).collect::<Vec<_>>()\n\
+    \    }\n\n    fn weight(&mut self, a: usize) -> T {\n        self.leader(a);\n\
+    \        self.diff_weight[a]\n    }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/weighted-union-find/src/lib.rs
   requiredBy: []
-  timestamp: '2025-04-14 00:11:45+09:00'
+  timestamp: '2025-04-19 04:57:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_1_b/src/main.rs

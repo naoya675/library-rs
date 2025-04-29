@@ -43,19 +43,19 @@ data:
     \ > dist[from] + edge.cost {\n                    dist[edge.to] = dist[from] +\
     \ edge.cost;\n                    prev[edge.to] = from;\n                    heap.push((-dist[edge.to],\
     \ edge.to));\n                }\n            }\n        }\n        (dist, prev)\n\
-    \    }\n}\n\n/*\npub fn dijkstra(size: usize, graph: &Vec<Vec<(usize, i64)>>,\
-    \ s: usize) -> Vec<i64> {\n    let mut dist = vec![i64::MAX / 4; size];\n    dist[s]\
-    \ = 0;\n    let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();\n    heap.push((-dist[s],\
+    \    }\n}\n\npub fn dijkstra(size: usize, graph: &Vec<Vec<(usize, i64)>>, s: usize)\
+    \ -> Vec<i64> {\n    let mut dist = vec![i64::MAX / 4; size];\n    dist[s] = 0;\n\
+    \    let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();\n    heap.push((-dist[s],\
     \ s));\n    while let Some((d, from)) = heap.pop() {\n        if dist[from] <\
     \ -d {\n            continue;\n        }\n        for &(to, cost) in &graph[from]\
     \ {\n            if dist[to] > dist[from] + cost {\n                dist[to] =\
     \ dist[from] + cost;\n                heap.push((-dist[to], to));\n          \
-    \  }\n        }\n    }\n    dist\n}\n*/\n"
+    \  }\n        }\n    }\n    dist\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: graph/dijkstra/src/lib.rs
   requiredBy: []
-  timestamp: '2025-04-13 18:21:44+09:00'
+  timestamp: '2025-04-18 21:05:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_1_a/src/main.rs

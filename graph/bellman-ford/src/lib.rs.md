@@ -37,23 +37,23 @@ data:
     \ == Cost::MAX / 4 {\n                    continue;\n                }\n     \
     \           if dist[edge.from] + edge.cost < dist[edge.to] {\n               \
     \     dist[edge.to] = -(Cost::MAX / 4);\n                }\n            }\n  \
-    \      }\n        (true, dist)\n    }\n}\n\n/*\npub fn bellman_ford(size: usize,\
-    \ edge: &Vec<(usize, usize, i64)>, s: usize) -> (bool, Vec<i64>) {\n    let mut\
-    \ dist = vec![i64::MAX / 4; size];\n    dist[s] = 0;\n    for _ in 0..size {\n\
-    \        let mut update = false;\n        for &(from, to, cost) in edge {\n  \
-    \          if dist[from] == i64::MAX / 4 {\n                continue;\n      \
-    \      }\n            if dist[from] + cost < dist[to] {\n                dist[to]\
+    \      }\n        (true, dist)\n    }\n}\n\npub fn bellman_ford(size: usize, edge:\
+    \ &Vec<(usize, usize, i64)>, s: usize) -> (bool, Vec<i64>) {\n    let mut dist\
+    \ = vec![i64::MAX / 4; size];\n    dist[s] = 0;\n    for _ in 0..size {\n    \
+    \    let mut update = false;\n        for &(from, to, cost) in edge {\n      \
+    \      if dist[from] == i64::MAX / 4 {\n                continue;\n          \
+    \  }\n            if dist[from] + cost < dist[to] {\n                dist[to]\
     \ = dist[from] + cost;\n                update = true;\n            }\n      \
     \  }\n        if !update {\n            return (false, dist);\n        }\n   \
     \ }\n    for _ in 0..size {\n        for &(from, to, cost) in edge {\n       \
     \     if dist[from] == i64::MAX / 4 {\n                continue;\n           \
     \ }\n            if dist[from] + cost < dist[to] {\n                dist[to] =\
-    \ -(i64::MAX / 4);\n            }\n        }\n    }\n    (true, dist)\n}\n*/\n"
+    \ -(i64::MAX / 4);\n            }\n        }\n    }\n    (true, dist)\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: graph/bellman-ford/src/lib.rs
   requiredBy: []
-  timestamp: '2025-04-13 18:21:44+09:00'
+  timestamp: '2025-04-18 21:05:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_1_b/src/main.rs

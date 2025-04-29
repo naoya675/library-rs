@@ -21,8 +21,8 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "#[derive(Debug, Clone, Copy, PartialEq, Eq)]\npub struct MersenneModint {\n\
-    \    value: u64,\n}\n\nimpl MersenneModint {\n    const MOD: u64 = (1_u64 << 61)\
-    \ - 1;\n    const MASK30: u64 = (1_u64 << 30) - 1;\n    const MASK31: u64 = (1_u64\
+    \    value: u64,\n}\n\nimpl MersenneModint {\n    const MOD: u64 = (1u64 << 61)\
+    \ - 1;\n    const MASK30: u64 = (1u64 << 30) - 1;\n    const MASK31: u64 = (1u64\
     \ << 31) - 1;\n    const MASK61: u64 = Self::MOD;\n\n    pub fn new(n: u64) ->\
     \ Self {\n        Self {\n            value: (n % Self::MOD),\n            //\
     \ value: (n.rem_euclid(Self::MOD)),\n        }\n    }\n\n    pub fn value(&self)\
@@ -78,7 +78,7 @@ data:
   isVerificationFile: false
   path: math/mersenne-modint/src/lib.rs
   requiredBy: []
-  timestamp: '2025-04-18 00:17:29+09:00'
+  timestamp: '2025-04-18 21:05:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_a/src/main.rs

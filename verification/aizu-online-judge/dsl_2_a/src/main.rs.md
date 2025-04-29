@@ -4,6 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/segment-tree/src/lib.rs
     title: Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: data-structure/segment-tree/src/wrapper.rs
+    title: data-structure/segment-tree/src/wrapper.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -30,10 +33,11 @@ data:
     \            }\n            _ => unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/segment-tree/src/lib.rs
+  - data-structure/segment-tree/src/wrapper.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-04-18 00:17:29+09:00'
+  timestamp: '2025-04-19 06:22:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_a/src/main.rs

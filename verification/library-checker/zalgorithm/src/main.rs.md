@@ -20,15 +20,15 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.yosupo.jp/problem/zalgorithm\n\
-    \nuse itertools::Itertools;\nuse proconio::{input, marker::Chars};\n\nuse z_algorithm::z_algorithm;\n\
-    \nfn main() {\n    input! {\n        s: Chars,\n    }\n    println!(\"{}\", z_algorithm(&s).iter().join(\"\
-    \ \"));\n}\n"
+    \nuse itertools::Itertools;\nuse proconio::{input, marker::Chars};\n\nuse z_algorithm::ZAlgorithm;\n\
+    \nfn main() {\n    input! {\n        s: Chars,\n    }\n    let mut za = ZAlgorithm::<char>::new();\n\
+    \    za.build(&s);\n    println!(\"{}\", za.get().iter().join(\" \"));\n}\n"
   dependsOn:
   - string/z-algorithm/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/zalgorithm/src/main.rs
   requiredBy: []
-  timestamp: '2025-04-14 00:13:01+09:00'
+  timestamp: '2025-04-19 04:57:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/zalgorithm/src/main.rs

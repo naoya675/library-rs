@@ -11,16 +11,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/lazy-segment-tree/src/lib.rs
       title: Lazy Segment Tree
+    - icon: ':heavy_check_mark:'
+      path: data-structure/lazy-segment-tree/src/wrapper.rs
+      title: data-structure/lazy-segment-tree/src/wrapper.rs
   - name: data-structure/segment-tree/src
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/segment-tree/src/lib.rs
       title: Segment Tree
-  - name: data-structure/trie/src
-    pages:
-    - icon: ':warning:'
-      path: data-structure/trie/src/lib.rs
-      title: Trie
+    - icon: ':heavy_check_mark:'
+      path: data-structure/segment-tree/src/wrapper.rs
+      title: data-structure/segment-tree/src/wrapper.rs
   - name: data-structure/union-find/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -36,6 +37,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: dynamic-programming/rerooting/src/lib.rs
       title: Rerooting
+    - icon: ':heavy_check_mark:'
+      path: dynamic-programming/rerooting/src/wrapper.rs
+      title: dynamic-programming/rerooting/src/wrapper.rs
   - name: graph/bellman-ford/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -91,11 +95,11 @@ data:
     - icon: ':warning:'
       path: macro/input/src/lib.rs
       title: input
-  - name: math/enumeration/src
+  - name: math/combinatorics/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: math/enumeration/src/lib.rs
-      title: Enumeration
+      path: math/combinatorics/src/lib.rs
+      title: Combinatorics
   - name: math/mersenne-modint/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -106,6 +110,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/modint/src/lib.rs
       title: Modint
+  - name: string/lcp-array/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: string/lcp-array/src/lib.rs
+      title: LCP Array
   - name: string/rolling-hash/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -116,6 +125,21 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/rolling-hash-segment-tree/src/lib.rs
       title: Rolling Hash + Segment Tree
+  - name: string/run-length/src
+    pages:
+    - icon: ':warning:'
+      path: string/run-length/src/lib.rs
+      title: Run Length
+  - name: string/suffix-array/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: string/suffix-array/src/lib.rs
+      title: Suffix Array
+  - name: string/trie/src
+    pages:
+    - icon: ':warning:'
+      path: string/trie/src/lib.rs
+      title: Trie
   - name: string/z-algorithm/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -207,11 +231,21 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_6_a/src/main.rs
       title: verification/aizu-online-judge/grl_6_a/src/main.rs
+  - name: verification/library-checker/number_of_substrings/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/number_of_substrings/src/main.rs
+      title: verification/library-checker/number_of_substrings/src/main.rs
   - name: verification/library-checker/range_affine_range_sum/src
     pages:
     - icon: ':heavy_check_mark:'
       path: verification/library-checker/range_affine_range_sum/src/main.rs
       title: verification/library-checker/range_affine_range_sum/src/main.rs
+  - name: verification/library-checker/suffixarray/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/suffixarray/src/main.rs
+      title: verification/library-checker/suffixarray/src/main.rs
   - name: verification/library-checker/unionfind/src
     pages:
     - icon: ':heavy_check_mark:'

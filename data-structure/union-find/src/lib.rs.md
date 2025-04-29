@@ -41,14 +41,14 @@ data:
     \        assert!(a < self.n);\n        let a = self.leader(a);\n        self.siz[a]\n\
     \    }\n\n    pub fn groups(&mut self) -> Vec<Vec<usize>> {\n        let mut res\
     \ = vec![vec![]; self.n];\n        for i in 0..self.n {\n            res[self.leader(i)].push(i);\n\
-    \        }\n        res.into_iter()\n            .filter(|f| !f.is_empty())\n\
-    \            .collect::<Vec<_>>()\n    }\n}\n"
+    \        }\n        res.into_iter().filter(|f| !f.is_empty()).collect::<Vec<_>>()\n\
+    \    }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/union-find/src/lib.rs
   requiredBy:
   - graph/kruskal/src/lib.rs
-  timestamp: '2024-03-22 18:13:01+09:00'
+  timestamp: '2025-04-19 04:57:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/unionfind/src/main.rs

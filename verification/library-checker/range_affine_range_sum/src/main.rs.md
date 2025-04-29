@@ -5,6 +5,9 @@ data:
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
   - icon: ':heavy_check_mark:'
+    path: data-structure/lazy-segment-tree/src/wrapper.rs
+    title: data-structure/lazy-segment-tree/src/wrapper.rs
+  - icon: ':heavy_check_mark:'
     path: math/modint/src/lib.rs
     title: Modint
   _extendedRequiredBy: []
@@ -29,21 +32,21 @@ data:
     \ Mint), (Mint, Mint)>::new(\n        n,\n        |a, b| (a.0 + b.0, a.1 + b.1),\n\
     \        (Mint::new(0), Mint::new(0)),\n        |a, b| (a.0 * b.0 + a.1 * b.1,\
     \ b.1),\n        |a, b| (a.0 * b.0, a.0 * b.1 + a.1),\n        (Mint::new(1),\
-    \ Mint::new(0)),\n    );\n    let a = a\n        .iter()\n        .map(|&a| (Mint::new(a),\
-    \ Mint::new(1)))\n        .collect::<Vec<_>>();\n    lst.build(a);\n    for _\
-    \ in 0..q {\n        input! { query: usize, }\n        match query {\n       \
-    \     0 => {\n                input! { l: usize, r: usize, b: u64, c: u64, }\n\
-    \                lst.apply(l, r, (Mint::new(b), Mint::new(c)));\n            }\n\
-    \            1 => {\n                input! { l: usize, r: usize, }\n        \
-    \        println!(\"{}\", lst.prod(l, r).0);\n            }\n            _ =>\
-    \ unreachable!(),\n        }\n    }\n}\n"
+    \ Mint::new(0)),\n    );\n    let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();\n\
+    \    lst.build(a);\n    for _ in 0..q {\n        input! { query: usize, }\n  \
+    \      match query {\n            0 => {\n                input! { l: usize, r:\
+    \ usize, b: u64, c: u64, }\n                lst.apply(l, r, (Mint::new(b), Mint::new(c)));\n\
+    \            }\n            1 => {\n                input! { l: usize, r: usize,\
+    \ }\n                println!(\"{}\", lst.prod(l, r).0);\n            }\n    \
+    \        _ => unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
+  - data-structure/lazy-segment-tree/src/wrapper.rs
   - math/modint/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/range_affine_range_sum/src/main.rs
   requiredBy: []
-  timestamp: '2025-04-18 00:17:29+09:00'
+  timestamp: '2025-04-19 06:22:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/range_affine_range_sum/src/main.rs
