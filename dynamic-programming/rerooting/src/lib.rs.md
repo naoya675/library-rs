@@ -79,7 +79,7 @@ data:
   path: dynamic-programming/rerooting/src/lib.rs
   requiredBy:
   - dynamic-programming/rerooting/src/wrapper.rs
-  timestamp: '2025-04-19 06:22:15+09:00'
+  timestamp: '2025-05-01 00:33:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_5_a/src/main.rs
@@ -92,4 +92,6 @@ title: Rerooting
 
 ## Reference
 
-[https://atcoder.jp/contests/abc222/editorial/2749](https://atcoder.jp/contests/abc222/editorial/2749)
+- [https://atcoder.jp/contests/abc222/editorial/2749](https://atcoder.jp/contests/abc222/editorial/2749)
+- [https://ei1333.hateblo.jp/entry/2017/04/10/224413](https://ei1333.hateblo.jp/entry/2017/04/10/224413)
+- [https://ei1333.hateblo.jp/entry/2018/12/21/004022](https://ei1333.hateblo.jp/entry/2018/12/21/004022)

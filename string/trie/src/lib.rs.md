@@ -76,4 +76,4 @@ assert!(trie.search_prefix(&c) == (true, 2));
 
 ### Usage Example
 
-[https://atcoder.jp/contests/abc353/tasks/abc353_e](https://atcoder.jp/contests/abc353/tasks/abc353_e)
+- [https://atcoder.jp/contests/abc353/tasks/abc353_e](https://atcoder.jp/contests/abc353/tasks/abc353_e)

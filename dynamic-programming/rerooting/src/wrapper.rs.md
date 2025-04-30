@@ -27,17 +27,17 @@ data:
   code: "use crate::Rerooting;\n\npub struct RerootingDiameter;\n\nimpl RerootingDiameter\
     \ {\n    pub fn new(\n        n: usize,\n    ) -> Rerooting<usize, usize, impl\
     \ Fn(usize, usize) -> usize, impl Fn() -> usize, impl Fn() -> usize, impl Fn(usize,\
-    \ usize, usize, usize) -> usize> {\n        let merge = |a: usize, b: usize| std::cmp::max(a,\
-    \ b);\n        let e = || 0;\n        let leaf = || 0;\n        let apply = |a:\
-    \ usize, _: usize, _: usize, w: usize| a + w;\n        Rerooting::new(n, merge,\
-    \ e, leaf, apply)\n    }\n}\n\n// reference: https://atcoder.jp/contests/abc222/editorial/2749\n"
+    \ usize, usize, usize) -> usize> {\n        Rerooting::new(\n            n,\n\
+    \            |a: usize, b: usize| std::cmp::max(a, b),\n            || 0,\n  \
+    \          || 0,\n            |a: usize, _: usize, _: usize, w: usize| a + w,\n\
+    \        )\n    }\n}\n\n// reference: https://atcoder.jp/contests/abc222/editorial/2749\n"
   dependsOn:
   - dynamic-programming/rerooting/src/lib.rs
   isVerificationFile: false
   path: dynamic-programming/rerooting/src/wrapper.rs
   requiredBy:
   - dynamic-programming/rerooting/src/lib.rs
-  timestamp: '2025-04-19 06:22:15+09:00'
+  timestamp: '2025-05-01 00:33:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_5_a/src/main.rs

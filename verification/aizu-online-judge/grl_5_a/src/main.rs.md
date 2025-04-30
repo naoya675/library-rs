@@ -39,7 +39,7 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_5_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-04-19 06:22:15+09:00'
+  timestamp: '2025-05-01 00:33:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_5_a/src/main.rs

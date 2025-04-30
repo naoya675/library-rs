@@ -24,42 +24,44 @@ data:
     \ MOD: u64> {\n    value: u64,\n}\n\nimpl<const MOD: u64> StaticModint<MOD> {\n\
     \    pub fn new(n: u64) -> Self {\n        Self {\n            value: (n % MOD),\n\
     \            // value: (n.rem_euclid(MOD)),\n        }\n    }\n\n    pub fn value(&self)\
-    \ -> u64 {\n        self.value\n    }\n\n    fn ext_gcd(&self, a: i64, m: i64)\
-    \ -> (i64, i64) {\n        let (mut a, mut b) = (a, m);\n        let (mut u, mut\
-    \ v) = (1, 0);\n        while b != 0 {\n            let t = a / b;\n         \
-    \   a -= t * b;\n            u -= t * v;\n            std::mem::swap(&mut a, &mut\
-    \ b);\n            std::mem::swap(&mut u, &mut v);\n        }\n        (u.rem_euclid(m),\
-    \ v.rem_euclid(m))\n    }\n\n    pub fn pow(&self, mut n: u64) -> Self {\n   \
-    \     let mut value = *self;\n        let mut res = Self::new(1);\n        while\
-    \ n > 0 {\n            if n & 1 != 0 {\n                res = res * value;\n \
-    \           }\n            value = value * value;\n            n >>= 1;\n    \
-    \    }\n        res\n    }\n\n    pub fn inv(&self) -> Self {\n        // self.pow(MOD\
-    \ - 2)\n        let (x, _) = self.ext_gcd(self.value() as i64, MOD as i64);\n\
-    \        Self { value: x as u64 }\n    }\n}\n\nimpl<const MOD: u64> std::ops::Add\
-    \ for StaticModint<MOD> {\n    type Output = Self;\n    fn add(self, rhs: Self)\
-    \ -> Self {\n        Self {\n            value: (self.value + rhs.value) % MOD,\n\
-    \        }\n    }\n}\n\nimpl<const MOD: u64> std::ops::AddAssign for StaticModint<MOD>\
-    \ {\n    fn add_assign(&mut self, rhs: Self) {\n        *self = *self + rhs;\n\
-    \    }\n}\n\nimpl<const MOD: u64> std::ops::Sub for StaticModint<MOD> {\n    type\
-    \ Output = Self;\n    fn sub(mut self, rhs: Self) -> Self {\n        if self.value\
-    \ < rhs.value {\n            self.value += MOD;\n        }\n        Self {\n \
-    \           value: (self.value - rhs.value) % MOD,\n        }\n    }\n}\n\nimpl<const\
-    \ MOD: u64> std::ops::SubAssign for StaticModint<MOD> {\n    fn sub_assign(&mut\
-    \ self, rhs: Self) {\n        *self = *self - rhs;\n    }\n}\n\nimpl<const MOD:\
-    \ u64> std::ops::Mul for StaticModint<MOD> {\n    type Output = Self;\n    fn\
-    \ mul(self, rhs: Self) -> Self {\n        Self {\n            value: (self.value\
-    \ * rhs.value) % MOD,\n        }\n    }\n}\n\nimpl<const MOD: u64> std::ops::MulAssign\
-    \ for StaticModint<MOD> {\n    fn mul_assign(&mut self, rhs: Self) {\n       \
-    \ *self = *self * rhs;\n    }\n}\n\nimpl<const MOD: u64> std::ops::Div for StaticModint<MOD>\
-    \ {\n    type Output = Self;\n    fn div(self, rhs: Self) -> Self {\n        if\
-    \ rhs.value == 0 {\n            panic!();\n        }\n        self * rhs.inv()\n\
-    \    }\n}\n\nimpl<const MOD: u64> std::ops::DivAssign for StaticModint<MOD> {\n\
-    \    fn div_assign(&mut self, rhs: Self) {\n        *self = *self / rhs;\n   \
-    \ }\n}\n\nimpl<const MOD: u64> std::ops::Neg for StaticModint<MOD> {\n    type\
-    \ Output = Self;\n    fn neg(self) -> Self {\n        Self::new(0) - self\n  \
-    \  }\n}\n\nimpl<const MOD: u64> num_traits::Zero for StaticModint<MOD> {\n   \
-    \ fn zero() -> Self {\n        Self::new(0)\n    }\n\n    fn is_zero(&self) ->\
-    \ bool {\n        Self::new(0) == *self\n    }\n}\n\nimpl<const MOD: u64> num_traits::One\
+    \ -> u64 {\n        self.value\n    }\n\n    fn ext_gcd(&self, a: i64, b: i64)\
+    \ -> (i64, i64, i64) {\n        let (mut x0, mut y0, mut r0) = (1, 0, a);\n  \
+    \      let (mut x1, mut y1, mut r1) = (0, 1, b);\n        while r1 != 0 {\n  \
+    \          let t = r0 / r1;\n            x0 -= t * x1;\n            y0 -= t *\
+    \ y1;\n            r0 -= t * r1;\n            std::mem::swap(&mut x0, &mut x1);\n\
+    \            std::mem::swap(&mut y0, &mut y1);\n            std::mem::swap(&mut\
+    \ r0, &mut r1);\n        }\n        // (x0, y0, r0)\n        (x0.rem_euclid(b),\
+    \ y0.rem_euclid(b), r0.rem_euclid(b))\n    }\n\n    pub fn pow(&self, mut n: u64)\
+    \ -> Self {\n        let mut value = *self;\n        let mut res = Self::new(1);\n\
+    \        while n > 0 {\n            if n & 1 != 0 {\n                res = res\
+    \ * value;\n            }\n            value = value * value;\n            n >>=\
+    \ 1;\n        }\n        res\n    }\n\n    pub fn inv(&self) -> Self {\n     \
+    \   let (x, _, _) = self.ext_gcd(self.value() as i64, MOD as i64);\n        Self\
+    \ { value: x as u64 }\n        // self.pow(MOD - 2)\n    }\n}\n\nimpl<const MOD:\
+    \ u64> std::ops::Add for StaticModint<MOD> {\n    type Output = Self;\n    fn\
+    \ add(self, rhs: Self) -> Self {\n        Self {\n            value: (self.value\
+    \ + rhs.value) % MOD,\n        }\n    }\n}\n\nimpl<const MOD: u64> std::ops::AddAssign\
+    \ for StaticModint<MOD> {\n    fn add_assign(&mut self, rhs: Self) {\n       \
+    \ *self = *self + rhs;\n    }\n}\n\nimpl<const MOD: u64> std::ops::Sub for StaticModint<MOD>\
+    \ {\n    type Output = Self;\n    fn sub(mut self, rhs: Self) -> Self {\n    \
+    \    if self.value < rhs.value {\n            self.value += MOD;\n        }\n\
+    \        Self {\n            value: (self.value - rhs.value) % MOD,\n        }\n\
+    \    }\n}\n\nimpl<const MOD: u64> std::ops::SubAssign for StaticModint<MOD> {\n\
+    \    fn sub_assign(&mut self, rhs: Self) {\n        *self = *self - rhs;\n   \
+    \ }\n}\n\nimpl<const MOD: u64> std::ops::Mul for StaticModint<MOD> {\n    type\
+    \ Output = Self;\n    fn mul(self, rhs: Self) -> Self {\n        Self {\n    \
+    \        value: (self.value * rhs.value) % MOD,\n        }\n    }\n}\n\nimpl<const\
+    \ MOD: u64> std::ops::MulAssign for StaticModint<MOD> {\n    fn mul_assign(&mut\
+    \ self, rhs: Self) {\n        *self = *self * rhs;\n    }\n}\n\nimpl<const MOD:\
+    \ u64> std::ops::Div for StaticModint<MOD> {\n    type Output = Self;\n    fn\
+    \ div(self, rhs: Self) -> Self {\n        if rhs.value == 0 {\n            panic!();\n\
+    \        }\n        self * rhs.inv()\n    }\n}\n\nimpl<const MOD: u64> std::ops::DivAssign\
+    \ for StaticModint<MOD> {\n    fn div_assign(&mut self, rhs: Self) {\n       \
+    \ *self = *self / rhs;\n    }\n}\n\nimpl<const MOD: u64> std::ops::Neg for StaticModint<MOD>\
+    \ {\n    type Output = Self;\n    fn neg(self) -> Self {\n        Self::new(0)\
+    \ - self\n    }\n}\n\nimpl<const MOD: u64> num_traits::Zero for StaticModint<MOD>\
+    \ {\n    fn zero() -> Self {\n        Self::new(0)\n    }\n\n    fn is_zero(&self)\
+    \ -> bool {\n        Self::new(0) == *self\n    }\n}\n\nimpl<const MOD: u64> num_traits::One\
     \ for StaticModint<MOD> {\n    fn one() -> Self {\n        Self::new(1)\n    }\n\
     }\n\nimpl<const MOD: u64> std::fmt::Display for StaticModint<MOD> {\n    fn fmt(&self,\
     \ f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {\n        write!(f, \"\
@@ -80,7 +82,7 @@ data:
   isVerificationFile: false
   path: math/modint/src/lib.rs
   requiredBy: []
-  timestamp: '2025-04-18 00:17:29+09:00'
+  timestamp: '2025-05-01 00:33:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/range_affine_range_sum/src/main.rs
@@ -94,4 +96,4 @@ title: Modint
 
 ## Reference
 
-[https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c](https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c)
+- [https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c](https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c)
