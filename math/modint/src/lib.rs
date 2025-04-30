@@ -15,17 +15,20 @@ impl<const MOD: u64> StaticModint<MOD> {
         self.value
     }
 
-    fn ext_gcd(&self, a: i64, m: i64) -> (i64, i64) {
-        let (mut a, mut b) = (a, m);
-        let (mut u, mut v) = (1, 0);
-        while b != 0 {
-            let t = a / b;
-            a -= t * b;
-            u -= t * v;
-            std::mem::swap(&mut a, &mut b);
-            std::mem::swap(&mut u, &mut v);
+    fn ext_gcd(&self, a: i64, b: i64) -> (i64, i64, i64) {
+        let (mut x0, mut y0, mut r0) = (1, 0, a);
+        let (mut x1, mut y1, mut r1) = (0, 1, b);
+        while r1 != 0 {
+            let t = r0 / r1;
+            x0 -= t * x1;
+            y0 -= t * y1;
+            r0 -= t * r1;
+            std::mem::swap(&mut x0, &mut x1);
+            std::mem::swap(&mut y0, &mut y1);
+            std::mem::swap(&mut r0, &mut r1);
         }
-        (u.rem_euclid(m), v.rem_euclid(m))
+        // (x0, y0, r0)
+        (x0.rem_euclid(b), y0.rem_euclid(b), r0.rem_euclid(b))
     }
 
     pub fn pow(&self, mut n: u64) -> Self {
@@ -42,9 +45,9 @@ impl<const MOD: u64> StaticModint<MOD> {
     }
 
     pub fn inv(&self) -> Self {
-        // self.pow(MOD - 2)
-        let (x, _) = self.ext_gcd(self.value() as i64, MOD as i64);
+        let (x, _, _) = self.ext_gcd(self.value() as i64, MOD as i64);
         Self { value: x as u64 }
+        // self.pow(MOD - 2)
     }
 }
 
