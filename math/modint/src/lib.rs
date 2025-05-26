@@ -124,7 +124,12 @@ impl<const MOD: u64> std::ops::Neg for StaticModint<MOD> {
     }
 }
 
-impl<const MOD: u64> num_traits::Zero for StaticModint<MOD> {
+pub trait Zero {
+    fn zero() -> Self;
+    fn is_zero(&self) -> bool;
+}
+
+impl<const MOD: u64> Zero for StaticModint<MOD> {
     fn zero() -> Self {
         Self::new(0)
     }
@@ -134,9 +139,18 @@ impl<const MOD: u64> num_traits::Zero for StaticModint<MOD> {
     }
 }
 
-impl<const MOD: u64> num_traits::One for StaticModint<MOD> {
+pub trait One {
+    fn one() -> Self;
+    fn is_one(&self) -> bool;
+}
+
+impl<const MOD: u64> One for StaticModint<MOD> {
     fn one() -> Self {
         Self::new(1)
+    }
+
+    fn is_one(&self) -> bool {
+        Self::new(1) == *self
     }
 }
 

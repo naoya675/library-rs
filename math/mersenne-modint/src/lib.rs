@@ -125,7 +125,12 @@ impl std::ops::Neg for MersenneModint {
     }
 }
 
-impl num_traits::Zero for MersenneModint {
+pub trait Zero {
+    fn zero() -> Self;
+    fn is_zero(&self) -> bool;
+}
+
+impl Zero for MersenneModint {
     fn zero() -> Self {
         Self::new(0)
     }
@@ -135,9 +140,18 @@ impl num_traits::Zero for MersenneModint {
     }
 }
 
-impl num_traits::One for MersenneModint {
+pub trait One {
+    fn one() -> Self;
+    fn is_one(&self) -> bool;
+}
+
+impl One for MersenneModint {
     fn one() -> Self {
         Self::new(1)
+    }
+
+    fn is_one(&self) -> bool {
+        Self::new(1) == *self
     }
 }
 

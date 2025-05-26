@@ -6,7 +6,6 @@ pub struct RollingHash<T> {
 
 impl<T: Copy + From<u64>> RollingHash<T>
 where
-    T: std::ops::Neg<Output = T>,
     T: std::ops::Add<T, Output = T>,
     T: std::ops::AddAssign,
     T: std::ops::Sub<T, Output = T>,

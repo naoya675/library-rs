@@ -6,9 +6,9 @@ pub struct FenwickTree<T> {
     size: usize,
 }
 
+// impl<T: Copy + internal_trait::Integral> FenwickTree<T>
 impl<T: Copy> FenwickTree<T>
 where
-    T: std::ops::Neg<Output = T>,
     T: std::ops::Add<T, Output = T>,
     T: std::ops::AddAssign,
     T: std::ops::Sub<T, Output = T>,

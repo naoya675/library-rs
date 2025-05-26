@@ -7,7 +7,6 @@ pub struct Combinatorics<T> {
 
 impl<T: Copy + From<u64>> Combinatorics<T>
 where
-    T: std::ops::Neg<Output = T>,
     T: std::ops::Add<T, Output = T>,
     T: std::ops::AddAssign,
     T: std::ops::Sub<T, Output = T>,
@@ -34,35 +33,19 @@ where
         Self { fact, finv, inv }
     }
 
-    fn update(&mut self, n: usize) {
-        if self.fact.len() < n + 1 {
-            let len = std::cmp::max(self.fact.len(), 1);
-            self.fact.resize(n + 1, T::from(1u64));
-            self.finv.resize(n + 1, T::from(1u64));
-            self.inv.resize(n + 1, T::from(1u64));
-            for i in len - 1..n {
-                self.fact[i + 1] = self.fact[i] * T::from((i + 1) as u64);
-            }
-            self.finv[n] = T::from(1u64) / self.fact[n];
-            for i in (len - 1..n).rev() {
-                self.finv[i] = self.finv[i + 1] * T::from((i + 1) as u64);
-            }
-            for i in len - 1..n {
-                self.inv[i + 1] = self.finv[i + 1] * self.fact[i - 1];
-            }
-        }
-    }
-
     pub fn fact(&mut self, n: usize) -> T {
-        // assert!(n <= self.fact.len());
-        self.update(n);
+        assert!(n <= self.fact.len());
         self.fact[n]
     }
 
     pub fn finv(&mut self, n: usize) -> T {
-        // assert!(n <= self.finv.len());
-        self.update(n);
+        assert!(n <= self.finv.len());
         self.finv[n]
+    }
+
+    pub fn inv(&mut self, n: usize) -> T {
+        assert!(n <= self.inv.len());
+        self.inv[n]
     }
 
     // permutation

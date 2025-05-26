@@ -6,6 +6,7 @@ pub struct WeightedUnionFind<T> {
     diff_weight: Vec<T>,
 }
 
+// impl<T: Copy + internal_trait::Integral> WeightedUnionFind<T>
 impl<T: Copy> WeightedUnionFind<T>
 where
     T: std::ops::Neg<Output = T>,
@@ -41,7 +42,7 @@ where
         } else {
             self.par[a] = b;
             self.siz[b] += self.siz[a];
-            self.diff_weight[a] = -w;
+            self.diff_weight[a] = w.neg();
         }
         true
     }

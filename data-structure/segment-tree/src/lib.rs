@@ -41,10 +41,12 @@ impl<T: Copy> SegmentTree<T> {
         for i in 1..self.size_log + 1 {
             self.update(k >> i);
         }
-        // while k > 0 {
-        //     k >>= 1;
-        //     self.update(k);
-        // }
+        /*
+        while k > 0 {
+            k >>= 1;
+            self.update(k);
+        }
+        */
     }
 
     pub fn get(&mut self, mut k: usize) -> T {
