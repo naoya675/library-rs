@@ -1,3 +1,5 @@
+//! https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct StaticModint<const MOD: u64> {
     value: u64,

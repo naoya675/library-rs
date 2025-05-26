@@ -1,3 +1,5 @@
+//! https://betrue12.hateblo.jp/entry/2020/09/23/005940
+
 use crate::LazySegmentTree;
 
 pub struct RangeAddRangeMinimumQuery;

@@ -47,6 +47,7 @@ impl ParenthesisCheckQuery {
 }
 
 /*
+// reference: https://atcoder.jp/contests/abc223/editorial/2774
 pub struct ParenthesisCheckQuery;
 
 impl ParenthesisCheckQuery {
@@ -68,6 +69,4 @@ impl ParenthesisCheckQuery {
         st
     }
 }
-
-reference: https://atcoder.jp/contests/abc223/editorial/2774
 */

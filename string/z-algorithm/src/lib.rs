@@ -1,3 +1,5 @@
+//! https://heno239.hatenablog.com/entry/2020/07/07/140651
+
 use std::collections::VecDeque;
 
 #[derive(Debug, Clone)]

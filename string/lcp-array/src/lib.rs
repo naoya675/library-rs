@@ -1,3 +1,5 @@
+//! https://atcoder.github.io/ac-library/production/document_en/string.html
+
 #[derive(Debug)]
 pub struct LCPArray;
 

@@ -1,3 +1,5 @@
+//! https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7
+
 macro_rules! chmax {
     ($base:expr, $($ex:expr),+ $(,)*) => {
         let max = max!($($ex),+);
