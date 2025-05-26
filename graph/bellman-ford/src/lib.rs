@@ -1,14 +1,12 @@
-pub type Cost = i64;
-
 #[derive(Debug, Clone, Copy)]
 pub struct Edge {
     from: usize,
     to: usize,
-    cost: Cost,
+    cost: i64,
 }
 
 impl Edge {
-    pub fn new(from: usize, to: usize, cost: Cost) -> Self {
+    pub fn new(from: usize, to: usize, cost: i64) -> Self {
         Self { from, to, cost }
     }
 }
@@ -24,17 +22,17 @@ impl BellmanFord {
         Self { size, edge: vec![] }
     }
 
-    pub fn add_edge(&mut self, from: usize, to: usize, cost: Cost) {
+    pub fn add_edge(&mut self, from: usize, to: usize, cost: i64) {
         self.edge.push(Edge::new(from, to, cost));
     }
 
-    pub fn bellman_ford(&mut self, s: usize) -> (bool, Vec<Cost>) {
-        let mut dist = vec![Cost::MAX / 4; self.size];
+    pub fn bellman_ford(&mut self, s: usize) -> (bool, Vec<i64>) {
+        let mut dist = vec![i64::MAX / 4; self.size];
         dist[s] = 0;
         for _ in 0..self.size {
             let mut update = false;
             for edge in &self.edge {
-                if dist[edge.from] == Cost::MAX / 4 {
+                if dist[edge.from] == i64::MAX / 4 {
                     continue;
                 }
                 if dist[edge.from] + edge.cost < dist[edge.to] {
@@ -48,11 +46,11 @@ impl BellmanFord {
         }
         for _ in 0..self.size {
             for edge in &self.edge {
-                if dist[edge.from] == Cost::MAX / 4 {
+                if dist[edge.from] == i64::MAX / 4 {
                     continue;
                 }
                 if dist[edge.from] + edge.cost < dist[edge.to] {
-                    dist[edge.to] = -(Cost::MAX / 4);
+                    dist[edge.to] = -(i64::MAX / 4);
                 }
             }
         }

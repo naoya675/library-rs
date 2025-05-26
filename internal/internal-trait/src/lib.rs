@@ -6,8 +6,8 @@ pub trait Integral:
     + std::ops::SubAssign
     + std::ops::Mul<Output = Self>
     + std::ops::MulAssign
-    + std::ops::Mul<Output = Self>
-    + std::ops::MulAssign
+    + std::ops::Div<Output = Self>
+    + std::ops::DivAssign
     + Ord
     + Zero
     + One

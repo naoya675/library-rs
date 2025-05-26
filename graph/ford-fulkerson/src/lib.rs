@@ -1,14 +1,12 @@
-pub type Cap = i64;
-
 #[derive(Debug, Clone, Copy)]
 pub struct Edge {
     to: usize,
-    cap: Cap,
+    cap: i64,
     rev: usize,
 }
 
 impl Edge {
-    pub fn new(to: usize, cap: Cap, rev: usize) -> Self {
+    pub fn new(to: usize, cap: i64, rev: usize) -> Self {
         Self { to, cap, rev }
     }
 }
@@ -29,20 +27,20 @@ impl FordFulkerson {
         }
     }
 
-    pub fn add_edge(&mut self, a: usize, b: usize, c: Cap) {
+    pub fn add_edge(&mut self, a: usize, b: usize, c: i64) {
         let alen = self.graph[a].len();
         let blen = self.graph[b].len();
         self.graph[a].push(Edge::new(b, c, blen));
         self.graph[b].push(Edge::new(a, 0, alen));
     }
 
-    pub fn flow(&mut self, s: usize, t: usize) -> Cap {
+    pub fn flow(&mut self, s: usize, t: usize) -> i64 {
         let mut total_flow = 0;
         loop {
             for i in 0..self.size {
                 self.used[i] = false;
             }
-            let flow = self.dfs(s, t, Cap::MAX);
+            let flow = self.dfs(s, t, i64::MAX);
             if flow == 0 {
                 break;
             }
@@ -51,7 +49,7 @@ impl FordFulkerson {
         total_flow
     }
 
-    fn dfs(&mut self, v: usize, t: usize, f: Cap) -> Cap {
+    fn dfs(&mut self, v: usize, t: usize, f: i64) -> i64 {
         if v == t {
             return f;
         }

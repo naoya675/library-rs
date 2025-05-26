@@ -1,14 +1,12 @@
-pub type Cost = i64;
-
 #[derive(Debug, Clone, Copy)]
 pub struct Edge {
     from: usize,
     to: usize,
-    cost: Cost,
+    cost: i64,
 }
 
 impl Edge {
-    pub fn new(from: usize, to: usize, cost: Cost) -> Self {
+    pub fn new(from: usize, to: usize, cost: i64) -> Self {
         Self { from, to, cost }
     }
 }
@@ -24,12 +22,12 @@ impl WarshallFloyd {
         Self { size, edge: vec![] }
     }
 
-    pub fn add_edge(&mut self, from: usize, to: usize, cost: Cost) {
+    pub fn add_edge(&mut self, from: usize, to: usize, cost: i64) {
         self.edge.push(Edge::new(from, to, cost));
     }
 
-    pub fn warshall_floyd(&mut self) -> (bool, Vec<Vec<Cost>>) {
-        let mut dist = vec![vec![Cost::MAX / 4; self.size]; self.size];
+    pub fn warshall_floyd(&mut self) -> (bool, Vec<Vec<i64>>) {
+        let mut dist = vec![vec![i64::MAX / 4; self.size]; self.size];
         for i in 0..self.size {
             dist[i][i] = 0;
         }

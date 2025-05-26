@@ -1,16 +1,14 @@
 use union_find::UnionFind;
 
-pub type Cost = i64;
-
 #[derive(Debug, Clone, Copy)]
 pub struct Edge {
     from: usize,
     to: usize,
-    cost: Cost,
+    cost: i64,
 }
 
 impl Edge {
-    pub fn new(from: usize, to: usize, cost: Cost) -> Self {
+    pub fn new(from: usize, to: usize, cost: i64) -> Self {
         Self { from, to, cost }
     }
 }
@@ -26,11 +24,11 @@ impl Kruskal {
         Self { size, edge: vec![] }
     }
 
-    pub fn add_edge(&mut self, from: usize, to: usize, cost: Cost) {
+    pub fn add_edge(&mut self, from: usize, to: usize, cost: i64) {
         self.edge.push(Edge::new(from, to, cost));
     }
 
-    pub fn minimum_spanning_tree(&mut self) -> (Cost, Vec<Edge>) {
+    pub fn minimum_spanning_tree(&mut self) -> (i64, Vec<Edge>) {
         self.edge.sort_by(|a, b| a.cost.cmp(&b.cost));
         let mut uf = UnionFind::new(self.size);
         let mut res = 0;
@@ -44,7 +42,7 @@ impl Kruskal {
         (res, res_edge)
     }
 
-    pub fn maximum_spanning_tree(&mut self) -> (Cost, Vec<Edge>) {
+    pub fn maximum_spanning_tree(&mut self) -> (i64, Vec<Edge>) {
         self.edge.sort_by(|a, b| b.cost.cmp(&a.cost));
         let mut uf = UnionFind::new(self.size);
         let mut res = 0;
@@ -59,7 +57,7 @@ impl Kruskal {
     }
 }
 
-pub fn minimum_spanning_tree(size: usize, edge: &mut Vec<(usize, usize, i64)>) -> (Cost, Vec<(usize, usize, i64)>) {
+pub fn minimum_spanning_tree(size: usize, edge: &mut Vec<(usize, usize, i64)>) -> (i64, Vec<(usize, usize, i64)>) {
     edge.sort_by(|a, b| a.2.cmp(&b.2));
     let mut uf = UnionFind::new(size);
     let mut res = 0;
@@ -73,7 +71,7 @@ pub fn minimum_spanning_tree(size: usize, edge: &mut Vec<(usize, usize, i64)>) -
     (res, res_edge)
 }
 
-pub fn maximum_spanning_tree(size: usize, edge: &mut Vec<(usize, usize, i64)>) -> (Cost, Vec<(usize, usize, i64)>) {
+pub fn maximum_spanning_tree(size: usize, edge: &mut Vec<(usize, usize, i64)>) -> (i64, Vec<(usize, usize, i64)>) {
     edge.sort_by(|a, b| b.2.cmp(&a.2));
     let mut uf = UnionFind::new(size);
     let mut res = 0;

@@ -1,16 +1,14 @@
 use std::collections::BinaryHeap;
 
-pub type Cost = i64;
-
 #[derive(Debug, Clone, Copy)]
 pub struct Edge {
     from: usize,
     to: usize,
-    cost: Cost,
+    cost: i64,
 }
 
 impl Edge {
-    pub fn new(from: usize, to: usize, cost: Cost) -> Self {
+    pub fn new(from: usize, to: usize, cost: i64) -> Self {
         Self { from, to, cost }
     }
 }
@@ -29,14 +27,14 @@ impl Dijkstra {
         }
     }
 
-    pub fn add_edge(&mut self, from: usize, to: usize, cost: Cost) {
+    pub fn add_edge(&mut self, from: usize, to: usize, cost: i64) {
         self.graph[from].push(Edge::new(from, to, cost));
     }
 
-    pub fn dijkstra(&mut self, s: usize) -> Vec<Cost> {
-        let mut dist = vec![Cost::MAX / 4; self.size];
+    pub fn dijkstra(&mut self, s: usize) -> Vec<i64> {
+        let mut dist = vec![i64::MAX / 4; self.size];
+        let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();
         dist[s] = 0;
-        let mut heap: BinaryHeap<(Cost, usize)> = BinaryHeap::new();
         heap.push((-dist[s], s));
         while let Some((d, from)) = heap.pop() {
             if dist[from] < -d {
@@ -52,12 +50,12 @@ impl Dijkstra {
         dist
     }
 
-    pub fn dijkstra_prev(&mut self, s: usize) -> (Vec<Cost>, Vec<usize>) {
-        let mut dist = vec![Cost::MAX / 4; self.size];
-        let mut prev = vec![self.size; self.size];
+    pub fn dijkstra_prev(&mut self, s: usize) -> (Vec<i64>, Vec<usize>) {
+        let mut dist = vec![i64::MAX / 4; self.size];
+        let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();
         dist[s] = 0;
-        let mut heap: BinaryHeap<(Cost, usize)> = BinaryHeap::new();
         heap.push((-dist[s], s));
+        let mut prev = vec![self.size; self.size];
         while let Some((d, from)) = heap.pop() {
             if dist[from] < -d {
                 continue;
@@ -76,8 +74,8 @@ impl Dijkstra {
 
 pub fn dijkstra(size: usize, graph: &Vec<Vec<(usize, i64)>>, s: usize) -> Vec<i64> {
     let mut dist = vec![i64::MAX / 4; size];
-    dist[s] = 0;
     let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();
+    dist[s] = 0;
     heap.push((-dist[s], s));
     while let Some((d, from)) = heap.pop() {
         if dist[from] < -d {
