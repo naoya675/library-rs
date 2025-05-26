@@ -13,14 +13,16 @@ data:
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
+    links:
+    - https://atcoder.github.io/ac-library/production/document_en/string.html
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "#[derive(Debug)]\npub struct SuffixArray;\n\nimpl SuffixArray {\n    fn sa_naive<T:\
+  code: "//! https://atcoder.github.io/ac-library/production/document_en/string.html\n\
+    \n#[derive(Debug)]\npub struct SuffixArray;\n\nimpl SuffixArray {\n    fn sa_naive<T:\
     \ Copy + Ord + PartialOrd>(s: &Vec<T>) -> Vec<usize> {\n        let n = s.len();\n\
     \        let mut sa = (0..n).collect::<Vec<usize>>();\n        sa.sort_by(|&a,\
     \ &b| {\n            if a == b {\n                return std::cmp::Ordering::Greater;\n\
@@ -111,7 +113,7 @@ data:
   isVerificationFile: false
   path: string/suffix-array/src/lib.rs
   requiredBy: []
-  timestamp: '2025-04-27 00:57:20+09:00'
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/number_of_substrings/src/main.rs
@@ -122,7 +124,3 @@ title: Suffix Array
 ---
 
 ## Description
-
-## Reference
-
-- [https://atcoder.github.io/ac-library/production/document_en/string.html](https://atcoder.github.io/ac-library/production/document_en/string.html)

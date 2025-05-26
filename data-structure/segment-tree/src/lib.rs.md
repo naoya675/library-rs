@@ -22,18 +22,20 @@ data:
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
+    links:
+    - https://atcoder.github.io/ac-library/production/document_en/segtree.html
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "mod wrapper;\npub use wrapper::*;\n\n#[derive(Debug, Clone)]\npub struct\
-    \ SegmentTree<T> {\n    tree: Vec<T>,\n    size: usize,\n    size_log: usize,\n\
-    \    op: fn(T, T) -> T, // evaluation funciton\n    e: T,              // identity\
-    \ element\n    n: usize,\n}\n\nimpl<T: Copy> SegmentTree<T> {\n    pub fn new(n:\
-    \ usize, op: fn(T, T) -> T, e: T) -> Self {\n        let size = n.next_power_of_two();\n\
+  code: "//! https://atcoder.github.io/ac-library/production/document_en/segtree.html\n\
+    \nmod wrapper;\npub use wrapper::*;\n\n#[derive(Debug, Clone)]\npub struct SegmentTree<T>\
+    \ {\n    tree: Vec<T>,\n    size: usize,\n    size_log: usize,\n    op: fn(T,\
+    \ T) -> T, // evaluation funciton\n    e: T,              // identity element\n\
+    \    n: usize,\n}\n\nimpl<T: Copy> SegmentTree<T> {\n    pub fn new(n: usize,\
+    \ op: fn(T, T) -> T, e: T) -> Self {\n        let size = n.next_power_of_two();\n\
     \        let size_log = (size.ilog2() + 1) as usize;\n        Self {\n       \
     \     tree: vec![e; 2 * size],\n            size,\n            size_log,\n   \
     \         op,\n            e,\n            n,\n        }\n    }\n\n    pub fn\
@@ -87,9 +89,9 @@ data:
   isVerificationFile: false
   path: data-structure/segment-tree/src/lib.rs
   requiredBy:
-  - data-structure/segment-tree/src/wrapper.rs
   - string/rolling-hash-segment-tree/src/lib.rs
-  timestamp: '2025-04-19 06:22:15+09:00'
+  - data-structure/segment-tree/src/wrapper.rs
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_b/src/main.rs
@@ -100,7 +102,3 @@ title: Segment Tree
 ---
 
 ## Description
-
-## Reference
-
-- [https://atcoder.github.io/ac-library/production/document_en/segtree.html](https://atcoder.github.io/ac-library/production/document_en/segtree.html)

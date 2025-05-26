@@ -2,12 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: dynamic-programming/rerooting/src/lib.rs
-    title: Rerooting
+    path: tree/rerooting/src/lib.rs
+    title: tree/rerooting/src/lib.rs
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: dynamic-programming/rerooting/src/lib.rs
-    title: Rerooting
+    path: tree/rerooting/src/lib.rs
+    title: tree/rerooting/src/lib.rs
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/grl_5_a/src/main.rs
@@ -24,27 +24,27 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "use crate::Rerooting;\n\npub struct RerootingDiameter;\n\nimpl RerootingDiameter\
-    \ {\n    pub fn new(\n        n: usize,\n    ) -> Rerooting<usize, usize, impl\
-    \ Fn(usize, usize) -> usize, impl Fn() -> usize, impl Fn() -> usize, impl Fn(usize,\
-    \ usize, usize, usize) -> usize> {\n        Rerooting::new(\n            n,\n\
-    \            |a: usize, b: usize| std::cmp::max(a, b),\n            || 0,\n  \
-    \          || 0,\n            |a: usize, _: usize, _: usize, w: usize| a + w,\n\
-    \        )\n    }\n}\n\n// reference: https://atcoder.jp/contests/abc222/editorial/2749\n"
+  code: "use crate::Rerooting;\n\n// reference: https://atcoder.jp/contests/abc222/editorial/2749\n\
+    pub struct RerootingDiameter;\n\nimpl RerootingDiameter {\n    pub fn new(\n \
+    \       n: usize,\n    ) -> Rerooting<usize, usize, impl Fn(usize, usize) -> usize,\
+    \ impl Fn() -> usize, impl Fn() -> usize, impl Fn(usize, usize, usize, usize)\
+    \ -> usize> {\n        Rerooting::new(\n            n,\n            |a: usize,\
+    \ b: usize| std::cmp::max(a, b),\n            || 0,\n            || 0,\n     \
+    \       |a: usize, _: usize, _: usize, w: usize| a + w,\n        )\n    }\n}\n"
   dependsOn:
-  - dynamic-programming/rerooting/src/lib.rs
+  - tree/rerooting/src/lib.rs
   isVerificationFile: false
-  path: dynamic-programming/rerooting/src/wrapper.rs
+  path: tree/rerooting/src/wrapper.rs
   requiredBy:
-  - dynamic-programming/rerooting/src/lib.rs
-  timestamp: '2025-05-01 00:33:42+09:00'
+  - tree/rerooting/src/lib.rs
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_5_a/src/main.rs
-documentation_of: dynamic-programming/rerooting/src/wrapper.rs
+documentation_of: tree/rerooting/src/wrapper.rs
 layout: document
 redirect_from:
-- /library/dynamic-programming/rerooting/src/wrapper.rs
-- /library/dynamic-programming/rerooting/src/wrapper.rs.html
-title: dynamic-programming/rerooting/src/wrapper.rs
+- /library/tree/rerooting/src/wrapper.rs
+- /library/tree/rerooting/src/wrapper.rs.html
+title: tree/rerooting/src/wrapper.rs
 ---

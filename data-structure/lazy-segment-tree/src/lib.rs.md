@@ -28,18 +28,20 @@ data:
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
+    links:
+    - https://atcoder.github.io/ac-library/production/document_en/lazysegtree.html
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "mod wrapper;\npub use wrapper::*;\n\n#[derive(Debug, Clone)]\npub struct\
-    \ LazySegmentTree<T, F> {\n    tree: Vec<T>,\n    lazy: Vec<F>,\n    size: usize,\n\
-    \    size_log: usize,\n    op: fn(T, T) -> T, // evaluation funciton\n    e: T,\
-    \              // identity element\n    mapping: fn(F, T) -> T,\n    composition:\
-    \ fn(F, F) -> F,\n    id: F,\n    n: usize,\n}\n\nimpl<T: Copy, F: Copy> LazySegmentTree<T,\
+  code: "//! https://atcoder.github.io/ac-library/production/document_en/lazysegtree.html\n\
+    \nmod wrapper;\npub use wrapper::*;\n\n#[derive(Debug, Clone)]\npub struct LazySegmentTree<T,\
+    \ F> {\n    tree: Vec<T>,\n    lazy: Vec<F>,\n    size: usize,\n    size_log:\
+    \ usize,\n    op: fn(T, T) -> T, // evaluation funciton\n    e: T,           \
+    \   // identity element\n    mapping: fn(F, T) -> T,\n    composition: fn(F, F)\
+    \ -> F,\n    id: F,\n    n: usize,\n}\n\nimpl<T: Copy, F: Copy> LazySegmentTree<T,\
     \ F> {\n    pub fn new(n: usize, op: fn(T, T) -> T, e: T, mapping: fn(F, T) ->\
     \ T, composition: fn(F, F) -> F, id: F) -> Self {\n        let size = n.next_power_of_two();\n\
     \        let size_log = (size.ilog2() + 1) as usize;\n        Self {\n       \
@@ -125,22 +127,17 @@ data:
   path: data-structure/lazy-segment-tree/src/lib.rs
   requiredBy:
   - data-structure/lazy-segment-tree/src/wrapper.rs
-  timestamp: '2025-04-19 06:22:15+09:00'
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/range_affine_range_sum/src/main.rs
   - verification/aizu-online-judge/dsl_2_i/src/main.rs
-  - verification/aizu-online-judge/dsl_2_g/src/main.rs
-  - verification/aizu-online-judge/dsl_2_h/src/main.rs
   - verification/aizu-online-judge/dsl_2_f/src/main.rs
+  - verification/aizu-online-judge/dsl_2_h/src/main.rs
+  - verification/aizu-online-judge/dsl_2_g/src/main.rs
 documentation_of: data-structure/lazy-segment-tree/src/lib.rs
 layout: document
 title: Lazy Segment Tree
 ---
 
 ## Description
-
-## Reference
-
-- [https://atcoder.github.io/ac-library/production/document_en/lazysegtree.html](https://atcoder.github.io/ac-library/production/document_en/lazysegtree.html)
-- [https://betrue12.hateblo.jp/entry/2020/09/23/005940](https://betrue12.hateblo.jp/entry/2020/09/23/005940)

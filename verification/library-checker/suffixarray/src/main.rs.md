@@ -28,7 +28,7 @@ data:
   isVerificationFile: true
   path: verification/library-checker/suffixarray/src/main.rs
   requiredBy: []
-  timestamp: '2025-04-27 00:57:20+09:00'
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/suffixarray/src/main.rs

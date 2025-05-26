@@ -2,12 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: dynamic-programming/rerooting/src/wrapper.rs
-    title: dynamic-programming/rerooting/src/wrapper.rs
+    path: tree/rerooting/src/wrapper.rs
+    title: tree/rerooting/src/wrapper.rs
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: dynamic-programming/rerooting/src/wrapper.rs
-    title: dynamic-programming/rerooting/src/wrapper.rs
+    path: tree/rerooting/src/wrapper.rs
+    title: tree/rerooting/src/wrapper.rs
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/grl_5_a/src/main.rs
@@ -16,29 +16,33 @@ data:
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
+    links:
+    - https://atcoder.jp/contests/abc222/editorial/2749
+    - https://ei1333.hateblo.jp/entry/2017/04/10/224413
+    - https://ei1333.hateblo.jp/entry/2018/12/21/004022
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "mod wrapper;\npub use wrapper::*;\n\n#[derive(Debug, Clone)]\npub struct\
-    \ Edge<Cost> {\n    from: usize,\n    to: usize,\n    cost: Cost,\n}\n\nimpl<Cost:\
-    \ Copy> Edge<Cost> {\n    pub fn new(from: usize, to: usize, cost: Cost) -> Self\
-    \ {\n        Self { from, to, cost }\n    }\n}\n\n#[derive(Debug, Clone)]\npub\
-    \ struct Rerooting<Cost, Data, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data,\
-    \ Leaf: Fn() -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data> {\n    graph:\
-    \ Vec<Vec<Edge<Cost>>>,\n    dp: Vec<Data>,\n    memo: Vec<Data>,\n    merge:\
-    \ Merge,\n    e: E,\n    leaf: Leaf,\n    apply: Apply,\n    n: usize,\n}\n\n\
-    impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn()\
-    \ -> Data, Leaf: Fn() -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data>\n\
-    \    Rerooting<Cost, Data, Merge, E, Leaf, Apply>\n{\n    pub fn new(n: usize,\
-    \ merge: Merge, e: E, leaf: Leaf, apply: Apply) -> Self {\n        Self {\n  \
-    \          graph: vec![vec![]; n],\n            dp: vec![],\n            memo:\
-    \ vec![],\n            merge,\n            e,\n            leaf,\n           \
-    \ apply,\n            n,\n        }\n    }\n\n    pub fn add_edge(&mut self, from:\
-    \ usize, to: usize, cost: Cost) {\n        self.graph[from].push(Edge::new(from,\
+  code: "//! https://atcoder.jp/contests/abc222/editorial/2749\n//! https://ei1333.hateblo.jp/entry/2017/04/10/224413\n\
+    //! https://ei1333.hateblo.jp/entry/2018/12/21/004022\n\nmod wrapper;\npub use\
+    \ wrapper::*;\n\n#[derive(Debug, Clone)]\npub struct Edge<Cost> {\n    from: usize,\n\
+    \    to: usize,\n    cost: Cost,\n}\n\nimpl<Cost: Copy> Edge<Cost> {\n    pub\
+    \ fn new(from: usize, to: usize, cost: Cost) -> Self {\n        Self { from, to,\
+    \ cost }\n    }\n}\n\n#[derive(Debug, Clone)]\npub struct Rerooting<Cost, Data,\
+    \ Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Leaf: Fn() -> Data, Apply: Fn(Data,\
+    \ usize, usize, Cost) -> Data> {\n    graph: Vec<Vec<Edge<Cost>>>,\n    dp: Vec<Data>,\n\
+    \    memo: Vec<Data>,\n    merge: Merge,\n    e: E,\n    leaf: Leaf,\n    apply:\
+    \ Apply,\n    n: usize,\n}\n\nimpl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data,\
+    \ Data) -> Data, E: Fn() -> Data, Leaf: Fn() -> Data, Apply: Fn(Data, usize, usize,\
+    \ Cost) -> Data>\n    Rerooting<Cost, Data, Merge, E, Leaf, Apply>\n{\n    pub\
+    \ fn new(n: usize, merge: Merge, e: E, leaf: Leaf, apply: Apply) -> Self {\n \
+    \       Self {\n            graph: vec![vec![]; n],\n            dp: vec![],\n\
+    \            memo: vec![],\n            merge,\n            e,\n            leaf,\n\
+    \            apply,\n            n,\n        }\n    }\n\n    pub fn add_edge(&mut\
+    \ self, from: usize, to: usize, cost: Cost) {\n        self.graph[from].push(Edge::new(from,\
     \ to, cost));\n    }\n\n    pub fn run(&mut self) -> Vec<Data> {\n        self.memo.resize(self.n,\
     \ (self.e)());\n        self.dp.resize(self.n, (self.e)());\n        self.dfs1(0,\
     \ usize::MAX);\n        self.dfs2(0, usize::MAX, (self.e)());\n        self.dp.clone()\n\
@@ -74,24 +78,19 @@ data:
     \            self.dfs2(edge.to, c, (self.apply)(sub, c, edge.to, edge.cost));\n\
     \            idx += 1;\n        }\n    }\n    */\n}\n"
   dependsOn:
-  - dynamic-programming/rerooting/src/wrapper.rs
+  - tree/rerooting/src/wrapper.rs
   isVerificationFile: false
-  path: dynamic-programming/rerooting/src/lib.rs
+  path: tree/rerooting/src/lib.rs
   requiredBy:
-  - dynamic-programming/rerooting/src/wrapper.rs
-  timestamp: '2025-05-01 00:33:42+09:00'
+  - tree/rerooting/src/wrapper.rs
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_5_a/src/main.rs
-documentation_of: dynamic-programming/rerooting/src/lib.rs
+documentation_of: tree/rerooting/src/lib.rs
 layout: document
-title: Rerooting
+redirect_from:
+- /library/tree/rerooting/src/lib.rs
+- /library/tree/rerooting/src/lib.rs.html
+title: tree/rerooting/src/lib.rs
 ---
-
-## Description
-
-## Reference
-
-- [https://atcoder.jp/contests/abc222/editorial/2749](https://atcoder.jp/contests/abc222/editorial/2749)
-- [https://ei1333.hateblo.jp/entry/2017/04/10/224413](https://ei1333.hateblo.jp/entry/2017/04/10/224413)
-- [https://ei1333.hateblo.jp/entry/2018/12/21/004022](https://ei1333.hateblo.jp/entry/2018/12/21/004022)

@@ -13,23 +13,25 @@ data:
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
+    links:
+    - https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "#[derive(Debug, Clone, Copy, PartialEq, Eq)]\npub struct StaticModint<const\
-    \ MOD: u64> {\n    value: u64,\n}\n\nimpl<const MOD: u64> StaticModint<MOD> {\n\
-    \    pub fn new(n: u64) -> Self {\n        Self {\n            value: (n % MOD),\n\
-    \            // value: (n.rem_euclid(MOD)),\n        }\n    }\n\n    pub fn value(&self)\
-    \ -> u64 {\n        self.value\n    }\n\n    fn ext_gcd(&self, a: i64, b: i64)\
-    \ -> (i64, i64, i64) {\n        let (mut x0, mut y0, mut r0) = (1, 0, a);\n  \
-    \      let (mut x1, mut y1, mut r1) = (0, 1, b);\n        while r1 != 0 {\n  \
-    \          let t = r0 / r1;\n            x0 -= t * x1;\n            y0 -= t *\
-    \ y1;\n            r0 -= t * r1;\n            std::mem::swap(&mut x0, &mut x1);\n\
-    \            std::mem::swap(&mut y0, &mut y1);\n            std::mem::swap(&mut\
+  code: "//! https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c\n\n#[derive(Debug,\
+    \ Clone, Copy, PartialEq, Eq)]\npub struct StaticModint<const MOD: u64> {\n  \
+    \  value: u64,\n}\n\nimpl<const MOD: u64> StaticModint<MOD> {\n    pub fn new(n:\
+    \ u64) -> Self {\n        Self {\n            value: (n % MOD),\n            //\
+    \ value: (n.rem_euclid(MOD)),\n        }\n    }\n\n    pub fn value(&self) ->\
+    \ u64 {\n        self.value\n    }\n\n    fn ext_gcd(&self, a: i64, b: i64) ->\
+    \ (i64, i64, i64) {\n        let (mut x0, mut y0, mut r0) = (1, 0, a);\n     \
+    \   let (mut x1, mut y1, mut r1) = (0, 1, b);\n        while r1 != 0 {\n     \
+    \       let t = r0 / r1;\n            x0 -= t * x1;\n            y0 -= t * y1;\n\
+    \            r0 -= t * r1;\n            std::mem::swap(&mut x0, &mut x1);\n  \
+    \          std::mem::swap(&mut y0, &mut y1);\n            std::mem::swap(&mut\
     \ r0, &mut r1);\n        }\n        // (x0, y0, r0)\n        (x0.rem_euclid(b),\
     \ y0.rem_euclid(b), r0.rem_euclid(b))\n    }\n\n    pub fn pow(&self, mut n: u64)\
     \ -> Self {\n        let mut value = *self;\n        let mut res = Self::new(1);\n\
@@ -82,7 +84,7 @@ data:
   isVerificationFile: false
   path: math/modint/src/lib.rs
   requiredBy: []
-  timestamp: '2025-05-01 00:33:42+09:00'
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/range_affine_range_sum/src/main.rs
@@ -93,7 +95,3 @@ title: Modint
 ---
 
 ## Description
-
-## Reference
-
-- [https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c](https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c)

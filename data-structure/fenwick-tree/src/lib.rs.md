@@ -10,15 +10,17 @@ data:
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
+    links:
+    - https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "#[derive(Debug, Clone)]\npub struct FenwickTree<T> {\n    tree: Vec<T>,\n\
-    \    size: usize,\n}\n\nimpl<T: Copy> FenwickTree<T>\nwhere\n    T: std::ops::Neg<Output\
+  code: "//! https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html\n\
+    \n#[derive(Debug, Clone)]\npub struct FenwickTree<T> {\n    tree: Vec<T>,\n  \
+    \  size: usize,\n}\n\nimpl<T: Copy> FenwickTree<T>\nwhere\n    T: std::ops::Neg<Output\
     \ = T>,\n    T: std::ops::Add<T, Output = T>,\n    T: std::ops::AddAssign,\n \
     \   T: std::ops::Sub<T, Output = T>,\n    T: std::ops::SubAssign,\n    T: num_traits::Zero,\n\
     {\n    pub fn new(n: usize) -> Self {\n        let size = n;\n        Self {\n\
@@ -37,7 +39,7 @@ data:
   isVerificationFile: false
   path: data-structure/fenwick-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2025-04-14 00:11:45+09:00'
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_b/src/main.rs

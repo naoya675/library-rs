@@ -32,14 +32,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/weighted-union-find/src/lib.rs
       title: Weighted Union Find
-  - name: dynamic-programming/rerooting/src
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: dynamic-programming/rerooting/src/lib.rs
-      title: Rerooting
-    - icon: ':heavy_check_mark:'
-      path: dynamic-programming/rerooting/src/wrapper.rs
-      title: dynamic-programming/rerooting/src/wrapper.rs
   - name: graph/bellman-ford/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -135,16 +127,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/suffix-array/src/lib.rs
       title: Suffix Array
-  - name: string/trie/src
-    pages:
-    - icon: ':warning:'
-      path: string/trie/src/lib.rs
-      title: Trie
   - name: string/z-algorithm/src
     pages:
     - icon: ':heavy_check_mark:'
       path: string/z-algorithm/src/lib.rs
       title: Z Algorithm
+  - name: tree/rerooting/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: tree/rerooting/src/lib.rs
+      title: tree/rerooting/src/lib.rs
+    - icon: ':heavy_check_mark:'
+      path: tree/rerooting/src/wrapper.rs
+      title: tree/rerooting/src/wrapper.rs
   verificationCategories:
   - name: verification/aizu-online-judge/alds1_14_a/src
     pages:

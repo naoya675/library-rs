@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: dynamic-programming/rerooting/src/lib.rs
-    title: Rerooting
+    path: tree/rerooting/src/lib.rs
+    title: tree/rerooting/src/lib.rs
   - icon: ':heavy_check_mark:'
-    path: dynamic-programming/rerooting/src/wrapper.rs
-    title: dynamic-programming/rerooting/src/wrapper.rs
+    path: tree/rerooting/src/wrapper.rs
+    title: tree/rerooting/src/wrapper.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -34,12 +34,12 @@ data:
     \ t, w);\n        g.add_edge(t, s, w);\n    }\n    let res = g.run();\n    println!(\"\
     {}\", res.iter().max().unwrap());\n}\n"
   dependsOn:
-  - dynamic-programming/rerooting/src/lib.rs
-  - dynamic-programming/rerooting/src/wrapper.rs
+  - tree/rerooting/src/lib.rs
+  - tree/rerooting/src/wrapper.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_5_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-05-01 00:33:42+09:00'
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_5_a/src/main.rs

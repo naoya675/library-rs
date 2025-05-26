@@ -46,24 +46,25 @@ data:
     \            s.iter()\n                .map(|&s| match s {\n                 \
     \   '(' => (0, 1),\n                    ')' => (1, 0),\n                    _\
     \ => unreachable!(),\n                })\n                .collect(),\n      \
-    \  );\n        st\n    }\n}\n\n/*\npub struct ParenthesisCheckQuery;\n\nimpl ParenthesisCheckQuery\
-    \ {\n    pub fn new(n: usize) -> SegmentTree<(i64, i64)> {\n        SegmentTree::new(n,\
-    \ |a, b| (std::cmp::min(a.0, a.1 + b.0), a.1 + b.1), (0, 0))\n    }\n\n    pub\
-    \ fn new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {\n       \
-    \ let mut st = SegmentTree::new(n, |a, b| (a.0 + std::cmp::max(b.0 - a.1, 0),\
-    \ std::cmp::max(a.1 - b.0, 0) + b.1), (0, 0));\n        st.build(\n          \
-    \  s.iter()\n                .map(|&s| match s {\n                    '(' => (0,\
-    \ 0),\n                    ')' => (-1, -1),\n                    _ => unreachable!(),\n\
-    \                })\n                .collect(),\n        );\n        st\n   \
-    \ }\n}\n\nreference: https://atcoder.jp/contests/abc223/editorial/2774\n*/\n"
+    \  );\n        st\n    }\n}\n\n/*\n// reference: https://atcoder.jp/contests/abc223/editorial/2774\n\
+    pub struct ParenthesisCheckQuery;\n\nimpl ParenthesisCheckQuery {\n    pub fn\
+    \ new(n: usize) -> SegmentTree<(i64, i64)> {\n        SegmentTree::new(n, |a,\
+    \ b| (std::cmp::min(a.0, a.1 + b.0), a.1 + b.1), (0, 0))\n    }\n\n    pub fn\
+    \ new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {\n        let\
+    \ mut st = SegmentTree::new(n, |a, b| (a.0 + std::cmp::max(b.0 - a.1, 0), std::cmp::max(a.1\
+    \ - b.0, 0) + b.1), (0, 0));\n        st.build(\n            s.iter()\n      \
+    \          .map(|&s| match s {\n                    '(' => (0, 0),\n         \
+    \           ')' => (-1, -1),\n                    _ => unreachable!(),\n     \
+    \           })\n                .collect(),\n        );\n        st\n    }\n}\n\
+    */\n"
   dependsOn:
   - data-structure/segment-tree/src/lib.rs
   isVerificationFile: false
   path: data-structure/segment-tree/src/wrapper.rs
   requiredBy:
-  - data-structure/segment-tree/src/lib.rs
   - string/rolling-hash-segment-tree/src/lib.rs
-  timestamp: '2025-04-19 06:22:15+09:00'
+  - data-structure/segment-tree/src/lib.rs
+  timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_b/src/main.rs
