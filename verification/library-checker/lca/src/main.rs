@@ -22,8 +22,8 @@ fn actual_main() {
     }
     let mut et = EulerTour::<usize>::new(n);
     for (i, &p) in p.iter().enumerate() {
-        et.add_edge(p, i + 1, 0);
         et.add_edge(i + 1, p, 0);
+        et.add_edge(p, i + 1, 0);
     }
     et.init(0);
     for (u, v) in uv {

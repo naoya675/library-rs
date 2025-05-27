@@ -83,10 +83,29 @@ impl<T: Copy> SegmentTree<T> {
         self.tree[1].clone()
     }
 
+    /*
     pub fn apply(&mut self, mut k: usize, x: T) {
         assert!(k < self.n);
         k += self.size;
         self.tree[k] = (self.op)(self.tree[k], x);
+        while k > 0 {
+            k >>= 1;
+            self.update(k);
+        }
+    }
+    */
+
+    pub fn apply(&mut self, k: usize, x: T) {
+        self.apply_with(k, x, self.op)
+    }
+
+    pub fn apply_with<F>(&mut self, mut k: usize, x: T, f: F)
+    where
+        F: Fn(T, T) -> T,
+    {
+        assert!(k < self.n);
+        k += self.size;
+        self.tree[k] = f(self.tree[k], x);
         while k > 0 {
             k >>= 1;
             self.update(k);
