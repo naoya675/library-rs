@@ -6,19 +6,17 @@ pub struct FenwickTree<T> {
     size: usize,
 }
 
-// impl<T: Copy + internal_trait::Integral> FenwickTree<T>
-impl<T: Copy> FenwickTree<T>
+impl<T: Copy + Default> FenwickTree<T>
 where
     T: std::ops::Add<T, Output = T>,
     T: std::ops::AddAssign,
     T: std::ops::Sub<T, Output = T>,
     T: std::ops::SubAssign,
-    T: num_traits::Zero,
 {
     pub fn new(n: usize) -> Self {
         let size = n;
         Self {
-            tree: vec![T::zero(); size],
+            tree: vec![T::default(); size],
             size,
         }
     }
@@ -45,7 +43,7 @@ where
     }
 
     fn prefix_sum(&mut self, mut r: usize) -> T {
-        let mut s = T::zero();
+        let mut s = T::default();
         while r > 0 {
             s += self.tree[r - 1];
             r -= r & r.wrapping_neg();

@@ -154,6 +154,12 @@ impl<const MOD: u64> One for StaticModint<MOD> {
     }
 }
 
+impl<const MOD: u64> Default for StaticModint<MOD> {
+    fn default() -> Self {
+        Self::new(0)
+    }
+}
+
 impl<const MOD: u64> std::fmt::Display for StaticModint<MOD> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.value)

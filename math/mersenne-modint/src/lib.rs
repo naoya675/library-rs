@@ -155,6 +155,12 @@ impl One for MersenneModint {
     }
 }
 
+impl Default for MersenneModint {
+    fn default() -> Self {
+        Self::new(0)
+    }
+}
+
 impl std::fmt::Display for MersenneModint {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.value)
