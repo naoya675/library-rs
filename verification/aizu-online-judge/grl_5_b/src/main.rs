@@ -1,4 +1,4 @@
-// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_A
+// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B
 
 use proconio::input;
 
@@ -27,6 +27,7 @@ fn actual_main() {
         g.add_edge(s, t, w);
         g.add_edge(t, s, w);
     }
-    let res = g.run();
-    println!("{}", res.iter().max().unwrap());
+    for res in g.run() {
+        println!("{}", res);
+    }
 }

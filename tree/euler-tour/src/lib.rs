@@ -80,7 +80,7 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
         F: FnMut(usize, usize),
     {
         assert!(a < self.n);
-        f(self.preorder[a], self.postorder[a] + 1);
+        f(self.preorder[a], self.postorder[a]);
     }
 
     // unverification
@@ -89,7 +89,7 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
         F: FnMut(usize, usize),
     {
         assert!(a < self.n);
-        f(self.preorder[a] + 1, self.postorder[a] + 1);
+        f(self.preorder[a] + 1, self.postorder[a]);
     }
 
     pub fn path_vertex<F>(&mut self, a: usize, b: usize, mut f: F)
@@ -101,7 +101,6 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
         f(self.preorder[l] + 1, self.preorder[b] + 1);
     }
 
-    // unverification
     pub fn path_edge<F>(&mut self, a: usize, b: usize, mut f: F)
     where
         F: FnMut(usize, usize),

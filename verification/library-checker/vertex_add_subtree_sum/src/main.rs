@@ -27,7 +27,7 @@ fn actual_main() {
         et.add_edge(p, i + 1, 0);
     }
     et.init(0);
-    let mut ft = FenwickTree::new(n + n);
+    let mut ft = FenwickTree::<i64>::new(n + n);
     for i in 0..n {
         let index = et.index(i);
         ft.add(index.0, a[i]);
