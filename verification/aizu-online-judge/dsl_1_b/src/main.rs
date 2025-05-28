@@ -2,25 +2,25 @@
 
 use proconio::input;
 
-use weighted_union_find::WeightedUnionFind;
+use union_find_with_potential::UnionFindWithPotential;
 
 fn main() {
     input! {
         n: usize,
         q: usize,
     }
-    let mut wuf = WeightedUnionFind::<i64>::new(n);
+    let mut uf = UnionFindWithPotential::<i64>::new_default(n);
     for _ in 0..q {
         input! { query: usize, }
         match query {
             0 => {
                 input! { x: usize, y: usize, z: i64, }
-                wuf.merge(x, y, z);
+                uf.merge(x, y, z);
             }
             1 => {
                 input! { x: usize, y: usize, }
-                if wuf.same(x, y) {
-                    println!("{}", wuf.diff(x, y));
+                if uf.same(x, y) {
+                    println!("{}", uf.diff(x, y));
                 } else {
                     println!("?");
                 }

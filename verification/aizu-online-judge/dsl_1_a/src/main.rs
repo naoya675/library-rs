@@ -8,10 +8,11 @@ fn main() {
     input! {
         n: usize,
         q: usize,
-        qxy: [(usize, usize, usize); q],
+        query: [(usize, usize, usize); q],
     }
     let mut uf = UnionFind::new(n);
-    for (query, x, y) in qxy {
+
+    for (query, x, y) in query {
         match query {
             0 => {
                 uf.merge(x, y);

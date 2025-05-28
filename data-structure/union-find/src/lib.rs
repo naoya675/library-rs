@@ -16,43 +16,42 @@ impl UnionFind {
         }
     }
 
-    pub fn merge(&mut self, a: usize, b: usize) -> bool {
-        assert!(a < self.n);
-        assert!(b < self.n);
-        let a = self.leader(a);
-        let b = self.leader(b);
-        if a == b {
-            return false;
+    pub fn merge(&mut self, x: usize, y: usize) -> usize {
+        assert!(x < self.n);
+        assert!(y < self.n);
+        let mut x = self.leader(x);
+        let mut y = self.leader(y);
+        if x == y {
+            return x;
         }
-        if self.siz[a] > self.siz[b] {
-            self.par[b] = a;
-            self.siz[a] += self.siz[b];
-        } else {
-            self.par[a] = b;
-            self.siz[b] += self.siz[a];
+        if self.siz[x] < self.siz[y] {
+            std::mem::swap(&mut x, &mut y);
         }
-        true
+        self.siz[x] += self.siz[y];
+        self.par[y] = x;
+        x
     }
 
-    pub fn same(&mut self, a: usize, b: usize) -> bool {
-        assert!(a < self.n);
-        assert!(b < self.n);
-        self.leader(a) == self.leader(b)
+    pub fn same(&mut self, x: usize, y: usize) -> bool {
+        assert!(x < self.n);
+        assert!(y < self.n);
+        self.leader(x) == self.leader(y)
     }
 
-    pub fn leader(&mut self, a: usize) -> usize {
-        assert!(a < self.n);
-        if self.par[a] == a {
-            return a;
+    pub fn leader(&mut self, x: usize) -> usize {
+        assert!(x < self.n);
+        if self.par[x] == x {
+            return x;
         }
-        self.par[a] = self.leader(self.par[a]);
-        self.par[a]
+        let leader = self.leader(self.par[x]);
+        self.par[x] = leader;
+        self.par[x]
     }
 
-    pub fn size(&mut self, a: usize) -> usize {
-        assert!(a < self.n);
-        let a = self.leader(a);
-        self.siz[a]
+    pub fn size(&mut self, x: usize) -> usize {
+        assert!(x < self.n);
+        let x = self.leader(x);
+        self.siz[x]
     }
 
     pub fn groups(&mut self) -> Vec<Vec<usize>> {

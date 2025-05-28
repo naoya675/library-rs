@@ -1,5 +1,5 @@
 [package]
-name = "dsl_1_b"
+name = "unionfind_with_potential_non_commutative_group"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 proconio = { version = "0.4.5", features = ["derive"] }
 union-find-with-potential = { path = "../../../data-structure/union-find-with-potential" }
+modint = { path = "../../../math/modint" }

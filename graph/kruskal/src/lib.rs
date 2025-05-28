@@ -34,10 +34,12 @@ impl Kruskal {
         let mut res = 0;
         let mut res_edge = vec![];
         for edge in &self.edge {
-            if uf.merge(edge.to, edge.from) {
-                res += edge.cost;
-                res_edge.push(edge.clone());
+            if uf.same(edge.from, edge.to) {
+                continue;
             }
+            uf.merge(edge.from, edge.to);
+            res += edge.cost;
+            res_edge.push(edge.clone());
         }
         (res, res_edge)
     }
@@ -48,10 +50,12 @@ impl Kruskal {
         let mut res = 0;
         let mut res_edge = vec![];
         for edge in &self.edge {
-            if uf.merge(edge.to, edge.from) {
-                res += edge.cost;
-                res_edge.push(edge.clone());
+            if uf.same(edge.from, edge.to) {
+                continue;
             }
+            uf.merge(edge.from, edge.to);
+            res += edge.cost;
+            res_edge.push(edge.clone());
         }
         (res, res_edge)
     }
@@ -63,10 +67,12 @@ pub fn minimum_spanning_tree(size: usize, edge: &mut Vec<(usize, usize, i64)>) -
     let mut res = 0;
     let mut res_edge = vec![];
     for &mut (from, to, cost) in edge {
-        if uf.merge(to, from) {
-            res += cost;
-            res_edge.push((from, to, cost));
+        if uf.same(from, to) {
+            continue;
         }
+        uf.merge(from, to);
+        res += cost;
+        res_edge.push((from, to, cost));
     }
     (res, res_edge)
 }
@@ -77,10 +83,12 @@ pub fn maximum_spanning_tree(size: usize, edge: &mut Vec<(usize, usize, i64)>) -
     let mut res = 0;
     let mut res_edge = vec![];
     for &mut (from, to, cost) in edge {
-        if uf.merge(to, from) {
-            res += cost;
-            res_edge.push((from, to, cost));
+        if uf.same(from, to) {
+            continue;
         }
+        uf.merge(from, to);
+        res += cost;
+        res_edge.push((from, to, cost));
     }
     (res, res_edge)
 }
