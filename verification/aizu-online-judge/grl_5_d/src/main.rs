@@ -3,7 +3,7 @@
 use proconio::input;
 
 use euler_tour::EulerTour;
-use segment_tree::SegmentTree;
+use fenwick_tree_abstract::FenwickTreeAbstract;
 
 fn main() {
     std::thread::Builder::new()
@@ -27,7 +27,7 @@ fn actual_main() {
         }
     }
     et.init(0);
-    let mut st = SegmentTree::<i64>::new(n + n, |a, b| a + b, 0);
+    let mut ft = FenwickTreeAbstract::<i64>::new(n + n, |a, b| a + b, 0, |a| -a);
     input! { q: usize, }
     for _ in 0..q {
         input! { query: usize, }
@@ -35,13 +35,13 @@ fn actual_main() {
             0 => {
                 input! { v: usize, w:i64, }
                 let index = et.index(v);
-                st.apply(index.0, w);
-                st.apply(index.1, -w);
+                ft.add(index.0, w);
+                ft.add(index.1, -w);
             }
             1 => {
                 input! { v: usize, }
                 let mut res = 0;
-                et.path_edge(0, v, |l, r| res += st.prod(l, r));
+                et.path_edge(0, v, |l, r| res += ft.sum(l, r));
                 println!("{}", res);
             }
             _ => unreachable!(),

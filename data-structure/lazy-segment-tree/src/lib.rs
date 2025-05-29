@@ -9,7 +9,7 @@ pub struct LazySegmentTree<T, F> {
     lazy: Vec<F>,
     size: usize,
     size_log: usize,
-    // Monoids: associativity (operation) + identity element
+    // Monoids: operation (associativity) + identity element
     op: fn(T, T) -> T,
     e: T,
     mapping: fn(F, T) -> T,

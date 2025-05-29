@@ -4,10 +4,9 @@ pub struct UnionFindWithPotential<T> {
     par: Vec<usize>,
     siz: Vec<usize>,
     diff_potential: Vec<T>,
-    // Monoids: associative (operation) + identity element
+    // (Abelian) Group: operation (associative) + identity element + inverse element
     op: fn(T, T) -> T,
     e: T,
-    // Group: associative (operation) + identity element + inverse element
     inv: fn(T) -> T,
 }
 

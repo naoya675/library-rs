@@ -8,4 +8,4 @@ edition = "2021"
 [dependencies]
 proconio = { version = "0.4.5", features = ["derive"] }
 euler-tour = { path = "../../../tree/euler-tour" }
-segment-tree = { path = '../../../data-structure/segment-tree' }
+fenwick-tree-abstract = { path = '../../../data-structure/fenwick-tree-abstract' }

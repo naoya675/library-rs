@@ -1,28 +1,30 @@
-//! https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html
+//! https://atcoder.github.io/ac-library/production/document_en/FenwickTreeAbstract.html
 
 #[derive(Debug, Clone)]
-pub struct FenwickTree<T> {
+pub struct FenwickTreeAbstract<T> {
     tree: Vec<T>,
     size: usize,
-    // Monoids: associativity (operation) + identity element
+    // Abelian Group: operation (associative, commutative) + identity element + inverse element
     op: fn(T, T) -> T,
     e: T,
+    inv: fn(T) -> T,
 }
 
-impl<T: Copy> FenwickTree<T>
+impl<T: Copy> FenwickTreeAbstract<T>
 where
     T: std::ops::Add<T, Output = T>,
     T: std::ops::AddAssign,
     T: std::ops::Sub<T, Output = T>,
     T: std::ops::SubAssign,
 {
-    pub fn new(n: usize, op: fn(T, T) -> T, e: T) -> Self {
+    pub fn new(n: usize, op: fn(T, T) -> T, e: T, inv: fn(T) -> T) -> Self {
         let size = n;
         Self {
             tree: vec![e; size],
             size,
             op,
             e,
+            inv,
         }
     }
 
@@ -37,7 +39,7 @@ where
 
     pub fn sum(&mut self, l: usize, r: usize) -> T {
         assert!(l <= r && r <= self.size);
-        self.prefix_sum(r) - self.prefix_sum(l)
+        (self.op)(self.prefix_sum(r), (self.inv)(self.prefix_sum(l)))
     }
 
     pub fn prefix_sum(&mut self, mut r: usize) -> T {

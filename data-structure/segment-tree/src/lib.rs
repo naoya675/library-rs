@@ -8,7 +8,7 @@ pub struct SegmentTree<T> {
     tree: Vec<T>,
     size: usize,
     size_log: usize,
-    // Monoids: associativity (operation) + identity element
+    // Monoids: operation (associativity) + identity element
     op: fn(T, T) -> T,
     e: T,
     n: usize,
