@@ -33,15 +33,16 @@ impl ParenthesisCheckQuery {
 
     pub fn new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {
         let mut st = SegmentTree::new(n, |a, b| (a.0 + std::cmp::max(b.0 - a.1, 0), std::cmp::max(a.1 - b.0, 0) + b.1), (0, 0));
-        st.build(
-            s.iter()
-                .map(|&s| match s {
+        for i in 0..s.len() {
+            st.set(
+                i,
+                match s[i] {
                     '(' => (0, 1),
                     ')' => (1, 0),
                     _ => unreachable!(),
-                })
-                .collect(),
-        );
+                },
+            );
+        }
         st
     }
 }
@@ -57,15 +58,16 @@ impl ParenthesisCheckQuery {
 
     pub fn new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {
         let mut st = SegmentTree::new(n, |a, b| (a.0 + std::cmp::max(b.0 - a.1, 0), std::cmp::max(a.1 - b.0, 0) + b.1), (0, 0));
-        st.build(
-            s.iter()
-                .map(|&s| match s {
+        for i in 0..s.len() {
+            st.set(
+                i,
+                match s[i] {
                     '(' => (0, 0),
                     ')' => (-1, -1),
                     _ => unreachable!(),
-                })
-                .collect(),
-        );
+                },
+            );
+        }
         st
     }
 }

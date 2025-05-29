@@ -33,15 +33,15 @@ fn actual_main() {
         input! { query: usize, }
         match query {
             0 => {
-                input! { a: usize, b:i64, }
-                let index = et.index(a);
-                st.apply(index.0, b);
-                st.apply(index.1, -b);
+                input! { v: usize, w:i64, }
+                let index = et.index(v);
+                st.apply(index.0, w);
+                st.apply(index.1, -w);
             }
             1 => {
-                input! { a: usize, }
+                input! { v: usize, }
                 let mut res = 0;
-                et.path_edge(0, a, |l, r| res += st.prod(l, r));
+                et.path_edge(0, v, |l, r| res += st.prod(l, r));
                 println!("{}", res);
             }
             _ => unreachable!(),

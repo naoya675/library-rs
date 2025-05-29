@@ -36,10 +36,13 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         }
     }
 
-    pub fn build(&mut self, v: Vec<T>) {
-        assert!(v.len() <= self.n);
-        for i in 0..v.len() {
-            self.set(i, v[i]);
+    pub fn build(&mut self, vec: Vec<T>) {
+        assert!(vec.len() == self.n);
+        for k in 0..self.n {
+            self.tree[k + self.size] = vec[k];
+        }
+        for k in (0..self.size).rev() {
+            self.update(k);
         }
     }
 

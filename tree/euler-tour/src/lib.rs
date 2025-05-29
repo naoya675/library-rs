@@ -1,4 +1,4 @@
-//! https://ikatakos.com/pot/programming_algorithm/graph_theory/eular_tour
+//! https://maspypy.com/euler-tour-のお勉強
 
 use segment_tree::SegmentTree;
 
