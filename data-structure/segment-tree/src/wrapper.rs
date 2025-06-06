@@ -72,3 +72,11 @@ impl ParenthesisCheckQuery {
     }
 }
 */
+
+pub struct RangeCompositeQuery;
+
+impl RangeCompositeQuery {
+    pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
+        SegmentTree::new(n, |a, b| (a.0 * b.0, a.1 * b.0 + b.1), (1, 0))
+    }
+}

@@ -41,7 +41,7 @@ fn actual_main() {
             1 => {
                 input! { v: usize, }
                 let mut res = 0;
-                et.path_edge(0, v, |l, r| res += ft.sum(l, r));
+                et.path_query_for_edge(0, v, |l, r| res += ft.sum(l, r));
                 println!("{}", res);
             }
             _ => unreachable!(),

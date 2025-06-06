@@ -45,7 +45,7 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
 
     pub fn init(&mut self, root: usize) {
         self.time = 0;
-        self.dfs(root, self.n);
+        self.dfs(root, root);
     }
 
     fn dfs(&mut self, v: usize, p: usize) {
@@ -59,7 +59,7 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
             self.depth[edge.to] = self.depth[v] + 1;
             self.dfs(edge.to, v);
         }
-        if p != self.n {
+        if v != p {
             self.rmq.set(self.time, (self.depth[v] - 1, p));
         }
         self.postorder[v] = self.time;
@@ -67,51 +67,70 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
     }
 
     // Lowest Common Ancestor
-    pub fn lca(&mut self, a: usize, b: usize) -> usize {
-        assert!(a < self.n);
-        assert!(b < self.n);
-        let l = std::cmp::min(self.preorder[a], self.preorder[b]);
-        let r = std::cmp::max(self.preorder[a], self.preorder[b]) + 1;
+    pub fn lca(&mut self, u: usize, v: usize) -> usize {
+        assert!(u < self.n);
+        assert!(v < self.n);
+        let l = std::cmp::min(self.preorder[u], self.preorder[v]);
+        let r = std::cmp::max(self.preorder[u], self.preorder[v]) + 1;
         self.rmq.prod(l, r).1
     }
 
-    pub fn subtree_vertex<F>(&self, a: usize, mut f: F)
+    pub fn subtree_query_for_vertex<F>(&self, u: usize, mut f: F)
     where
         F: FnMut(usize, usize),
     {
-        assert!(a < self.n);
-        f(self.preorder[a], self.postorder[a]);
+        assert!(u < self.n);
+        f(self.preorder[u], self.postorder[u]);
     }
 
-    // unverification
-    pub fn subtree_edge<F>(&self, a: usize, mut f: F)
+    pub fn subtree_query_for_edge<F>(&self, u: usize, mut f: F)
     where
         F: FnMut(usize, usize),
     {
-        assert!(a < self.n);
-        f(self.preorder[a] + 1, self.postorder[a]);
+        assert!(u < self.n);
+        f(self.preorder[u] + 1, self.postorder[u]);
     }
 
-    pub fn path_vertex<F>(&mut self, a: usize, b: usize, mut f: F)
+    pub fn path_query_for_vertex<F>(&mut self, u: usize, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
     {
-        let l = self.lca(a, b);
-        f(self.preorder[l], self.preorder[a] + 1);
-        f(self.preorder[l] + 1, self.preorder[b] + 1);
+        let l = self.lca(u, v);
+        f(self.preorder[l], self.preorder[u] + 1);
+        f(self.preorder[l] + 1, self.preorder[v] + 1);
     }
 
-    pub fn path_edge<F>(&mut self, a: usize, b: usize, mut f: F)
+    pub fn path_query_for_edge<F>(&mut self, u: usize, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
     {
-        let l = self.lca(a, b);
-        f(self.preorder[l] + 1, self.preorder[a] + 1);
-        f(self.preorder[l] + 1, self.preorder[b] + 1);
+        let l = self.lca(u, v);
+        f(self.preorder[l] + 1, self.preorder[u] + 1);
+        f(self.preorder[l] + 1, self.preorder[v] + 1);
     }
 
-    pub fn index(&self, a: usize) -> (usize, usize) {
-        assert!(a < self.n);
-        (self.preorder[a], self.postorder[a])
+    pub fn path_query_for_vertex_with<F, G>(&mut self, u: usize, v: usize, mut f: F, mut g: G)
+    where
+        F: FnMut(usize, usize),
+        G: FnMut(usize, usize),
+    {
+        let l = self.lca(u, v);
+        g(self.preorder[l], self.preorder[u] + 1);
+        f(self.preorder[l] + 1, self.preorder[v] + 1);
+    }
+
+    pub fn path_query_for_edge_with<F, G>(&mut self, u: usize, v: usize, mut f: F, mut g: G)
+    where
+        F: FnMut(usize, usize),
+        G: FnMut(usize, usize),
+    {
+        let l = self.lca(u, v);
+        g(self.preorder[l] + 1, self.preorder[u] + 1);
+        f(self.preorder[l] + 1, self.preorder[v] + 1);
+    }
+
+    pub fn index(&self, u: usize) -> (usize, usize) {
+        assert!(u < self.n);
+        (self.preorder[u], self.postorder[u])
     }
 }

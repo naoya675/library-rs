@@ -43,7 +43,7 @@ fn actual_main() {
             1 => {
                 input! { u: usize, }
                 let mut res = 0;
-                et.subtree_vertex(u, |l, r| res += ft.sum(l, r));
+                et.subtree_query_for_vertex(u, |l, r| res += ft.sum(l, r));
                 println!("{}", res);
             }
             _ => unreachable!(),

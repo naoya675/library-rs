@@ -1,5 +1,5 @@
 [package]
-name = "vertex_add_path_sum"
+name = "vertex_set_path_composite"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,5 +7,6 @@ edition = "2021"
 
 [dependencies]
 proconio = { version = "0.4.5", features = ["derive"] }
-fenwick-tree = { path = '../../../data-structure/fenwick-tree' }
 euler-tour = { path = "../../../tree/euler-tour" }
+segment-tree = { path = '../../../data-structure/segment-tree' }
+modint = { path = "../../../math/modint" }
