@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/grl_5_a/src/main.rs
     title: verification/aizu-online-judge/grl_5_a/src/main.rs
+  - icon: ':heavy_check_mark:'
+    path: verification/aizu-online-judge/grl_5_b/src/main.rs
+    title: verification/aizu-online-judge/grl_5_b/src/main.rs
   _isVerificationFailed: false
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -20,11 +23,11 @@ data:
     - https://atcoder.jp/contests/abc222/editorial/2749
     - https://ei1333.hateblo.jp/entry/2017/04/10/224413
     - https://ei1333.hateblo.jp/entry/2018/12/21/004022
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "//! https://atcoder.jp/contests/abc222/editorial/2749\n//! https://ei1333.hateblo.jp/entry/2017/04/10/224413\n\
     //! https://ei1333.hateblo.jp/entry/2018/12/21/004022\n\nmod wrapper;\npub use\
@@ -86,11 +89,11 @@ data:
   timestamp: '2025-05-26 15:54:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verification/aizu-online-judge/grl_5_b/src/main.rs
   - verification/aizu-online-judge/grl_5_a/src/main.rs
 documentation_of: tree/rerooting/src/lib.rs
 layout: document
-redirect_from:
-- /library/tree/rerooting/src/lib.rs
-- /library/tree/rerooting/src/lib.rs.html
-title: tree/rerooting/src/lib.rs
+title: Rerooting
 ---
+
+## Description

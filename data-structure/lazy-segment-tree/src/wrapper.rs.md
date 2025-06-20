@@ -22,6 +22,9 @@ data:
     path: verification/aizu-online-judge/dsl_2_i/src/main.rs
     title: verification/aizu-online-judge/dsl_2_i/src/main.rs
   - icon: ':heavy_check_mark:'
+    path: verification/aizu-online-judge/grl_5_e/src/main.rs
+    title: verification/aizu-online-judge/grl_5_e/src/main.rs
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/range_affine_range_sum/src/main.rs
     title: verification/library-checker/range_affine_range_sum/src/main.rs
   _isVerificationFailed: false
@@ -30,11 +33,11 @@ data:
   attributes:
     links:
     - https://betrue12.hateblo.jp/entry/2020/09/23/005940
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "//! https://betrue12.hateblo.jp/entry/2020/09/23/005940\n\nuse crate::LazySegmentTree;\n\
     \npub struct RangeAddRangeMinimumQuery;\n\nimpl RangeAddRangeMinimumQuery {\n\
@@ -73,14 +76,15 @@ data:
   path: data-structure/lazy-segment-tree/src/wrapper.rs
   requiredBy:
   - data-structure/lazy-segment-tree/src/lib.rs
-  timestamp: '2025-05-26 15:54:30+09:00'
+  timestamp: '2025-05-29 20:17:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/range_affine_range_sum/src/main.rs
   - verification/aizu-online-judge/dsl_2_i/src/main.rs
-  - verification/aizu-online-judge/dsl_2_f/src/main.rs
   - verification/aizu-online-judge/dsl_2_h/src/main.rs
   - verification/aizu-online-judge/dsl_2_g/src/main.rs
+  - verification/aizu-online-judge/dsl_2_f/src/main.rs
+  - verification/aizu-online-judge/grl_5_e/src/main.rs
 documentation_of: data-structure/lazy-segment-tree/src/wrapper.rs
 layout: document
 redirect_from:

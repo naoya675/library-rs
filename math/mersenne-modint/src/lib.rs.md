@@ -15,11 +15,11 @@ data:
   attributes:
     links:
     - https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "//! https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\n\n#[derive(Debug,\
     \ Clone, Copy, PartialEq, Eq)]\npub struct MersenneModint {\n    value: u64,\n\
@@ -59,10 +59,14 @@ data:
     \ MersenneModint {\n    fn div_assign(&mut self, rhs: Self) {\n        *self =\
     \ *self / rhs;\n    }\n}\n\nimpl std::ops::Neg for MersenneModint {\n    type\
     \ Output = Self;\n    fn neg(self) -> Self {\n        Self::new(0) - self\n  \
-    \  }\n}\n\nimpl num_traits::Zero for MersenneModint {\n    fn zero() -> Self {\n\
-    \        Self::new(0)\n    }\n\n    fn is_zero(&self) -> bool {\n        Self::new(0)\
-    \ == *self\n    }\n}\n\nimpl num_traits::One for MersenneModint {\n    fn one()\
-    \ -> Self {\n        Self::new(1)\n    }\n}\n\nimpl std::fmt::Display for MersenneModint\
+    \  }\n}\n\npub trait Zero {\n    fn zero() -> Self;\n    fn is_zero(&self) ->\
+    \ bool;\n}\n\nimpl Zero for MersenneModint {\n    fn zero() -> Self {\n      \
+    \  Self::new(0)\n    }\n\n    fn is_zero(&self) -> bool {\n        Self::new(0)\
+    \ == *self\n    }\n}\n\npub trait One {\n    fn one() -> Self;\n    fn is_one(&self)\
+    \ -> bool;\n}\n\nimpl One for MersenneModint {\n    fn one() -> Self {\n     \
+    \   Self::new(1)\n    }\n\n    fn is_one(&self) -> bool {\n        Self::new(1)\
+    \ == *self\n    }\n}\n\nimpl Default for MersenneModint {\n    fn default() ->\
+    \ Self {\n        Self::new(0)\n    }\n}\n\nimpl std::fmt::Display for MersenneModint\
     \ {\n    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {\n\
     \        write!(f, \"{}\", self.value)\n    }\n}\n\nimpl From<u64> for MersenneModint\
     \ {\n    fn from(value: u64) -> Self {\n        Self::new(value)\n    }\n}\n\n\
@@ -80,7 +84,7 @@ data:
   isVerificationFile: false
   path: math/mersenne-modint/src/lib.rs
   requiredBy: []
-  timestamp: '2025-05-26 15:54:30+09:00'
+  timestamp: '2025-05-28 17:48:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_b/src/main.rs

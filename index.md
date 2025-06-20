@@ -6,6 +6,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/fenwick-tree/src/lib.rs
       title: Fenwick Tree
+  - name: data-structure/fenwick-tree-abstract/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: data-structure/fenwick-tree-abstract/src/lib.rs
+      title: data-structure/fenwick-tree-abstract/src/lib.rs
   - name: data-structure/lazy-segment-tree/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -27,11 +32,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/union-find/src/lib.rs
       title: Union Find
-  - name: data-structure/weighted-union-find/src
+  - name: data-structure/union-find-with-potential/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: data-structure/weighted-union-find/src/lib.rs
-      title: Weighted Union Find
+      path: data-structure/union-find-with-potential/src/lib.rs
+      title: data-structure/union-find-with-potential/src/lib.rs
   - name: graph/bellman-ford/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -132,11 +137,21 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/z-algorithm/src/lib.rs
       title: Z Algorithm
+  - name: tree/euler-tour/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: tree/euler-tour/src/lib.rs
+      title: tree/euler-tour/src/lib.rs
+  - name: tree/heavy-light-decomposition/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: tree/heavy-light-decomposition/src/lib.rs
+      title: tree/heavy-light-decomposition/src/lib.rs
   - name: tree/rerooting/src
     pages:
     - icon: ':heavy_check_mark:'
       path: tree/rerooting/src/lib.rs
-      title: tree/rerooting/src/lib.rs
+      title: Rerooting
     - icon: ':heavy_check_mark:'
       path: tree/rerooting/src/wrapper.rs
       title: tree/rerooting/src/wrapper.rs
@@ -221,11 +236,36 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_5_a/src/main.rs
       title: verification/aizu-online-judge/grl_5_a/src/main.rs
+  - name: verification/aizu-online-judge/grl_5_b/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_5_b/src/main.rs
+      title: verification/aizu-online-judge/grl_5_b/src/main.rs
+  - name: verification/aizu-online-judge/grl_5_c/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_5_c/src/main.rs
+      title: verification/aizu-online-judge/grl_5_c/src/main.rs
+  - name: verification/aizu-online-judge/grl_5_d/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_5_d/src/main.rs
+      title: verification/aizu-online-judge/grl_5_d/src/main.rs
+  - name: verification/aizu-online-judge/grl_5_e/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_5_e/src/main.rs
+      title: verification/aizu-online-judge/grl_5_e/src/main.rs
   - name: verification/aizu-online-judge/grl_6_a/src
     pages:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_6_a/src/main.rs
       title: verification/aizu-online-judge/grl_6_a/src/main.rs
+  - name: verification/library-checker/lca/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/lca/src/main.rs
+      title: verification/library-checker/lca/src/main.rs
   - name: verification/library-checker/number_of_substrings/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -246,6 +286,31 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/library-checker/unionfind/src/main.rs
       title: verification/library-checker/unionfind/src/main.rs
+  - name: verification/library-checker/unionfind_with_potential/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/unionfind_with_potential/src/main.rs
+      title: verification/library-checker/unionfind_with_potential/src/main.rs
+  - name: verification/library-checker/unionfind_with_potential_non_commutative_group/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
+      title: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
+  - name: verification/library-checker/vertex_add_path_sum/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/vertex_add_path_sum/src/main.rs
+      title: verification/library-checker/vertex_add_path_sum/src/main.rs
+  - name: verification/library-checker/vertex_add_subtree_sum/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/vertex_add_subtree_sum/src/main.rs
+      title: verification/library-checker/vertex_add_subtree_sum/src/main.rs
+  - name: verification/library-checker/vertex_set_path_composite/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/vertex_set_path_composite/src/main.rs
+      title: verification/library-checker/vertex_set_path_composite/src/main.rs
   - name: verification/library-checker/zalgorithm/src
     pages:
     - icon: ':heavy_check_mark:'

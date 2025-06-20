@@ -9,17 +9,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/library-checker/range_affine_range_sum/src/main.rs
     title: verification/library-checker/range_affine_range_sum/src/main.rs
+  - icon: ':heavy_check_mark:'
+    path: verification/library-checker/unionfind_with_potential/src/main.rs
+    title: verification/library-checker/unionfind_with_potential/src/main.rs
+  - icon: ':heavy_check_mark:'
+    path: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
+    title: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
+  - icon: ':heavy_check_mark:'
+    path: verification/library-checker/vertex_set_path_composite/src/main.rs
+    title: verification/library-checker/vertex_set_path_composite/src/main.rs
   _isVerificationFailed: false
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "//! https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c\n\n#[derive(Debug,\
     \ Clone, Copy, PartialEq, Eq)]\npub struct StaticModint<const MOD: u64> {\n  \
@@ -61,19 +70,23 @@ data:
     \ for StaticModint<MOD> {\n    fn div_assign(&mut self, rhs: Self) {\n       \
     \ *self = *self / rhs;\n    }\n}\n\nimpl<const MOD: u64> std::ops::Neg for StaticModint<MOD>\
     \ {\n    type Output = Self;\n    fn neg(self) -> Self {\n        Self::new(0)\
-    \ - self\n    }\n}\n\nimpl<const MOD: u64> num_traits::Zero for StaticModint<MOD>\
-    \ {\n    fn zero() -> Self {\n        Self::new(0)\n    }\n\n    fn is_zero(&self)\
-    \ -> bool {\n        Self::new(0) == *self\n    }\n}\n\nimpl<const MOD: u64> num_traits::One\
-    \ for StaticModint<MOD> {\n    fn one() -> Self {\n        Self::new(1)\n    }\n\
-    }\n\nimpl<const MOD: u64> std::fmt::Display for StaticModint<MOD> {\n    fn fmt(&self,\
-    \ f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {\n        write!(f, \"\
-    {}\", self.value)\n    }\n}\n\nimpl<const MOD: u64> From<u64> for StaticModint<MOD>\
-    \ {\n    fn from(value: u64) -> Self {\n        Self::new(value)\n    }\n}\n\n\
-    /*\nmacro_rules! impl_from {\n    ($($type:ty), *) => {\n        $(\n        \
-    \    impl<const MOD: u64> From<$type> for StaticModint<MOD> {\n              \
-    \  fn from(value: $type) -> Self {\n                    Self::new(value as u64)\n\
-    \                }\n            }\n        )*\n    };\n}\n\nimpl_from!(i8, u8,\
-    \ i16, u16, i32, u32, u64, i64, isize, usize);\n*/\n\n/*\nmacro_rules! impl_ops\
+    \ - self\n    }\n}\n\npub trait Zero {\n    fn zero() -> Self;\n    fn is_zero(&self)\
+    \ -> bool;\n}\n\nimpl<const MOD: u64> Zero for StaticModint<MOD> {\n    fn zero()\
+    \ -> Self {\n        Self::new(0)\n    }\n\n    fn is_zero(&self) -> bool {\n\
+    \        Self::new(0) == *self\n    }\n}\n\npub trait One {\n    fn one() -> Self;\n\
+    \    fn is_one(&self) -> bool;\n}\n\nimpl<const MOD: u64> One for StaticModint<MOD>\
+    \ {\n    fn one() -> Self {\n        Self::new(1)\n    }\n\n    fn is_one(&self)\
+    \ -> bool {\n        Self::new(1) == *self\n    }\n}\n\nimpl<const MOD: u64> Default\
+    \ for StaticModint<MOD> {\n    fn default() -> Self {\n        Self::new(0)\n\
+    \    }\n}\n\nimpl<const MOD: u64> std::fmt::Display for StaticModint<MOD> {\n\
+    \    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {\n  \
+    \      write!(f, \"{}\", self.value)\n    }\n}\n\nimpl<const MOD: u64> From<u64>\
+    \ for StaticModint<MOD> {\n    fn from(value: u64) -> Self {\n        Self::new(value)\n\
+    \    }\n}\n\n/*\nmacro_rules! impl_from {\n    ($($type:ty), *) => {\n       \
+    \ $(\n            impl<const MOD: u64> From<$type> for StaticModint<MOD> {\n \
+    \               fn from(value: $type) -> Self {\n                    Self::new(value\
+    \ as u64)\n                }\n            }\n        )*\n    };\n}\n\nimpl_from!(i8,\
+    \ u8, i16, u16, i32, u32, u64, i64, isize, usize);\n*/\n\n/*\nmacro_rules! impl_ops\
     \ {\n    ($trait:ident, $fn:ident, $op:tt) => {\n        impl<const MOD: u64>\
     \ std::ops::$trait for StaticModint<MOD> {\n            fn $fn(&mut self, rhs:\
     \ Self) {\n                *self = *self $op rhs;\n            }\n        }\n\
@@ -84,9 +97,12 @@ data:
   isVerificationFile: false
   path: math/modint/src/lib.rs
   requiredBy: []
-  timestamp: '2025-05-26 15:54:30+09:00'
+  timestamp: '2025-05-28 17:48:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
+  - verification/library-checker/vertex_set_path_composite/src/main.rs
+  - verification/library-checker/unionfind_with_potential/src/main.rs
   - verification/library-checker/range_affine_range_sum/src/main.rs
   - verification/aizu-online-judge/dpl_5_d/src/main.rs
 documentation_of: math/modint/src/lib.rs
