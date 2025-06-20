@@ -31,7 +31,7 @@ fn actual_main() {
     }
     et.init(0);
     let val = |a: u64, b: u64| (Mint::new(a), Mint::new(b));
-    let rval = |a: u64, b: u64| (Mint::new(1) / Mint::new(a), -Mint::new(b) / Mint::new(a));
+    let invval = |a: u64, b: u64| (Mint::new(1) / Mint::new(a), -Mint::new(b) / Mint::new(a));
     let mut st1 = SegmentTree::<(Mint, Mint)>::new(n + n, |a, b| (a.0 * b.0, a.1 * b.0 + b.1), val(1, 0));
     let mut st2 = SegmentTree::<(Mint, Mint)>::new(n + n, |b, a| (a.0 * b.0, a.1 * b.0 + b.1), val(1, 0));
     for i in 0..n {
@@ -39,8 +39,8 @@ fn actual_main() {
         let index = et.index(i);
         st1.set(index.0, val(a, b));
         st2.set(index.0, val(a, b));
-        st1.set(index.1, rval(a, b));
-        st2.set(index.1, rval(a, b));
+        st1.set(index.1, invval(a, b));
+        st2.set(index.1, invval(a, b));
     }
     for _ in 0..q {
         input! { query: usize, }
@@ -50,13 +50,13 @@ fn actual_main() {
                 let index = et.index(p);
                 st1.set(index.0, val(c, d));
                 st2.set(index.0, val(c, d));
-                st1.set(index.1, rval(c, d));
-                st2.set(index.1, rval(c, d));
+                st1.set(index.1, invval(c, d));
+                st2.set(index.1, invval(c, d));
             }
             1 => {
                 input! { u: usize, v: usize, x: u64 }
                 let x = std::cell::RefCell::new(Mint::new(x));
-                et.path_query_for_vertex_with(
+                et.for_each_with(
                     u,
                     v,
                     |l, r| {

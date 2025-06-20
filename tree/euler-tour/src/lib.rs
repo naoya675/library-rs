@@ -75,23 +75,24 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
         self.rmq.prod(l, r).1
     }
 
-    pub fn subtree_query_for_vertex<F>(&self, u: usize, mut f: F)
+    pub fn for_each_subtree<F>(&self, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
     {
-        assert!(u < self.n);
-        f(self.preorder[u], self.postorder[u]);
+        assert!(v < self.n);
+        f(self.preorder[v], self.postorder[v]);
     }
 
-    pub fn subtree_query_for_edge<F>(&self, u: usize, mut f: F)
+    // unverify
+    pub fn for_each_subtree_edge<F>(&self, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
     {
-        assert!(u < self.n);
-        f(self.preorder[u] + 1, self.postorder[u]);
+        assert!(v < self.n);
+        f(self.preorder[v] + 1, self.postorder[v]);
     }
 
-    pub fn path_query_for_vertex<F>(&mut self, u: usize, v: usize, mut f: F)
+    pub fn for_each<F>(&mut self, u: usize, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
     {
@@ -100,7 +101,7 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
         f(self.preorder[l] + 1, self.preorder[v] + 1);
     }
 
-    pub fn path_query_for_edge<F>(&mut self, u: usize, v: usize, mut f: F)
+    pub fn for_each_edge<F>(&mut self, u: usize, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
     {
@@ -109,7 +110,7 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
         f(self.preorder[l] + 1, self.preorder[v] + 1);
     }
 
-    pub fn path_query_for_vertex_with<F, G>(&mut self, u: usize, v: usize, mut f: F, mut g: G)
+    pub fn for_each_with<F, G>(&mut self, u: usize, v: usize, mut f: F, mut g: G)
     where
         F: FnMut(usize, usize),
         G: FnMut(usize, usize),
@@ -119,7 +120,7 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
         f(self.preorder[l] + 1, self.preorder[v] + 1);
     }
 
-    pub fn path_query_for_edge_with<F, G>(&mut self, u: usize, v: usize, mut f: F, mut g: G)
+    pub fn for_each_edge_with<F, G>(&mut self, u: usize, v: usize, mut f: F, mut g: G)
     where
         F: FnMut(usize, usize),
         G: FnMut(usize, usize),
@@ -129,8 +130,8 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
         f(self.preorder[l] + 1, self.preorder[v] + 1);
     }
 
-    pub fn index(&self, u: usize) -> (usize, usize) {
-        assert!(u < self.n);
-        (self.preorder[u], self.postorder[u])
+    pub fn index(&self, v: usize) -> (usize, usize) {
+        assert!(v < self.n);
+        (self.preorder[v], self.postorder[v])
     }
 }

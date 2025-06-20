@@ -45,7 +45,7 @@ fn actual_main() {
             1 => {
                 input! { u: usize, v: usize, }
                 let mut res = 0;
-                et.path_query_for_vertex(u, v, |l, r| res += ft.sum(l, r));
+                et.for_each(u, v, |l, r| res += ft.sum(l, r));
                 println!("{}", res);
             }
             _ => unreachable!(),

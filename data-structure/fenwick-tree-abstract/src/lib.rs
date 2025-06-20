@@ -20,7 +20,7 @@ where
     pub fn new(n: usize, op: fn(T, T) -> T, e: T, inv: fn(T) -> T) -> Self {
         let size = n;
         Self {
-            tree: vec![e; size],
+            tree: vec![e; size + 1],
             size,
             op,
             e,
@@ -32,7 +32,7 @@ where
         assert!(k < self.size);
         k += 1;
         while k <= self.size {
-            self.tree[k - 1] = (self.op)(self.tree[k - 1], x);
+            self.tree[k] = (self.op)(self.tree[k], x);
             k += k & k.wrapping_neg();
         }
     }
@@ -45,7 +45,7 @@ where
     pub fn prefix_sum(&mut self, mut r: usize) -> T {
         let mut s = self.e;
         while r > 0 {
-            s = (self.op)(s, self.tree[r - 1]);
+            s = (self.op)(s, self.tree[r]);
             r -= r & r.wrapping_neg();
         }
         s
