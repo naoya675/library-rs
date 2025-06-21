@@ -1,3 +1,6 @@
+//! https://math314.hateblo.jp/entry/2014/06/24/220107
+//! https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp.html
+
 #[derive(Debug, Clone)]
 pub struct Edge<Cost> {
     from: usize,

@@ -2,8 +2,8 @@
 
 use proconio::input;
 
-use euler_tour::EulerTour;
 use fenwick_tree_abstract::FenwickTreeAbstract;
+use heavy_light_decomposition::HeavyLightDecomposition;
 
 fn main() {
     std::thread::Builder::new()
@@ -18,30 +18,29 @@ fn actual_main() {
     input! {
         n: usize,
     }
-    let mut et = EulerTour::<usize>::new(n);
+    let mut hld = HeavyLightDecomposition::<usize>::new(n);
     for i in 0..n {
         input! { k: usize, c: [usize; k], }
         for c in c {
-            et.add_edge(i, c, 0);
-            et.add_edge(c, i, 0);
+            hld.add_edge(i, c, 0);
+            hld.add_edge(c, i, 0);
         }
     }
-    et.init(0);
-    let mut ft = FenwickTreeAbstract::<i64>::new(n + n, |a, b| a + b, 0, |a| -a);
+    hld.init(0);
+    let mut ft = FenwickTreeAbstract::<i64>::new(n, |a, b| a + b, 0, |a| -a);
     input! { q: usize, }
     for _ in 0..q {
         input! { query: usize, }
         match query {
             0 => {
                 input! { v: usize, w:i64, }
-                let index = et.index(v);
+                let index = hld.index(v);
                 ft.add(index.0, w);
-                ft.add(index.1, -w);
             }
             1 => {
                 input! { v: usize, }
                 let mut res = 0;
-                et.for_each_edge(0, v, |l, r| res += ft.sum(l, r));
+                hld.for_each_edge(0, v, |l, r| res += ft.sum(l, r));
                 println!("{}", res);
             }
             _ => unreachable!(),

@@ -1,4 +1,5 @@
 //! https://maspypy.com/euler-tour-のお勉強
+//! https://nyaannyaan.github.io/library/tree/euler-tour.hpp
 
 use segment_tree::SegmentTree;
 

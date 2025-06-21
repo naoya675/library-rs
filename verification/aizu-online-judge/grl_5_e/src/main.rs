@@ -2,8 +2,8 @@
 
 use proconio::input;
 
+use fenwick_tree_abstract::FenwickTreeAbstract;
 use heavy_light_decomposition::HeavyLightDecomposition;
-use lazy_segment_tree::LazySegmentTree;
 
 fn main() {
     std::thread::Builder::new()
@@ -27,8 +27,7 @@ fn actual_main() {
         }
     }
     hld.init(0);
-    let mut lst = LazySegmentTree::<(i64, i64), i64>::new(n + n, |a, b| (a.0 + b.0, a.1 + b.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, x| f + x, 0);
-    lst.build(vec![(0, 1); n + n]);
+    let mut ft = vec![FenwickTreeAbstract::<i64>::new(n + 1, |a, b| a + b, 0, |a| -a); 2];
     input! { q: usize, }
     for _ in 0..q {
         input! { query: usize, }
@@ -36,14 +35,19 @@ fn actual_main() {
             0 => {
                 input! { v: usize, w: i64, }
                 hld.for_each_edge(0, v, |l, r| {
-                    lst.apply(l, r, w);
+                    ft[0].add(l, -w * l as i64);
+                    ft[0].add(r, w * r as i64);
+                    ft[1].add(l, w);
+                    ft[1].add(r, -w);
                 });
             }
             1 => {
                 input! { v: usize, }
                 let mut res = 0;
                 hld.for_each_edge(0, v, |l, r| {
-                    res += lst.prod(l, r).0;
+                    let sum_l = ft[0].sum(0, l) + ft[1].sum(0, l) * l as i64;
+                    let sum_r = ft[0].sum(0, r) + ft[1].sum(0, r) * r as i64;
+                    res += sum_r - sum_l;
                 });
                 println!("{}", res);
             }
