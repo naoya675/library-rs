@@ -24,15 +24,6 @@ where
         }
     }
 
-    pub fn build_segment_tree(&mut self, s: &Vec<char>) -> SegmentTree<(T, T)> {
-        let size = s.len();
-        let mut st = SegmentTree::<(T, T)>::new(size, |a, b| (a.0 + (a.1 * b.0), a.1 * b.1), (T::from(0u64), T::from(1u64)));
-        for i in 0..size {
-            st.set(i, (T::from(s[i] as u64), self.base));
-        }
-        st
-    }
-
     pub fn build(&mut self, s: &Vec<char>) -> Vec<T> {
         let size = s.len();
         let mut hash = vec![T::from(0u64); size + 1];
@@ -54,5 +45,14 @@ where
         assert!(l <= r && r <= hash.len());
         self.build_power(r - l);
         hash[r] - hash[l] * self.power[r - l]
+    }
+
+    pub fn build_segment_tree(&mut self, s: &Vec<char>) -> SegmentTree<(T, T)> {
+        let size = s.len();
+        let mut st = SegmentTree::<(T, T)>::new(size, |a, b| (a.0 + (a.1 * b.0), a.1 * b.1), (T::from(0u64), T::from(1u64)));
+        for i in 0..size {
+            st.set(i, (T::from(s[i] as u64), self.base));
+        }
+        st
     }
 }

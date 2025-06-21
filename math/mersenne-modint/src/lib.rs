@@ -1,4 +1,4 @@
-//! https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
+// reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct MersenneModint {

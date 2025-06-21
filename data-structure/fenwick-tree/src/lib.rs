@@ -1,4 +1,4 @@
-//! https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html
+// reference: https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html
 
 #[derive(Debug, Clone)]
 pub struct FenwickTree<T> {

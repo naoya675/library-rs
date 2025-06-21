@@ -1,4 +1,4 @@
-//! https://atcoder.github.io/ac-library/production/document_en/FenwickTreeAbstract.html
+// reference: https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html
 
 #[derive(Debug, Clone)]
 pub struct FenwickTreeAbstract<T> {
@@ -28,6 +28,7 @@ where
         }
     }
 
+    // apply
     pub fn add(&mut self, mut k: usize, x: T) {
         assert!(k < self.size);
         k += 1;
@@ -37,6 +38,7 @@ where
         }
     }
 
+    // prod
     pub fn sum(&mut self, l: usize, r: usize) -> T {
         assert!(l <= r && r <= self.size);
         (self.op)(self.prefix_sum(r), (self.inv)(self.prefix_sum(l)))

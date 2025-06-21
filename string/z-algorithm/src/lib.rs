@@ -1,5 +1,4 @@
-//! https://atcoder.github.io/ac-library/production/document_en/string.html
-//! https://heno239.hatenablog.com/entry/2020/07/07/140651
+// reference: https://heno239.hatenablog.com/entry/2020/07/07/140651
 
 use std::collections::VecDeque;
 
@@ -118,6 +117,8 @@ pub fn z_algorithm<T: Copy + PartialEq>(s: &Vec<T>) -> Vec<usize> {
 }
 
 /*
+// reference: https://atcoder.github.io/ac-library/production/document_en/string.html
+
 pub fn z_algorithm<T: Copy + PartialEq>(s: &Vec<T>) -> Vec<usize> {
     if s.len() == 0 {
         return vec![];

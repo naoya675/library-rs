@@ -1,6 +1,5 @@
 use crate::Rerooting;
 
-// reference: https://atcoder.jp/contests/abc222/editorial/2749
 pub struct RerootingDiameter;
 
 impl RerootingDiameter {

@@ -1,5 +1,4 @@
-//! https://maspypy.com/euler-tour-のお勉強
-//! https://nyaannyaan.github.io/library/tree/euler-tour.hpp
+// reference: https://nyaannyaan.github.io/library/tree/euler-tour.hpp
 
 use segment_tree::SegmentTree;
 
@@ -84,7 +83,6 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
         f(self.preorder[v], self.postorder[v]);
     }
 
-    // unverify
     pub fn for_each_subtree_edge<F>(&self, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
