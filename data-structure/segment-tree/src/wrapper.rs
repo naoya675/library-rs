@@ -24,6 +24,14 @@ impl RangeSumQuery {
     }
 }
 
+pub struct RangeCompositeQuery;
+
+impl RangeCompositeQuery {
+    pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
+        SegmentTree::new(n, |a, b| (a.0 * b.0, a.1 * b.0 + b.1), (1, 0))
+    }
+}
+
 pub struct ParenthesisCheckQuery;
 
 impl ParenthesisCheckQuery {
@@ -33,16 +41,15 @@ impl ParenthesisCheckQuery {
 
     pub fn new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {
         let mut st = SegmentTree::new(n, |a, b| (a.0 + std::cmp::max(b.0 - a.1, 0), std::cmp::max(a.1 - b.0, 0) + b.1), (0, 0));
-        for i in 0..s.len() {
-            st.set(
-                i,
-                match s[i] {
-                    '(' => (0, 1),
-                    ')' => (1, 0),
-                    _ => unreachable!(),
-                },
-            );
-        }
+        let s = s
+            .iter()
+            .map(|&s| match s {
+                '(' => (0, 1),
+                ')' => (1, 0),
+                _ => unreachable!(),
+            })
+            .collect::<Vec<_>>();
+        st.build(s);
         st
     }
 }
@@ -59,25 +66,105 @@ impl ParenthesisCheckQuery {
 
     pub fn new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {
         let mut st = SegmentTree::new(n, |a, b| (a.0 + std::cmp::max(b.0 - a.1, 0), std::cmp::max(a.1 - b.0, 0) + b.1), (0, 0));
-        for i in 0..s.len() {
-            st.set(
-                i,
-                match s[i] {
-                    '(' => (0, 0),
-                    ')' => (-1, -1),
-                    _ => unreachable!(),
-                },
-            );
-        }
+        let s = s
+            .iter()
+            .map(|&s| match s {
+                '(' => (0, 1),
+                ')' => (1, 0),
+                _ => unreachable!(),
+            })
+            .collect::<Vec<_>>();
+        st.build(s);
         st
     }
 }
 */
 
-pub struct RangeCompositeQuery;
+// reference: https://atcoder.jp/contests/abc411/editorial/13379
+// reference: https://atcoder.jp/contests/abc411/submissions/67026433
 
-impl RangeCompositeQuery {
-    pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
-        SegmentTree::new(n, |a, b| (a.0 * b.0, a.1 * b.0 + b.1), (1, 0))
+pub struct RangeSegmentCountQuery;
+
+impl RangeSegmentCountQuery {
+    pub fn new(n: usize) -> SegmentTree<(usize, usize, usize)> {
+        SegmentTree::new(
+            n,
+            |a, b| {
+                if (a.0, a.1) == (2, 2) {
+                    return b;
+                }
+                if (b.0, b.1) == (2, 2) {
+                    return a;
+                }
+                (a.0, b.1, a.2 + b.2 - if a.1 == b.0 && b.0 == 1 { 1 } else { 0 })
+            },
+            (2, 2, 0),
+        )
+    }
+
+    pub fn new_build(n: usize, s: &Vec<usize>) -> SegmentTree<(usize, usize, usize)> {
+        let mut st = SegmentTree::new(
+            n,
+            |a, b| {
+                if (a.0, a.1) == (2, 2) {
+                    return b;
+                }
+                if (b.0, b.1) == (2, 2) {
+                    return a;
+                }
+                (a.0, b.1, a.2 + b.2 - if a.1 == b.0 && b.0 == 1 { 1 } else { 0 })
+            },
+            (2, 2, 0),
+        );
+        let s = s
+            .iter()
+            .map(|&s| match s {
+                0 => (0, 0, 0),
+                1 => (1, 1, 1),
+                _ => unreachable!(),
+            })
+            .collect::<Vec<_>>();
+        st.build(s);
+        st
+    }
+}
+
+// reference: https://atcoder.jp/contests/abc175/editorial/4722
+// reference: https://atcoder.jp/contests/abc415/editorial/13496
+// reference: https://atcoder.jp/contests/abc415/submissions/67761786
+
+pub struct RangeMaximumSubarrayQuery;
+
+impl RangeMaximumSubarrayQuery {
+    pub fn new(n: usize) -> SegmentTree<Elt> {
+        SegmentTree::new(n, Elt::sum, Elt::new(0))
+    }
+}
+
+#[derive(Debug, Clone, Copy)]
+pub struct Elt {
+    prefix: i64,
+    suffix: i64,
+    subarray: i64,
+    whole: i64,
+}
+
+impl Elt {
+    fn new(x: i64) -> Self {
+        Self {
+            prefix: x,
+            suffix: x,
+            subarray: x,
+            whole: x,
+        }
+    }
+
+    fn sum(lhs: Self, rhs: Self) -> Self {
+        Self {
+            prefix: lhs.prefix.max(rhs.prefix + lhs.whole),
+            suffix: rhs.suffix.max(lhs.suffix + rhs.whole),
+            subarray: lhs.subarray.max(rhs.subarray).max(lhs.suffix + rhs.prefix),
+            whole: lhs.whole + rhs.whole,
+        }
     }
 }
