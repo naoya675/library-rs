@@ -17,11 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "#[derive(Debug, Clone)]\npub struct UnionFindWithPotential<T> {\n    n: usize,\n\
     \    par: Vec<usize>,\n    siz: Vec<usize>,\n    diff_potential: Vec<T>,\n   \
@@ -70,13 +70,12 @@ data:
   timestamp: '2025-05-29 20:17:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
   - verification/library-checker/unionfind_with_potential/src/main.rs
+  - verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
   - verification/aizu-online-judge/dsl_1_b/src/main.rs
 documentation_of: data-structure/union-find-with-potential/src/lib.rs
 layout: document
-redirect_from:
-- /library/data-structure/union-find-with-potential/src/lib.rs
-- /library/data-structure/union-find-with-potential/src/lib.rs.html
-title: data-structure/union-find-with-potential/src/lib.rs
+title: Union Find with Potential
 ---
+
+## Description

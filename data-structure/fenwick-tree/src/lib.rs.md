@@ -15,13 +15,13 @@ data:
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "//! https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html\n\
+  code: "// reference: https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html\n\
     \n#[derive(Debug, Clone)]\npub struct FenwickTree<T> {\n    tree: Vec<T>,\n  \
     \  size: usize,\n}\n\nimpl<T: Copy + PartialOrd + Ord + Default> FenwickTree<T>\n\
     where\n    T: std::ops::Add<T, Output = T>,\n    T: std::ops::AddAssign,\n   \
@@ -49,14 +49,18 @@ data:
   isVerificationFile: false
   path: data-structure/fenwick-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 02:45:26+09:00'
+  timestamp: '2025-06-21 17:54:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verification/library-checker/vertex_add_subtree_sum/src/main.rs
   - verification/library-checker/vertex_add_path_sum/src/main.rs
+  - verification/library-checker/vertex_add_subtree_sum/src/main.rs
 documentation_of: data-structure/fenwick-tree/src/lib.rs
 layout: document
 title: Fenwick Tree
 ---
 
 ## Description
+
+## Reference
+- [https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree)
+- [https://algo-logic.info/binary-indexed-tree/](https://algo-logic.info/binary-indexed-tree/)

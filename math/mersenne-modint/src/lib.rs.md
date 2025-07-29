@@ -15,13 +15,13 @@ data:
   attributes:
     links:
     - https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "//! https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\n\n#[derive(Debug,\
+  code: "// reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\n\n#[derive(Debug,\
     \ Clone, Copy, PartialEq, Eq)]\npub struct MersenneModint {\n    value: u64,\n\
     }\n\nimpl MersenneModint {\n    const MOD: u64 = (1u64 << 61) - 1;\n    const\
     \ MASK30: u64 = (1u64 << 30) - 1;\n    const MASK31: u64 = (1u64 << 31) - 1;\n\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: false
   path: math/mersenne-modint/src/lib.rs
   requiredBy: []
-  timestamp: '2025-05-28 17:48:17+09:00'
+  timestamp: '2025-06-21 17:54:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_b/src/main.rs

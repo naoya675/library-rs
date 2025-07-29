@@ -7,6 +7,9 @@ data:
     path: verification/aizu-online-judge/dpl_5_d/src/main.rs
     title: verification/aizu-online-judge/dpl_5_d/src/main.rs
   - icon: ':heavy_check_mark:'
+    path: verification/library-checker/point_set_range_composite/src/main.rs
+    title: verification/library-checker/point_set_range_composite/src/main.rs
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/range_affine_range_sum/src/main.rs
     title: verification/library-checker/range_affine_range_sum/src/main.rs
   - icon: ':heavy_check_mark:'
@@ -24,13 +27,13 @@ data:
   attributes:
     links:
     - https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "//! https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c\n\n#[derive(Debug,\
+  code: "// reference: https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c\n\n#[derive(Debug,\
     \ Clone, Copy, PartialEq, Eq)]\npub struct StaticModint<const MOD: u64> {\n  \
     \  value: u64,\n}\n\nimpl<const MOD: u64> StaticModint<MOD> {\n    pub fn new(n:\
     \ u64) -> Self {\n        Self {\n            value: (n % MOD),\n            //\
@@ -97,13 +100,14 @@ data:
   isVerificationFile: false
   path: math/modint/src/lib.rs
   requiredBy: []
-  timestamp: '2025-05-28 17:48:17+09:00'
+  timestamp: '2025-06-21 17:54:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
-  - verification/library-checker/vertex_set_path_composite/src/main.rs
   - verification/library-checker/unionfind_with_potential/src/main.rs
+  - verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
+  - verification/library-checker/point_set_range_composite/src/main.rs
   - verification/library-checker/range_affine_range_sum/src/main.rs
+  - verification/library-checker/vertex_set_path_composite/src/main.rs
   - verification/aizu-online-judge/dpl_5_d/src/main.rs
 documentation_of: math/modint/src/lib.rs
 layout: document

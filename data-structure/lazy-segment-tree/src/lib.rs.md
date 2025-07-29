@@ -22,9 +22,6 @@ data:
     path: verification/aizu-online-judge/dsl_2_i/src/main.rs
     title: verification/aizu-online-judge/dsl_2_i/src/main.rs
   - icon: ':heavy_check_mark:'
-    path: verification/aizu-online-judge/grl_5_e/src/main.rs
-    title: verification/aizu-online-judge/grl_5_e/src/main.rs
-  - icon: ':heavy_check_mark:'
     path: verification/library-checker/range_affine_range_sum/src/main.rs
     title: verification/library-checker/range_affine_range_sum/src/main.rs
   _isVerificationFailed: false
@@ -33,13 +30,13 @@ data:
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/lazysegtree.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "//! https://atcoder.github.io/ac-library/production/document_en/lazysegtree.html\n\
+  code: "// reference: https://atcoder.github.io/ac-library/production/document_en/lazysegtree.html\n\
     \nmod wrapper;\npub use wrapper::*;\n\n#[derive(Debug, Clone)]\npub struct LazySegmentTree<T,\
     \ F> {\n    tree: Vec<T>,\n    lazy: Vec<F>,\n    size: usize,\n    size_log:\
     \ usize,\n    // Monoids: operation (associativity) + identity element\n    op:\
@@ -131,18 +128,20 @@ data:
   path: data-structure/lazy-segment-tree/src/lib.rs
   requiredBy:
   - data-structure/lazy-segment-tree/src/wrapper.rs
-  timestamp: '2025-05-29 20:17:30+09:00'
+  timestamp: '2025-06-21 17:54:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/range_affine_range_sum/src/main.rs
-  - verification/aizu-online-judge/dsl_2_i/src/main.rs
-  - verification/aizu-online-judge/dsl_2_h/src/main.rs
   - verification/aizu-online-judge/dsl_2_g/src/main.rs
+  - verification/aizu-online-judge/dsl_2_i/src/main.rs
   - verification/aizu-online-judge/dsl_2_f/src/main.rs
-  - verification/aizu-online-judge/grl_5_e/src/main.rs
+  - verification/aizu-online-judge/dsl_2_h/src/main.rs
 documentation_of: data-structure/lazy-segment-tree/src/lib.rs
 layout: document
 title: Lazy Segment Tree
 ---
 
 ## Description
+
+## Reference
+- [https://betrue12.hateblo.jp/entry/2020/09/23/005940](https://betrue12.hateblo.jp/entry/2020/09/23/005940)

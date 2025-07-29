@@ -4,20 +4,28 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verification/aizu-online-judge/grl_5_c/src/main.rs
+    title: verification/aizu-online-judge/grl_5_c/src/main.rs
+  - icon: ':heavy_check_mark:'
+    path: verification/aizu-online-judge/grl_5_d/src/main.rs
+    title: verification/aizu-online-judge/grl_5_d/src/main.rs
+  - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/grl_5_e/src/main.rs
     title: verification/aizu-online-judge/grl_5_e/src/main.rs
   _isVerificationFailed: false
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    links:
+    - https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp.html
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "#[derive(Debug, Clone)]\npub struct Edge<Cost> {\n    from: usize,\n    to:\
+  code: "// reference: https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp.html\n\
+    \n#[derive(Debug, Clone)]\npub struct Edge<Cost> {\n    from: usize,\n    to:\
     \ usize,\n    cost: Cost,\n}\n\nimpl<Cost: Copy> Edge<Cost> {\n    pub fn new(from:\
     \ usize, to: usize, cost: Cost) -> Self {\n        Self { from, to, cost }\n \
     \   }\n}\n\n#[derive(Debug, Clone)]\npub struct HeavyLightDecomposition<Cost>\
@@ -105,14 +113,15 @@ data:
   isVerificationFile: false
   path: tree/heavy-light-decomposition/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 02:45:26+09:00'
+  timestamp: '2025-06-21 17:54:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verification/aizu-online-judge/grl_5_c/src/main.rs
+  - verification/aizu-online-judge/grl_5_d/src/main.rs
   - verification/aizu-online-judge/grl_5_e/src/main.rs
 documentation_of: tree/heavy-light-decomposition/src/lib.rs
 layout: document
-redirect_from:
-- /library/tree/heavy-light-decomposition/src/lib.rs
-- /library/tree/heavy-light-decomposition/src/lib.rs.html
-title: tree/heavy-light-decomposition/src/lib.rs
+title: Heavy-Light Decomposition
 ---
+
+## Description

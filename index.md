@@ -10,7 +10,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/fenwick-tree-abstract/src/lib.rs
-      title: data-structure/fenwick-tree-abstract/src/lib.rs
+      title: Fenwick Tree (Abstract)
   - name: data-structure/lazy-segment-tree/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -36,7 +36,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: data-structure/union-find-with-potential/src/lib.rs
-      title: data-structure/union-find-with-potential/src/lib.rs
+      title: Union Find with Potential
   - name: graph/bellman-ford/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -131,7 +131,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: string/suffix-array/src/lib.rs
-      title: Suffix Array
+      title: string/suffix-array/src/lib.rs
   - name: string/z-algorithm/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -141,12 +141,12 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: tree/euler-tour/src/lib.rs
-      title: tree/euler-tour/src/lib.rs
+      title: Euler Tour
   - name: tree/heavy-light-decomposition/src
     pages:
     - icon: ':heavy_check_mark:'
       path: tree/heavy-light-decomposition/src/lib.rs
-      title: tree/heavy-light-decomposition/src/lib.rs
+      title: Heavy-Light Decomposition
   - name: tree/rerooting/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -271,6 +271,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/library-checker/number_of_substrings/src/main.rs
       title: verification/library-checker/number_of_substrings/src/main.rs
+  - name: verification/library-checker/point_set_range_composite/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/point_set_range_composite/src/main.rs
+      title: verification/library-checker/point_set_range_composite/src/main.rs
   - name: verification/library-checker/range_affine_range_sum/src
     pages:
     - icon: ':heavy_check_mark:'

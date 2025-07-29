@@ -18,13 +18,13 @@ data:
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/dsu.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "//! https://atcoder.github.io/ac-library/production/document_en/dsu.html\n\
+  code: "// reference: https://atcoder.github.io/ac-library/production/document_en/dsu.html\n\
     \n#[derive(Debug, Clone)]\npub struct UnionFind {\n    n: usize,\n    par: Vec<usize>,\n\
     \    siz: Vec<usize>,\n}\n\nimpl UnionFind {\n    pub fn new(n: usize) -> Self\
     \ {\n        Self {\n            n,\n            par: (0..n).collect::<Vec<usize>>(),\n\
@@ -50,7 +50,7 @@ data:
   path: data-structure/union-find/src/lib.rs
   requiredBy:
   - graph/kruskal/src/lib.rs
-  timestamp: '2025-05-28 17:52:35+09:00'
+  timestamp: '2025-06-21 17:54:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/unionfind/src/main.rs

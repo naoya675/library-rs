@@ -13,7 +13,7 @@ data:
     title: Rolling Hash + Segment Tree
   - icon: ':heavy_check_mark:'
     path: tree/euler-tour/src/lib.rs
-    title: tree/euler-tour/src/lib.rs
+    title: Euler Tour
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_a/src/main.rs
@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_b/src/main.rs
     title: verification/aizu-online-judge/dsl_2_b/src/main.rs
+  - icon: ':heavy_check_mark:'
+    path: verification/library-checker/point_set_range_composite/src/main.rs
+    title: verification/library-checker/point_set_range_composite/src/main.rs
   - icon: ':heavy_check_mark:'
     path: verification/library-checker/vertex_set_path_composite/src/main.rs
     title: verification/library-checker/vertex_set_path_composite/src/main.rs
@@ -30,13 +33,13 @@ data:
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/segtree.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "//! https://atcoder.github.io/ac-library/production/document_en/segtree.html\n\
+  code: "// reference: https://atcoder.github.io/ac-library/production/document_en/segtree.html\n\
     \nmod wrapper;\npub use wrapper::*;\n\n#[derive(Debug, Clone)]\npub struct SegmentTree<T>\
     \ {\n    tree: Vec<T>,\n    size: usize,\n    size_log: usize,\n    // Monoids:\
     \ operation (associativity) + identity element\n    op: fn(T, T) -> T,\n    e:\
@@ -104,14 +107,15 @@ data:
   path: data-structure/segment-tree/src/lib.rs
   requiredBy:
   - string/rolling-hash-segment-tree/src/lib.rs
-  - data-structure/segment-tree/src/wrapper.rs
   - tree/euler-tour/src/lib.rs
-  timestamp: '2025-06-07 00:31:50+09:00'
+  - data-structure/segment-tree/src/wrapper.rs
+  timestamp: '2025-07-22 01:37:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verification/library-checker/point_set_range_composite/src/main.rs
   - verification/library-checker/vertex_set_path_composite/src/main.rs
-  - verification/aizu-online-judge/dsl_2_b/src/main.rs
   - verification/aizu-online-judge/dsl_2_a/src/main.rs
+  - verification/aizu-online-judge/dsl_2_b/src/main.rs
 documentation_of: data-structure/segment-tree/src/lib.rs
 layout: document
 title: Segment Tree
