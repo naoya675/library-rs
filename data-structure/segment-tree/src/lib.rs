@@ -1,8 +1,5 @@
 // reference: https://atcoder.github.io/ac-library/production/document_en/segtree.html
 
-mod wrapper;
-pub use wrapper::*;
-
 #[derive(Debug, Clone)]
 pub struct SegmentTree<T> {
     tree: Vec<T>,

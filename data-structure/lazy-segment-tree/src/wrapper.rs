@@ -1,7 +1,6 @@
-use crate::LazySegmentTree;
+// reference: https://betrue12.hateblo.jp/entry/2020/09/23/005940
 
 pub struct RangeAddRangeMinimumQuery;
-
 impl RangeAddRangeMinimumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(n, |a, b| std::cmp::min(a, b), i64::MAX, |f, x| f + x, |f, g| f + g, 0)
@@ -9,7 +8,6 @@ impl RangeAddRangeMinimumQuery {
 }
 
 pub struct RangeAddRangeMaximumQuery;
-
 impl RangeAddRangeMaximumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(n, |a, b| std::cmp::max(a, b), i64::MIN, |f, x| f + x, |f, g| f + g, 0)
@@ -17,15 +15,13 @@ impl RangeAddRangeMaximumQuery {
 }
 
 pub struct RangeAddRangeSumQuery;
-
 impl RangeAddRangeSumQuery {
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), i64> {
-        LazySegmentTree::new(n, |a, b| (a.0 + b.0, a.1 + b.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, x| f + x, 0)
+        LazySegmentTree::new(n, |a, b| (a.0 + b.0, a.1 + b.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0)
     }
 }
 
 pub struct RangeUpdateRangeMinimumQuery;
-
 impl RangeUpdateRangeMinimumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(
@@ -40,7 +36,6 @@ impl RangeUpdateRangeMinimumQuery {
 }
 
 pub struct RangeUpdateRangeMaximumQuery;
-
 impl RangeUpdateRangeMaximumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(
@@ -55,7 +50,6 @@ impl RangeUpdateRangeMaximumQuery {
 }
 
 pub struct RangeUpdateRangeSumQuery;
-
 impl RangeUpdateRangeSumQuery {
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), i64> {
         LazySegmentTree::new(
@@ -70,7 +64,6 @@ impl RangeUpdateRangeSumQuery {
 }
 
 pub struct RangeAffineRangeSumQuery;
-
 impl RangeAffineRangeSumQuery {
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), (i64, i64)> {
         LazySegmentTree::new(
@@ -81,5 +74,46 @@ impl RangeAffineRangeSumQuery {
             |a, b| (a.0 * b.0, a.0 * b.1 + a.1),
             (1, 0),
         )
+    }
+}
+
+// reference: https://atcoder.jp/contests/abc407/editorial/13118
+
+pub mod RangeArithmeticSequenceAddRangeSumQuery {
+    #[derive(Debug, Clone, Copy)]
+    pub struct S {
+        value_sum: i64,
+        index_sum: i64,
+        len: i64,
+    }
+    impl S {
+        pub fn new(value_sum: i64, index_sum: i64, len: i64) -> Self {
+            Self { value_sum, index_sum, len }
+        }
+    }
+
+    #[derive(Debug, Clone, Copy)]
+    pub struct F {
+        a: i64,
+        b: i64,
+    }
+    impl F {
+        pub fn new(a: i64, b: i64) -> Self {
+            Self { a, b }
+        }
+    }
+
+    pub struct RangeArithmeticSequenceAddRangeSumQuery;
+    impl RangeArithmeticSequenceAddRangeSumQuery {
+        pub fn new(n: usize) -> LazySegmentTree<S, F> {
+            LazySegmentTree::new(
+                n,
+                |x, y| S::new(x.value_sum + y.value_sum, x.index_sum + y.index_sum, x.len + y.len),
+                S::new(0, 0, 0),
+                |f, x| S::new(x.value_sum + x.index_sum * f.a + x.len * f.b, x.index_sum, x.len),
+                |f, g| F::new(f.a + g.a, f.b + g.b),
+                F::new(0, 0),
+            )
+        }
     }
 }

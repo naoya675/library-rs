@@ -44,7 +44,6 @@ where
         s
     }
 
-    // unverify
     pub fn lower_bound(&self, mut x: T) -> usize {
         let mut s = 0;
         let mut k = self.size.next_power_of_two();
@@ -58,7 +57,6 @@ where
         s
     }
 
-    // unverify
     pub fn upper_bound(&self, mut x: T) -> usize {
         let mut s = 0;
         let mut k = self.size.next_power_of_two();
