@@ -154,7 +154,6 @@ impl<Cost: Copy + Default> HeavyLightDecomposition<Cost> {
         }
     }
 
-    // unverify
     pub fn for_each_subtree<F>(&self, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
@@ -163,7 +162,6 @@ impl<Cost: Copy + Default> HeavyLightDecomposition<Cost> {
         f(self.preorder[v], self.postorder[v]);
     }
 
-    // unverify
     pub fn for_each_subtree_edge<F>(&self, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
@@ -172,7 +170,7 @@ impl<Cost: Copy + Default> HeavyLightDecomposition<Cost> {
         f(self.preorder[v] + 1, self.postorder[v]);
     }
 
-    // noncommutative, unverify
+    // noncommutative
     pub fn for_each_noncommutative<F>(&mut self, u: usize, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
@@ -187,7 +185,7 @@ impl<Cost: Copy + Default> HeavyLightDecomposition<Cost> {
         }
     }
 
-    // noncommutative, unverify
+    // noncommutative
     pub fn for_each_noncommutative_edge<F>(&mut self, u: usize, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
@@ -201,7 +199,6 @@ impl<Cost: Copy + Default> HeavyLightDecomposition<Cost> {
         }
     }
 
-    // unverify
     pub fn for_each<F>(&mut self, u: usize, v: usize, mut f: F)
     where
         F: FnMut(usize, usize),
