@@ -1,8 +1,5 @@
 // reference: https://atcoder.jp/contests/abc222/editorial/2749
 
-mod wrapper;
-pub use wrapper::*;
-
 #[derive(Debug, Clone)]
 pub struct Edge<Cost> {
     from: usize,
@@ -99,7 +96,8 @@ impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() ->
         }
     }
 
-    /* [warning]
+    /*
+     * warning
     fn dfs2(&mut self, c: usize, p: usize, val: Data) {
         let mut ds = vec![val];
         for edge in self.graph[c].clone() {

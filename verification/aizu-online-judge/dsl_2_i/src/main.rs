@@ -13,9 +13,9 @@ fn main() {
         n,
         |a, b| (a.0 + b.0, a.1 + b.1),
         (0, 0),
-        |a, b| if a == 1 << 31 { b } else { (a * b.1, b.1) },
-        |a, b| if a == 1 << 31 { b } else { a },
-        1 << 31,
+        |f, x| if f != i64::MAX { (f * x.1, x.1) } else { x },
+        |f, g| if f == i64::MAX { g } else { f },
+        i64::MAX,
     );
     lst.build(vec![(0, 1); n]);
     for _ in 0..q {

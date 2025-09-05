@@ -12,10 +12,10 @@ fn main() {
     let mut lst = LazySegmentTree::<i64, i64>::new(
         n,
         |a, b| std::cmp::min(a, b),
-        1 << 31,
-        |a, b| if a == -1 { b } else { a },
-        |a, b| if a == -1 { b } else { a },
-        -1,
+        i64::MAX,
+        |f, x| if f == i64::MAX { x } else { f },
+        |f, g| if f == i64::MAX { g } else { f },
+        i64::MAX,
     );
     lst.build(vec![(1 << 31) - 1; n]);
     for _ in 0..q {

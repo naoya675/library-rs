@@ -9,14 +9,7 @@ fn main() {
         n: usize,
         q: usize,
     }
-    let mut lst = LazySegmentTree::<i64, i64>::new(
-        n,
-        |a, b| std::cmp::min(a, b),
-        1 << 31,
-        |a, b| a + b,
-        |a, b| a + b,
-        0,
-    );
+    let mut lst = LazySegmentTree::<i64, i64>::new(n, |a, b| std::cmp::min(a, b), i64::MAX, |f, x| f + x, |f, g| f + g, 0);
     lst.build(vec![0; n]);
     for _ in 0..q {
         input! { query: usize, }

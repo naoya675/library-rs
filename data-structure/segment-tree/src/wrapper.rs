@@ -48,8 +48,6 @@ impl ParenthesisCheckQuery {
 }
 
 /*
-// reference: https://atcoder.jp/contests/abc223/editorial/2774
-
 pub struct ParenthesisCheckQuery;
 impl ParenthesisCheckQuery {
     pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
@@ -72,11 +70,8 @@ impl ParenthesisCheckQuery {
 }
 */
 
-// reference: https://atcoder.jp/contests/abc411/editorial/13379
-// reference: https://atcoder.jp/contests/abc411/submissions/67026433
-
-pub struct RangeSegmentCountQuery;
-impl RangeSegmentCountQuery {
+pub struct IntervalCountQuery;
+impl IntervalCountQuery {
     pub fn new(n: usize) -> SegmentTree<(usize, usize, usize)> {
         SegmentTree::new(
             n,
@@ -107,12 +102,6 @@ impl RangeSegmentCountQuery {
         st
     }
 }
-
-// reference: https://atcoder.jp/contests/abc175/editorial/4722
-// reference: https://atcoder.jp/contests/abc175/submissions/34409729
-// reference: https://atcoder.jp/contests/abc415/editorial/13496
-// reference: https://atcoder.jp/contests/abc415/submissions/67761786
-// keyword: Kadane's algorithm
 
 pub mod RangeMaximumSubarraySumQuery {
     #[derive(Debug, Clone, Copy)]

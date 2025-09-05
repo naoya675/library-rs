@@ -1,7 +1,4 @@
-use crate::Rerooting;
-
 pub struct RerootingDiameter;
-
 impl RerootingDiameter {
     pub fn new(
         n: usize,

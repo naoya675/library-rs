@@ -17,8 +17,8 @@ fn main() {
         n,
         |a, b| (a.0 + b.0, a.1 + b.1),
         (Mint::new(0), Mint::new(0)),
-        |a, b| (a.0 * b.0 + a.1 * b.1, b.1),
-        |a, b| (a.0 * b.0, a.0 * b.1 + a.1),
+        |f, x| (f.0 * x.0 + f.1 * x.1, x.1),
+        |f, g| (f.0 * g.0, f.0 * g.1 + f.1),
         (Mint::new(1), Mint::new(0)),
     );
     let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();

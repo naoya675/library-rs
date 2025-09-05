@@ -26,9 +26,11 @@ fn actual_main() {
         }
     }
     hld.init(0);
-    input! { q: usize, }
-    for _ in 0..q {
-        input! { u: usize, v: usize, }
+    input! {
+        q: usize,
+        uv: [(usize, usize); q],
+    }
+    for (u, v) in uv {
         println!("{}", hld.lca(u, v));
     }
 }

@@ -1,5 +1,3 @@
-// reference: https://betrue12.hateblo.jp/entry/2020/09/23/005940
-
 pub struct RangeAddRangeMinimumQuery;
 impl RangeAddRangeMinimumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
@@ -70,14 +68,12 @@ impl RangeAffineRangeSumQuery {
             n,
             |a, b| (a.0 + b.0, a.1 + b.1),
             (0, 0),
-            |a, b| (a.0 * b.0 + a.1 * b.1, b.1),
-            |a, b| (a.0 * b.0, a.0 * b.1 + a.1),
+            |f, x| (f.0 * x.0 + f.1 * x.1, x.1),
+            |f, g| (f.0 * g.0, f.0 * g.1 + f.1),
             (1, 0),
         )
     }
 }
-
-// reference: https://atcoder.jp/contests/abc407/editorial/13118
 
 pub mod RangeArithmeticSequenceAddRangeSumQuery {
     #[derive(Debug, Clone, Copy)]

@@ -9,14 +9,7 @@ fn main() {
         n: usize,
         q: usize,
     }
-    let mut lst = LazySegmentTree::<(i64, i64), i64>::new(
-        n,
-        |a, b| (a.0 + b.0, a.1 + b.1),
-        (0, 0),
-        |a, b| (b.0 + a * b.1, b.1),
-        |a, b| a + b,
-        0,
-    );
+    let mut lst = LazySegmentTree::<(i64, i64), i64>::new(n, |a, b| (a.0 + b.0, a.1 + b.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0);
     lst.build(vec![(0, 1); n]);
     for _ in 0..q {
         input! { query: usize, }
