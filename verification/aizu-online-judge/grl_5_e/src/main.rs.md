@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/fenwick-tree-abstract/src/lib.rs
     title: Fenwick Tree (Abstract)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy-light-decomposition/src/lib.rs
     title: Heavy-Light Decomposition
   _extendedRequiredBy: []

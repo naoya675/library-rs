@@ -4,9 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/rerooting/src/lib.rs
     title: Rerooting
-  - icon: ':heavy_check_mark:'
-    path: tree/rerooting/src/wrapper.rs
-    title: tree/rerooting/src/wrapper.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -35,11 +32,10 @@ data:
     {}\", res.iter().max().unwrap());\n}\n"
   dependsOn:
   - tree/rerooting/src/lib.rs
-  - tree/rerooting/src/wrapper.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_5_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-09-05 20:18:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_5_a/src/main.rs

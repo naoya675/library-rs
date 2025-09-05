@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy-light-decomposition/src/lib.rs
     title: Heavy-Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C
     links:
@@ -27,16 +27,16 @@ data:
     \    }\n    let mut hld = HeavyLightDecomposition::<usize>::new(n);\n    for i\
     \ in 0..n {\n        input! { k: usize, c: [usize; k], }\n        for c in c {\n\
     \            hld.add_edge(i, c, 0);\n            hld.add_edge(c, i, 0);\n    \
-    \    }\n    }\n    hld.init(0);\n    input! { q: usize, }\n    for _ in 0..q {\n\
-    \        input! { u: usize, v: usize, }\n        println!(\"{}\", hld.lca(u, v));\n\
-    \    }\n}\n"
+    \    }\n    }\n    hld.init(0);\n    input! {\n        q: usize,\n        uv:\
+    \ [(usize, usize); q],\n    }\n    for (u, v) in uv {\n        println!(\"{}\"\
+    , hld.lca(u, v));\n    }\n}\n"
   dependsOn:
   - tree/heavy-light-decomposition/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_5_c/src/main.rs
   requiredBy: []
-  timestamp: '2025-08-21 20:48:10+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-09-05 20:18:54+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_5_c/src/main.rs
 layout: document

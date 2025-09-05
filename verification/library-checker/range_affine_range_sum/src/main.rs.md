@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
   - icon: ':heavy_check_mark:'
@@ -27,8 +27,8 @@ data:
     \ntype Mint = StaticModint<998244353>;\n\nfn main() {\n    input! {\n        n:\
     \ usize,\n        q: usize,\n        a: [u64; n],\n    }\n    let mut lst = LazySegmentTree::<(Mint,\
     \ Mint), (Mint, Mint)>::new(\n        n,\n        |a, b| (a.0 + b.0, a.1 + b.1),\n\
-    \        (Mint::new(0), Mint::new(0)),\n        |a, b| (a.0 * b.0 + a.1 * b.1,\
-    \ b.1),\n        |a, b| (a.0 * b.0, a.0 * b.1 + a.1),\n        (Mint::new(1),\
+    \        (Mint::new(0), Mint::new(0)),\n        |f, x| (f.0 * x.0 + f.1 * x.1,\
+    \ x.1),\n        |f, g| (f.0 * g.0, f.0 * g.1 + f.1),\n        (Mint::new(1),\
     \ Mint::new(0)),\n    );\n    let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();\n\
     \    lst.build(a);\n    for _ in 0..q {\n        input! { query: usize, }\n  \
     \      match query {\n            0 => {\n                input! { l: usize, r:\
@@ -42,7 +42,7 @@ data:
   isVerificationFile: true
   path: verification/library-checker/range_affine_range_sum/src/main.rs
   requiredBy: []
-  timestamp: '2025-08-21 20:46:40+09:00'
+  timestamp: '2025-09-05 20:18:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/range_affine_range_sum/src/main.rs

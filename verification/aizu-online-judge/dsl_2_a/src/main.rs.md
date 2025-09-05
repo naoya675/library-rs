@@ -22,10 +22,10 @@ data:
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A\n\
     \nuse proconio::input;\n\nuse segment_tree::SegmentTree;\n\nfn main() {\n    input!\
     \ {\n        n: usize,\n        q: usize,\n    }\n    let mut st = SegmentTree::<i64>::new(n,\
-    \ |a, b| std::cmp::min(a, b), (1 << 31) - 1);\n    st.build(vec![(1 << 31) - 1;\
-    \ n]);\n    for _ in 0..q {\n        input! { query: usize, }\n        match query\
-    \ {\n            0 => {\n                input! { x: usize, y: i64, }\n      \
-    \          st.set(x, y);\n            }\n            1 => {\n                input!\
+    \ |a, b| std::cmp::min(a, b), i64::MAX);\n    st.build(vec![(1 << 31) - 1; n]);\n\
+    \    for _ in 0..q {\n        input! { query: usize, }\n        match query {\n\
+    \            0 => {\n                input! { x: usize, y: i64, }\n          \
+    \      st.set(x, y);\n            }\n            1 => {\n                input!\
     \ { x: usize, y: usize, }\n                println!(\"{}\", st.prod(x, y + 1));\n\
     \            }\n            _ => unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
@@ -33,7 +33,7 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-08-21 20:46:40+09:00'
+  timestamp: '2025-09-05 20:18:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_a/src/main.rs

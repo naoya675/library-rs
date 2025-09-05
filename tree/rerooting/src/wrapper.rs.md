@@ -1,23 +1,11 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: tree/rerooting/src/lib.rs
-    title: Rerooting
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: tree/rerooting/src/lib.rs
-    title: Rerooting
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verification/aizu-online-judge/grl_5_a/src/main.rs
-    title: verification/aizu-online-judge/grl_5_a/src/main.rs
-  - icon: ':heavy_check_mark:'
-    path: verification/aizu-online-judge/grl_5_b/src/main.rs
-    title: verification/aizu-online-judge/grl_5_b/src/main.rs
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -26,24 +14,20 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "use crate::Rerooting;\n\npub struct RerootingDiameter;\n\nimpl RerootingDiameter\
-    \ {\n    pub fn new(\n        n: usize,\n    ) -> Rerooting<usize, usize, impl\
-    \ Fn(usize, usize) -> usize, impl Fn() -> usize, impl Fn() -> usize, impl Fn(usize,\
-    \ usize, usize, usize) -> usize> {\n        Rerooting::new(\n            n,\n\
-    \            |a: usize, b: usize| std::cmp::max(a, b),\n            || 0,\n  \
-    \          || 0,\n            |a: usize, _: usize, _: usize, w: usize| a + w,\n\
-    \        )\n    }\n}\n"
-  dependsOn:
-  - tree/rerooting/src/lib.rs
+  code: "pub struct RerootingDiameter;\nimpl RerootingDiameter {\n    pub fn new(\n\
+    \        n: usize,\n    ) -> Rerooting<usize, usize, impl Fn(usize, usize) ->\
+    \ usize, impl Fn() -> usize, impl Fn() -> usize, impl Fn(usize, usize, usize,\
+    \ usize) -> usize> {\n        Rerooting::new(\n            n,\n            |a:\
+    \ usize, b: usize| std::cmp::max(a, b),\n            || 0,\n            || 0,\n\
+    \            |a: usize, _: usize, _: usize, w: usize| a + w,\n        )\n    }\n\
+    }\n"
+  dependsOn: []
   isVerificationFile: false
   path: tree/rerooting/src/wrapper.rs
-  requiredBy:
-  - tree/rerooting/src/lib.rs
-  timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verification/aizu-online-judge/grl_5_b/src/main.rs
-  - verification/aizu-online-judge/grl_5_a/src/main.rs
+  requiredBy: []
+  timestamp: '2025-09-05 20:18:54+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: tree/rerooting/src/wrapper.rs
 layout: document
 redirect_from:

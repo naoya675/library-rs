@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G
     links:
@@ -22,22 +22,21 @@ data:
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\n\
     \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\n\nfn main()\
     \ {\n    input! {\n        n: usize,\n        q: usize,\n    }\n    let mut lst\
-    \ = LazySegmentTree::<(i64, i64), i64>::new(\n        n,\n        |a, b| (a.0\
-    \ + b.0, a.1 + b.1),\n        (0, 0),\n        |a, b| (b.0 + a * b.1, b.1),\n\
-    \        |a, b| a + b,\n        0,\n    );\n    lst.build(vec![(0, 1); n]);\n\
-    \    for _ in 0..q {\n        input! { query: usize, }\n        match query {\n\
-    \            0 => {\n                input! { s: usize, t: usize, x: i64, }\n\
-    \                lst.apply(s - 1, t, x);\n            }\n            1 => {\n\
-    \                input! { s: usize, t: usize, }\n                println!(\"{}\"\
-    , lst.prod(s - 1, t).0);\n            }\n            _ => unreachable!(),\n  \
-    \      }\n    }\n}\n"
+    \ = LazySegmentTree::<(i64, i64), i64>::new(n, |a, b| (a.0 + b.0, a.1 + b.1),\
+    \ (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0);\n    lst.build(vec![(0,\
+    \ 1); n]);\n    for _ in 0..q {\n        input! { query: usize, }\n        match\
+    \ query {\n            0 => {\n                input! { s: usize, t: usize, x:\
+    \ i64, }\n                lst.apply(s - 1, t, x);\n            }\n           \
+    \ 1 => {\n                input! { s: usize, t: usize, }\n                println!(\"\
+    {}\", lst.prod(s - 1, t).0);\n            }\n            _ => unreachable!(),\n\
+    \        }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_g/src/main.rs
   requiredBy: []
-  timestamp: '2025-08-21 20:46:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-05 20:18:54+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_g/src/main.rs
 layout: document

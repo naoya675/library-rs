@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
   _extendedRequiredBy: []
@@ -23,20 +23,20 @@ data:
     \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\n\nfn main()\
     \ {\n    input! {\n        n: usize,\n        q: usize,\n    }\n    let mut lst\
     \ = LazySegmentTree::<i64, i64>::new(\n        n,\n        |a, b| std::cmp::min(a,\
-    \ b),\n        1 << 31,\n        |a, b| if a == -1 { b } else { a },\n       \
-    \ |a, b| if a == -1 { b } else { a },\n        -1,\n    );\n    lst.build(vec![(1\
-    \ << 31) - 1; n]);\n    for _ in 0..q {\n        input! { query: usize, }\n  \
-    \      match query {\n            0 => {\n                input! { s: usize, t:\
-    \ usize, x: i64, }\n                lst.apply(s, t + 1, x);\n            }\n \
-    \           1 => {\n                input! { s: usize, t: usize, }\n         \
-    \       println!(\"{}\", lst.prod(s, t + 1));\n            }\n            _ =>\
-    \ unreachable!(),\n        }\n    }\n}\n"
+    \ b),\n        i64::MAX,\n        |f, x| if f == i64::MAX { x } else { f },\n\
+    \        |f, g| if f == i64::MAX { g } else { f },\n        i64::MAX,\n    );\n\
+    \    lst.build(vec![(1 << 31) - 1; n]);\n    for _ in 0..q {\n        input! {\
+    \ query: usize, }\n        match query {\n            0 => {\n               \
+    \ input! { s: usize, t: usize, x: i64, }\n                lst.apply(s, t + 1,\
+    \ x);\n            }\n            1 => {\n                input! { s: usize, t:\
+    \ usize, }\n                println!(\"{}\", lst.prod(s, t + 1));\n          \
+    \  }\n            _ => unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_f/src/main.rs
   requiredBy: []
-  timestamp: '2025-08-21 20:46:40+09:00'
+  timestamp: '2025-09-05 20:18:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_f/src/main.rs

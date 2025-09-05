@@ -13,12 +13,12 @@ data:
       title: Fenwick Tree (Abstract)
   - name: data-structure/lazy-segment-tree/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/lazy-segment-tree/src/lib.rs
       title: Lazy Segment Tree
     - icon: ':warning:'
       path: data-structure/lazy-segment-tree/src/wrapper.rs
-      title: data-structure/lazy-segment-tree/src/wrapper.rs
+      title: Lazy Segment Tree (Wrapper)
   - name: data-structure/segment-tree/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -26,7 +26,7 @@ data:
       title: Segment Tree
     - icon: ':warning:'
       path: data-structure/segment-tree/src/wrapper.rs
-      title: data-structure/segment-tree/src/wrapper.rs
+      title: Segment Tree (Wrapper)
   - name: data-structure/union-find/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -164,7 +164,7 @@ data:
       title: Euler Tour
   - name: tree/heavy-light-decomposition/src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: tree/heavy-light-decomposition/src/lib.rs
       title: Heavy-Light Decomposition
   - name: tree/rerooting/src
@@ -172,7 +172,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/rerooting/src/lib.rs
       title: Rerooting
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: tree/rerooting/src/wrapper.rs
       title: tree/rerooting/src/wrapper.rs
   verificationCategories:
@@ -218,7 +218,7 @@ data:
       title: verification/aizu-online-judge/dsl_2_f/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_g/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/dsl_2_g/src/main.rs
       title: verification/aizu-online-judge/dsl_2_g/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_h/src
@@ -263,7 +263,7 @@ data:
       title: verification/aizu-online-judge/grl_5_b/src/main.rs
   - name: verification/aizu-online-judge/grl_5_c/src
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_5_c/src/main.rs
       title: verification/aizu-online-judge/grl_5_c/src/main.rs
   - name: verification/aizu-online-judge/grl_5_d/src
