@@ -16,7 +16,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/lazy-segment-tree/src/lib.rs
       title: Lazy Segment Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: data-structure/lazy-segment-tree/src/wrapper.rs
       title: data-structure/lazy-segment-tree/src/wrapper.rs
   - name: data-structure/segment-tree/src
@@ -24,7 +24,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/segment-tree/src/lib.rs
       title: Segment Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: data-structure/segment-tree/src/wrapper.rs
       title: data-structure/segment-tree/src/wrapper.rs
   - name: data-structure/union-find/src
@@ -57,6 +57,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/kruskal/src/lib.rs
       title: Kruskal
+  - name: graph/strongly-connected-components/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: graph/strongly-connected-components/src/lib.rs
+      title: Strongly Connected Components (Tarjan)
   - name: graph/topological-sort/src
     pages:
     - icon: ':warning:'
@@ -76,12 +81,12 @@ data:
     pages:
     - icon: ':warning:'
       path: macro/chmax/src/lib.rs
-      title: chmax
+      title: macro/chmax/src/lib.rs
   - name: macro/chmin/src
     pages:
     - icon: ':warning:'
       path: macro/chmin/src/lib.rs
-      title: chmin
+      title: macro/chmin/src/lib.rs
   - name: macro/debug/src
     pages:
     - icon: ':warning:'
@@ -91,7 +96,7 @@ data:
     pages:
     - icon: ':warning:'
       path: macro/input/src/lib.rs
-      title: input
+      title: macro/input/src/lib.rs
   - name: math/combinatorics/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -107,6 +112,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/modint/src/lib.rs
       title: Modint
+  - name: string/aho-corasick/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: string/aho-corasick/src/lib.rs
+      title: Aho-Corasick
   - name: string/lcp-array/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -132,11 +142,21 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/suffix-array/src/lib.rs
       title: string/suffix-array/src/lib.rs
+  - name: string/trie/src
+    pages:
+    - icon: ':warning:'
+      path: string/trie/src/lib.rs
+      title: string/trie/src/lib.rs
   - name: string/z-algorithm/src
     pages:
     - icon: ':heavy_check_mark:'
       path: string/z-algorithm/src/lib.rs
       title: Z Algorithm
+  - name: tree/cartesian-tree/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: tree/cartesian-tree/src/lib.rs
+      title: Cartesian Tree
   - name: tree/euler-tour/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -144,7 +164,7 @@ data:
       title: Euler Tour
   - name: tree/heavy-light-decomposition/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: tree/heavy-light-decomposition/src/lib.rs
       title: Heavy-Light Decomposition
   - name: tree/rerooting/src
@@ -243,7 +263,7 @@ data:
       title: verification/aizu-online-judge/grl_5_b/src/main.rs
   - name: verification/aizu-online-judge/grl_5_c/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_5_c/src/main.rs
       title: verification/aizu-online-judge/grl_5_c/src/main.rs
   - name: verification/aizu-online-judge/grl_5_d/src
@@ -261,6 +281,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_6_a/src/main.rs
       title: verification/aizu-online-judge/grl_6_a/src/main.rs
+  - name: verification/library-checker/aho_corasick/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/aho_corasick/src/main.rs
+      title: verification/library-checker/aho_corasick/src/main.rs
+  - name: verification/library-checker/cartesian_tree/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/cartesian_tree/src/main.rs
+      title: verification/library-checker/cartesian_tree/src/main.rs
   - name: verification/library-checker/lca/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -281,6 +311,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/library-checker/range_affine_range_sum/src/main.rs
       title: verification/library-checker/range_affine_range_sum/src/main.rs
+  - name: verification/library-checker/scc/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/scc/src/main.rs
+      title: verification/library-checker/scc/src/main.rs
   - name: verification/library-checker/suffixarray/src
     pages:
     - icon: ':heavy_check_mark:'

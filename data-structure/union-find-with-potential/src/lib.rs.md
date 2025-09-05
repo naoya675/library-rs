@@ -70,9 +70,9 @@ data:
   timestamp: '2025-05-29 20:17:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verification/aizu-online-judge/dsl_1_b/src/main.rs
   - verification/library-checker/unionfind_with_potential/src/main.rs
   - verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
-  - verification/aizu-online-judge/dsl_1_b/src/main.rs
 documentation_of: data-structure/union-find-with-potential/src/lib.rs
 layout: document
 title: Union Find with Potential

@@ -5,9 +5,6 @@ data:
     path: data-structure/segment-tree/src/lib.rs
     title: Segment Tree
   - icon: ':heavy_check_mark:'
-    path: data-structure/segment-tree/src/wrapper.rs
-    title: data-structure/segment-tree/src/wrapper.rs
-  - icon: ':heavy_check_mark:'
     path: math/modint/src/lib.rs
     title: Modint
   _extendedRequiredBy: []
@@ -40,12 +37,11 @@ data:
     \          }\n            _ => unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/segment-tree/src/lib.rs
-  - data-structure/segment-tree/src/wrapper.rs
   - math/modint/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/point_set_range_composite/src/main.rs
   requiredBy: []
-  timestamp: '2025-07-22 01:37:51+09:00'
+  timestamp: '2025-08-21 20:46:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/point_set_range_composite/src/main.rs

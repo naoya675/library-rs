@@ -45,7 +45,7 @@ data:
   isVerificationFile: true
   path: verification/library-checker/vertex_add_subtree_sum/src/main.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-08-21 20:46:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/vertex_add_subtree_sum/src/main.rs

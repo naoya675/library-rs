@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/grl_5_c/src/main.rs
     title: verification/aizu-online-judge/grl_5_c/src/main.rs
   - icon: ':heavy_check_mark:'
@@ -12,9 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/grl_5_e/src/main.rs
     title: verification/aizu-online-judge/grl_5_e/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp.html
@@ -81,47 +81,49 @@ data:
     \         if self.preorder[u] > self.preorder[v] {\n                std::mem::swap(&mut\
     \ u, &mut v);\n            }\n            if self.head[u] == self.head[v] {\n\
     \                return u;\n            }\n            v = self.parent[self.head[v]];\n\
-    \        }\n    }\n\n    // unverify\n    pub fn for_each_subtree<F>(&self, v:\
-    \ usize, mut f: F)\n    where\n        F: FnMut(usize, usize),\n    {\n      \
-    \  assert!(v < self.n);\n        f(self.preorder[v], self.postorder[v]);\n   \
-    \ }\n\n    // unverify\n    pub fn for_each_subtree_edge<F>(&self, v: usize, mut\
-    \ f: F)\n    where\n        F: FnMut(usize, usize),\n    {\n        assert!(v\
-    \ < self.n);\n        f(self.preorder[v] + 1, self.postorder[v]);\n    }\n\n \
-    \   // noncommutative, unverify\n    pub fn for_each_noncommutative<F>(&mut self,\
+    \        }\n    }\n\n    pub fn for_each_subtree<F>(&self, v: usize, mut f: F)\n\
+    \    where\n        F: FnMut(usize, usize),\n    {\n        assert!(v < self.n);\n\
+    \        f(self.preorder[v], self.postorder[v]);\n    }\n\n    pub fn for_each_subtree_edge<F>(&self,\
+    \ v: usize, mut f: F)\n    where\n        F: FnMut(usize, usize),\n    {\n   \
+    \     assert!(v < self.n);\n        f(self.preorder[v] + 1, self.postorder[v]);\n\
+    \    }\n\n    // noncommutative\n    pub fn for_each_noncommutative<F>(&mut self,\
     \ u: usize, v: usize, mut f: F)\n    where\n        F: FnMut(usize, usize),\n\
     \    {\n        let l = self.lca(u, v);\n        for (l, r) in self.ascend(u,\
     \ l) {\n            f(l + 1, r);\n        }\n        f(self.preorder[l], self.preorder[l\
     \ + 1]);\n        for (l, r) in self.descend(l, v) {\n            f(l, r + 1);\n\
-    \        }\n    }\n\n    // noncommutative, unverify\n    pub fn for_each_noncommutative_edge<F>(&mut\
+    \        }\n    }\n\n    // noncommutative\n    pub fn for_each_noncommutative_edge<F>(&mut\
     \ self, u: usize, v: usize, mut f: F)\n    where\n        F: FnMut(usize, usize),\n\
     \    {\n        let l = self.lca(u, v);\n        for (l, r) in self.ascend(u,\
     \ l) {\n            f(l + 1, r);\n        }\n        for (l, r) in self.descend(l,\
-    \ v) {\n            f(l, r + 1);\n        }\n    }\n\n    // unverify\n    pub\
-    \ fn for_each<F>(&mut self, u: usize, v: usize, mut f: F)\n    where\n       \
-    \ F: FnMut(usize, usize),\n    {\n        let l = self.lca(u, v);\n        for\
-    \ (l, r) in self.ascend(u, l) {\n            f(r.min(l + 1), r.max(l + 1));\n\
-    \        }\n        f(self.preorder[l], self.preorder[l + 1]);\n        for (l,\
+    \ v) {\n            f(l, r + 1);\n        }\n    }\n\n    pub fn for_each<F>(&mut\
+    \ self, u: usize, v: usize, mut f: F)\n    where\n        F: FnMut(usize, usize),\n\
+    \    {\n        let l = self.lca(u, v);\n        for (l, r) in self.ascend(u,\
+    \ l) {\n            f(r.min(l + 1), r.max(l + 1));\n        }\n        f(self.preorder[l],\
+    \ self.preorder[l + 1]);\n        for (l, r) in self.descend(l, v) {\n       \
+    \     f(l.min(r + 1), l.max(r + 1));\n        }\n    }\n\n    pub fn for_each_edge<F>(&mut\
+    \ self, u: usize, v: usize, mut f: F)\n    where\n        F: FnMut(usize, usize),\n\
+    \    {\n        let l = self.lca(u, v);\n        for (l, r) in self.ascend(u,\
+    \ l) {\n            f(r.min(l + 1), r.max(l + 1));\n        }\n        for (l,\
     \ r) in self.descend(l, v) {\n            f(l.min(r + 1), l.max(r + 1));\n   \
-    \     }\n    }\n\n    pub fn for_each_edge<F>(&mut self, u: usize, v: usize, mut\
-    \ f: F)\n    where\n        F: FnMut(usize, usize),\n    {\n        let l = self.lca(u,\
-    \ v);\n        for (l, r) in self.ascend(u, l) {\n            f(r.min(l + 1),\
-    \ r.max(l + 1));\n        }\n        for (l, r) in self.descend(l, v) {\n    \
-    \        f(l.min(r + 1), l.max(r + 1));\n        }\n    }\n\n    pub fn index(&self,\
-    \ v: usize) -> (usize, usize) {\n        assert!(v < self.n);\n        (self.preorder[v],\
-    \ self.postorder[v])\n    }\n}\n"
+    \     }\n    }\n\n    pub fn index(&self, v: usize) -> (usize, usize) {\n    \
+    \    assert!(v < self.n);\n        (self.preorder[v], self.postorder[v])\n   \
+    \ }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: tree/heavy-light-decomposition/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-08-21 20:48:10+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verification/aizu-online-judge/grl_5_c/src/main.rs
   - verification/aizu-online-judge/grl_5_d/src/main.rs
   - verification/aizu-online-judge/grl_5_e/src/main.rs
+  - verification/aizu-online-judge/grl_5_c/src/main.rs
 documentation_of: tree/heavy-light-decomposition/src/lib.rs
 layout: document
 title: Heavy-Light Decomposition
 ---
 
 ## Description
+
+## Reference
+- [https://math314.hateblo.jp/entry/2014/06/24/220107](https://math314.hateblo.jp/entry/2014/06/24/220107)

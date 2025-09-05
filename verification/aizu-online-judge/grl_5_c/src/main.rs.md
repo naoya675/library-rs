@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy-light-decomposition/src/lib.rs
     title: Heavy-Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C
     links:
@@ -35,8 +35,8 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_5_c/src/main.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-08-21 20:48:10+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_5_c/src/main.rs
 layout: document

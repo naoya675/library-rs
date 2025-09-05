@@ -32,7 +32,8 @@ data:
   verifiedWith: []
 documentation_of: macro/chmin/src/lib.rs
 layout: document
-title: chmin
+redirect_from:
+- /library/macro/chmin/src/lib.rs
+- /library/macro/chmin/src/lib.rs.html
+title: macro/chmin/src/lib.rs
 ---
-
-## Description

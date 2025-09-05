@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/fenwick-tree-abstract/src/lib.rs
     title: Fenwick Tree (Abstract)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy-light-decomposition/src/lib.rs
     title: Heavy-Light Decomposition
   _extendedRequiredBy: []
@@ -50,7 +50,7 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_5_e/src/main.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-08-21 20:48:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_5_e/src/main.rs

@@ -35,25 +35,24 @@ data:
     \     self.prefix_sum(r) - self.prefix_sum(l)\n    }\n\n    fn prefix_sum(&self,\
     \ mut r: usize) -> T {\n        let mut s = T::default();\n        while r > 0\
     \ {\n            s += self.tree[r];\n            r -= r & r.wrapping_neg();\n\
-    \        }\n        s\n    }\n\n    // unverify\n    pub fn lower_bound(&self,\
-    \ mut x: T) -> usize {\n        let mut s = 0;\n        let mut k = self.size.next_power_of_two();\n\
+    \        }\n        s\n    }\n\n    pub fn lower_bound(&self, mut x: T) -> usize\
+    \ {\n        let mut s = 0;\n        let mut k = self.size.next_power_of_two();\n\
     \        while k > 0 {\n            if s + k <= self.size && self.tree[s + k]\
     \ < x {\n                x -= self.tree[s + k];\n                s += k;\n   \
-    \         }\n            k >>= 1;\n        }\n        s\n    }\n\n    // unverify\n\
-    \    pub fn upper_bound(&self, mut x: T) -> usize {\n        let mut s = 0;\n\
-    \        let mut k = self.size.next_power_of_two();\n        while k > 0 {\n \
-    \           if s + k <= self.size && self.tree[s + k] <= x {\n               \
-    \ x -= self.tree[s + k];\n                s += k;\n            }\n           \
-    \ k >>= 1;\n        }\n        s\n    }\n}\n"
+    \         }\n            k >>= 1;\n        }\n        s\n    }\n\n    pub fn upper_bound(&self,\
+    \ mut x: T) -> usize {\n        let mut s = 0;\n        let mut k = self.size.next_power_of_two();\n\
+    \        while k > 0 {\n            if s + k <= self.size && self.tree[s + k]\
+    \ <= x {\n                x -= self.tree[s + k];\n                s += k;\n  \
+    \          }\n            k >>= 1;\n        }\n        s\n    }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/fenwick-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-08-21 20:46:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verification/library-checker/vertex_add_path_sum/src/main.rs
   - verification/library-checker/vertex_add_subtree_sum/src/main.rs
+  - verification/library-checker/vertex_add_path_sum/src/main.rs
 documentation_of: data-structure/fenwick-tree/src/lib.rs
 layout: document
 title: Fenwick Tree
@@ -63,4 +62,4 @@ title: Fenwick Tree
 
 ## Reference
 - [https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree)
-- [https://algo-logic.info/binary-indexed-tree/](https://algo-logic.info/binary-indexed-tree/)
+- [https://qiita.com/Stakumi/items/b7593a99908c98cfe6d0](https://qiita.com/Stakumi/items/b7593a99908c98cfe6d0)

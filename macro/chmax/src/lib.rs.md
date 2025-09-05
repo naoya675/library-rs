@@ -32,7 +32,8 @@ data:
   verifiedWith: []
 documentation_of: macro/chmax/src/lib.rs
 layout: document
-title: chmax
+redirect_from:
+- /library/macro/chmax/src/lib.rs
+- /library/macro/chmax/src/lib.rs.html
+title: macro/chmax/src/lib.rs
 ---
-
-## Description

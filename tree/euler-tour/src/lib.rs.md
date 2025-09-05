@@ -4,9 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/segment-tree/src/lib.rs
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
-    path: data-structure/segment-tree/src/wrapper.rs
-    title: data-structure/segment-tree/src/wrapper.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -84,16 +81,15 @@ data:
     \    }\n}\n"
   dependsOn:
   - data-structure/segment-tree/src/lib.rs
-  - data-structure/segment-tree/src/wrapper.rs
   isVerificationFile: false
   path: tree/euler-tour/src/lib.rs
   requiredBy: []
-  timestamp: '2025-07-22 01:37:51+09:00'
+  timestamp: '2025-08-21 20:46:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verification/library-checker/vertex_add_path_sum/src/main.rs
-  - verification/library-checker/vertex_add_subtree_sum/src/main.rs
   - verification/library-checker/vertex_set_path_composite/src/main.rs
+  - verification/library-checker/vertex_add_subtree_sum/src/main.rs
+  - verification/library-checker/vertex_add_path_sum/src/main.rs
   - verification/library-checker/lca/src/main.rs
 documentation_of: tree/euler-tour/src/lib.rs
 layout: document

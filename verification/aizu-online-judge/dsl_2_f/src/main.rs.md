@@ -4,9 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
-  - icon: ':heavy_check_mark:'
-    path: data-structure/lazy-segment-tree/src/wrapper.rs
-    title: data-structure/lazy-segment-tree/src/wrapper.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -36,11 +33,10 @@ data:
     \ unreachable!(),\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
-  - data-structure/lazy-segment-tree/src/wrapper.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_f/src/main.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-08-21 20:46:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_f/src/main.rs

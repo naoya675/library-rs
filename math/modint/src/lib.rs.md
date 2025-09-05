@@ -103,12 +103,12 @@ data:
   timestamp: '2025-06-21 17:54:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verification/aizu-online-judge/dpl_5_d/src/main.rs
+  - verification/library-checker/vertex_set_path_composite/src/main.rs
   - verification/library-checker/unionfind_with_potential/src/main.rs
   - verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
   - verification/library-checker/point_set_range_composite/src/main.rs
   - verification/library-checker/range_affine_range_sum/src/main.rs
-  - verification/library-checker/vertex_set_path_composite/src/main.rs
-  - verification/aizu-online-judge/dpl_5_d/src/main.rs
 documentation_of: math/modint/src/lib.rs
 layout: document
 title: Modint

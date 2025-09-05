@@ -41,7 +41,8 @@ data:
   verifiedWith: []
 documentation_of: macro/input/src/lib.rs
 layout: document
-title: input
+redirect_from:
+- /library/macro/input/src/lib.rs
+- /library/macro/input/src/lib.rs.html
+title: macro/input/src/lib.rs
 ---
-
-## Description

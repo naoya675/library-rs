@@ -4,9 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/segment-tree/src/lib.rs
     title: Segment Tree
-  - icon: ':heavy_check_mark:'
-    path: data-structure/segment-tree/src/wrapper.rs
-    title: data-structure/segment-tree/src/wrapper.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -46,11 +43,10 @@ data:
     \ st\n    }\n}\n"
   dependsOn:
   - data-structure/segment-tree/src/lib.rs
-  - data-structure/segment-tree/src/wrapper.rs
   isVerificationFile: false
   path: string/rolling-hash-segment-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2025-07-22 01:37:51+09:00'
+  timestamp: '2025-08-21 20:46:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_b/src/main.rs
