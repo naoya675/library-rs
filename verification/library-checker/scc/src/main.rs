@@ -21,10 +21,9 @@ fn actual_main() {
         ab: [(usize, usize); m],
     }
     let mut scc = StronglyConnectedComponents::new(n);
-    for (a, b) in ab {
-        scc.add_edge(a, b);
-    }
+    ab.iter().for_each(|&(a, b)| scc.add_edge(a, b));
     let groups = scc.scc();
+
     println!("{}", groups.len());
     for group in groups {
         println!("{} {}", group.len(), group.iter().join(" "));

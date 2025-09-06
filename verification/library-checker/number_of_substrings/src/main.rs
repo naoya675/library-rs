@@ -11,5 +11,6 @@ fn main() {
     }
     let sa = SuffixArray::suffix_array(&s);
     let lcp = LCPArray::lcp_array(&s, &sa);
+
     println!("{}", s.len() * (s.len() + 1) / 2 - lcp.iter().sum::<usize>());
 }

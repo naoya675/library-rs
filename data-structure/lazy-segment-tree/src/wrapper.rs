@@ -1,21 +1,21 @@
 pub struct RangeAddRangeMinimumQuery;
 impl RangeAddRangeMinimumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
-        LazySegmentTree::new(n, |a, b| std::cmp::min(a, b), i64::MAX, |f, x| f + x, |f, g| f + g, 0)
+        LazySegmentTree::new(n, |x, y| std::cmp::min(x, y), i64::MAX, |f, x| f + x, |f, g| f + g, 0)
     }
 }
 
 pub struct RangeAddRangeMaximumQuery;
 impl RangeAddRangeMaximumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
-        LazySegmentTree::new(n, |a, b| std::cmp::max(a, b), i64::MIN, |f, x| f + x, |f, g| f + g, 0)
+        LazySegmentTree::new(n, |x, y| std::cmp::max(x, y), i64::MIN, |f, x| f + x, |f, g| f + g, 0)
     }
 }
 
 pub struct RangeAddRangeSumQuery;
 impl RangeAddRangeSumQuery {
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), i64> {
-        LazySegmentTree::new(n, |a, b| (a.0 + b.0, a.1 + b.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0)
+        LazySegmentTree::new(n, |x, y| (x.0 + y.0, x.1 + y.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0)
     }
 }
 
@@ -24,7 +24,7 @@ impl RangeUpdateRangeMinimumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(
             n,
-            |a, b| std::cmp::min(a, b),
+            |x, y| std::cmp::min(x, y),
             i64::MAX,
             |f, x| if f == i64::MAX { x } else { f },
             |f, g| if f == i64::MAX { g } else { f },
@@ -38,7 +38,7 @@ impl RangeUpdateRangeMaximumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(
             n,
-            |a, b| std::cmp::max(a, b),
+            |x, y| std::cmp::max(x, y),
             i64::MIN,
             |f, x| if f == i64::MAX { x } else { f },
             |f, g| if f == i64::MAX { g } else { f },
@@ -52,7 +52,7 @@ impl RangeUpdateRangeSumQuery {
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), i64> {
         LazySegmentTree::new(
             n,
-            |a, b| (a.0 + b.0, a.1 + b.1),
+            |x, y| (x.0 + y.0, x.1 + y.1),
             (0, 0),
             |f, x| if f != i64::MAX { (f * x.1, x.1) } else { x },
             |f, g| if f == i64::MAX { g } else { f },
@@ -66,7 +66,7 @@ impl RangeAffineRangeSumQuery {
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), (i64, i64)> {
         LazySegmentTree::new(
             n,
-            |a, b| (a.0 + b.0, a.1 + b.1),
+            |x, y| (x.0 + y.0, x.1 + y.1),
             (0, 0),
             |f, x| (f.0 * x.0 + f.1 * x.1, x.1),
             |f, g| (f.0 * g.0, f.0 * g.1 + f.1),

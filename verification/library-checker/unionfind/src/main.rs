@@ -4,22 +4,29 @@ use proconio::input;
 
 use union_find::UnionFind;
 
+query::define_query! {
+    Query {
+        0 => Query0(u: usize, v: usize),
+        1 => Query1(u: usize, v: usize),
+    }
+}
+
 fn main() {
     input! {
         n: usize,
         q: usize,
-        tuv: [(usize, usize, usize); q],
+        queries: [Query; q],
     }
     let mut uf = UnionFind::new(n);
-    for (t, u, v) in tuv {
-        match t {
-            0 => {
+
+    for query in queries {
+        match query {
+            Query0(u, v) => {
                 uf.merge(u, v);
             }
-            1 => {
+            Query1(u, v) => {
                 println!("{}", if uf.same(u, v) { 1 } else { 0 });
             }
-            _ => unreachable!(),
         }
     }
 }

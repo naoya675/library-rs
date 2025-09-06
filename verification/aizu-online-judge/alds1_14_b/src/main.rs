@@ -13,6 +13,7 @@ fn main() {
     let mut rh = RollingHash::<MersenneModint>::new(MersenneModint::rand());
     let mut ht = rh.build_segment_tree(&t);
     let mut hp = rh.build_segment_tree(&p);
+
     for i in 0.. {
         if i + p.len() > t.len() {
             break;

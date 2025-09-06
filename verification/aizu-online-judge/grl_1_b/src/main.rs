@@ -12,19 +12,14 @@ fn main() {
         std: [(usize, usize, i64); e],
     }
     let mut bf = BellmanFord::new(v);
-    for (s, t, d) in std {
-        bf.add_edge(s, t, d);
-    }
+    std.iter().for_each(|&(s, t, d)| bf.add_edge(s, t, d));
+
     let (cycle, res) = bf.bellman_ford(r);
     if cycle {
         println!("NEGATIVE CYCLE");
-    } else {
-        for i in 0..v {
-            if res[i] < i64::MAX / 4 {
-                println!("{}", res[i])
-            } else {
-                println!("INF");
-            }
-        }
+        return;
+    }
+    for i in 0..v {
+        println!("{}", if res[i] < i64::MAX / 4 { res[i].to_string() } else { "INF".to_string() });
     }
 }

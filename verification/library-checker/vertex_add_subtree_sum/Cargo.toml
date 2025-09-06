@@ -7,5 +7,6 @@ edition = "2021"
 
 [dependencies]
 proconio = { version = "0.4.5", features = ["derive"] }
+query = { path = '../../../macro/query' }
 fenwick-tree = { path = '../../../data-structure/fenwick-tree' }
 euler-tour = { path = "../../../tree/euler-tour" }

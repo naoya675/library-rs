@@ -21,11 +21,12 @@ fn actual_main() {
         uv: [(usize, usize); q],
     }
     let mut et = EulerTour::<usize>::new(n);
-    for (i, &p) in p.iter().enumerate() {
+    p.iter().enumerate().for_each(|(i, &p)| {
         et.add_edge(i + 1, p, 0);
         et.add_edge(p, i + 1, 0);
-    }
+    });
     et.init(0);
+
     for (u, v) in uv {
         println!("{}", et.lca(u, v));
     }

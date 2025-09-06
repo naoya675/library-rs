@@ -7,28 +7,29 @@ use union_find_with_potential::UnionFindWithPotential;
 
 type Mint = StaticModint<998244353>;
 
+query::define_query! {
+    Query {
+        0 => Query0(u: usize, v: usize, x: u64),
+        1 => Query1(u: usize, v: usize),
+    }
+}
+
 fn main() {
     input! {
         n: usize,
         q: usize,
+        queries: [Query; q],
     }
     let mut uf = UnionFindWithPotential::<Mint>::new_default(n);
-    for _ in 0..q {
-        input! { query: usize, }
+
+    for query in queries {
         match query {
-            0 => {
-                input! { u: usize, v: usize, x: u64 }
-                println!("{}", if let Some(_) = uf.merge(u, v, Mint::new(x)) { 1 } else { 0 });
+            Query0(u, v, x) => {
+                println!("{}", if let Some(_) = uf.merge(u, v, Mint::new(x)) { 1 } else { 0 })
             }
-            1 => {
-                input! { u: usize, v: usize, }
-                if uf.same(u, v) {
-                    println!("{}", uf.diff(u, v));
-                } else {
-                    println!("-1");
-                }
+            Query1(u, v) => {
+                println!("{}", if uf.same(u, v) { uf.diff(u, v).to_string() } else { "-1".to_string() });
             }
-            _ => unreachable!(),
         }
     }
 }

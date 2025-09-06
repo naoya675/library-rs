@@ -4,24 +4,27 @@ use proconio::input;
 
 use segment_tree::SegmentTree;
 
+query::define_query! {
+    Query {
+        0 => Query0(x: usize, y: i64),
+        1 => Query1(x: usize, y: usize),
+    }
+}
+
 fn main() {
     input! {
         n: usize,
         q: usize,
+        queries: [Query; q],
     }
     let mut st = SegmentTree::<i64>::new(n, |a, b| a + b, 0);
-    for _ in 0..q {
-        input! { query: usize, }
+
+    for query in queries {
         match query {
-            0 => {
-                input! { x: usize, y: i64, }
-                st.apply(x - 1, y);
-            }
-            1 => {
-                input! { x: usize, y: usize, }
+            Query0(x, y) => st.apply(x - 1, y),
+            Query1(x, y) => {
                 println!("{}", st.prod(x - 1, y));
             }
-            _ => unreachable!(),
         }
     }
 }

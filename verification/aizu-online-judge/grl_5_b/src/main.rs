@@ -18,15 +18,18 @@ fn actual_main() {
         n: usize,
         stw: [(usize, usize, usize); n - 1],
     }
-    let merge = |a: usize, b: usize| std::cmp::max(a, b);
-    let e = || 0_usize;
-    let leaf = || 0_usize;
-    let apply = |a: usize, _: usize, _: usize, w: usize| -> usize { a + w };
-    let mut g = Rerooting::<usize, usize, _, _, _, _>::new(n, merge, e, leaf, apply);
-    for (s, t, w) in stw {
+    let mut g = Rerooting::<usize, usize, _, _, _, _>::new(
+        n,
+        |a: usize, b: usize| std::cmp::max(a, b),
+        || 0,
+        || 0,
+        |a: usize, _: usize, _: usize, w: usize| a + w,
+    );
+    stw.iter().for_each(|&(s, t, w)| {
         g.add_edge(s, t, w);
         g.add_edge(t, s, w);
-    }
+    });
+
     for res in g.run() {
         println!("{}", res);
     }

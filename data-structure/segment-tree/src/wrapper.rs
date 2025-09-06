@@ -1,35 +1,35 @@
 pub struct RangeMinimumQuery;
 impl RangeMinimumQuery {
     pub fn new(n: usize) -> SegmentTree<i64> {
-        SegmentTree::new(n, |a, b| std::cmp::min(a, b), i64::MAX)
+        SegmentTree::new(n, |x, y| std::cmp::min(x, y), i64::MAX)
     }
 }
 
 pub struct RangeMaximumQuery;
 impl RangeMaximumQuery {
     pub fn new(n: usize) -> SegmentTree<i64> {
-        SegmentTree::new(n, |a, b| std::cmp::max(a, b), i64::MIN)
+        SegmentTree::new(n, |x, y| std::cmp::max(x, y), i64::MIN)
     }
 }
 
 pub struct RangeSumQuery;
 impl RangeSumQuery {
     pub fn new(n: usize) -> SegmentTree<i64> {
-        SegmentTree::new(n, |a, b| a + b, 0)
+        SegmentTree::new(n, |x, y| x + y, 0)
     }
 }
 
 pub struct RangeCompositeQuery;
 impl RangeCompositeQuery {
     pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
-        SegmentTree::new(n, |a, b| (a.0 * b.0, a.1 * b.0 + b.1), (1, 0))
+        SegmentTree::new(n, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), (1, 0))
     }
 }
 
 pub struct ParenthesisCheckQuery;
 impl ParenthesisCheckQuery {
     pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
-        SegmentTree::new(n, |a, b| (a.0 + std::cmp::max(b.0 - a.1, 0), std::cmp::max(a.1 - b.0, 0) + b.1), (0, 0))
+        SegmentTree::new(n, |x, y| (x.0 + std::cmp::max(y.0 - x.1, 0), std::cmp::max(x.1 - y.0, 0) + y.1), (0, 0))
     }
 
     pub fn new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {
@@ -51,7 +51,7 @@ impl ParenthesisCheckQuery {
 pub struct ParenthesisCheckQuery;
 impl ParenthesisCheckQuery {
     pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
-        SegmentTree::new(n, |a, b| (std::cmp::min(a.0, a.1 + b.0), a.1 + b.1), (0, 0))
+        SegmentTree::new(n, |x, y| (std::cmp::min(x.0, x.1 + y.0), x.1 + y.1), (0, 0))
     }
 
     pub fn new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {
@@ -75,14 +75,14 @@ impl IntervalCountQuery {
     pub fn new(n: usize) -> SegmentTree<(usize, usize, usize)> {
         SegmentTree::new(
             n,
-            |a, b| {
-                if (a.0, a.1) == (2, 2) {
+            |x, y| {
+                if (x.0, x.1) == (2, 2) {
                     return b;
                 }
-                if (b.0, b.1) == (2, 2) {
+                if (y.0, y.1) == (2, 2) {
                     return a;
                 }
-                (a.0, b.1, a.2 + b.2 - if a.1 == b.0 && b.0 == 1 { 1 } else { 0 })
+                (x.0, y.1, x.2 + y.2 - if x.1 == y.0 && y.0 == 1 { 1 } else { 0 })
             },
             (2, 2, 0),
         )

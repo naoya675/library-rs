@@ -13,6 +13,7 @@ fn main() {
     let mut rh = RollingHash::<MersenneModint>::new(MersenneModint::rand());
     let ht = rh.build(&t);
     let hp = rh.build(&p);
+
     for i in 0.. {
         if i + p.len() > t.len() {
             break;

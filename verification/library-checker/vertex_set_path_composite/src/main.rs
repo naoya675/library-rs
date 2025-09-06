@@ -8,6 +8,13 @@ use segment_tree::SegmentTree;
 
 type Mint = StaticModint<998244353>;
 
+query::define_query! {
+    Query {
+        0 => Query0(p: usize, c: u64, d: u64),
+        1 => Query1(u: usize, v: usize, x: u64),
+    }
+}
+
 fn main() {
     std::thread::Builder::new()
         .stack_size(64 * 1024 * 1024)
@@ -23,13 +30,15 @@ fn actual_main() {
         q: usize,
         ab: [(u64, u64); n],
         uv: [(usize, usize); n - 1],
+        queries: [Query; q],
     }
     let mut et = EulerTour::<usize>::new(n);
-    for (u, v) in uv {
+    uv.iter().for_each(|&(u, v)| {
         et.add_edge(u, v, 0);
         et.add_edge(v, u, 0);
-    }
+    });
     et.init(0);
+
     let val = |a: u64, b: u64| (Mint::new(a), Mint::new(b));
     let invval = |a: u64, b: u64| (Mint::new(1) / Mint::new(a), -Mint::new(b) / Mint::new(a));
     let mut st1 = SegmentTree::<(Mint, Mint)>::new(n + n, |a, b| (a.0 * b.0, a.1 * b.0 + b.1), val(1, 0));
@@ -42,19 +51,16 @@ fn actual_main() {
         st1.set(index.1, invval(a, b));
         st2.set(index.1, invval(a, b));
     }
-    for _ in 0..q {
-        input! { query: usize, }
+    for query in queries {
         match query {
-            0 => {
-                input! { p: usize, c: u64, d: u64 }
+            Query0(p, c, d) => {
                 let index = et.index(p);
                 st1.set(index.0, val(c, d));
                 st2.set(index.0, val(c, d));
                 st1.set(index.1, invval(c, d));
                 st2.set(index.1, invval(c, d));
             }
-            1 => {
-                input! { u: usize, v: usize, x: u64 }
+            Query1(u, v, x) => {
                 let x = std::cell::RefCell::new(Mint::new(x));
                 et.for_each_with(
                     u,
@@ -72,7 +78,6 @@ fn actual_main() {
                 );
                 println!("{}", x.into_inner());
             }
-            _ => unreachable!(),
         }
     }
 }

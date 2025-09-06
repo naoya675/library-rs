@@ -11,5 +11,6 @@ fn main() {
         a: [usize; n],
     }
     let mut ct = CartesianTree::new(a);
+
     println!("{}", ct.run(true).iter().enumerate().map(|(i, &p)| if p == n { i } else { p }).join(" "));
 }

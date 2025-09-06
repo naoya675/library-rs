@@ -20,12 +20,13 @@ fn actual_main() {
     let mut hld = HeavyLightDecomposition::<usize>::new(n);
     for i in 0..n {
         input! { k: usize, c: [usize; k], }
-        for c in c {
+        c.iter().for_each(|&c| {
             hld.add_edge(i, c, 0);
             hld.add_edge(c, i, 0);
-        }
+        });
     }
     hld.init(0);
+
     input! {
         q: usize,
         uv: [(usize, usize); q],

@@ -11,8 +11,7 @@ fn main() {
         stw: [(usize, usize, i64); e],
     }
     let mut krs = Kruskal::new(v);
-    for (s, t, w) in stw {
-        krs.add_edge(s, t, w);
-    }
+    stw.iter().for_each(|&(s, t, w)| krs.add_edge(s, t, w));
+
     println!("{}", krs.minimum_spanning_tree().0);
 }

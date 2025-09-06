@@ -5,6 +5,13 @@ use proconio::input;
 use fenwick_tree_abstract::FenwickTreeAbstract;
 use heavy_light_decomposition::HeavyLightDecomposition;
 
+query::define_query! {
+    Query {
+        0 => Query0(v: usize, w: i64),
+        1 => Query1(v: usize),
+    }
+}
+
 fn main() {
     std::thread::Builder::new()
         .stack_size(64 * 1024 * 1024)
@@ -27,13 +34,15 @@ fn actual_main() {
         }
     }
     hld.init(0);
+
     let mut ft = vec![FenwickTreeAbstract::<i64>::new(n + 1, |a, b| a + b, 0, |a| -a); 2];
-    input! { q: usize, }
-    for _ in 0..q {
-        input! { query: usize, }
+    input! {
+        q: usize,
+        queries: [Query; q],
+    }
+    for query in queries {
         match query {
-            0 => {
-                input! { v: usize, w: i64, }
+            Query0(v, w) => {
                 hld.for_each_edge(0, v, |l, r| {
                     ft[0].add(l, -w * l as i64);
                     ft[0].add(r, w * r as i64);
@@ -41,8 +50,7 @@ fn actual_main() {
                     ft[1].add(r, -w);
                 });
             }
-            1 => {
-                input! { v: usize, }
+            Query1(v) => {
                 let mut res = 0;
                 hld.for_each_edge(0, v, |l, r| {
                     let sum_l = ft[0].sum(0, l) + ft[1].sum(0, l) * l as i64;
@@ -51,7 +59,6 @@ fn actual_main() {
                 });
                 println!("{}", res);
             }
-            _ => unreachable!(),
         }
     }
 }

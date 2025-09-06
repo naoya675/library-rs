@@ -11,8 +11,7 @@ fn main() {
         uvc: [(usize, usize, i64); m],
     }
     let mut ff = FordFulkerson::new(n);
-    for (u, v, c) in uvc {
-        ff.add_edge(u, v, c);
-    }
+    uvc.iter().for_each(|&(u, v, c)| ff.add_edge(u, v, c));
+
     println!("{}", ff.flow(0, n - 1));
 }

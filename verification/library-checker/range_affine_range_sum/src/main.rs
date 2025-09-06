@@ -7,15 +7,23 @@ use modint::StaticModint;
 
 type Mint = StaticModint<998244353>;
 
+query::define_query! {
+    Query {
+        0 => Query0(l: usize, r: usize, b: u64, c: u64),
+        1 => Query1(l: usize, r: usize),
+    }
+}
+
 fn main() {
     input! {
         n: usize,
         q: usize,
         a: [u64; n],
+        queries: [Query; q],
     }
     let mut lst = LazySegmentTree::<(Mint, Mint), (Mint, Mint)>::new(
         n,
-        |a, b| (a.0 + b.0, a.1 + b.1),
+        |x, y| (x.0 + y.0, x.1 + y.1),
         (Mint::new(0), Mint::new(0)),
         |f, x| (f.0 * x.0 + f.1 * x.1, x.1),
         |f, g| (f.0 * g.0, f.0 * g.1 + f.1),
@@ -23,18 +31,13 @@ fn main() {
     );
     let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();
     lst.build(a);
-    for _ in 0..q {
-        input! { query: usize, }
+
+    for query in queries {
         match query {
-            0 => {
-                input! { l: usize, r: usize, b: u64, c: u64, }
-                lst.apply(l, r, (Mint::new(b), Mint::new(c)));
-            }
-            1 => {
-                input! { l: usize, r: usize, }
+            Query0(l, r, b, c) => lst.apply(l, r, (Mint::new(b), Mint::new(c))),
+            Query1(l, r) => {
                 println!("{}", lst.prod(l, r).0);
             }
-            _ => unreachable!(),
         }
     }
 }
