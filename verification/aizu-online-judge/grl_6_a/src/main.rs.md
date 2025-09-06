@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/ford-fulkerson/src/lib.rs
     title: Ford Fulkerson
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A
     links:
@@ -22,16 +22,16 @@ data:
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A\n\
     \nuse proconio::input;\n\nuse ford_fulkerson::FordFulkerson;\n\nfn main() {\n\
     \    input! {\n        n: usize,\n        m: usize,\n        uvc: [(usize, usize,\
-    \ i64); m],\n    }\n    let mut ff = FordFulkerson::new(n);\n    for (u, v, c)\
-    \ in uvc {\n        ff.add_edge(u, v, c);\n    }\n    println!(\"{}\", ff.flow(0,\
-    \ n - 1));\n}\n"
+    \ i64); m],\n    }\n    let mut ff = FordFulkerson::new(n);\n    uvc.iter().for_each(|&(u,\
+    \ v, c)| ff.add_edge(u, v, c));\n\n    println!(\"{}\", ff.flow(0, n - 1));\n\
+    }\n"
   dependsOn:
   - graph/ford-fulkerson/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_6_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-05-26 22:58:00+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_6_a/src/main.rs
 layout: document

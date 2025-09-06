@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/number_of_substrings/src/main.rs
     title: verification/library-checker/number_of_substrings/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/string.html
@@ -36,7 +36,7 @@ data:
   path: string/lcp-array/src/lib.rs
   requiredBy: []
   timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verification/library-checker/number_of_substrings/src/main.rs
 documentation_of: string/lcp-array/src/lib.rs

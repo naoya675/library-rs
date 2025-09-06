@@ -16,32 +16,32 @@ data:
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "pub struct RangeAddRangeMinimumQuery;\nimpl RangeAddRangeMinimumQuery {\n\
     \    pub fn new(n: usize) -> LazySegmentTree<i64, i64> {\n        LazySegmentTree::new(n,\
-    \ |a, b| std::cmp::min(a, b), i64::MAX, |f, x| f + x, |f, g| f + g, 0)\n    }\n\
+    \ |x, y| std::cmp::min(x, y), i64::MAX, |f, x| f + x, |f, g| f + g, 0)\n    }\n\
     }\n\npub struct RangeAddRangeMaximumQuery;\nimpl RangeAddRangeMaximumQuery {\n\
     \    pub fn new(n: usize) -> LazySegmentTree<i64, i64> {\n        LazySegmentTree::new(n,\
-    \ |a, b| std::cmp::max(a, b), i64::MIN, |f, x| f + x, |f, g| f + g, 0)\n    }\n\
+    \ |x, y| std::cmp::max(x, y), i64::MIN, |f, x| f + x, |f, g| f + g, 0)\n    }\n\
     }\n\npub struct RangeAddRangeSumQuery;\nimpl RangeAddRangeSumQuery {\n    pub\
     \ fn new(n: usize) -> LazySegmentTree<(i64, i64), i64> {\n        LazySegmentTree::new(n,\
-    \ |a, b| (a.0 + b.0, a.1 + b.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f\
+    \ |x, y| (x.0 + y.0, x.1 + y.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f\
     \ + g, 0)\n    }\n}\n\npub struct RangeUpdateRangeMinimumQuery;\nimpl RangeUpdateRangeMinimumQuery\
     \ {\n    pub fn new(n: usize) -> LazySegmentTree<i64, i64> {\n        LazySegmentTree::new(\n\
-    \            n,\n            |a, b| std::cmp::min(a, b),\n            i64::MAX,\n\
+    \            n,\n            |x, y| std::cmp::min(x, y),\n            i64::MAX,\n\
     \            |f, x| if f == i64::MAX { x } else { f },\n            |f, g| if\
     \ f == i64::MAX { g } else { f },\n            i64::MAX,\n        )\n    }\n}\n\
     \npub struct RangeUpdateRangeMaximumQuery;\nimpl RangeUpdateRangeMaximumQuery\
     \ {\n    pub fn new(n: usize) -> LazySegmentTree<i64, i64> {\n        LazySegmentTree::new(\n\
-    \            n,\n            |a, b| std::cmp::max(a, b),\n            i64::MIN,\n\
+    \            n,\n            |x, y| std::cmp::max(x, y),\n            i64::MIN,\n\
     \            |f, x| if f == i64::MAX { x } else { f },\n            |f, g| if\
     \ f == i64::MAX { g } else { f },\n            i64::MAX,\n        )\n    }\n}\n\
     \npub struct RangeUpdateRangeSumQuery;\nimpl RangeUpdateRangeSumQuery {\n    pub\
     \ fn new(n: usize) -> LazySegmentTree<(i64, i64), i64> {\n        LazySegmentTree::new(\n\
-    \            n,\n            |a, b| (a.0 + b.0, a.1 + b.1),\n            (0, 0),\n\
+    \            n,\n            |x, y| (x.0 + y.0, x.1 + y.1),\n            (0, 0),\n\
     \            |f, x| if f != i64::MAX { (f * x.1, x.1) } else { x },\n        \
     \    |f, g| if f == i64::MAX { g } else { f },\n            i64::MAX,\n      \
     \  )\n    }\n}\n\npub struct RangeAffineRangeSumQuery;\nimpl RangeAffineRangeSumQuery\
     \ {\n    pub fn new(n: usize) -> LazySegmentTree<(i64, i64), (i64, i64)> {\n \
-    \       LazySegmentTree::new(\n            n,\n            |a, b| (a.0 + b.0,\
-    \ a.1 + b.1),\n            (0, 0),\n            |f, x| (f.0 * x.0 + f.1 * x.1,\
+    \       LazySegmentTree::new(\n            n,\n            |x, y| (x.0 + y.0,\
+    \ x.1 + y.1),\n            (0, 0),\n            |f, x| (f.0 * x.0 + f.1 * x.1,\
     \ x.1),\n            |f, g| (f.0 * g.0, f.0 * g.1 + f.1),\n            (1, 0),\n\
     \        )\n    }\n}\n\npub mod RangeArithmeticSequenceAddRangeSumQuery {\n  \
     \  #[derive(Debug, Clone, Copy)]\n    pub struct S {\n        value_sum: i64,\n\
@@ -62,7 +62,7 @@ data:
   isVerificationFile: false
   path: data-structure/lazy-segment-tree/src/wrapper.rs
   requiredBy: []
-  timestamp: '2025-09-05 20:18:54+09:00'
+  timestamp: '2025-09-06 15:04:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data-structure/lazy-segment-tree/src/wrapper.rs

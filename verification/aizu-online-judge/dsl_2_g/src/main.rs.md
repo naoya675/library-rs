@@ -1,9 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
+  - icon: ':x:'
+    path: macro/query/src/lib.rs
+    title: macro/query/src/lib.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -20,22 +23,23 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\n\
-    \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\n\nfn main()\
-    \ {\n    input! {\n        n: usize,\n        q: usize,\n    }\n    let mut lst\
-    \ = LazySegmentTree::<(i64, i64), i64>::new(n, |a, b| (a.0 + b.0, a.1 + b.1),\
-    \ (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0);\n    lst.build(vec![(0,\
-    \ 1); n]);\n    for _ in 0..q {\n        input! { query: usize, }\n        match\
-    \ query {\n            0 => {\n                input! { s: usize, t: usize, x:\
-    \ i64, }\n                lst.apply(s - 1, t, x);\n            }\n           \
-    \ 1 => {\n                input! { s: usize, t: usize, }\n                println!(\"\
-    {}\", lst.prod(s - 1, t).0);\n            }\n            _ => unreachable!(),\n\
-    \        }\n    }\n}\n"
+    \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\n\nquery::define_query!\
+    \ {\n    Query {\n        0 => Query0(s: usize, t: usize, x: i64),\n        1\
+    \ => Query1(s: usize, t: usize),\n    }\n}\n\nfn main() {\n    input! {\n    \
+    \    n: usize,\n        q: usize,\n        queries: [Query; q],\n    }\n    let\
+    \ mut lst = LazySegmentTree::<(i64, i64), i64>::new(n, |a, b| (a.0 + b.0, a.1\
+    \ + b.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0);\n    lst.build(vec![(0,\
+    \ 1); n]);\n\n    for query in queries {\n        match query {\n            Query0(s,\
+    \ t, x) => lst.apply(s - 1, t, x),\n            Query1(s, t) => {\n          \
+    \      println!(\"{}\", lst.prod(s - 1, t).0);\n            }\n        }\n   \
+    \ }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
+  - macro/query/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_g/src/main.rs
   requiredBy: []
-  timestamp: '2025-09-05 20:18:54+09:00'
+  timestamp: '2025-09-06 15:04:09+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_g/src/main.rs

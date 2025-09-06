@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: string/suffix-array/src/lib.rs
     title: string/suffix-array/src/lib.rs
   _extendedRequiredBy: []

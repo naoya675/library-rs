@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/number_of_substrings/src/main.rs
     title: verification/library-checker/number_of_substrings/src/main.rs
   - icon: ':heavy_check_mark:'
     path: verification/library-checker/suffixarray/src/main.rs
     title: verification/library-checker/suffixarray/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/string.html
@@ -114,7 +114,7 @@ data:
   path: string/suffix-array/src/lib.rs
   requiredBy: []
   timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verification/library-checker/number_of_substrings/src/main.rs
   - verification/library-checker/suffixarray/src/main.rs

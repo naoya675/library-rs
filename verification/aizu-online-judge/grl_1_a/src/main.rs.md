@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dijkstra/src/lib.rs
     title: Dijkstra
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
     links:
@@ -22,18 +22,17 @@ data:
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\n\
     \nuse proconio::input;\n\nuse dijkstra::Dijkstra;\n\nfn main() {\n    input! {\n\
     \        v: usize,\n        e: usize,\n        r: usize,\n        std: [(usize,\
-    \ usize, i64); e],\n    }\n    let mut dij = Dijkstra::new(v);\n    for (s, t,\
-    \ d) in std {\n        dij.add_edge(s, t, d);\n    }\n    let res = dij.dijkstra(r);\n\
-    \    for i in 0..v {\n        if res[i] < i64::MAX / 4 {\n            println!(\"\
-    {}\", res[i])\n        } else {\n            println!(\"INF\");\n        }\n \
-    \   }\n}\n"
+    \ usize, i64); e],\n    }\n    let mut dij = Dijkstra::new(v);\n    std.iter().for_each(|&(s,\
+    \ t, d)| dij.add_edge(s, t, d));\n\n    let res = dij.dijkstra(r);\n    for i\
+    \ in 0..v {\n        println!(\"{}\", if res[i] < i64::MAX / 4 { res[i].to_string()\
+    \ } else { \"INF\".to_string() });\n    }\n}\n"
   dependsOn:
   - graph/dijkstra/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_1_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-05-26 22:58:00+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_1_a/src/main.rs
 layout: document

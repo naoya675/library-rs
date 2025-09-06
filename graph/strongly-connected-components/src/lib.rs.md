@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/scc/src/main.rs
     title: verification/library-checker/scc/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/scc.html
@@ -74,7 +74,7 @@ data:
   path: graph/strongly-connected-components/src/lib.rs
   requiredBy: []
   timestamp: '2025-08-21 20:48:32+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verification/library-checker/scc/src/main.rs
 documentation_of: graph/strongly-connected-components/src/lib.rs

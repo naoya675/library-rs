@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/euler-tour/src/lib.rs
     title: Euler Tour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
@@ -25,16 +25,16 @@ data:
     \        .join()\n        .unwrap();\n}\n\nfn actual_main() {\n    input! {\n\
     \        n: usize,\n        q: usize,\n        p: [usize; n - 1],\n        uv:\
     \ [(usize, usize); q],\n    }\n    let mut et = EulerTour::<usize>::new(n);\n\
-    \    for (i, &p) in p.iter().enumerate() {\n        et.add_edge(i + 1, p, 0);\n\
-    \        et.add_edge(p, i + 1, 0);\n    }\n    et.init(0);\n    for (u, v) in\
-    \ uv {\n        println!(\"{}\", et.lca(u, v));\n    }\n}\n"
+    \    p.iter().enumerate().for_each(|(i, &p)| {\n        et.add_edge(i + 1, p,\
+    \ 0);\n        et.add_edge(p, i + 1, 0);\n    });\n    et.init(0);\n\n    for\
+    \ (u, v) in uv {\n        println!(\"{}\", et.lca(u, v));\n    }\n}\n"
   dependsOn:
   - tree/euler-tour/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/lca/src/main.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/library-checker/lca/src/main.rs
 layout: document

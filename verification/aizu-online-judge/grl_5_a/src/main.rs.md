@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/rerooting/src/lib.rs
     title: Rerooting
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_A
     links:
@@ -24,19 +24,18 @@ data:
     \        .stack_size(64 * 1024 * 1024)\n        .spawn(actual_main)\n        .unwrap()\n\
     \        .join()\n        .unwrap();\n}\n\nfn actual_main() {\n    input! {\n\
     \        n: usize,\n        stw: [(usize, usize, usize); n - 1],\n    }\n    let\
-    \ merge = |a: usize, b: usize| std::cmp::max(a, b);\n    let e = || 0_usize;\n\
-    \    let leaf = || 0_usize;\n    let apply = |a: usize, _: usize, _: usize, w:\
-    \ usize| -> usize { a + w };\n    let mut g = Rerooting::<usize, usize, _, _,\
-    \ _, _>::new(n, merge, e, leaf, apply);\n    for (s, t, w) in stw {\n        g.add_edge(s,\
-    \ t, w);\n        g.add_edge(t, s, w);\n    }\n    let res = g.run();\n    println!(\"\
-    {}\", res.iter().max().unwrap());\n}\n"
+    \ mut g = Rerooting::<usize, usize, _, _, _, _>::new(\n        n,\n        |a:\
+    \ usize, b: usize| std::cmp::max(a, b),\n        || 0,\n        || 0,\n      \
+    \  |a: usize, _: usize, _: usize, w: usize| a + w,\n    );\n    stw.iter().for_each(|&(s,\
+    \ t, w)| {\n        g.add_edge(s, t, w);\n        g.add_edge(t, s, w);\n    });\n\
+    \n    let res = g.run();\n    println!(\"{}\", res.iter().max().unwrap());\n}\n"
   dependsOn:
   - tree/rerooting/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_5_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-09-05 20:18:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_5_a/src/main.rs
 layout: document

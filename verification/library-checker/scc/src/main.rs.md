@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/strongly-connected-components/src/lib.rs
     title: Strongly Connected Components (Tarjan)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/scc
     links:
@@ -25,17 +25,17 @@ data:
     \ * 1024)\n        .spawn(actual_main)\n        .unwrap()\n        .join()\n \
     \       .unwrap();\n}\n\nfn actual_main() {\n    input! {\n        n: usize,\n\
     \        m: usize,\n        ab: [(usize, usize); m],\n    }\n    let mut scc =\
-    \ StronglyConnectedComponents::new(n);\n    for (a, b) in ab {\n        scc.add_edge(a,\
-    \ b);\n    }\n    let groups = scc.scc();\n    println!(\"{}\", groups.len());\n\
-    \    for group in groups {\n        println!(\"{} {}\", group.len(), group.iter().join(\"\
+    \ StronglyConnectedComponents::new(n);\n    ab.iter().for_each(|&(a, b)| scc.add_edge(a,\
+    \ b));\n    let groups = scc.scc();\n\n    println!(\"{}\", groups.len());\n \
+    \   for group in groups {\n        println!(\"{} {}\", group.len(), group.iter().join(\"\
     \ \"));\n    }\n}\n"
   dependsOn:
   - graph/strongly-connected-components/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/scc/src/main.rs
   requiredBy: []
-  timestamp: '2025-08-21 20:48:32+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/library-checker/scc/src/main.rs
 layout: document

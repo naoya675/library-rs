@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/grl_1_a/src/main.rs
     title: verification/aizu-online-judge/grl_1_a/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -56,7 +56,7 @@ data:
   path: graph/dijkstra/src/lib.rs
   requiredBy: []
   timestamp: '2025-05-26 22:58:00+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verification/aizu-online-judge/grl_1_a/src/main.rs
 documentation_of: graph/dijkstra/src/lib.rs

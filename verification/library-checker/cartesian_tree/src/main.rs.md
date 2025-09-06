@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/cartesian-tree/src/lib.rs
     title: Cartesian Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/cartesian_tree
     links:
@@ -22,15 +22,15 @@ data:
   code: "// verification-helper: PROBLEM https://judge.yosupo.jp/problem/cartesian_tree\n\
     \nuse itertools::Itertools;\nuse proconio::input;\n\nuse cartesian_tree::CartesianTree;\n\
     \nfn main() {\n    input! {\n        n: usize,\n        a: [usize; n],\n    }\n\
-    \    let mut ct = CartesianTree::new(a);\n    println!(\"{}\", ct.run(true).iter().enumerate().map(|(i,\
+    \    let mut ct = CartesianTree::new(a);\n\n    println!(\"{}\", ct.run(true).iter().enumerate().map(|(i,\
     \ &p)| if p == n { i } else { p }).join(\" \"));\n}\n"
   dependsOn:
   - tree/cartesian-tree/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/cartesian_tree/src/main.rs
   requiredBy: []
-  timestamp: '2025-08-21 20:48:10+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/library-checker/cartesian_tree/src/main.rs
 layout: document

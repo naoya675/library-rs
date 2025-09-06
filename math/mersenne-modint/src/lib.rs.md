@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/alds1_14_a/src/main.rs
     title: verification/aizu-online-judge/alds1_14_a/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/alds1_14_b/src/main.rs
     title: verification/aizu-online-judge/alds1_14_b/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
@@ -85,7 +85,7 @@ data:
   path: math/mersenne-modint/src/lib.rs
   requiredBy: []
   timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_b/src/main.rs
   - verification/aizu-online-judge/alds1_14_a/src/main.rs

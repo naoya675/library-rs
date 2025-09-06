@@ -3,24 +3,24 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/dsl_2_f/src/main.rs
     title: verification/aizu-online-judge/dsl_2_f/src/main.rs
   - icon: ':x:'
     path: verification/aizu-online-judge/dsl_2_g/src/main.rs
     title: verification/aizu-online-judge/dsl_2_g/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/dsl_2_h/src/main.rs
     title: verification/aizu-online-judge/dsl_2_h/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/dsl_2_i/src/main.rs
     title: verification/aizu-online-judge/dsl_2_i/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/range_affine_range_sum/src/main.rs
     title: verification/library-checker/range_affine_range_sum/src/main.rs
   _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/lazysegtree.html
@@ -121,7 +121,7 @@ data:
   path: data-structure/lazy-segment-tree/src/lib.rs
   requiredBy: []
   timestamp: '2025-08-21 20:46:40+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_g/src/main.rs
   - verification/aizu-online-judge/dsl_2_i/src/main.rs

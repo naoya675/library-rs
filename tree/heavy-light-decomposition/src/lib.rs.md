@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/grl_5_c/src/main.rs
     title: verification/aizu-online-judge/grl_5_c/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/grl_5_d/src/main.rs
     title: verification/aizu-online-judge/grl_5_d/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/grl_5_e/src/main.rs
     title: verification/aizu-online-judge/grl_5_e/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp.html
@@ -113,7 +113,7 @@ data:
   path: tree/heavy-light-decomposition/src/lib.rs
   requiredBy: []
   timestamp: '2025-08-21 20:48:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verification/aizu-online-judge/grl_5_d/src/main.rs
   - verification/aizu-online-judge/grl_5_e/src/main.rs

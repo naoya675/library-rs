@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/grl_5_a/src/main.rs
     title: verification/aizu-online-judge/grl_5_a/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/grl_5_b/src/main.rs
     title: verification/aizu-online-judge/grl_5_b/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://atcoder.jp/contests/abc222/editorial/2749
@@ -76,7 +76,7 @@ data:
   path: tree/rerooting/src/lib.rs
   requiredBy: []
   timestamp: '2025-09-05 20:18:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verification/aizu-online-judge/grl_5_b/src/main.rs
   - verification/aizu-online-judge/grl_5_a/src/main.rs

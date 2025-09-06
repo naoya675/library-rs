@@ -1,17 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: macro/query/src/lib.rs
+    title: macro/query/src/lib.rs
+  - icon: ':question:'
     path: math/modint/src/lib.rs
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
     links:
@@ -24,26 +27,28 @@ data:
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_affine_range_sum\n\
     \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\nuse modint::StaticModint;\n\
-    \ntype Mint = StaticModint<998244353>;\n\nfn main() {\n    input! {\n        n:\
-    \ usize,\n        q: usize,\n        a: [u64; n],\n    }\n    let mut lst = LazySegmentTree::<(Mint,\
-    \ Mint), (Mint, Mint)>::new(\n        n,\n        |a, b| (a.0 + b.0, a.1 + b.1),\n\
-    \        (Mint::new(0), Mint::new(0)),\n        |f, x| (f.0 * x.0 + f.1 * x.1,\
-    \ x.1),\n        |f, g| (f.0 * g.0, f.0 * g.1 + f.1),\n        (Mint::new(1),\
-    \ Mint::new(0)),\n    );\n    let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();\n\
-    \    lst.build(a);\n    for _ in 0..q {\n        input! { query: usize, }\n  \
-    \      match query {\n            0 => {\n                input! { l: usize, r:\
-    \ usize, b: u64, c: u64, }\n                lst.apply(l, r, (Mint::new(b), Mint::new(c)));\n\
-    \            }\n            1 => {\n                input! { l: usize, r: usize,\
-    \ }\n                println!(\"{}\", lst.prod(l, r).0);\n            }\n    \
-    \        _ => unreachable!(),\n        }\n    }\n}\n"
+    \ntype Mint = StaticModint<998244353>;\n\nquery::define_query! {\n    Query {\n\
+    \        0 => Query0(l: usize, r: usize, b: u64, c: u64),\n        1 => Query1(l:\
+    \ usize, r: usize),\n    }\n}\n\nfn main() {\n    input! {\n        n: usize,\n\
+    \        q: usize,\n        a: [u64; n],\n        queries: [Query; q],\n    }\n\
+    \    let mut lst = LazySegmentTree::<(Mint, Mint), (Mint, Mint)>::new(\n     \
+    \   n,\n        |x, y| (x.0 + y.0, x.1 + y.1),\n        (Mint::new(0), Mint::new(0)),\n\
+    \        |f, x| (f.0 * x.0 + f.1 * x.1, x.1),\n        |f, g| (f.0 * g.0, f.0\
+    \ * g.1 + f.1),\n        (Mint::new(1), Mint::new(0)),\n    );\n    let a = a.iter().map(|&a|\
+    \ (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();\n    lst.build(a);\n\n  \
+    \  for query in queries {\n        match query {\n            Query0(l, r, b,\
+    \ c) => lst.apply(l, r, (Mint::new(b), Mint::new(c))),\n            Query1(l,\
+    \ r) => {\n                println!(\"{}\", lst.prod(l, r).0);\n            }\n\
+    \        }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
+  - macro/query/src/lib.rs
   - math/modint/src/lib.rs
   isVerificationFile: true
   path: verification/library-checker/range_affine_range_sum/src/main.rs
   requiredBy: []
-  timestamp: '2025-09-05 20:18:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/library-checker/range_affine_range_sum/src/main.rs
 layout: document

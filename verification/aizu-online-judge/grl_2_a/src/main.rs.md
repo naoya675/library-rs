@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/kruskal/src/lib.rs
     title: Kruskal
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A
     links:
@@ -22,16 +22,16 @@ data:
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A\n\
     \nuse proconio::input;\n\nuse kruskal::Kruskal;\n\nfn main() {\n    input! {\n\
     \        v: usize,\n        e: usize,\n        stw: [(usize, usize, i64); e],\n\
-    \    }\n    let mut krs = Kruskal::new(v);\n    for (s, t, w) in stw {\n     \
-    \   krs.add_edge(s, t, w);\n    }\n    println!(\"{}\", krs.minimum_spanning_tree().0);\n\
+    \    }\n    let mut krs = Kruskal::new(v);\n    stw.iter().for_each(|&(s, t, w)|\
+    \ krs.add_edge(s, t, w));\n\n    println!(\"{}\", krs.minimum_spanning_tree().0);\n\
     }\n"
   dependsOn:
   - graph/kruskal/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_2_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-05-28 17:52:35+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_2_a/src/main.rs
 layout: document

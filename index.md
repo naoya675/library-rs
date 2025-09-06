@@ -3,17 +3,17 @@ data:
   libraryCategories:
   - name: data-structure/fenwick-tree/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/fenwick-tree/src/lib.rs
       title: Fenwick Tree
   - name: data-structure/fenwick-tree-abstract/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/fenwick-tree-abstract/src/lib.rs
       title: Fenwick Tree (Abstract)
   - name: data-structure/lazy-segment-tree/src
     pages:
-    - icon: ':question:'
+    - icon: ':x:'
       path: data-structure/lazy-segment-tree/src/lib.rs
       title: Lazy Segment Tree
     - icon: ':warning:'
@@ -21,7 +21,7 @@ data:
       title: Lazy Segment Tree (Wrapper)
   - name: data-structure/segment-tree/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/segment-tree/src/lib.rs
       title: Segment Tree
     - icon: ':warning:'
@@ -29,37 +29,37 @@ data:
       title: Segment Tree (Wrapper)
   - name: data-structure/union-find/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/union-find/src/lib.rs
       title: Union Find
   - name: data-structure/union-find-with-potential/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/union-find-with-potential/src/lib.rs
       title: Union Find with Potential
   - name: graph/bellman-ford/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/bellman-ford/src/lib.rs
       title: Bellman Ford
   - name: graph/dijkstra/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/dijkstra/src/lib.rs
       title: Dijkstra
   - name: graph/ford-fulkerson/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/ford-fulkerson/src/lib.rs
       title: Ford Fulkerson
   - name: graph/kruskal/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/kruskal/src/lib.rs
       title: Kruskal
   - name: graph/strongly-connected-components/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/strongly-connected-components/src/lib.rs
       title: Strongly Connected Components (Tarjan)
   - name: graph/topological-sort/src
@@ -69,7 +69,7 @@ data:
       title: graph/topological-sort/src/lib.rs
   - name: graph/warshall-floyd/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/warshall-floyd/src/lib.rs
       title: Warshall Floyd
   - name: heuristic/time-keeper/src
@@ -97,6 +97,11 @@ data:
     - icon: ':warning:'
       path: macro/input/src/lib.rs
       title: macro/input/src/lib.rs
+  - name: macro/query/src
+    pages:
+    - icon: ':x:'
+      path: macro/query/src/lib.rs
+      title: macro/query/src/lib.rs
   - name: math/combinatorics/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -104,12 +109,12 @@ data:
       title: Combinatorics
   - name: math/mersenne-modint/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/mersenne-modint/src/lib.rs
       title: Mersenne Modint
   - name: math/modint/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/modint/src/lib.rs
       title: Modint
   - name: string/aho-corasick/src
@@ -119,17 +124,17 @@ data:
       title: Aho-Corasick
   - name: string/lcp-array/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/lcp-array/src/lib.rs
       title: LCP Array
   - name: string/rolling-hash/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/rolling-hash/src/lib.rs
       title: Rolling Hash
   - name: string/rolling-hash-segment-tree/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/rolling-hash-segment-tree/src/lib.rs
       title: Rolling Hash + Segment Tree
   - name: string/run-length/src
@@ -139,7 +144,7 @@ data:
       title: Run Length
   - name: string/suffix-array/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: string/suffix-array/src/lib.rs
       title: string/suffix-array/src/lib.rs
   - name: string/trie/src
@@ -154,22 +159,22 @@ data:
       title: Z Algorithm
   - name: tree/cartesian-tree/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/cartesian-tree/src/lib.rs
       title: Cartesian Tree
   - name: tree/euler-tour/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/euler-tour/src/lib.rs
       title: Euler Tour
   - name: tree/heavy-light-decomposition/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/heavy-light-decomposition/src/lib.rs
       title: Heavy-Light Decomposition
   - name: tree/rerooting/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/rerooting/src/lib.rs
       title: Rerooting
     - icon: ':warning:'
@@ -178,12 +183,12 @@ data:
   verificationCategories:
   - name: verification/aizu-online-judge/alds1_14_a/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/alds1_14_a/src/main.rs
       title: verification/aizu-online-judge/alds1_14_a/src/main.rs
   - name: verification/aizu-online-judge/alds1_14_b/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/alds1_14_b/src/main.rs
       title: verification/aizu-online-judge/alds1_14_b/src/main.rs
   - name: verification/aizu-online-judge/dpl_5_d/src
@@ -193,27 +198,27 @@ data:
       title: verification/aizu-online-judge/dpl_5_d/src/main.rs
   - name: verification/aizu-online-judge/dsl_1_a/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/dsl_1_a/src/main.rs
       title: verification/aizu-online-judge/dsl_1_a/src/main.rs
   - name: verification/aizu-online-judge/dsl_1_b/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/dsl_1_b/src/main.rs
       title: verification/aizu-online-judge/dsl_1_b/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_a/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/dsl_2_a/src/main.rs
       title: verification/aizu-online-judge/dsl_2_a/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_b/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/dsl_2_b/src/main.rs
       title: verification/aizu-online-judge/dsl_2_b/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_f/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/dsl_2_f/src/main.rs
       title: verification/aizu-online-judge/dsl_2_f/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_g/src
@@ -223,62 +228,62 @@ data:
       title: verification/aizu-online-judge/dsl_2_g/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_h/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/dsl_2_h/src/main.rs
       title: verification/aizu-online-judge/dsl_2_h/src/main.rs
   - name: verification/aizu-online-judge/dsl_2_i/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/dsl_2_i/src/main.rs
       title: verification/aizu-online-judge/dsl_2_i/src/main.rs
   - name: verification/aizu-online-judge/grl_1_a/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_1_a/src/main.rs
       title: verification/aizu-online-judge/grl_1_a/src/main.rs
   - name: verification/aizu-online-judge/grl_1_b/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_1_b/src/main.rs
       title: verification/aizu-online-judge/grl_1_b/src/main.rs
   - name: verification/aizu-online-judge/grl_1_c/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_1_c/src/main.rs
       title: verification/aizu-online-judge/grl_1_c/src/main.rs
   - name: verification/aizu-online-judge/grl_2_a/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_2_a/src/main.rs
       title: verification/aizu-online-judge/grl_2_a/src/main.rs
   - name: verification/aizu-online-judge/grl_5_a/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_5_a/src/main.rs
       title: verification/aizu-online-judge/grl_5_a/src/main.rs
   - name: verification/aizu-online-judge/grl_5_b/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_5_b/src/main.rs
       title: verification/aizu-online-judge/grl_5_b/src/main.rs
   - name: verification/aizu-online-judge/grl_5_c/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_5_c/src/main.rs
       title: verification/aizu-online-judge/grl_5_c/src/main.rs
   - name: verification/aizu-online-judge/grl_5_d/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_5_d/src/main.rs
       title: verification/aizu-online-judge/grl_5_d/src/main.rs
   - name: verification/aizu-online-judge/grl_5_e/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_5_e/src/main.rs
       title: verification/aizu-online-judge/grl_5_e/src/main.rs
   - name: verification/aizu-online-judge/grl_6_a/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/aizu-online-judge/grl_6_a/src/main.rs
       title: verification/aizu-online-judge/grl_6_a/src/main.rs
   - name: verification/library-checker/aho_corasick/src
@@ -288,32 +293,32 @@ data:
       title: verification/library-checker/aho_corasick/src/main.rs
   - name: verification/library-checker/cartesian_tree/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/cartesian_tree/src/main.rs
       title: verification/library-checker/cartesian_tree/src/main.rs
   - name: verification/library-checker/lca/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/lca/src/main.rs
       title: verification/library-checker/lca/src/main.rs
   - name: verification/library-checker/number_of_substrings/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/number_of_substrings/src/main.rs
       title: verification/library-checker/number_of_substrings/src/main.rs
   - name: verification/library-checker/point_set_range_composite/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/point_set_range_composite/src/main.rs
       title: verification/library-checker/point_set_range_composite/src/main.rs
   - name: verification/library-checker/range_affine_range_sum/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/range_affine_range_sum/src/main.rs
       title: verification/library-checker/range_affine_range_sum/src/main.rs
   - name: verification/library-checker/scc/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/scc/src/main.rs
       title: verification/library-checker/scc/src/main.rs
   - name: verification/library-checker/suffixarray/src
@@ -323,32 +328,32 @@ data:
       title: verification/library-checker/suffixarray/src/main.rs
   - name: verification/library-checker/unionfind/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/unionfind/src/main.rs
       title: verification/library-checker/unionfind/src/main.rs
   - name: verification/library-checker/unionfind_with_potential/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/unionfind_with_potential/src/main.rs
       title: verification/library-checker/unionfind_with_potential/src/main.rs
   - name: verification/library-checker/unionfind_with_potential_non_commutative_group/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
       title: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
   - name: verification/library-checker/vertex_add_path_sum/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/vertex_add_path_sum/src/main.rs
       title: verification/library-checker/vertex_add_path_sum/src/main.rs
   - name: verification/library-checker/vertex_add_subtree_sum/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/vertex_add_subtree_sum/src/main.rs
       title: verification/library-checker/vertex_add_subtree_sum/src/main.rs
   - name: verification/library-checker/vertex_set_path_composite/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/vertex_set_path_composite/src/main.rs
       title: verification/library-checker/vertex_set_path_composite/src/main.rs
   - name: verification/library-checker/zalgorithm/src

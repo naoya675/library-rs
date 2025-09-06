@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/mersenne-modint/src/lib.rs
     title: Mersenne Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/rolling-hash-segment-tree/src/lib.rs
     title: Rolling Hash + Segment Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
     links:
@@ -27,7 +27,7 @@ data:
     use rolling_hash_segment_tree::RollingHash;\n\nfn main() {\n    input! {\n   \
     \     t: Chars,\n        p: Chars,\n    }\n    let mut rh = RollingHash::<MersenneModint>::new(MersenneModint::rand());\n\
     \    let mut ht = rh.build_segment_tree(&t);\n    let mut hp = rh.build_segment_tree(&p);\n\
-    \    for i in 0.. {\n        if i + p.len() > t.len() {\n            break;\n\
+    \n    for i in 0.. {\n        if i + p.len() > t.len() {\n            break;\n\
     \        }\n        if ht.prod(i, i + p.len()) == hp.prod(0, p.len()) {\n    \
     \        println!(\"{}\", i);\n        }\n    }\n}\n"
   dependsOn:
@@ -36,8 +36,8 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/alds1_14_b/src/main.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/alds1_14_b/src/main.rs
 layout: document

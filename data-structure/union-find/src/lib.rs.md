@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/kruskal/src/lib.rs
     title: Kruskal
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/aizu-online-judge/dsl_1_a/src/main.rs
     title: verification/aizu-online-judge/dsl_1_a/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/unionfind/src/main.rs
     title: verification/library-checker/unionfind/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/dsu.html
@@ -51,7 +51,7 @@ data:
   requiredBy:
   - graph/kruskal/src/lib.rs
   timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verification/aizu-online-judge/dsl_1_a/src/main.rs
   - verification/library-checker/unionfind/src/main.rs

@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/union-find-with-potential/src/lib.rs
     title: Union Find with Potential
+  - icon: ':x:'
+    path: macro/query/src/lib.rs
+    title: macro/query/src/lib.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B
     links:
@@ -21,22 +24,22 @@ data:
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B\n\
     \nuse proconio::input;\n\nuse union_find_with_potential::UnionFindWithPotential;\n\
-    \nfn main() {\n    input! {\n        n: usize,\n        q: usize,\n    }\n   \
-    \ let mut uf = UnionFindWithPotential::<i64>::new_default(n);\n    for _ in 0..q\
-    \ {\n        input! { query: usize, }\n        match query {\n            0 =>\
-    \ {\n                input! { x: usize, y: usize, z: i64, }\n                uf.merge(x,\
-    \ y, z);\n            }\n            1 => {\n                input! { x: usize,\
-    \ y: usize, }\n                if uf.same(x, y) {\n                    println!(\"\
-    {}\", uf.diff(x, y));\n                } else {\n                    println!(\"\
-    ?\");\n                }\n            }\n            _ => unreachable!(),\n  \
-    \      }\n    }\n}\n"
+    \nquery::define_query! {\n    Query {\n        0 => Query0(x: usize, y: usize,\
+    \ z: i64),\n        1 => Query1(x: usize, y: usize),\n    }\n}\n\nfn main() {\n\
+    \    input! {\n        n: usize,\n        q: usize,\n        queries: [Query;\
+    \ q],\n    }\n    let mut uf = UnionFindWithPotential::<i64>::new_default(n);\n\
+    \n    for query in queries {\n        match query {\n            Query0(x, y,\
+    \ z) => {\n                uf.merge(x, y, z);\n            }\n            Query1(x,\
+    \ y) => {\n                println!(\"{}\", if uf.same(x, y) { uf.diff(x, y).to_string()\
+    \ } else { \"?\".to_string() });\n            }\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/union-find-with-potential/src/lib.rs
+  - macro/query/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_1_b/src/main.rs
   requiredBy: []
-  timestamp: '2025-05-29 20:17:30+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_1_b/src/main.rs
 layout: document

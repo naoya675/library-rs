@@ -6,24 +6,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dpl_5_d/src/main.rs
     title: verification/aizu-online-judge/dpl_5_d/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/point_set_range_composite/src/main.rs
     title: verification/library-checker/point_set_range_composite/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/range_affine_range_sum/src/main.rs
     title: verification/library-checker/range_affine_range_sum/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/unionfind_with_potential/src/main.rs
     title: verification/library-checker/unionfind_with_potential/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
     title: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/vertex_set_path_composite/src/main.rs
     title: verification/library-checker/vertex_set_path_composite/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c
@@ -101,7 +101,7 @@ data:
   path: math/modint/src/lib.rs
   requiredBy: []
   timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verification/aizu-online-judge/dpl_5_d/src/main.rs
   - verification/library-checker/vertex_set_path_composite/src/main.rs

@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
+  - icon: ':x:'
+    path: macro/query/src/lib.rs
+    title: macro/query/src/lib.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F
     links:
@@ -20,24 +23,25 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F\n\
-    \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\n\nfn main()\
-    \ {\n    input! {\n        n: usize,\n        q: usize,\n    }\n    let mut lst\
-    \ = LazySegmentTree::<i64, i64>::new(\n        n,\n        |a, b| std::cmp::min(a,\
+    \nuse proconio::input;\n\nuse lazy_segment_tree::LazySegmentTree;\n\nquery::define_query!\
+    \ {\n    Query {\n        0 => Query0(s: usize, t: usize, x: i64),\n        1\
+    \ => Query1(s: usize, t: usize),\n    }\n}\n\nfn main() {\n    input! {\n    \
+    \    n: usize,\n        q: usize,\n        queries: [Query; q],\n    }\n    let\
+    \ mut lst = LazySegmentTree::<i64, i64>::new(\n        n,\n        |a, b| std::cmp::min(a,\
     \ b),\n        i64::MAX,\n        |f, x| if f == i64::MAX { x } else { f },\n\
     \        |f, g| if f == i64::MAX { g } else { f },\n        i64::MAX,\n    );\n\
-    \    lst.build(vec![(1 << 31) - 1; n]);\n    for _ in 0..q {\n        input! {\
-    \ query: usize, }\n        match query {\n            0 => {\n               \
-    \ input! { s: usize, t: usize, x: i64, }\n                lst.apply(s, t + 1,\
-    \ x);\n            }\n            1 => {\n                input! { s: usize, t:\
-    \ usize, }\n                println!(\"{}\", lst.prod(s, t + 1));\n          \
-    \  }\n            _ => unreachable!(),\n        }\n    }\n}\n"
+    \    lst.build(vec![(1 << 31) - 1; n]);\n\n    for query in queries {\n      \
+    \  match query {\n            Query0(s, t, x) => lst.apply(s, t + 1, x),\n   \
+    \         Query1(s, t) => {\n                println!(\"{}\", lst.prod(s, t +\
+    \ 1));\n            }\n        }\n    }\n}\n"
   dependsOn:
   - data-structure/lazy-segment-tree/src/lib.rs
+  - macro/query/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_2_f/src/main.rs
   requiredBy: []
-  timestamp: '2025-09-05 20:18:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-09-06 15:04:09+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_2_f/src/main.rs
 layout: document
