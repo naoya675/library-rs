@@ -6,10 +6,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dpl_5_d/src/main.rs
     title: verification/aizu-online-judge/dpl_5_d/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/point_set_range_composite/src/main.rs
     title: verification/library-checker/point_set_range_composite/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/range_affine_range_sum/src/main.rs
     title: verification/library-checker/range_affine_range_sum/src/main.rs
   - icon: ':x:'

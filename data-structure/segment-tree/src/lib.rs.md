@@ -2,20 +2,20 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: string/rolling-hash-segment-tree/src/lib.rs
     title: Rolling Hash + Segment Tree
-  - icon: ':x:'
+  - icon: ':question:'
     path: tree/euler-tour/src/lib.rs
     title: Euler Tour
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_a/src/main.rs
     title: verification/aizu-online-judge/dsl_2_a/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_b/src/main.rs
     title: verification/aizu-online-judge/dsl_2_b/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/point_set_range_composite/src/main.rs
     title: verification/library-checker/point_set_range_composite/src/main.rs
   - icon: ':x:'
@@ -23,7 +23,7 @@ data:
     title: verification/library-checker/vertex_set_path_composite/src/main.rs
   _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/segtree.html
@@ -101,7 +101,7 @@ data:
   - tree/euler-tour/src/lib.rs
   - string/rolling-hash-segment-tree/src/lib.rs
   timestamp: '2025-08-21 20:46:40+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_a/src/main.rs
   - verification/aizu-online-judge/dsl_2_b/src/main.rs

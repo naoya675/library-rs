@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_1_b/src/main.rs
     title: verification/aizu-online-judge/dsl_1_b/src/main.rs
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
     title: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
   _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -68,7 +68,7 @@ data:
   path: data-structure/union-find-with-potential/src/lib.rs
   requiredBy: []
   timestamp: '2025-05-29 20:17:30+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verification/aizu-online-judge/dsl_1_b/src/main.rs
   - verification/library-checker/unionfind_with_potential/src/main.rs

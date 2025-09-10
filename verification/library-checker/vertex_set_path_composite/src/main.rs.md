@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data-structure/segment-tree/src/lib.rs
     title: Segment Tree
-  - icon: ':x:'
+  - icon: ':question:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
   - icon: ':question:'
     path: math/modint/src/lib.rs
     title: Modint
-  - icon: ':x:'
+  - icon: ':question:'
     path: tree/euler-tour/src/lib.rs
     title: Euler Tour
   _extendedRequiredBy: []

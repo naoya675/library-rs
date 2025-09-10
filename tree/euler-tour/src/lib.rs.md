@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data-structure/segment-tree/src/lib.rs
     title: Segment Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/lca/src/main.rs
     title: verification/library-checker/lca/src/main.rs
   - icon: ':x:'
@@ -20,7 +20,7 @@ data:
     title: verification/library-checker/vertex_set_path_composite/src/main.rs
   _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://nyaannyaan.github.io/library/tree/euler-tour.hpp
@@ -85,7 +85,7 @@ data:
   path: tree/euler-tour/src/lib.rs
   requiredBy: []
   timestamp: '2025-08-21 20:46:40+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verification/library-checker/vertex_set_path_composite/src/main.rs
   - verification/library-checker/vertex_add_subtree_sum/src/main.rs

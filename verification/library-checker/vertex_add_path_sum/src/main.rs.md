@@ -4,10 +4,10 @@ data:
   - icon: ':x:'
     path: data-structure/fenwick-tree/src/lib.rs
     title: Fenwick Tree
-  - icon: ':x:'
+  - icon: ':question:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
-  - icon: ':x:'
+  - icon: ':question:'
     path: tree/euler-tour/src/lib.rs
     title: Euler Tour
   _extendedRequiredBy: []

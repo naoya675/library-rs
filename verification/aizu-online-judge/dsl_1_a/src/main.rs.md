@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data-structure/union-find/src/lib.rs
     title: Union Find
-  - icon: ':x:'
+  - icon: ':question:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A
     links:
@@ -38,7 +38,7 @@ data:
   path: verification/aizu-online-judge/dsl_1_a/src/main.rs
   requiredBy: []
   timestamp: '2025-09-06 15:04:09+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_1_a/src/main.rs
 layout: document

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data-structure/segment-tree/src/lib.rs
     title: Segment Tree
-  - icon: ':x:'
+  - icon: ':question:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
     links:
@@ -46,7 +46,7 @@ data:
   path: verification/library-checker/point_set_range_composite/src/main.rs
   requiredBy: []
   timestamp: '2025-09-06 15:04:09+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/point_set_range_composite/src/main.rs
 layout: document
