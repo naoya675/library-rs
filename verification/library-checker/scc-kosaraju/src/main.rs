@@ -3,7 +3,7 @@
 use itertools::Itertools;
 use proconio::input;
 
-use strongly_connected_components::StronglyConnectedComponents;
+use strongly_connected_components_kosaraju::StronglyConnectedComponents;
 
 fn main() {
     std::thread::Builder::new()

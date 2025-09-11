@@ -1,5 +1,5 @@
 [package]
-name = "strongly-connected-components"
+name = "strongly-connected-components-tarjan"
 version = "0.1.0"
 edition = "2021"
 
