@@ -2,7 +2,7 @@
 
 macro_rules! input {
     (source = $s:expr, $($r:tt)*) => {
-        let iter = $s.split_whitespace();
+        let mut iter = $s.split_whitespace();
         input_inner!{iter, $($r)*}
     };
     ($($r:tt)*) => {
@@ -36,10 +36,10 @@ macro_rules! read_value {
     ($iter:expr, Chars) => {
         read_value!($iter, String).chars().collect::<Vec<char>>()
     };
-    ($iter:expr, usize1) => {
+    ($iter:expr, Usize1) => {
         read_value!($iter, usize) - 1
     };
-    ($iter:expr, usize0) => {
+    ($iter:expr, Usize0) => {
         read_value!($iter, usize)
     };
     ($iter:expr, $t:ty) => {

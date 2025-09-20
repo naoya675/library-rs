@@ -14,7 +14,7 @@ pub struct AhoCorasick {
 impl AhoCorasick {
     pub fn new(size: usize, base: char) -> Self {
         Self {
-            trie: Trie::new(size + 1, base), // trie + failed link
+            trie: Trie::new(size + 1, base), // goto + failure
             fail: size,
             pattern: vec![],
             size,
