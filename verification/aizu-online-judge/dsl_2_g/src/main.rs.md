@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
   _extendedRequiredBy: []

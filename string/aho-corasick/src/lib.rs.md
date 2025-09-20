@@ -24,11 +24,11 @@ data:
     \ Clone)]\npub struct AhoCorasick {\n    trie: Trie,\n    fail: usize,\n    pattern:\
     \ Vec<usize>, // number of matches\n    size: usize,\n    base: char,\n}\n\nimpl\
     \ AhoCorasick {\n    pub fn new(size: usize, base: char) -> Self {\n        Self\
-    \ {\n            trie: Trie::new(size + 1, base), // trie + failed link\n    \
-    \        fail: size,\n            pattern: vec![],\n            size,\n      \
-    \      base,\n        }\n    }\n\n    #[inline]\n    pub fn insert(&mut self,\
-    \ word: &Vec<char>) {\n        self.trie.insert(word);\n    }\n\n    #[inline]\n\
-    \    pub fn search(&self, word: &Vec<char>) -> bool {\n        self.trie.search(word)\n\
+    \ {\n            trie: Trie::new(size + 1, base), // goto + failure\n        \
+    \    fail: size,\n            pattern: vec![],\n            size,\n          \
+    \  base,\n        }\n    }\n\n    #[inline]\n    pub fn insert(&mut self, word:\
+    \ &Vec<char>) {\n        self.trie.insert(word);\n    }\n\n    #[inline]\n   \
+    \ pub fn search(&self, word: &Vec<char>) -> bool {\n        self.trie.search(word)\n\
     \    }\n\n    #[inline]\n    pub fn search_prefix(&self, word: &Vec<char>) ->\
     \ bool {\n        self.trie.search_prefix(word)\n    }\n\n    // build Pattern\
     \ Matching Automaton (PMA)\n    pub fn build(&mut self, heavy: bool) {\n     \
@@ -72,7 +72,7 @@ data:
   isVerificationFile: false
   path: string/aho-corasick/src/lib.rs
   requiredBy: []
-  timestamp: '2025-09-05 02:21:41+09:00'
+  timestamp: '2025-09-21 00:52:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/aho_corasick/src/main.rs
@@ -85,4 +85,7 @@ title: Aho-Corasick
 
 ## Reference
 - [https://noshi91.github.io/algorithm-encyclopedia/aho-corasick](https://noshi91.github.io/algorithm-encyclopedia/aho-corasick)
+- [https://naoya-2.hatenadiary.org/entry/20090405/aho_corasick](https://naoya-2.hatenadiary.org/entry/20090405/aho_corasick)
+- [https://chakku.hatenablog.com/entry/2017/12/01/020546](https://chakku.hatenablog.com/entry/2017/12/01/020546)
 - [https://cp-algorithms.com/string/aho_corasick.html](https://cp-algorithms.com/string/aho_corasick.html)
+<!--- [https://compiler.club/pattern-matching-in-trees/](https://compiler.club/pattern-matching-in-trees/)-->

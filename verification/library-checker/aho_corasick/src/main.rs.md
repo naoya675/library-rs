@@ -39,7 +39,7 @@ data:
   isVerificationFile: true
   path: verification/library-checker/aho_corasick/src/main.rs
   requiredBy: []
-  timestamp: '2025-09-05 02:21:41+09:00'
+  timestamp: '2025-09-21 00:52:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/aho_corasick/src/main.rs

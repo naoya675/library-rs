@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data-structure/fenwick-tree/src
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/fenwick-tree/src/lib.rs
       title: Fenwick Tree
   - name: data-structure/fenwick-tree-abstract/src
@@ -21,7 +21,7 @@ data:
       title: Lazy Segment Tree (Wrapper)
   - name: data-structure/segment-tree/src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/segment-tree/src/lib.rs
       title: Segment Tree
     - icon: ':warning:'
@@ -29,12 +29,12 @@ data:
       title: Segment Tree (Wrapper)
   - name: data-structure/union-find/src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/union-find/src/lib.rs
       title: Union Find
   - name: data-structure/union-find-with-potential/src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/union-find-with-potential/src/lib.rs
       title: Union Find with Potential
   - name: graph/bellman-ford/src
@@ -57,10 +57,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/kruskal/src/lib.rs
       title: Kruskal
-  - name: graph/strongly-connected-components/src
+  - name: graph/low-link/src
+    pages:
+    - icon: ':warning:'
+      path: graph/low-link/src/lib.rs
+      title: Low Link
+  - name: graph/strongly-connected-components-kosaraju/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: graph/strongly-connected-components/src/lib.rs
+      path: graph/strongly-connected-components-kosaraju/src/lib.rs
+      title: Strongly Connected Components (Kosaraju)
+  - name: graph/strongly-connected-components-tarjan/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: graph/strongly-connected-components-tarjan/src/lib.rs
       title: Strongly Connected Components (Tarjan)
   - name: graph/topological-sort/src
     pages:
@@ -76,7 +86,7 @@ data:
     pages:
     - icon: ':warning:'
       path: heuristic/time-keeper/src/lib.rs
-      title: heuristic/time-keeper/src/lib.rs
+      title: Time Keeper
   - name: macro/chmax/src
     pages:
     - icon: ':warning:'
@@ -99,7 +109,7 @@ data:
       title: macro/input/src/lib.rs
   - name: macro/query/src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: macro/query/src/lib.rs
       title: macro/query/src/lib.rs
   - name: math/combinatorics/src
@@ -114,7 +124,7 @@ data:
       title: Mersenne Modint
   - name: math/modint/src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/modint/src/lib.rs
       title: Modint
   - name: string/aho-corasick/src
@@ -164,7 +174,7 @@ data:
       title: Cartesian Tree
   - name: tree/euler-tour/src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: tree/euler-tour/src/lib.rs
       title: Euler Tour
   - name: tree/heavy-light-decomposition/src
@@ -316,11 +326,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/library-checker/range_affine_range_sum/src/main.rs
       title: verification/library-checker/range_affine_range_sum/src/main.rs
-  - name: verification/library-checker/scc/src
+  - name: verification/library-checker/scc-kosaraju/src
     pages:
     - icon: ':heavy_check_mark:'
-      path: verification/library-checker/scc/src/main.rs
-      title: verification/library-checker/scc/src/main.rs
+      path: verification/library-checker/scc-kosaraju/src/main.rs
+      title: verification/library-checker/scc-kosaraju/src/main.rs
+  - name: verification/library-checker/scc-tarjan/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/library-checker/scc-tarjan/src/main.rs
+      title: verification/library-checker/scc-tarjan/src/main.rs
   - name: verification/library-checker/suffixarray/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -328,32 +343,32 @@ data:
       title: verification/library-checker/suffixarray/src/main.rs
   - name: verification/library-checker/unionfind/src
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verification/library-checker/unionfind/src/main.rs
       title: verification/library-checker/unionfind/src/main.rs
   - name: verification/library-checker/unionfind_with_potential/src
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verification/library-checker/unionfind_with_potential/src/main.rs
       title: verification/library-checker/unionfind_with_potential/src/main.rs
   - name: verification/library-checker/unionfind_with_potential_non_commutative_group/src
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
       title: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
   - name: verification/library-checker/vertex_add_path_sum/src
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verification/library-checker/vertex_add_path_sum/src/main.rs
       title: verification/library-checker/vertex_add_path_sum/src/main.rs
   - name: verification/library-checker/vertex_add_subtree_sum/src
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verification/library-checker/vertex_add_subtree_sum/src/main.rs
       title: verification/library-checker/vertex_add_subtree_sum/src/main.rs
   - name: verification/library-checker/vertex_set_path_composite/src
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verification/library-checker/vertex_set_path_composite/src/main.rs
       title: verification/library-checker/vertex_set_path_composite/src/main.rs
   - name: verification/library-checker/zalgorithm/src

@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_1_a/src/main.rs
     title: verification/aizu-online-judge/dsl_1_a/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/unionfind/src/main.rs
     title: verification/library-checker/unionfind/src/main.rs
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/dsu.html
@@ -51,7 +51,7 @@ data:
   requiredBy:
   - graph/kruskal/src/lib.rs
   timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_1_a/src/main.rs
   - verification/library-checker/unionfind/src/main.rs

@@ -14,26 +14,30 @@ data:
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "#[derive(Debug, Clone)]\nstruct TimeKeeper {\n    time: std::time::Instant,\n\
-    \    time_threshold: f64,\n}\n\nimpl TimeKeeper {\n    fn new(time_threshold:\
+  code: "#[derive(Debug, Clone)]\npub struct TimeKeeper {\n    time: std::time::Instant,\n\
+    \    time_threshold: f64,\n}\n\nimpl TimeKeeper {\n    pub fn new(time_threshold:\
     \ f64) -> Self {\n        TimeKeeper {\n            time: std::time::Instant::now(),\n\
-    \            time_threshold,\n        }\n    }\n\n    fn is_time_over(&self) ->\
-    \ bool {\n        let elapsed_time = self.time.elapsed().as_nanos() as f64 * 1e-9;\n\
-    \        #[cfg(feature = \"local\")]\n        {\n            elapsed_time * 0.90\
-    \ >= self.time_shreshold\n        }\n        #[cfg(not(feature = \"local\"))]\n\
-    \        {\n            elapsed_time >= self.time_threshold\n        }\n    }\n\
-    }\n"
+    \            time_threshold,\n        }\n    }\n\n    pub fn elapsed_ratio(&self)\
+    \ -> f64 {\n        let elapsed_time = self.time.elapsed().as_nanos() as f64 *\
+    \ 1e-9;\n        elapsed_time / self.time_threshold\n    }\n\n    pub fn is_time_over(&self)\
+    \ -> bool {\n        let elapsed_time = self.time.elapsed().as_nanos() as f64\
+    \ * 1e-9;\n        #[cfg(feature = \"local\")]\n        {\n            elapsed_time\
+    \ * 0.90 >= self.time_threshold\n        }\n        #[cfg(not(feature = \"local\"\
+    ))]\n        {\n            elapsed_time >= self.time_threshold\n        }\n \
+    \   }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: heuristic/time-keeper/src/lib.rs
   requiredBy: []
-  timestamp: '2024-03-28 18:17:25+09:00'
+  timestamp: '2025-09-21 00:52:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: heuristic/time-keeper/src/lib.rs
 layout: document
-redirect_from:
-- /library/heuristic/time-keeper/src/lib.rs
-- /library/heuristic/time-keeper/src/lib.rs.html
-title: heuristic/time-keeper/src/lib.rs
+title: Time Keeper
 ---
+
+## Description
+
+## Reference
+- [https://zenn.dev/tipstar0125/articles/245bceec86e40a](https://zenn.dev/tipstar0125/articles/245bceec86e40a)

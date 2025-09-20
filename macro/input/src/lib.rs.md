@@ -16,7 +16,7 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// reference: https://qiita.com/tanakh/items/0ba42c7ca36cd29d0ac8\n\nmacro_rules!\
-    \ input {\n    (source = $s:expr, $($r:tt)*) => {\n        let iter = $s.split_whitespace();\n\
+    \ input {\n    (source = $s:expr, $($r:tt)*) => {\n        let mut iter = $s.split_whitespace();\n\
     \        input_inner!{iter, $($r)*}\n    };\n    ($($r:tt)*) => {\n        let\
     \ s = {\n            use std::io::Read;\n            let mut s = String::new();\n\
     \            std::io::stdin().read_to_string(&mut s).unwrap();\n            s\n\
@@ -28,15 +28,15 @@ data:
     \        ( $(read_value!($iter, $t)),* )\n    };\n    ($iter:expr, [ $t:tt ; $len:expr\
     \ ]) => {\n        (0..$len).map(|_| read_value!($iter, $t)).collect::<Vec<_>>()\n\
     \    };\n    ($iter:expr, Chars) => {\n        read_value!($iter, String).chars().collect::<Vec<char>>()\n\
-    \    };\n    ($iter:expr, usize1) => {\n        read_value!($iter, usize) - 1\n\
-    \    };\n    ($iter:expr, usize0) => {\n        read_value!($iter, usize)\n  \
+    \    };\n    ($iter:expr, Usize1) => {\n        read_value!($iter, usize) - 1\n\
+    \    };\n    ($iter:expr, Usize0) => {\n        read_value!($iter, usize)\n  \
     \  };\n    ($iter:expr, $t:ty) => {\n        $iter.next().unwrap().parse::<$t>().expect(\"\
     Parse Error\")\n    };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: macro/input/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-09-21 00:52:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: macro/input/src/lib.rs

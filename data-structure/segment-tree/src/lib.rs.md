@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/rolling-hash-segment-tree/src/lib.rs
     title: Rolling Hash + Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/euler-tour/src/lib.rs
     title: Euler Tour
   _extendedVerifiedWith:
@@ -18,12 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/library-checker/point_set_range_composite/src/main.rs
     title: verification/library-checker/point_set_range_composite/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/vertex_set_path_composite/src/main.rs
     title: verification/library-checker/vertex_set_path_composite/src/main.rs
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/production/document_en/segtree.html
@@ -101,7 +101,7 @@ data:
   - tree/euler-tour/src/lib.rs
   - string/rolling-hash-segment-tree/src/lib.rs
   timestamp: '2025-08-21 20:46:40+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_a/src/main.rs
   - verification/aizu-online-judge/dsl_2_b/src/main.rs

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/combinatorics/src/lib.rs
     title: Combinatorics
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint/src/lib.rs
     title: Modint
   _extendedRequiredBy: []
