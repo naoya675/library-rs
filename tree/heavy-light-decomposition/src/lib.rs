@@ -1,5 +1,3 @@
-// reference: https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp.html
-
 #[derive(Debug, Clone)]
 pub struct Edge<Cost> {
     from: usize,

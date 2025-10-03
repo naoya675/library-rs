@@ -1,4 +1,4 @@
-// reference: https://atcoder.jp/contests/abc222/editorial/2749
+// Reference: https://atcoder.jp/contests/abc222/editorial/2749
 
 #[derive(Debug, Clone)]
 pub struct Edge<Cost> {

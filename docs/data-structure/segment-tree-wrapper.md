@@ -11,7 +11,7 @@ documentation_of: //data-structure/segment-tree/src/wrapper.rs
     - [https://atcoder.jp/contests/abc411/editorial/13379](https://atcoder.jp/contests/abc411/editorial/13379)
     - [https://atcoder.jp/contests/abc411/submissions/67026433](https://atcoder.jp/contests/abc411/submissions/67026433)
 
-- Range Maximum Subarray Sum (Prefix Sum, Suffix Sum)　
+- Range Maximum Subarray Sum (Prefix Sum, Suffix Sum)
     - [https://atcoder.jp/contests/abc175/editorial/4722](https://atcoder.jp/contests/abc175/editorial/4722)
     - [https://atcoder.jp/contests/abc175/submissions/34409729](https://atcoder.jp/contests/abc175/submissions/34409729)
     - [https://atcoder.jp/contests/abc415/editorial/13496](https://atcoder.jp/contests/abc415/editorial/13496)

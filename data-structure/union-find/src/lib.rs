@@ -1,4 +1,4 @@
-// reference: https://atcoder.github.io/ac-library/production/document_en/dsu.html
+// Reference: https://atcoder.github.io/ac-library/production/document_en/dsu.html
 
 #[derive(Debug, Clone)]
 pub struct UnionFind {

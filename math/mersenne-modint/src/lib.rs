@@ -1,4 +1,4 @@
-// reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
+// Reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct MersenneModint {
@@ -13,8 +13,8 @@ impl MersenneModint {
 
     pub fn new(n: u64) -> Self {
         Self {
-            value: (n % Self::MOD),
-            // value: (n.rem_euclid(Self::MOD)),
+            // value: (n % Self::MOD),
+            value: (n.rem_euclid(Self::MOD)),
         }
     }
 

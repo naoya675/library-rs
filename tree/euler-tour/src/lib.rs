@@ -1,5 +1,3 @@
-// reference: https://nyaannyaan.github.io/library/tree/euler-tour.hpp
-
 use segment_tree::SegmentTree;
 
 #[derive(Debug, Clone)]

@@ -1,4 +1,5 @@
-// reference: https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c
+// Reference:
+// https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct StaticModint<const MOD: u64> {
@@ -8,8 +9,8 @@ pub struct StaticModint<const MOD: u64> {
 impl<const MOD: u64> StaticModint<MOD> {
     pub fn new(n: u64) -> Self {
         Self {
-            value: (n % MOD),
-            // value: (n.rem_euclid(MOD)),
+            // value: (n % MOD),
+            value: (n.rem_euclid(MOD)),
         }
     }
 
@@ -17,14 +18,17 @@ impl<const MOD: u64> StaticModint<MOD> {
         self.value
     }
 
+    // ax + by = gcd(a, b) -> (x, y, gcd(a, b))
     fn ext_gcd(&self, a: i64, b: i64) -> (i64, i64, i64) {
         let (mut x0, mut y0, mut r0) = (1, 0, a);
         let (mut x1, mut y1, mut r1) = (0, 1, b);
+
         while r1 != 0 {
             let t = r0 / r1;
             x0 -= t * x1;
             y0 -= t * y1;
             r0 -= t * r1;
+
             std::mem::swap(&mut x0, &mut x1);
             std::mem::swap(&mut y0, &mut y1);
             std::mem::swap(&mut r0, &mut r1);

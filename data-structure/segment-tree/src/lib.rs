@@ -1,4 +1,4 @@
-// reference: https://atcoder.github.io/ac-library/production/document_en/segtree.html
+// Reference: https://atcoder.github.io/ac-library/production/document_en/segtree.html
 
 #[derive(Debug, Clone)]
 pub struct SegmentTree<T> {

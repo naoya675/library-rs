@@ -1,4 +1,4 @@
-// reference: https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7
+// Reference: https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7
 
 macro_rules! chmin {
     ($base:expr, $($ex:expr),+ $(,)*) => {
