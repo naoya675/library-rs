@@ -22,7 +22,7 @@ fn actual_main() {
         n,
         |a: usize, b: usize| std::cmp::max(a, b),
         || 0,
-        || 0,
+        |_: usize| 0,
         |a: usize, _: usize, _: usize, w: usize| a + w,
     );
     stw.iter().for_each(|&(s, t, w)| {

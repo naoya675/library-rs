@@ -3,7 +3,9 @@ title: Segment Tree (Wrapper)
 documentation_of: //data-structure/segment-tree/src/wrapper.rs
 ---
 
-## Description
+<!--## Description-->
+
+## Reference
 - Parenthesis Check
     - [https://atcoder.jp/contests/abc223/editorial/2774](https://atcoder.jp/contests/abc223/editorial/2774)
 

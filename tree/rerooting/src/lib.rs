@@ -14,7 +14,7 @@ impl<Cost: Copy> Edge<Cost> {
 }
 
 #[derive(Debug, Clone)]
-pub struct Rerooting<Cost, Data, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Leaf: Fn() -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data> {
+pub struct Rerooting<Cost, Data, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Leaf: Fn(usize) -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data> {
     graph: Vec<Vec<Edge<Cost>>>,
     dp: Vec<Data>,
     memo: Vec<Data>,
@@ -25,8 +25,14 @@ pub struct Rerooting<Cost, Data, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data,
     n: usize,
 }
 
-impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Leaf: Fn() -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data>
-    Rerooting<Cost, Data, Merge, E, Leaf, Apply>
+impl<
+        Cost: Copy + Default,
+        Data: Copy,
+        Merge: Fn(Data, Data) -> Data,
+        E: Fn() -> Data,
+        Leaf: Fn(usize) -> Data,
+        Apply: Fn(Data, usize, usize, Cost) -> Data,
+    > Rerooting<Cost, Data, Merge, E, Leaf, Apply>
 {
     pub fn new(n: usize, merge: Merge, e: E, leaf: Leaf, apply: Apply) -> Self {
         Self {
@@ -64,7 +70,7 @@ impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() ->
             self.memo[c] = (self.merge)(self.memo[c], (self.apply)(self.memo[edge.to], edge.to, c, edge.cost));
         }
         if !upd {
-            self.memo[c] = (self.leaf)();
+            self.memo[c] = (self.leaf)(c);
         }
     }
 

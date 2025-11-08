@@ -3,7 +3,7 @@ title: Lazy Segment Tree (Wrapper)
 documentation_of: //data-structure/lazy-segment-tree/src/wrapper.rs
 ---
 
-## Description
+<!--## Description-->
 
 ## Reference
 - 区間変更区間取得
