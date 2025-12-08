@@ -10,5 +10,6 @@ fn main() {
         s: Chars,
     }
     let sa = SuffixArray::suffix_array(&s);
+
     println!("{}", sa.iter().join(" "));
 }

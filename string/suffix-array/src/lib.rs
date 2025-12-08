@@ -1,7 +1,5 @@
-// Reference: https://atcoder.github.io/ac-library/production/document_en/string.html
-
 #[derive(Debug)]
-pub struct SuffixArray;
+pub struct SuffixArray {}
 
 impl SuffixArray {
     fn sa_naive<T: Copy + Ord + PartialOrd>(s: &Vec<T>) -> Vec<usize> {

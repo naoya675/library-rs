@@ -85,7 +85,7 @@ impl Trie {
     }
 
     /*
-     * non-recursive
+     * Non-recursive
     fn insert_internal(&mut self, word: &Vec<char>, word_id: usize) {
         let mut node_id = 0;
         for &w in word {
@@ -130,7 +130,7 @@ impl Trie {
     }
 
     /*
-     * non-recursive
+     * Non-recursive
     fn search_internal(&self, word: &Vec<char>, prefix: bool) -> bool {
         let mut node_id = self.root;
         for &w in word {

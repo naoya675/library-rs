@@ -1,7 +1,6 @@
 [package]
-name = "aho-corasick"
+name = "z-algorithm-online"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-trie = { path = '../../string/trie' }

@@ -1,7 +1,5 @@
-// Reference: https://atcoder.github.io/ac-library/production/document_en/string.html
-
 #[derive(Debug)]
-pub struct LCPArray;
+pub struct LCPArray {}
 
 impl LCPArray {
     pub fn lcp_array<T: Copy + Ord + PartialOrd>(s: &Vec<T>, sa: &Vec<usize>) -> Vec<usize> {

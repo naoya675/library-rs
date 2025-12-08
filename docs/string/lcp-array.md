@@ -1,6 +1,6 @@
 ---
-title: Z Algorithm
-documentation_of: //string/z-algorithm/src/lib.rs
+title: Longest Common Prefix
+documentation_of: //string/lcp-array/src/lib.rs
 ---
 
 ## Description
