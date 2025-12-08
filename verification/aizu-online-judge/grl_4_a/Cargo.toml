@@ -1,0 +1,8 @@
+[package]
+name = "grl_4_a"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+topological-sort = { path = "../../../graph/topological-sort" }

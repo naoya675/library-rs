@@ -19,7 +19,7 @@ fn main() {
     }
     let mut lst = LazySegmentTree::<i64, i64>::new(
         n,
-        |a, b| std::cmp::min(a, b),
+        |x, y| std::cmp::min(x, y),
         i64::MAX,
         |f, x| if f == i64::MAX { x } else { f },
         |f, g| if f == i64::MAX { g } else { f },

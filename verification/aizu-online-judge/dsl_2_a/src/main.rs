@@ -6,8 +6,8 @@ use segment_tree::SegmentTree;
 
 query::define_query! {
     Query {
-        0 => Q0(x: usize, y: i64),
-        1 => Q1(x: usize, y: usize),
+        0 => Query0(x: usize, y: i64),
+        1 => Query1(x: usize, y: usize),
     }
 }
 
@@ -22,8 +22,8 @@ fn main() {
 
     for query in queries {
         match query {
-            Q0(x, y) => st.set(x, y),
-            Q1(x, y) => {
+            Query0(x, y) => st.set(x, y),
+            Query1(x, y) => {
                 println!("{}", st.prod(x, y + 1));
             }
         }

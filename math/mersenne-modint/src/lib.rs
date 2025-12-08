@@ -1,5 +1,3 @@
-// Reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct MersenneModint {
     value: u64,
@@ -186,7 +184,7 @@ macro_rules! impl_from {
     };
 }
 
-impl_from!(i8, u8, i16, u16, i32, u32, u64, i64, isize, usize);
+impl_from!(u8, i8, u16, i16, u32, i32, u64, i64, usize, isize);
 */
 
 /*

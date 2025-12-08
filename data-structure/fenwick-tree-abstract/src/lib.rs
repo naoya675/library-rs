@@ -1,5 +1,3 @@
-// Reference: https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html
-
 #[derive(Debug, Clone)]
 pub struct FenwickTreeAbstract<T> {
     tree: Vec<T>,

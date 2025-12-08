@@ -1,4 +1,4 @@
-// Reference: https://atcoder.github.io/ac-library/production/document_en/segtree.html
+pub mod wrapper;
 
 #[derive(Debug, Clone)]
 pub struct SegmentTree<T> {

@@ -3,7 +3,7 @@
 use itertools::Itertools;
 use proconio::input;
 
-use warshall_floyd::WarshallFloyd;
+use warshall_floyd::warshall_floyd;
 
 fn main() {
     input! {
@@ -11,10 +11,7 @@ fn main() {
         e: usize,
         std: [(usize, usize, i64); e],
     }
-    let mut wf = WarshallFloyd::new(v);
-    std.iter().for_each(|&(s, t, d)| wf.add_edge(s, t, d));
-
-    let (cycle, res) = wf.warshall_floyd();
+    let (cycle, res) = warshall_floyd(v, &std);
     if cycle {
         println!("NEGATIVE CYCLE");
         return;

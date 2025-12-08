@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use bellman_ford::BellmanFord;
+use bellman_ford::bellman_ford;
 
 fn main() {
     input! {
@@ -11,10 +11,7 @@ fn main() {
         r: usize,
         std: [(usize, usize, i64); e],
     }
-    let mut bf = BellmanFord::new(v);
-    std.iter().for_each(|&(s, t, d)| bf.add_edge(s, t, d));
-
-    let (cycle, res) = bf.bellman_ford(r);
+    let (cycle, res) = bellman_ford(v, &std, r);
     if cycle {
         println!("NEGATIVE CYCLE");
         return;

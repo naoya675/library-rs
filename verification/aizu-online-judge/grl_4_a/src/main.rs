@@ -1,0 +1,17 @@
+// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_A
+
+use proconio::input;
+
+use topological_sort::topological_sort;
+
+fn main() {
+    input! {
+        v: usize,
+        e: usize,
+        st: [(usize, usize); e],
+    }
+    let mut graph = vec![vec![]; v];
+    st.iter().for_each(|&(s, t)| graph[s].push(t));
+
+    println!("{}", if topological_sort(v, &graph).is_empty() { 1 } else { 0 });
+}

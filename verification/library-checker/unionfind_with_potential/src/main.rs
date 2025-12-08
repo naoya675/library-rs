@@ -25,7 +25,7 @@ fn main() {
     for query in queries {
         match query {
             Query0(u, v, x) => {
-                println!("{}", if let Some(_) = uf.merge(u, v, Mint::new(x)) { 1 } else { 0 })
+                println!("{}", if uf.merge(u, v, Mint::new(x)).is_some() { 1 } else { 0 });
             }
             Query1(u, v) => {
                 println!("{}", if uf.same(u, v) { uf.diff(u, v).to_string() } else { "-1".to_string() });

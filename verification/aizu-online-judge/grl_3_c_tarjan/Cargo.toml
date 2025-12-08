@@ -1,0 +1,9 @@
+[package]
+name = "grl_3_c_tarjan"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+strongly-connected-components-tarjan = { path = "../../../graph/strongly-connected-components-tarjan" }
+union-find = { path = "../../../data-structure/union-find" }

@@ -17,7 +17,7 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut st = SegmentTree::<i64>::new(n, |a, b| a + b, 0);
+    let mut st = SegmentTree::<i64>::new(n, |x, y| x + y, 0);
 
     for query in queries {
         match query {

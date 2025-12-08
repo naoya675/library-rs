@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use dijkstra::Dijkstra;
+use dijkstra::dijkstra;
 
 fn main() {
     input! {
@@ -11,10 +11,10 @@ fn main() {
         r: usize,
         std: [(usize, usize, i64); e],
     }
-    let mut dij = Dijkstra::new(v);
-    std.iter().for_each(|&(s, t, d)| dij.add_edge(s, t, d));
+    let mut graph = vec![vec![]; v];
+    std.iter().for_each(|&(s, t, d)| graph[s].push((t, d)));
 
-    let res = dij.dijkstra(r);
+    let res = dijkstra(v, &graph, r);
     for i in 0..v {
         println!("{}", if res[i] < i64::MAX / 4 { res[i].to_string() } else { "INF".to_string() });
     }

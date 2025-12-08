@@ -1,3 +1,5 @@
+use crate::SegmentTree;
+
 pub struct RangeMinimumQuery;
 impl RangeMinimumQuery {
     pub fn new(n: usize) -> SegmentTree<i64> {
@@ -77,10 +79,10 @@ impl IntervalCountQuery {
             n,
             |x, y| {
                 if (x.0, x.1) == (2, 2) {
-                    return b;
+                    return y;
                 }
                 if (y.0, y.1) == (2, 2) {
-                    return a;
+                    return x;
                 }
                 (x.0, y.1, x.2 + y.2 - if x.1 == y.0 && y.0 == 1 { 1 } else { 0 })
             },
@@ -103,7 +105,9 @@ impl IntervalCountQuery {
     }
 }
 
-pub mod RangeMaximumSubarraySumQuery {
+pub mod range_maximum_subarray_sum_query {
+    use crate::SegmentTree;
+
     #[derive(Debug, Clone, Copy)]
     pub struct S {
         prefix: i64,

@@ -17,19 +17,19 @@ where
     T: std::ops::AddAssign,
 {
     pub fn new_default(n: usize) -> Self {
-        fn op<T>(a: T, b: T) -> T
+        fn op<T>(x: T, y: T) -> T
         where
             T: std::ops::Add<T, Output = T>,
             T: std::ops::AddAssign,
         {
-            a + b
+            x + y
         }
 
-        fn neg<T>(a: T) -> T
+        fn neg<T>(x: T) -> T
         where
             T: std::ops::Neg<Output = T>,
         {
-            a.neg()
+            x.neg()
         }
 
         Self::new(n, op, T::default(), neg)

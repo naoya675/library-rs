@@ -17,7 +17,7 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut lst = LazySegmentTree::<i64, i64>::new(n, |a, b| std::cmp::min(a, b), i64::MAX, |f, x| f + x, |f, g| f + g, 0);
+    let mut lst = LazySegmentTree::<i64, i64>::new(n, |x, y| std::cmp::min(x, y), i64::MAX, |f, x| f + x, |f, g| f + g, 0);
     lst.build(vec![0; n]);
 
     for query in queries {

@@ -20,10 +20,10 @@ fn actual_main() {
     }
     let mut g = Rerooting::<usize, usize, _, _, _, _>::new(
         n,
-        |a: usize, b: usize| std::cmp::max(a, b),
+        |x: usize, y: usize| std::cmp::max(x, y),
         || 0,
         |_: usize| 0,
-        |a: usize, _: usize, _: usize, w: usize| a + w,
+        |x: usize, _: usize, _: usize, w: usize| x + w,
     );
     stw.iter().for_each(|&(s, t, w)| {
         g.add_edge(s, t, w);

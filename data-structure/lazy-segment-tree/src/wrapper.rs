@@ -1,3 +1,5 @@
+use crate::LazySegmentTree;
+
 pub struct RangeAddRangeMinimumQuery;
 impl RangeAddRangeMinimumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
@@ -75,17 +77,14 @@ impl RangeAffineRangeSumQuery {
     }
 }
 
-pub mod RangeArithmeticSequenceAddRangeSumQuery {
+pub mod range_arithmetic_sequence_add {
+    use crate::LazySegmentTree;
+
     #[derive(Debug, Clone, Copy)]
     pub struct S {
         value_sum: i64,
         index_sum: i64,
         len: i64,
-    }
-    impl S {
-        pub fn new(value_sum: i64, index_sum: i64, len: i64) -> Self {
-            Self { value_sum, index_sum, len }
-        }
     }
 
     #[derive(Debug, Clone, Copy)]
@@ -93,22 +92,29 @@ pub mod RangeArithmeticSequenceAddRangeSumQuery {
         a: i64,
         b: i64,
     }
-    impl F {
-        pub fn new(a: i64, b: i64) -> Self {
-            Self { a, b }
-        }
-    }
 
-    pub struct RangeArithmeticSequenceAddRangeSumQuery;
-    impl RangeArithmeticSequenceAddRangeSumQuery {
+    pub struct RangeArithmeticSequenceAdd;
+    impl RangeArithmeticSequenceAdd {
         pub fn new(n: usize) -> LazySegmentTree<S, F> {
             LazySegmentTree::new(
                 n,
-                |x, y| S::new(x.value_sum + y.value_sum, x.index_sum + y.index_sum, x.len + y.len),
-                S::new(0, 0, 0),
-                |f, x| S::new(x.value_sum + x.index_sum * f.a + x.len * f.b, x.index_sum, x.len),
-                |f, g| F::new(f.a + g.a, f.b + g.b),
-                F::new(0, 0),
+                |x, y| S {
+                    value_sum: x.value_sum + y.value_sum,
+                    index_sum: x.index_sum + y.index_sum,
+                    len: x.len + y.len,
+                },
+                S {
+                    value_sum: 0,
+                    index_sum: 0,
+                    len: 0,
+                },
+                |f, x| S {
+                    value_sum: x.value_sum + x.index_sum * f.a + x.len * f.b,
+                    index_sum: x.index_sum,
+                    len: x.len,
+                },
+                |f, g| F { a: f.a + g.a, b: f.b + g.b },
+                F { a: 0, b: 0 },
             )
         }
     }

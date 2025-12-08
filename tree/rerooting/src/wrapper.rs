@@ -1,41 +1,46 @@
-pub struct RerootingDiameter;
-impl RerootingDiameter {
+pub mod rerooting_diameter {
+    use crate::Rerooting;
+
     type Cost = usize;
     type Data = usize;
-    pub fn new(
-        n: usize,
-    ) -> Rerooting<usize, usize, impl Fn(usize, usize) -> usize, impl Fn() -> usize, impl Fn(usize) -> usize, impl Fn(usize, usize, usize, usize) -> usize>
-    {
-        Rerooting::new(
-            n,
-            |a: usize, b: usize| std::cmp::max(a, b),
-            || 0,
-            |_: usize| 0,
-            |a: usize, _: usize, _: usize, w: usize| a + w,
-        )
+
+    pub struct RerootingDiameter;
+    impl RerootingDiameter {
+        pub fn new(
+            n: usize,
+        ) -> Rerooting<Cost, Data, impl Fn(Data, Data) -> Data, impl Fn() -> Data, impl Fn(usize) -> Data, impl Fn(Data, usize, usize, Cost) -> Data> {
+            Rerooting::new(
+                n,
+                |x: Data, y: Data| std::cmp::max(x, y),
+                || 0,
+                |_: usize| 0,
+                |x: Data, _: usize, _: usize, w: Cost| x + w,
+            )
+        }
     }
 }
 
 /*
-pub struct RerootingDiameter;
-impl RerootingDiameter {
-    pub fn new(
-        n: usize,
-    ) -> Rerooting<
-        usize,
-        (usize, usize),
-        impl Fn((usize, usize), (usize, usize)) -> (usize, usize),
-        impl Fn() -> (usize, usize),
-        impl Fn(usize) -> (usize, usize),
-        impl Fn((usize, usize), usize, usize, usize) -> (usize, usize),
-    > {
-        Rerooting::new(
-            n,
-            |a: (usize, usize), b: (usize, usize)| std::cmp::max(a, b),
-            || (0, 0),
-            |_: usize| (0, c),
-            |(a, b): (usize, usize), _: usize, _: usize, w: usize| (a + w, b),
-        )
+ *
+pub mod rerooting_diameter {
+    use crate::Rerooting;
+
+    type Cost = usize;
+    type Data = (usize, usize);
+
+    pub struct RerootingDiameter;
+    impl RerootingDiameter {
+        pub fn new(
+            n: usize,
+        ) -> Rerooting<Cost, Data, impl Fn(Data, Data) -> Data, impl Fn() -> Data, impl Fn(usize) -> Data, impl Fn(Data, usize, usize, Cost) -> Data> {
+            Rerooting::new(
+                n,
+                |x: Data, y: Data| std::cmp::max(x, y),
+                || (0, 0),
+                |c: usize| (0, c),
+                |x: Data, _: usize, _: usize, w: Cost| (x.0 + w, x.1),
+            )
+        }
     }
 }
  */

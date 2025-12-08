@@ -26,25 +26,25 @@ impl Matrix {
         }
     }
 
-    pub fn inv(a: Matrix) -> Self {
+    pub fn inv(x: Matrix) -> Self {
         Self {
-            mat: (a.mat.3, -a.mat.1, -a.mat.2, a.mat.0),
+            mat: (x.mat.3, -x.mat.1, -x.mat.2, x.mat.0),
         }
     }
 
-    pub fn add(a: Matrix, b: Matrix) -> Self {
+    pub fn add(x: Matrix, y: Matrix) -> Self {
         Self {
-            mat: (a.mat.0 + b.mat.0, a.mat.1 + b.mat.1, a.mat.2 + b.mat.2, a.mat.3 + b.mat.3),
+            mat: (x.mat.0 + y.mat.0, x.mat.1 + y.mat.1, x.mat.2 + y.mat.2, x.mat.3 + y.mat.3),
         }
     }
 
-    pub fn mul(a: Matrix, b: Matrix) -> Self {
+    pub fn mul(x: Matrix, y: Matrix) -> Self {
         Self {
             mat: (
-                a.mat.0 * b.mat.0 + a.mat.1 * b.mat.2,
-                a.mat.0 * b.mat.1 + a.mat.1 * b.mat.3,
-                a.mat.2 * b.mat.0 + a.mat.3 * b.mat.2,
-                a.mat.2 * b.mat.1 + a.mat.3 * b.mat.3,
+                x.mat.0 * y.mat.0 + x.mat.1 * y.mat.2,
+                x.mat.0 * y.mat.1 + x.mat.1 * y.mat.3,
+                x.mat.2 * y.mat.0 + x.mat.3 * y.mat.2,
+                x.mat.2 * y.mat.1 + x.mat.3 * y.mat.3,
             ),
         }
     }
@@ -56,12 +56,12 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut uf = UnionFindWithPotential::<Matrix>::new(n, |a, b| Matrix::mul(a, b), Matrix::new(1, 0, 0, 1), |a| Matrix::inv(a));
+    let mut uf = UnionFindWithPotential::<Matrix>::new(n, |x, y| Matrix::mul(x, y), Matrix::new(1, 0, 0, 1), |x| Matrix::inv(x));
 
     for query in queries {
         match query {
             Query0(u, v, x, y, z, w) => {
-                println!("{}", if let Some(_) = uf.merge(u, v, Matrix::new(x, y, z, w)) { 1 } else { 0 });
+                println!("{}", if uf.merge(u, v, Matrix::new(x, y, z, w)).is_some() { 1 } else { 0 });
             }
             Query1(u, v) => {
                 if uf.same(u, v) {

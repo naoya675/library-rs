@@ -1,4 +1,4 @@
-// Reference: https://atcoder.github.io/ac-library/production/document_en/lazysegtree.html
+pub mod wrapper;
 
 #[derive(Debug, Clone)]
 pub struct LazySegmentTree<T, F> {

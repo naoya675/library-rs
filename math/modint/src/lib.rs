@@ -1,6 +1,3 @@
-// Reference:
-// https://qiita.com/namn1125/items/5100cb85021a1d6e8f6c
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct StaticModint<const MOD: u64> {
     value: u64,
@@ -189,7 +186,7 @@ macro_rules! impl_from {
     };
 }
 
-impl_from!(i8, u8, i16, u16, i32, u32, u64, i64, isize, usize);
+impl_from!(u8, i8, u16, i16, u32, i32, u64, i64, usize, isize);
 */
 
 /*

@@ -1,12 +1,10 @@
 [package]
 name = "vertex_add_path_sum"
 version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+edition = "2024"
 
 [dependencies]
-proconio = { version = "0.4.5", features = ["derive"] }
+proconio = { version = "0.5.0", features = ["derive"] }
 query = { path = '../../../macro/query' }
 fenwick-tree = { path = '../../../data-structure/fenwick-tree' }
 euler-tour = { path = "../../../tree/euler-tour" }

@@ -35,7 +35,7 @@ fn actual_main() {
     }
     hld.init(0);
 
-    let mut ft = vec![FenwickTreeAbstract::<i64>::new(n + 1, |a, b| a + b, 0, |a| -a); 2];
+    let mut ft = vec![FenwickTreeAbstract::<i64>::new(n + 1, |x, y| x + y, 0, |x| -x); 2];
     input! {
         q: usize,
         queries: [Query; q],

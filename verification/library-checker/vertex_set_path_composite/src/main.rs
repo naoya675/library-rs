@@ -39,10 +39,10 @@ fn actual_main() {
     });
     et.init(0);
 
-    let val = |a: u64, b: u64| (Mint::new(a), Mint::new(b));
-    let invval = |a: u64, b: u64| (Mint::new(1) / Mint::new(a), -Mint::new(b) / Mint::new(a));
-    let mut st1 = SegmentTree::<(Mint, Mint)>::new(n + n, |a, b| (a.0 * b.0, a.1 * b.0 + b.1), val(1, 0));
-    let mut st2 = SegmentTree::<(Mint, Mint)>::new(n + n, |b, a| (a.0 * b.0, a.1 * b.0 + b.1), val(1, 0));
+    let val = |x: u64, y: u64| (Mint::new(x), Mint::new(y));
+    let invval = |x: u64, y: u64| (Mint::new(1) / Mint::new(x), -Mint::new(y) / Mint::new(x));
+    let mut st1 = SegmentTree::<(Mint, Mint)>::new(n + n, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), val(1, 0));
+    let mut st2 = SegmentTree::<(Mint, Mint)>::new(n + n, |y, x| (x.0 * y.0, x.1 * y.0 + y.1), val(1, 0));
     for i in 0..n {
         let (a, b) = ab[i];
         let index = et.index(i);
