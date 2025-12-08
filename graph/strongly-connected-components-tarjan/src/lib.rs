@@ -1,5 +1,3 @@
-// reference: https://atcoder.github.io/ac-library/production/document_en/scc.html
-
 #[derive(Debug, Clone, Copy)]
 pub struct Edge {
     from: usize,

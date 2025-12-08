@@ -49,34 +49,42 @@ impl LowLink {
         }
     }
 
-    fn dfs(&mut self, i: usize, mut k: usize, par: Option<usize>) -> usize {
-        self.visited[i] = true;
-        self.ord[i] = k;
-        self.low[i] = self.ord[i];
+    fn dfs(&mut self, v: usize, mut k: usize, par: Option<usize>) -> usize {
+        self.visited[v] = true;
+        self.ord[v] = k;
+        self.low[v] = self.ord[v];
         k += 1;
         let mut is_articulation = false;
         let mut count = 0; // child
-        for &edge in &self.graph[i].clone() {
+        for &edge in &self.graph[v].clone() {
             if !self.visited[edge.to] {
                 count += 1;
-                k = self.dfs(edge.to, k, Some(i));
-                self.low[i] = self.low[i].min(self.low[edge.to]);
-                if par.is_some() && self.ord[i] <= self.low[edge.to] {
+                k = self.dfs(edge.to, k, Some(v));
+                self.low[v] = self.low[v].min(self.low[edge.to]);
+                if par.is_some() && self.ord[v] <= self.low[edge.to] {
                     is_articulation = true;
                 }
-                if self.ord[i] < self.low[edge.to] {
+                if self.ord[v] < self.low[edge.to] {
                     self.bridge.push(edge);
                 }
             } else if Some(edge.to) != par {
-                self.low[i] = self.low[i].min(self.ord[edge.to]);
+                self.low[v] = self.low[v].min(self.ord[edge.to]);
             }
         }
-        if par.is_none() && count >= 2 {
+        if par.is_none() && count > 1 {
             is_articulation = true;
         }
         if is_articulation {
-            self.articulation.push(i);
+            self.articulation.push(v);
         }
         k
+    }
+
+    pub fn articulation_point(self) -> Vec<usize> {
+        self.articulation
+    }
+
+    pub fn bridge(self) -> Vec<(usize, usize)> {
+        self.bridge.iter().map(|&edge| (edge.from, edge.to)).collect()
     }
 }
