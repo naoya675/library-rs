@@ -1,5 +1,5 @@
 ---
-title: Maxflow (Unverified)
+title: Maxflow
 documentation_of: //graph/maxflow/src/lib.rs
 ---
 

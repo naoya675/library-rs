@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use ford_fulkerson::FordFulkerson;
+use maxflow::Maxflow;
 
 fn main() {
     input! {
@@ -10,8 +10,10 @@ fn main() {
         e: usize,
         uvc: [(usize, usize, i64); e],
     }
-    let mut ff = FordFulkerson::new(v);
-    uvc.iter().for_each(|&(u, v, c)| ff.add_edge(u, v, c));
+    let mut mf = Maxflow::<i64>::new(v);
+    uvc.iter().for_each(|&(u, v, c)| {
+        mf.add_edge(u, v, c);
+    });
 
-    println!("{}", ff.flow(0, v - 1));
+    println!("{}", mf.flow(0, v - 1));
 }

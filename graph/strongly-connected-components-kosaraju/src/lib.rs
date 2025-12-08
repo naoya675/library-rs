@@ -77,6 +77,9 @@ impl StronglyConnectedComponents {
             ids: vec![0; self.size],
         };
 
+        // fn dfs1(v: usize, env: &mut Env) {}
+        // fn dfs2(v: usize, env: &mut Env) {}
+
         struct Recursive<'a> {
             f: &'a dyn Fn(&Recursive<'a>, &mut Env, usize),
         }

@@ -1,0 +1,8 @@
+[package]
+name = "grl_7_a_maxflow"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+maxflow = { path = '../../../graph/maxflow' }
