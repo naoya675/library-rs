@@ -31,7 +31,7 @@ impl<Cost: Copy + Default> EulerTour<Cost> {
             depth: vec![0; n],
             preorder: vec![0; n],
             postorder: vec![0; n],
-            rmq: SegmentTree::new(n + n, |a, b| if a.0 < b.0 { a } else { b }, (usize::MAX, n)),
+            rmq: SegmentTree::new(n + n, |a, b| std::cmp::min(a, b), (usize::MAX, n)),
             n,
             time: 0,
         }

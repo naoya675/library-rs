@@ -78,6 +78,7 @@ impl<T: Copy + PartialEq> ZAlgorithm<T> {
     }
 
     fn internal_get(&self, k: usize) -> usize {
+        assert!(k < self.s.len());
         if self.delete[k] != 0 { self.z[k] } else { self.s.len() - k }
     }
 }
