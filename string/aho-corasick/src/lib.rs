@@ -23,17 +23,17 @@ impl AhoCorasick {
     }
 
     #[inline]
-    pub fn insert(&mut self, word: &Vec<char>) {
+    pub fn insert(&mut self, word: &[char]) {
         self.trie.insert(word);
     }
 
     #[inline]
-    pub fn search(&self, word: &Vec<char>) -> bool {
+    pub fn search(&self, word: &[char]) -> bool {
         self.trie.search(word)
     }
 
     #[inline]
-    pub fn search_prefix(&self, word: &Vec<char>) -> bool {
+    pub fn search_prefix(&self, word: &[char]) -> bool {
         self.trie.search_prefix(word)
     }
 
@@ -78,7 +78,7 @@ impl AhoCorasick {
         }
     }
 
-    pub fn matches(&self, word: &Vec<char>, mut now: usize) -> HashMap<usize, usize> {
+    pub fn matches(&self, word: &[char], mut now: usize) -> HashMap<usize, usize> {
         let mut res: HashMap<usize, usize> = HashMap::new();
         let mut cnt: HashMap<usize, usize> = HashMap::new();
 
@@ -95,7 +95,7 @@ impl AhoCorasick {
         res
     }
 
-    pub fn next_word(&self, word: &Vec<char>, mut now: usize) -> (usize, usize) {
+    pub fn next_word(&self, word: &[char], mut now: usize) -> (usize, usize) {
         let mut total = 0;
         for &c in word {
             let (pattern, next) = self.next(c, now);

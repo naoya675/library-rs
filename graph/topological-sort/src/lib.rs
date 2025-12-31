@@ -1,6 +1,6 @@
 use std::{cmp::Reverse, collections::BinaryHeap};
 
-pub fn topological_sort(size: usize, graph: &Vec<Vec<usize>>) -> Vec<usize> {
+pub fn topological_sort(size: usize, graph: &[Vec<usize>]) -> Vec<usize> {
     let mut indegree = vec![0; size];
     for from in 0..size {
         for i in 0..graph[from].len() {

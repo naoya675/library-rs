@@ -17,7 +17,7 @@ pub struct CompressedSparseRow {
 }
 
 impl CompressedSparseRow {
-    pub fn new(n: usize, edges: &Vec<(usize, Edge)>) -> Self {
+    pub fn new(n: usize, edges: &[(usize, Edge)]) -> Self {
         let mut start = vec![0; n + 1];
         let mut elist = vec![Edge { from: 0, to: 0 }; edges.len()];
         for &(from, _) in edges {

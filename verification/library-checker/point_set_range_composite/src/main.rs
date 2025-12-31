@@ -23,7 +23,7 @@ fn main() {
     }
     let mut st = SegmentTree::<(Mint, Mint)>::new(n, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), (Mint::new(1), Mint::new(0)));
     let ab = ab.iter().map(|&(a, b)| (Mint::new(a), Mint::new(b))).collect::<Vec<_>>();
-    st.build(ab);
+    st.build(&ab);
 
     for query in queries {
         match query {

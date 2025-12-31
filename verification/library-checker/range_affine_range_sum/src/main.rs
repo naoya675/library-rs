@@ -30,7 +30,7 @@ fn main() {
         (Mint::new(1), Mint::new(0)),
     );
     let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();
-    lst.build(a);
+    lst.build(&a);
 
     for query in queries {
         match query {

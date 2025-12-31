@@ -2,7 +2,7 @@
 pub struct LCPArray {}
 
 impl LCPArray {
-    pub fn lcp_array<T: Copy + Ord + PartialOrd>(s: &Vec<T>, sa: &Vec<usize>) -> Vec<usize> {
+    pub fn lcp_array<T: Copy + Ord + PartialOrd>(s: &[T], sa: &[usize]) -> Vec<usize> {
         assert!(s.len() == sa.len());
         let n = s.len();
         let mut rank = vec![0; n];

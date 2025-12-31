@@ -44,7 +44,7 @@ impl ParenthesisCheckQuery {
                 _ => unreachable!(),
             })
             .collect::<Vec<_>>();
-        st.build(s);
+        st.build(&s);
         st
     }
 }
@@ -66,7 +66,7 @@ impl ParenthesisCheckQuery {
                 _ => unreachable!(),
             })
             .collect::<Vec<_>>();
-        st.build(s);
+        st.build(&s);
         st
     }
 }
@@ -100,7 +100,7 @@ impl IntervalCountQuery {
                 _ => unreachable!(), // Invalid
             })
             .collect::<Vec<_>>();
-        st.build(s);
+        st.build(&s);
         st
     }
 }

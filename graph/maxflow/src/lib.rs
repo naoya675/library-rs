@@ -100,7 +100,7 @@ impl<Cap: CapTrait> Maxflow<Cap> {
         self.flow_with_limit(s, t, Cap::max_value())
     }
 
-    fn bfs(&mut self, s: usize, t: usize, que: &mut VecDeque<usize>, level: &mut Vec<i64>) {
+    fn bfs(&mut self, s: usize, t: usize, que: &mut VecDeque<usize>, level: &mut [i64]) {
         level.fill(-1);
         level[s] = 0;
         que.clear();
@@ -119,7 +119,7 @@ impl<Cap: CapTrait> Maxflow<Cap> {
         }
     }
 
-    fn dfs(&mut self, s: usize, t: usize, v: usize, up: Cap, level: &mut Vec<i64>, iter: &mut Vec<usize>) -> Cap {
+    fn dfs(&mut self, s: usize, t: usize, v: usize, up: Cap, level: &mut [i64], iter: &mut [usize]) -> Cap {
         if v == s {
             return up;
         }

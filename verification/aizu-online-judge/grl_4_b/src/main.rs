@@ -1,4 +1,4 @@
-// verification-helper: [EXCLUSION] https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B
+// verification-helper: IGNORE https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B
 
 use itertools::Itertools;
 use proconio::input;

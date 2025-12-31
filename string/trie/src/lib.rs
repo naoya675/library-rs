@@ -62,7 +62,7 @@ impl Trie {
         &mut self.nodes[node_id].accept
     }
 
-    fn insert_internal(&mut self, word: &Vec<char>, word_id: usize, node_id: usize, id: usize) {
+    fn insert_internal(&mut self, word: &[char], word_id: usize, node_id: usize, id: usize) {
         if word.len() == word_id {
             self.nodes[node_id].accept.push(id);
         } else {
@@ -80,13 +80,13 @@ impl Trie {
         }
     }
 
-    pub fn insert(&mut self, word: &Vec<char>) {
+    pub fn insert(&mut self, word: &[char]) {
         self.insert_internal(word, 0, 0, self.nodes[0].common);
     }
 
     /*
      * Non-recursive
-    fn insert_internal(&mut self, word: &Vec<char>, word_id: usize) {
+    fn insert_internal(&mut self, word: &[char], word_id: usize) {
         let mut node_id = 0;
         for &w in word {
             let c = (w as usize) - (self.base as usize);
@@ -104,12 +104,12 @@ impl Trie {
         self.nodes[node_id].accept.push(word_id);
     }
 
-    pub fn insert(&mut self, word: &Vec<char>) {
+    pub fn insert(&mut self, word: &[char]) {
         self.insert_internal(word, self.nodes[0].common);
     }
      */
 
-    fn search_internal(&self, word: &Vec<char>, word_id: usize, node_id: usize, prefix: bool) -> bool {
+    fn search_internal(&self, word: &[char], word_id: usize, node_id: usize, prefix: bool) -> bool {
         if word.len() == word_id {
             return if prefix { true } else { !self.nodes[node_id].accept.is_empty() };
         }
@@ -121,17 +121,17 @@ impl Trie {
         }
     }
 
-    pub fn search(&self, word: &Vec<char>) -> bool {
+    pub fn search(&self, word: &[char]) -> bool {
         self.search_internal(word, 0, 0, false)
     }
 
-    pub fn search_prefix(&self, word: &Vec<char>) -> bool {
+    pub fn search_prefix(&self, word: &[char]) -> bool {
         self.search_internal(word, 0, 0, true)
     }
 
     /*
      * Non-recursive
-    fn search_internal(&self, word: &Vec<char>, prefix: bool) -> bool {
+    fn search_internal(&self, word: &[char], prefix: bool) -> bool {
         let mut node_id = self.root;
         for &w in word {
             let c = (w as usize) - (self.base as usize);
@@ -144,16 +144,16 @@ impl Trie {
         return if prefix { true } else { !self.nodes[node_id].accept.is_empty() };
     }
 
-    pub fn search(&self, word: &Vec<char>) -> bool {
+    pub fn search(&self, word: &[char]) -> bool {
         self.search_internal(word, false)
     }
 
-    pub fn search_prefix(&self, word: &Vec<char>) -> bool {
+    pub fn search_prefix(&self, word: &[char]) -> bool {
         self.search_internal(word, true)
     }
      */
 
-    fn query_internal<F>(&self, word: &Vec<char>, mut f: F, word_id: usize, node_id: usize)
+    fn query_internal<F>(&self, word: &[char], mut f: F, word_id: usize, node_id: usize)
     where
         F: FnMut(usize),
     {
@@ -170,7 +170,7 @@ impl Trie {
         }
     }
 
-    pub fn query<F>(&self, word: &Vec<char>, f: F)
+    pub fn query<F>(&self, word: &[char], f: F)
     where
         F: FnMut(usize),
     {

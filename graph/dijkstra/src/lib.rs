@@ -1,6 +1,6 @@
 use std::collections::BinaryHeap;
 
-pub fn dijkstra(size: usize, graph: &Vec<Vec<(usize, i64)>>, s: usize) -> Vec<i64> {
+pub fn dijkstra(size: usize, graph: &[Vec<(usize, i64)>], s: usize) -> Vec<i64> {
     let mut dist = vec![i64::MAX / 4; size];
     let mut heap: BinaryHeap<(i64, usize)> = BinaryHeap::new();
     dist[s] = 0;

@@ -1,4 +1,4 @@
-pub fn encode<T: Copy + PartialEq>(s: &Vec<T>) -> Vec<(T, usize)> {
+pub fn encode<T: Copy + PartialEq>(s: &[T]) -> Vec<(T, usize)> {
     let mut res = vec![];
     if s.len() == 0 {
         return res;
@@ -15,7 +15,7 @@ pub fn encode<T: Copy + PartialEq>(s: &Vec<T>) -> Vec<(T, usize)> {
     res
 }
 
-pub fn decode<T: Copy>(s: &Vec<(T, usize)>) -> Vec<T> {
+pub fn decode<T: Copy>(s: &[(T, usize)]) -> Vec<T> {
     let mut res = vec![];
     if s.len() == 0 {
         return res;

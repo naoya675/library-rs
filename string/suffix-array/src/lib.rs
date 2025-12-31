@@ -2,7 +2,7 @@
 pub struct SuffixArray {}
 
 impl SuffixArray {
-    fn sa_naive<T: Copy + Ord + PartialOrd>(s: &Vec<T>) -> Vec<usize> {
+    fn sa_naive<T: Copy + Ord + PartialOrd>(s: &[T]) -> Vec<usize> {
         let n = s.len();
         let mut sa = (0..n).collect::<Vec<usize>>();
         sa.sort_by(|&a, &b| {
@@ -22,19 +22,15 @@ impl SuffixArray {
                 i += 1;
                 j += 1;
             }
-            if a == n {
-                std::cmp::Ordering::Less
-            } else {
-                std::cmp::Ordering::Greater
-            }
+            if a == n { std::cmp::Ordering::Less } else { std::cmp::Ordering::Greater }
         });
         sa
     }
 
-    fn sa_doubling(s: &Vec<usize>) -> Vec<usize> {
+    fn sa_doubling(s: &[usize]) -> Vec<usize> {
         let n = s.len();
         let mut sa = (0..n).collect::<Vec<usize>>();
-        let mut rank = s.clone();
+        let mut rank = s.to_vec();
         let mut rank_temp = vec![0; n];
         let mut k = 1;
         while k < n {
@@ -44,11 +40,7 @@ impl SuffixArray {
                 } else {
                     let ra = if a + k < n { rank[a + k] as isize } else { -1 };
                     let rb = if b + k < n { rank[b + k] as isize } else { -1 };
-                    if ra < rb {
-                        std::cmp::Ordering::Less
-                    } else {
-                        std::cmp::Ordering::Greater
-                    }
+                    if ra < rb { std::cmp::Ordering::Less } else { std::cmp::Ordering::Greater }
                 }
             };
             sa.sort_by(cmp);
@@ -62,7 +54,7 @@ impl SuffixArray {
         sa
     }
 
-    fn sa_is(s: &Vec<usize>, upper: usize) -> Vec<usize> {
+    fn sa_is(s: &[usize], upper: usize) -> Vec<usize> {
         let n = s.len();
         if n == 0 {
             return vec![];
@@ -101,7 +93,7 @@ impl SuffixArray {
             }
         }
 
-        let induce = |lms: &Vec<usize>, sa: &mut Vec<Option<usize>>| {
+        let induce = |lms: &[usize], sa: &mut Vec<Option<usize>>| {
             sa.fill(None);
             let mut buf = sum_s.clone();
             for &d in lms {
@@ -196,7 +188,7 @@ impl SuffixArray {
         sa.into_iter().map(|a| a.unwrap()).collect()
     }
 
-    pub fn suffix_array<T: Copy + Ord + PartialOrd>(s: &Vec<T>) -> Vec<usize> {
+    pub fn suffix_array<T: Copy + Ord + PartialOrd>(s: &[T]) -> Vec<usize> {
         let n = s.len();
         let mut idx = (0..n).collect::<Vec<usize>>();
         idx.sort_by(|&a, &b| s[a].cmp(&s[b]));

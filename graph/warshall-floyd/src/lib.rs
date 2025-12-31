@@ -1,4 +1,4 @@
-pub fn warshall_floyd(size: usize, edge: &Vec<(usize, usize, i64)>) -> (bool, Vec<Vec<i64>>) {
+pub fn warshall_floyd(size: usize, edge: &[(usize, usize, i64)]) -> (bool, Vec<Vec<i64>>) {
     let mut dist = vec![vec![i64::MAX / 4; size]; size];
     for i in 0..size {
         dist[i][i] = 0;

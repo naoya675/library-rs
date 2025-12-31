@@ -25,7 +25,7 @@ fn main() {
         |f, g| if f == i64::MAX { g } else { f },
         i64::MAX,
     );
-    lst.build(vec![(1 << 31) - 1; n]);
+    lst.build(&vec![(1 << 31) - 1; n]);
 
     for query in queries {
         match query {

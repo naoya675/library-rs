@@ -1,4 +1,4 @@
-pub fn manacher<T: Copy + PartialEq>(s: &Vec<T>) -> Vec<usize> {
+pub fn manacher<T: Copy + PartialEq>(s: &[T]) -> Vec<usize> {
     if s.len() == 0 {
         return vec![];
     }

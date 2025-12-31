@@ -25,7 +25,7 @@ impl<T: Copy> SegmentTree<T> {
         }
     }
 
-    pub fn build(&mut self, vec: Vec<T>) {
+    pub fn build(&mut self, vec: &[T]) {
         assert!(vec.len() == self.n);
         for k in 0..self.n {
             self.tree[k + self.size] = vec[k];
