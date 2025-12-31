@@ -1,28 +1,18 @@
 use std::collections::VecDeque;
 
 pub trait CapTrait:
-    Copy
-    + PartialOrd
-    + Ord
-    + PartialEq
-    + Eq
-    + std::ops::Add<Output = Self>
-    + std::ops::AddAssign
-    + std::ops::Sub<Output = Self>
-    + std::ops::SubAssign
-    + From<u8>
-    + Default
+    Copy + PartialOrd + Ord + PartialEq + Eq + std::ops::Add<Output = Self> + std::ops::AddAssign + std::ops::Sub<Output = Self> + std::ops::SubAssign + Default
 {
     fn max_value() -> Self;
+    fn min_value() -> Self;
 }
 
 macro_rules! impl_cap_trait {
     ($($type:ty), *) => {
         $(
             impl CapTrait for $type {
-                fn max_value() -> Self {
-                    <$type>::MAX
-                }
+                fn max_value() -> Self { <$type>::MAX }
+                fn min_value() -> Self { <$type>::MIN }
             }
         )*
     };
@@ -63,7 +53,7 @@ impl<Cap: CapTrait> Maxflow<Cap> {
     pub fn add_edge(&mut self, from: usize, to: usize, cap: Cap) -> usize {
         assert!(from < self.n);
         assert!(to < self.n);
-        assert!(Cap::from(0) <= cap);
+        assert!(Cap::default() <= cap);
         let m = self.pos.len();
         self.pos.push((from, self.g[from].len()));
         let from_id = self.g[from].len();
@@ -96,7 +86,7 @@ impl<Cap: CapTrait> Maxflow<Cap> {
 
     pub fn change_edge(&mut self, i: usize, new_cap: Cap, new_flow: Cap) {
         assert!(i < self.pos.len());
-        assert!(Cap::from(0) <= new_flow);
+        assert!(Cap::default() <= new_flow);
         assert!(new_flow <= new_cap);
         let (from, from_id) = self.pos[i];
         let e = &self.g[from][from_id];
@@ -117,7 +107,7 @@ impl<Cap: CapTrait> Maxflow<Cap> {
         que.push_back(s);
         while let Some(v) = que.pop_front() {
             for e in &self.g[v] {
-                if e.cap == Cap::from(0) || level[e.to] >= 0 {
+                if e.cap == Cap::default() || level[e.to] >= 0 {
                     continue;
                 }
                 level[e.to] = level[v] + 1;
@@ -171,7 +161,7 @@ impl<Cap: CapTrait> Maxflow<Cap> {
         let mut iter = vec![0; self.n];
         let mut que = VecDeque::new();
 
-        let mut flow = Cap::from(0);
+        let mut flow = Cap::default();
         while flow < flow_limit {
             self.bfs(s, t, &mut que, &mut level);
             if level[t] == -1 {
@@ -180,7 +170,7 @@ impl<Cap: CapTrait> Maxflow<Cap> {
 
             iter.fill(0);
             let f = self.dfs(s, t, t, flow_limit - flow, &mut level, &mut iter);
-            if f == Cap::from(0) {
+            if f == Cap::default() {
                 break;
             }
             flow += f;
@@ -195,7 +185,7 @@ impl<Cap: CapTrait> Maxflow<Cap> {
         while let Some(p) = que.pop_front() {
             visited[p] = true;
             for e in &self.g[p] {
-                if e.cap > Cap::from(0) && !visited[e.to] {
+                if e.cap > Cap::default() && !visited[e.to] {
                     visited[e.to] = true;
                     que.push_back(e.to);
                 }
