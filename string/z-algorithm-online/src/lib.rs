@@ -20,7 +20,7 @@ impl<T: Copy + PartialEq> ZAlgorithm<T> {
         }
     }
 
-    pub fn build(&mut self, s: &Vec<T>) {
+    pub fn build(&mut self, s: &[T]) {
         for i in 0..s.len() {
             self.set(s[i]);
         }

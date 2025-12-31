@@ -1,5 +1,5 @@
 ---
-title: Aho-Corasick
+title: Aho-Corasick algorithm
 documentation_of: //string/aho-corasick/src/lib.rs
 ---
 
@@ -11,3 +11,4 @@ documentation_of: //string/aho-corasick/src/lib.rs
 - [https://chakku.hatenablog.com/entry/2017/12/01/020546](https://chakku.hatenablog.com/entry/2017/12/01/020546)
 - [https://cp-algorithms.com/string/aho_corasick.html](https://cp-algorithms.com/string/aho_corasick.html)
 <!--- [https://compiler.club/pattern-matching-in-trees/](https://compiler.club/pattern-matching-in-trees/)-->
+- [https://web.stanford.edu/class/archive/cs/cs166/cs166.1166/lectures/02/Slides02.pdf](https://web.stanford.edu/class/archive/cs/cs166/cs166.1166/lectures/02/Slides02.pdf)

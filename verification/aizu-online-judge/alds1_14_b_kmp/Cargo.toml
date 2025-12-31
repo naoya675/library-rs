@@ -1,0 +1,8 @@
+[package]
+name = "alds1_14_b_kmp"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+knuth-morris-pratt = { path = '../../../string/knuth-morris-pratt' }
