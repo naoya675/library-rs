@@ -14,11 +14,11 @@ impl Edge {
 pub struct LowLink {
     size: usize,
     graph: Vec<Vec<Edge>>,
-    visited: Vec<bool>,
     ord: Vec<usize>,
     low: Vec<usize>,
-    articulation: Vec<usize>, // articulation point
-    bridge: Vec<Edge>,
+    used: Vec<bool>,
+    articulation: Vec<usize>, // articulation points
+    bridge: Vec<Edge>,        // bridges
 }
 
 impl LowLink {
@@ -26,9 +26,9 @@ impl LowLink {
         Self {
             size,
             graph: vec![vec![]; size],
-            visited: vec![false; size],
             ord: vec![0; size],
             low: vec![0; size],
+            used: vec![false; size],
             articulation: vec![],
             bridge: vec![],
         }
@@ -43,21 +43,21 @@ impl LowLink {
     pub fn build(&mut self) {
         let mut k = 0;
         for i in 0..self.size {
-            if !self.visited[i] {
+            if !self.used[i] {
                 k = self.dfs(i, k, None);
             }
         }
     }
 
     fn dfs(&mut self, v: usize, mut k: usize, par: Option<usize>) -> usize {
-        self.visited[v] = true;
+        self.used[v] = true;
         self.ord[v] = k;
         self.low[v] = self.ord[v];
         k += 1;
         let mut is_articulation = false;
-        let mut count = 0; // child
+        let mut count = 0; // number of child
         for &edge in &self.graph[v].clone() {
-            if !self.visited[edge.to] {
+            if !self.used[edge.to] {
                 count += 1;
                 k = self.dfs(edge.to, k, Some(v));
                 self.low[v] = self.low[v].min(self.low[edge.to]);
@@ -80,11 +80,11 @@ impl LowLink {
         k
     }
 
-    pub fn articulation_point(self) -> Vec<usize> {
-        self.articulation
+    pub fn articulation(&self) -> Vec<usize> {
+        self.articulation.clone()
     }
 
-    pub fn bridge(self) -> Vec<(usize, usize)> {
+    pub fn bridge(&self) -> Vec<(usize, usize)> {
         self.bridge.iter().map(|&edge| (edge.from, edge.to)).collect()
     }
 }

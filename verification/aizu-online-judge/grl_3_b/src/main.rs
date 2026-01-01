@@ -1,6 +1,5 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B
 
-use itertools::Itertools;
 use proconio::input;
 
 use low_link::LowLink;
@@ -17,8 +16,10 @@ fn main() {
         ll.add_edge(t, s);
     });
     ll.build();
+    let mut b = ll.bridge().iter().map(|&(s, t)| if s < t { (s, t) } else { (t, s) }).collect::<Vec<_>>();
+    b.sort();
 
-    for (s, t) in ll.bridge().iter().map(|&(s, t)| if s < t { (s, t) } else { (t, s) }).sorted() {
+    for (s, t) in &b {
         println!("{} {}", s, t);
     }
 }

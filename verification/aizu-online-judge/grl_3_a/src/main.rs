@@ -1,6 +1,5 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A
 
-use itertools::Itertools;
 use proconio::input;
 
 use low_link::LowLink;
@@ -17,8 +16,10 @@ fn main() {
         ll.add_edge(t, s);
     });
     ll.build();
+    let mut a = ll.articulation();
+    a.sort();
 
-    for &v in ll.articulation_point().iter().sorted() {
+    for &v in &a {
         println!("{}", v);
     }
 }
