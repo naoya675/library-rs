@@ -12,3 +12,6 @@ documentation_of: //string/aho-corasick/src/lib.rs
 - [https://cp-algorithms.com/string/aho_corasick.html](https://cp-algorithms.com/string/aho_corasick.html)
 <!--- [https://compiler.club/pattern-matching-in-trees/](https://compiler.club/pattern-matching-in-trees/)-->
 - [https://web.stanford.edu/class/archive/cs/cs166/cs166.1166/lectures/02/Slides02.pdf](https://web.stanford.edu/class/archive/cs/cs166/cs166.1166/lectures/02/Slides02.pdf)
+
+- Problems
+    - [https://atcoder.jp/contests/abc268/editorial/4793](https://atcoder.jp/contests/abc268/editorial/4793)

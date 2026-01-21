@@ -39,8 +39,12 @@ impl MersenneModint {
 
     pub fn rand() -> Self {
         use rand::Rng;
-        let mut rng = rand::thread_rng();
-        Self::new(rng.gen_range(Self::MASK31..Self::MASK61))
+        let mut rng = rand::rng();
+        Self::new(rng.random_range(Self::MASK31..Self::MASK61))
+
+        // rand = "0.8.5"
+        // let mut rng = rand::thread_rng();
+        // Self::new(rng.gen_range(Self::MASK31..Self::MASK61))
     }
 }
 
