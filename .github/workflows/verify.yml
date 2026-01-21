@@ -31,7 +31,7 @@ jobs:
                   path: |
                       ~/.cache/online-judge-tools/
                       ~/.verify-helper/cache/
-                      key: ${{ runner.os }}-oj-cache-${{ hashFiles('Cargo.lock','Cargo.toml') }}
+                  key: ${{ runner.os }}-oj-cache-${{ hashFiles('verification/**/*.rs') }}
                   restore-keys: |
                       ${{ runner.os }}-oj-cache-
 
