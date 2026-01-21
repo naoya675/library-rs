@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segment-tree/src/lib.rs
     title: Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segment-tree/src/wrapper.rs
     title: Segment Tree (Wrapper)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint/src/lib.rs
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
     links:
@@ -50,7 +50,7 @@ data:
   path: verification/library-checker/point_set_range_composite/src/main.rs
   requiredBy: []
   timestamp: '2026-01-01 00:11:18+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/point_set_range_composite/src/main.rs
 layout: document

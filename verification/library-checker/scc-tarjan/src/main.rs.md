@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/strongly-connected-components-tarjan/src/lib.rs
     title: Strongly Connected Components (Tarjan)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/scc
     links:
@@ -35,7 +35,7 @@ data:
   path: verification/library-checker/scc-tarjan/src/main.rs
   requiredBy: []
   timestamp: '2026-01-01 00:11:18+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/scc-tarjan/src/main.rs
 layout: document

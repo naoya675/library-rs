@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: string/lcp-array/src/lib.rs
     title: Longest Common Prefix
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: string/suffix-array/src/lib.rs
     title: Suffix Array
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/number_of_substrings
     links:
@@ -34,7 +34,7 @@ data:
   path: verification/library-checker/number_of_substrings/src/main.rs
   requiredBy: []
   timestamp: '2026-01-01 00:11:18+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/number_of_substrings/src/main.rs
 layout: document

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/fenwick-tree-abstract/src/lib.rs
     title: Fenwick Tree (Abstract)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
   - icon: ':heavy_check_mark:'

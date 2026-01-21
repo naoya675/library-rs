@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segment-tree/src/wrapper.rs
     title: Segment Tree (Wrapper)
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segment-tree/src/wrapper.rs
     title: Segment Tree (Wrapper)
   - icon: ':heavy_check_mark:'
     path: string/rolling-hash-segment-tree/src/lib.rs
     title: Rolling Hash (Rabin-Karp)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/euler-tour/src/lib.rs
     title: Euler Tour
   _extendedVerifiedWith:
@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_b/src/main.rs
     title: verification/aizu-online-judge/dsl_2_b/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/point_set_range_composite/src/main.rs
     title: verification/library-checker/point_set_range_composite/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/vertex_set_path_composite/src/main.rs
     title: verification/library-checker/vertex_set_path_composite/src/main.rs
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -107,7 +107,7 @@ data:
   - data-structure/segment-tree/src/wrapper.rs
   - tree/euler-tour/src/lib.rs
   timestamp: '2026-01-01 00:11:18+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_b/src/main.rs
   - verification/aizu-online-judge/dsl_2_a/src/main.rs

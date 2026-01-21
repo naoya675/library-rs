@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/vertex_add_path_sum/src/main.rs
     title: verification/library-checker/vertex_add_path_sum/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/vertex_add_subtree_sum/src/main.rs
     title: verification/library-checker/vertex_add_subtree_sum/src/main.rs
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -47,7 +47,7 @@ data:
   path: data-structure/fenwick-tree/src/lib.rs
   requiredBy: []
   timestamp: '2025-12-08 22:55:07+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/library-checker/vertex_add_subtree_sum/src/main.rs
   - verification/library-checker/vertex_add_path_sum/src/main.rs

@@ -1,11 +1,11 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/lazy-segment-tree/src/lib.rs
     title: Lazy Segment Tree
   _extendedVerifiedWith:
@@ -21,12 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_i/src/main.rs
     title: verification/aizu-online-judge/dsl_2_i/src/main.rs
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verification/library-checker/range_affine_range_sum/src/main.rs
     title: verification/library-checker/range_affine_range_sum/src/main.rs
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -87,7 +87,7 @@ data:
   requiredBy:
   - data-structure/lazy-segment-tree/src/lib.rs
   timestamp: '2026-01-01 00:11:18+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/dsl_2_i/src/main.rs
   - verification/aizu-online-judge/dsl_2_f/src/main.rs

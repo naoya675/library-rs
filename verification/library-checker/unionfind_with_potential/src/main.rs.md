@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/union-find-with-potential/src/lib.rs
     title: Union Find with Potential
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/modint/src/lib.rs
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/unionfind_with_potential
     links:
@@ -44,7 +44,7 @@ data:
   path: verification/library-checker/unionfind_with_potential/src/main.rs
   requiredBy: []
   timestamp: '2025-12-08 22:55:07+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/unionfind_with_potential/src/main.rs
 layout: document

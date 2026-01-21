@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/union-find/src/lib.rs
     title: Union Find
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/strongly-connected-components-kosaraju/src/lib.rs
     title: Strongly Connected Components (Kosaraju)
   _extendedRequiredBy: []

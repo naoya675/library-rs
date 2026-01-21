@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/union-find/src/lib.rs
     title: Union Find
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: rs
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
     links:
@@ -38,7 +38,7 @@ data:
   path: verification/library-checker/unionfind/src/main.rs
   requiredBy: []
   timestamp: '2025-12-08 22:55:07+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/library-checker/unionfind/src/main.rs
 layout: document
