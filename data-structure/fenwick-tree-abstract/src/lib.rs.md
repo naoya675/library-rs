@@ -13,16 +13,14 @@ data:
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links:
-    - https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    links: []
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "// reference: https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html\n\
-    \n#[derive(Debug, Clone)]\npub struct FenwickTreeAbstract<T> {\n    tree: Vec<T>,\n\
+  code: "#[derive(Debug, Clone)]\npub struct FenwickTreeAbstract<T> {\n    tree: Vec<T>,\n\
     \    size: usize,\n    // Abelian Group: operation (associative, commutative)\
     \ + identity element + inverse element\n    op: fn(T, T) -> T,\n    e: T,\n  \
     \  inv: fn(T) -> T,\n}\n\nimpl<T: Copy> FenwickTreeAbstract<T>\nwhere\n    T:\
@@ -43,7 +41,7 @@ data:
   isVerificationFile: false
   path: data-structure/fenwick-tree-abstract/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-12-08 22:55:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/grl_5_d/src/main.rs
@@ -54,3 +52,7 @@ title: Fenwick Tree (Abstract)
 ---
 
 ## Description
+
+## Reference
+<!--- [https://ei1333.github.io/library/structure/others/abstract-binary-indexed-tree.hpp](https://ei1333.github.io/library/structure/others/abstract-binary-indexed-tree.hpp)-->
+- [https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html](https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html)

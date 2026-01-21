@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/union-find/src/lib.rs
     title: Union Find
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: macro/query/src/lib.rs
     title: macro/query/src/lib.rs
   _extendedRequiredBy: []
@@ -16,11 +16,11 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A\n\
     \nuse proconio::input;\n\nuse union_find::UnionFind;\n\nquery::define_query! {\n\
@@ -37,7 +37,7 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/dsl_1_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-09-06 15:04:09+09:00'
+  timestamp: '2025-12-08 22:55:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dsl_1_a/src/main.rs

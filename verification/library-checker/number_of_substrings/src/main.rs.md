@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/lcp-array/src/lib.rs
-    title: LCP Array
-  - icon: ':heavy_check_mark:'
+    title: Longest Common Prefix
+  - icon: ':x:'
     path: string/suffix-array/src/lib.rs
-    title: string/suffix-array/src/lib.rs
+    title: Suffix Array
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     PROBLEM: https://judge.yosupo.jp/problem/number_of_substrings
     links:
     - https://judge.yosupo.jp/problem/number_of_substrings
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.yosupo.jp/problem/number_of_substrings\n\
     \nuse proconio::{input, marker::Chars};\n\nuse lcp_array::LCPArray;\nuse suffix_array::SuffixArray;\n\
@@ -33,8 +33,8 @@ data:
   isVerificationFile: true
   path: verification/library-checker/number_of_substrings/src/main.rs
   requiredBy: []
-  timestamp: '2025-09-06 15:04:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-01-01 00:11:18+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verification/library-checker/number_of_substrings/src/main.rs
 layout: document

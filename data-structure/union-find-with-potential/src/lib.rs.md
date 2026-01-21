@@ -6,22 +6,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_1_b/src/main.rs
     title: verification/aizu-online-judge/dsl_1_b/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/unionfind_with_potential/src/main.rs
     title: verification/library-checker/unionfind_with_potential/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
     title: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "#[derive(Debug, Clone)]\npub struct UnionFindWithPotential<T> {\n    n: usize,\n\
     \    par: Vec<usize>,\n    siz: Vec<usize>,\n    diff_potential: Vec<T>,\n   \
@@ -29,11 +29,11 @@ data:
     \    op: fn(T, T) -> T,\n    e: T,\n    inv: fn(T) -> T,\n}\n\nimpl<T: Copy +\
     \ PartialEq + Eq + Default> UnionFindWithPotential<T>\nwhere\n    T: std::ops::Neg<Output\
     \ = T>,\n    T: std::ops::Add<T, Output = T>,\n    T: std::ops::AddAssign,\n{\n\
-    \    pub fn new_default(n: usize) -> Self {\n        fn op<T>(a: T, b: T) -> T\n\
+    \    pub fn new_default(n: usize) -> Self {\n        fn op<T>(x: T, y: T) -> T\n\
     \        where\n            T: std::ops::Add<T, Output = T>,\n            T: std::ops::AddAssign,\n\
-    \        {\n            a + b\n        }\n\n        fn neg<T>(a: T) -> T\n   \
+    \        {\n            x + y\n        }\n\n        fn neg<T>(x: T) -> T\n   \
     \     where\n            T: std::ops::Neg<Output = T>,\n        {\n          \
-    \  a.neg()\n        }\n\n        Self::new(n, op, T::default(), neg)\n    }\n\
+    \  x.neg()\n        }\n\n        Self::new(n, op, T::default(), neg)\n    }\n\
     }\n\nimpl<T: Copy + PartialEq + Eq> UnionFindWithPotential<T> {\n    pub fn new(n:\
     \ usize, op: fn(T, T) -> T, e: T, inv: fn(T) -> T) -> Self {\n        Self {\n\
     \            n,\n            par: (0..n).collect::<Vec<usize>>(),\n          \
@@ -67,8 +67,8 @@ data:
   isVerificationFile: false
   path: data-structure/union-find-with-potential/src/lib.rs
   requiredBy: []
-  timestamp: '2025-05-29 20:17:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-12-08 22:55:07+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verification/aizu-online-judge/dsl_1_b/src/main.rs
   - verification/library-checker/unionfind_with_potential/src/main.rs
@@ -79,3 +79,6 @@ title: Union Find with Potential
 ---
 
 ## Description
+
+## Reference
+- [https://qiita.com/drken/items/cce6fc5c579051e64fab](https://qiita.com/drken/items/cce6fc5c579051e64fab)

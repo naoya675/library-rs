@@ -3,27 +3,25 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/vertex_add_path_sum/src/main.rs
     title: verification/library-checker/vertex_add_path_sum/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/vertex_add_subtree_sum/src/main.rs
     title: verification/library-checker/vertex_add_subtree_sum/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    links:
-    - https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    links: []
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "// reference: https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html\n\
-    \n#[derive(Debug, Clone)]\npub struct FenwickTree<T> {\n    tree: Vec<T>,\n  \
-    \  size: usize,\n}\n\nimpl<T: Copy + PartialOrd + Ord + Default> FenwickTree<T>\n\
+  code: "#[derive(Debug, Clone)]\npub struct FenwickTree<T> {\n    tree: Vec<T>,\n\
+    \    size: usize,\n}\n\nimpl<T: Copy + PartialOrd + Ord + Default> FenwickTree<T>\n\
     where\n    T: std::ops::Add<T, Output = T>,\n    T: std::ops::AddAssign,\n   \
     \ T: std::ops::Sub<T, Output = T>,\n    T: std::ops::SubAssign,\n{\n    pub fn\
     \ new(n: usize) -> Self {\n        let size = n;\n        Self {\n           \
@@ -48,8 +46,8 @@ data:
   isVerificationFile: false
   path: data-structure/fenwick-tree/src/lib.rs
   requiredBy: []
-  timestamp: '2025-08-21 20:46:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-12-08 22:55:07+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verification/library-checker/vertex_add_subtree_sum/src/main.rs
   - verification/library-checker/vertex_add_path_sum/src/main.rs
@@ -61,5 +59,9 @@ title: Fenwick Tree
 ## Description
 
 ## Reference
-- [https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree)
+<!--- [https://ei1333.github.io/library/structure/others/binary-indexed-tree.hpp](https://ei1333.github.io/library/structure/others/binary-indexed-tree.hpp)-->
+- [https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html](https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html)
+- [https://qiita.com/sysdev/items/30aa7d5e9ac4ea871bd3](https://qiita.com/sysdev/items/30aa7d5e9ac4ea871bd3)
+- [https://qiita.com/ngtkana/items/7d50ff180a4e5c294cb7](https://qiita.com/ngtkana/items/7d50ff180a4e5c294cb7)
 - [https://qiita.com/Stakumi/items/b7593a99908c98cfe6d0](https://qiita.com/Stakumi/items/b7593a99908c98cfe6d0)
+- [https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree)

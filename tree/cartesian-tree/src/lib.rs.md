@@ -11,11 +11,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "#[derive(Debug, Clone)]\npub struct CartesianTree<T> {\n    a: Vec<T>,\n\
     \    n: usize,\n    root: usize,\n    parent: Vec<usize>,\n    lchild: Vec<usize>,\n\
@@ -58,3 +58,4 @@ title: Cartesian Tree
 
 ## Reference
 - [https://drken1215.hatenablog.com/entry/2023/10/19/025800](https://drken1215.hatenablog.com/entry/2023/10/19/025800)
+- [https://atcoder.jp/contests/ttpc2024_1/editorial/11194](https://atcoder.jp/contests/ttpc2024_1/editorial/11194)

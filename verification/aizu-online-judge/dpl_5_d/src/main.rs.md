@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/combinatorics/src/lib.rs
     title: Combinatorics
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/modint/src/lib.rs
     title: Modint
   _extendedRequiredBy: []
@@ -16,11 +16,11 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_D
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_D
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_D\n\
     \nuse proconio::input;\n\nuse combinatorics::Combinatorics;\nuse modint::StaticModint;\n\
@@ -33,7 +33,7 @@ data:
   isVerificationFile: true
   path: verification/aizu-online-judge/dpl_5_d/src/main.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-12-08 22:55:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/dpl_5_d/src/main.rs

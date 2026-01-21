@@ -10,24 +10,28 @@ data:
     path: verification/aizu-online-judge/dsl_1_a/src/main.rs
     title: verification/aizu-online-judge/dsl_1_a/src/main.rs
   - icon: ':heavy_check_mark:'
+    path: verification/aizu-online-judge/grl_3_c_kosaraju/src/main.rs
+    title: verification/aizu-online-judge/grl_3_c_kosaraju/src/main.rs
+  - icon: ':heavy_check_mark:'
+    path: verification/aizu-online-judge/grl_3_c_tarjan/src/main.rs
+    title: verification/aizu-online-judge/grl_3_c_tarjan/src/main.rs
+  - icon: ':x:'
     path: verification/library-checker/unionfind/src/main.rs
     title: verification/library-checker/unionfind/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    links:
-    - https://atcoder.github.io/ac-library/production/document_en/dsu.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    links: []
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "// reference: https://atcoder.github.io/ac-library/production/document_en/dsu.html\n\
-    \n#[derive(Debug, Clone)]\npub struct UnionFind {\n    n: usize,\n    par: Vec<usize>,\n\
-    \    siz: Vec<usize>,\n}\n\nimpl UnionFind {\n    pub fn new(n: usize) -> Self\
-    \ {\n        Self {\n            n,\n            par: (0..n).collect::<Vec<usize>>(),\n\
+  code: "#[derive(Debug, Clone)]\npub struct UnionFind {\n    n: usize,\n    par:\
+    \ Vec<usize>,\n    siz: Vec<usize>,\n}\n\nimpl UnionFind {\n    pub fn new(n:\
+    \ usize) -> Self {\n        Self {\n            n,\n            par: (0..n).collect::<Vec<usize>>(),\n\
     \            siz: vec![1; n],\n        }\n    }\n\n    pub fn merge(&mut self,\
     \ x: usize, y: usize) -> usize {\n        assert!(x < self.n);\n        assert!(y\
     \ < self.n);\n        let mut x = self.leader(x);\n        let mut y = self.leader(y);\n\
@@ -50,10 +54,12 @@ data:
   path: data-structure/union-find/src/lib.rs
   requiredBy:
   - graph/kruskal/src/lib.rs
-  timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-12-08 22:55:07+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verification/aizu-online-judge/dsl_1_a/src/main.rs
+  - verification/aizu-online-judge/grl_3_c_kosaraju/src/main.rs
+  - verification/aizu-online-judge/grl_3_c_tarjan/src/main.rs
   - verification/library-checker/unionfind/src/main.rs
 documentation_of: data-structure/union-find/src/lib.rs
 layout: document
@@ -61,3 +67,8 @@ title: Union Find
 ---
 
 ## Description
+
+## Reference
+- [https://atcoder.github.io/ac-library/production/document_en/dsu.html](https://atcoder.github.io/ac-library/production/document_en/dsu.html)
+- [https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3](https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3)
+- [https://torus711.hatenablog.com/entry/2020/11/16/205309](https://torus711.hatenablog.com/entry/2020/11/16/205309)

@@ -9,14 +9,14 @@ data:
   attributes:
     links:
     - https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "//\u3000reference: https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7\n\
-    \nmacro_rules! chmax {\n    ($base:expr, $($ex:expr),+ $(,)*) => {\n        let\
+  code: "// Reference: https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7\n\n\
+    macro_rules! chmax {\n    ($base:expr, $($ex:expr),+ $(,)*) => {\n        let\
     \ max = max!($($ex),+);\n        if $base < max {\n            $base = max;\n\
     \            true\n        } else {\n            false\n        }\n    };\n}\n\
     \nmacro_rules! max {\n    ($exa:expr $(,)*) => {\n        $exa\n    };\n    ($exa:expr,\
@@ -27,7 +27,7 @@ data:
   isVerificationFile: false
   path: macro/chmax/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-10-04 01:11:11+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: macro/chmax/src/lib.rs

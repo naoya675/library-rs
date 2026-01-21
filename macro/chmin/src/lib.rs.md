@@ -9,13 +9,13 @@ data:
   attributes:
     links:
     - https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "// reference: https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7\n\n\
+  code: "// Reference: https://qiita.com/maguro_tuna/items/fab200fdc1efde1612e7\n\n\
     macro_rules! chmin {\n    ($base:expr, $($ex:expr),+ $(,)*) => {\n        let\
     \ min = min!($($ex),+);\n        if $base > min {\n            $base = min;\n\
     \            true\n        } else {\n            false\n        }\n    };\n}\n\
@@ -27,7 +27,7 @@ data:
   isVerificationFile: false
   path: macro/chmin/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2025-10-04 01:11:11+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: macro/chmin/src/lib.rs

@@ -13,29 +13,29 @@ data:
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links:
-    - https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    links: []
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "// reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\n\n#[derive(Debug,\
-    \ Clone, Copy, PartialEq, Eq)]\npub struct MersenneModint {\n    value: u64,\n\
-    }\n\nimpl MersenneModint {\n    const MOD: u64 = (1u64 << 61) - 1;\n    const\
-    \ MASK30: u64 = (1u64 << 30) - 1;\n    const MASK31: u64 = (1u64 << 31) - 1;\n\
-    \    const MASK61: u64 = Self::MOD;\n\n    pub fn new(n: u64) -> Self {\n    \
-    \    Self {\n            value: (n % Self::MOD),\n            // value: (n.rem_euclid(Self::MOD)),\n\
-    \        }\n    }\n\n    pub fn value(&self) -> u64 {\n        self.value\n  \
-    \  }\n\n    pub fn pow(&self, mut n: u64) -> Self {\n        let mut value = *self;\n\
-    \        let mut res = Self::new(1);\n        while n > 0 {\n            if n\
-    \ & 1 != 0 {\n                res = res * value;\n            }\n            value\
-    \ = value * value;\n            n >>= 1;\n        }\n        res\n    }\n\n  \
-    \  pub fn inv(&self) -> Self {\n        self.pow(Self::MOD - 2)\n    }\n\n   \
-    \ pub fn rand() -> Self {\n        use rand::Rng;\n        let mut rng = rand::thread_rng();\n\
-    \        Self::new(rng.gen_range(Self::MASK31..Self::MASK61))\n    }\n}\n\nimpl\
-    \ std::ops::Add for MersenneModint {\n    type Output = Self;\n    fn add(self,\
+  code: "#[derive(Debug, Clone, Copy, PartialEq, Eq)]\npub struct MersenneModint {\n\
+    \    value: u64,\n}\n\nimpl MersenneModint {\n    const MOD: u64 = (1u64 << 61)\
+    \ - 1;\n    const MASK30: u64 = (1u64 << 30) - 1;\n    const MASK31: u64 = (1u64\
+    \ << 31) - 1;\n    const MASK61: u64 = Self::MOD;\n\n    pub fn new(n: u64) ->\
+    \ Self {\n        Self {\n            // value: (n % Self::MOD),\n           \
+    \ value: (n.rem_euclid(Self::MOD)),\n        }\n    }\n\n    pub fn value(&self)\
+    \ -> u64 {\n        self.value\n    }\n\n    pub fn pow(&self, mut n: u64) ->\
+    \ Self {\n        let mut value = *self;\n        let mut res = Self::new(1);\n\
+    \        while n > 0 {\n            if n & 1 != 0 {\n                res = res\
+    \ * value;\n            }\n            value = value * value;\n            n >>=\
+    \ 1;\n        }\n        res\n    }\n\n    pub fn inv(&self) -> Self {\n     \
+    \   self.pow(Self::MOD - 2)\n    }\n\n    pub fn rand() -> Self {\n        use\
+    \ rand::Rng;\n        let mut rng = rand::rng();\n        Self::new(rng.random_range(Self::MASK31..Self::MASK61))\n\
+    \n        // rand = \"0.8.5\"\n        // let mut rng = rand::thread_rng();\n\
+    \        // Self::new(rng.gen_range(Self::MASK31..Self::MASK61))\n    }\n}\n\n\
+    impl std::ops::Add for MersenneModint {\n    type Output = Self;\n    fn add(self,\
     \ rhs: Self) -> Self {\n        Self {\n            value: (self.value + rhs.value)\
     \ % Self::MOD,\n        }\n    }\n}\n\nimpl std::ops::AddAssign for MersenneModint\
     \ {\n    fn add_assign(&mut self, rhs: Self) {\n        *self = *self + rhs;\n\
@@ -73,8 +73,8 @@ data:
     /*\nmacro_rules! impl_from {\n    ($($type:ty), *) => {\n        $(\n        \
     \    impl From<$type> for MersenneModint {\n                fn from(value: $type)\
     \ -> Self {\n                    Self::new(value as u64)\n                }\n\
-    \            }\n        )*\n    };\n}\n\nimpl_from!(i8, u8, i16, u16, i32, u32,\
-    \ u64, i64, isize, usize);\n*/\n\n/*\nmacro_rules! impl_ops {\n    ($trait:ident,\
+    \            }\n        )*\n    };\n}\n\nimpl_from!(u8, i8, u16, i16, u32, i32,\
+    \ u64, i64, usize, isize);\n*/\n\n/*\nmacro_rules! impl_ops {\n    ($trait:ident,\
     \ $fn:ident, $op:tt) => {\n        impl std::ops::$trait for MersenneModint {\n\
     \            fn $fn(&mut self, rhs: Self) {\n                *self = *self $op\
     \ rhs;\n            }\n        }\n    };\n}\n\nimpl_ops!(AddAssign, add_assign,\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: false
   path: math/mersenne-modint/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
+  timestamp: '2026-01-21 18:49:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verification/aizu-online-judge/alds1_14_b/src/main.rs
@@ -95,3 +95,6 @@ title: Mersenne Modint
 ---
 
 ## Description
+
+## Reference
+- [https://qiita.com/keymoon/items/11fac5627672a6d6a9f6](https://qiita.com/keymoon/items/11fac5627672a6d6a9f6)

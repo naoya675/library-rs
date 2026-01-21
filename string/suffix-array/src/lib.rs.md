@@ -3,68 +3,64 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/number_of_substrings/src/main.rs
     title: verification/library-checker/number_of_substrings/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/suffixarray/src/main.rs
     title: verification/library-checker/suffixarray/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    links:
-    - https://atcoder.github.io/ac-library/production/document_en/string.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    links: []
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "// reference: https://atcoder.github.io/ac-library/production/document_en/string.html\n\
-    \n#[derive(Debug)]\npub struct SuffixArray;\n\nimpl SuffixArray {\n    fn sa_naive<T:\
-    \ Copy + Ord + PartialOrd>(s: &Vec<T>) -> Vec<usize> {\n        let n = s.len();\n\
-    \        let mut sa = (0..n).collect::<Vec<usize>>();\n        sa.sort_by(|&a,\
+  code: "#[derive(Debug)]\npub struct SuffixArray {}\n\nimpl SuffixArray {\n    fn\
+    \ sa_naive<T: Copy + Ord + PartialOrd>(s: &[T]) -> Vec<usize> {\n        let n\
+    \ = s.len();\n        let mut sa = (0..n).collect::<Vec<usize>>();\n        sa.sort_by(|&a,\
     \ &b| {\n            if a == b {\n                return std::cmp::Ordering::Greater;\n\
     \            }\n            let mut i = a;\n            let mut j = b;\n     \
     \       while i < n && j < n {\n                if s[i] != s[j] {\n          \
     \          if s[i] < s[j] {\n                        return std::cmp::Ordering::Less;\n\
     \                    } else {\n                        return std::cmp::Ordering::Greater;\n\
     \                    }\n                }\n                i += 1;\n         \
-    \       j += 1;\n            }\n            if a == n {\n                std::cmp::Ordering::Less\n\
-    \            } else {\n                std::cmp::Ordering::Greater\n         \
-    \   }\n        });\n        sa\n    }\n\n    fn sa_doubling(s: &Vec<usize>) ->\
-    \ Vec<usize> {\n        let n = s.len();\n        let mut sa = (0..n).collect::<Vec<usize>>();\n\
-    \        let mut rank = s.clone();\n        let mut rank_temp = vec![0; n];\n\
-    \        let mut k = 1;\n        while k < n {\n            let cmp = |&a: &usize,\
-    \ &b: &usize| {\n                if rank[a] != rank[b] {\n                   \
-    \ rank[a].cmp(&rank[b])\n                } else {\n                    let ra\
-    \ = if a + k < n { rank[a + k] as isize } else { -1 };\n                    let\
-    \ rb = if b + k < n { rank[b + k] as isize } else { -1 };\n                  \
-    \  if ra < rb {\n                        std::cmp::Ordering::Less\n          \
-    \          } else {\n                        std::cmp::Ordering::Greater\n   \
-    \                 }\n                }\n            };\n            sa.sort_by(cmp);\n\
-    \            rank_temp[sa[0]] = 0;\n            for i in 1..n {\n            \
-    \    rank_temp[sa[i]] = rank_temp[sa[i - 1]] + if cmp(&sa[i - 1], &sa[i]) == std::cmp::Ordering::Less\
-    \ { 1 } else { 0 };\n            }\n            std::mem::swap(&mut rank, &mut\
-    \ rank_temp);\n            k <<= 1;\n        }\n        sa\n    }\n\n    fn sa_is(s:\
-    \ &Vec<usize>, upper: usize) -> Vec<usize> {\n        let n = s.len();\n     \
-    \   if n == 0 {\n            return vec![];\n        }\n        if n == 1 {\n\
-    \            return vec![0];\n        }\n        if n == 2 {\n            return\
-    \ if s[0] < s[1] { vec![0, 1] } else { vec![1, 0] };\n        }\n\n        let\
-    \ mut sa = vec![None; n];\n        let mut ls = vec![0; n];\n        for i in\
-    \ (0..n - 1).rev() {\n            if s[i] == s[i + 1] {\n                ls[i]\
-    \ = ls[i + 1];\n            } else if s[i] < s[i + 1] {\n                ls[i]\
-    \ = 1;\n            } else if s[i] > s[i + 1] {\n                ls[i] = 0;\n\
-    \            }\n        }\n        let mut sum_l = vec![0; upper + 1];\n     \
-    \   let mut sum_s = vec![0; upper + 1];\n        for i in 0..n {\n           \
-    \ if ls[i] == 0 {\n                sum_s[s[i]] += 1;\n            } else {\n \
-    \               sum_l[s[i] + 1] += 1;\n            }\n        }\n        for i\
-    \ in 0..upper + 1 {\n            sum_s[i] += sum_l[i];\n            if i < upper\
-    \ {\n                sum_l[i + 1] += sum_s[i];\n            }\n        }\n\n \
-    \       let induce = |lms: &Vec<usize>, sa: &mut Vec<Option<usize>>| {\n     \
-    \       sa.fill(None);\n            let mut buf = sum_s.clone();\n           \
-    \ for &d in lms {\n                if d == n {\n                    continue;\n\
+    \       j += 1;\n            }\n            if a == n { std::cmp::Ordering::Less\
+    \ } else { std::cmp::Ordering::Greater }\n        });\n        sa\n    }\n\n \
+    \   fn sa_doubling(s: &[usize]) -> Vec<usize> {\n        let n = s.len();\n  \
+    \      let mut sa = (0..n).collect::<Vec<usize>>();\n        let mut rank = s.to_vec();\n\
+    \        let mut rank_temp = vec![0; n];\n        let mut k = 1;\n        while\
+    \ k < n {\n            let cmp = |&a: &usize, &b: &usize| {\n                if\
+    \ rank[a] != rank[b] {\n                    rank[a].cmp(&rank[b])\n          \
+    \      } else {\n                    let ra = if a + k < n { rank[a + k] as isize\
+    \ } else { -1 };\n                    let rb = if b + k < n { rank[b + k] as isize\
+    \ } else { -1 };\n                    if ra < rb { std::cmp::Ordering::Less }\
+    \ else { std::cmp::Ordering::Greater }\n                }\n            };\n  \
+    \          sa.sort_by(cmp);\n            rank_temp[sa[0]] = 0;\n            for\
+    \ i in 1..n {\n                rank_temp[sa[i]] = rank_temp[sa[i - 1]] + if cmp(&sa[i\
+    \ - 1], &sa[i]) == std::cmp::Ordering::Less { 1 } else { 0 };\n            }\n\
+    \            std::mem::swap(&mut rank, &mut rank_temp);\n            k <<= 1;\n\
+    \        }\n        sa\n    }\n\n    fn sa_is(s: &[usize], upper: usize) -> Vec<usize>\
+    \ {\n        let n = s.len();\n        if n == 0 {\n            return vec![];\n\
+    \        }\n        if n == 1 {\n            return vec![0];\n        }\n    \
+    \    if n == 2 {\n            return if s[0] < s[1] { vec![0, 1] } else { vec![1,\
+    \ 0] };\n        }\n\n        let mut sa = vec![None; n];\n        let mut ls\
+    \ = vec![0; n];\n        for i in (0..n - 1).rev() {\n            if s[i] == s[i\
+    \ + 1] {\n                ls[i] = ls[i + 1];\n            } else if s[i] < s[i\
+    \ + 1] {\n                ls[i] = 1;\n            } else if s[i] > s[i + 1] {\n\
+    \                ls[i] = 0;\n            }\n        }\n        let mut sum_l =\
+    \ vec![0; upper + 1];\n        let mut sum_s = vec![0; upper + 1];\n        for\
+    \ i in 0..n {\n            if ls[i] == 0 {\n                sum_s[s[i]] += 1;\n\
+    \            } else {\n                sum_l[s[i] + 1] += 1;\n            }\n\
+    \        }\n        for i in 0..upper + 1 {\n            sum_s[i] += sum_l[i];\n\
+    \            if i < upper {\n                sum_l[i + 1] += sum_s[i];\n     \
+    \       }\n        }\n\n        let induce = |lms: &[usize], sa: &mut Vec<Option<usize>>|\
+    \ {\n            sa.fill(None);\n            let mut buf = sum_s.clone();\n  \
+    \          for &d in lms {\n                if d == n {\n                    continue;\n\
     \                }\n                sa[buf[s[d]]] = Some(d);\n               \
     \ buf[s[d]] += 1;\n            }\n            let mut buf = sum_l.clone();\n \
     \           sa[buf[s[n - 1]]] = Some(n - 1);\n            buf[s[n - 1]] += 1;\n\
@@ -104,7 +100,7 @@ data:
     \         for i in 0..m {\n                sorted_lms[i] = lms[rec_sa[i]];\n \
     \           }\n            induce(&sorted_lms, &mut sa);\n        }\n        sa.into_iter().map(|a|\
     \ a.unwrap()).collect()\n    }\n\n    pub fn suffix_array<T: Copy + Ord + PartialOrd>(s:\
-    \ &Vec<T>) -> Vec<usize> {\n        let n = s.len();\n        let mut idx = (0..n).collect::<Vec<usize>>();\n\
+    \ &[T]) -> Vec<usize> {\n        let n = s.len();\n        let mut idx = (0..n).collect::<Vec<usize>>();\n\
     \        idx.sort_by(|&a, &b| s[a].cmp(&s[b]));\n        let mut t = vec![0; n];\n\
     \        let mut now = 0;\n        for i in 0..n {\n            if i > 0 && s[idx[i\
     \ - 1]] != s[idx[i]] {\n                now += 1;\n            }\n           \
@@ -113,15 +109,17 @@ data:
   isVerificationFile: false
   path: string/suffix-array/src/lib.rs
   requiredBy: []
-  timestamp: '2025-06-21 17:54:09+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-01-01 00:11:18+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verification/library-checker/number_of_substrings/src/main.rs
   - verification/library-checker/suffixarray/src/main.rs
+  - verification/library-checker/number_of_substrings/src/main.rs
 documentation_of: string/suffix-array/src/lib.rs
 layout: document
-redirect_from:
-- /library/string/suffix-array/src/lib.rs
-- /library/string/suffix-array/src/lib.rs.html
-title: string/suffix-array/src/lib.rs
+title: Suffix Array
 ---
+
+## Description
+
+## Reference
+- [https://atcoder.github.io/ac-library/production/document_en/string.html](https://atcoder.github.io/ac-library/production/document_en/string.html)

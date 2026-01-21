@@ -1,9 +1,14 @@
 ---
 data:
   libraryCategories:
+  - name: data-structure/doubling/src
+    pages:
+    - icon: ':warning:'
+      path: data-structure/doubling/src/lib.rs
+      title: Doubling
   - name: data-structure/fenwick-tree/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/fenwick-tree/src/lib.rs
       title: Fenwick Tree
   - name: data-structure/fenwick-tree-abstract/src
@@ -11,30 +16,35 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/fenwick-tree-abstract/src/lib.rs
       title: Fenwick Tree (Abstract)
-  - name: data-structure/lazy-segment-tree/src
+  - name: data-structure/interval-set/src
     pages:
     - icon: ':heavy_check_mark:'
+      path: data-structure/interval-set/src/lib.rs
+      title: Interval Set
+  - name: data-structure/lazy-segment-tree/src
+    pages:
+    - icon: ':question:'
       path: data-structure/lazy-segment-tree/src/lib.rs
       title: Lazy Segment Tree
-    - icon: ':warning:'
+    - icon: ':question:'
       path: data-structure/lazy-segment-tree/src/wrapper.rs
       title: Lazy Segment Tree (Wrapper)
   - name: data-structure/segment-tree/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/segment-tree/src/lib.rs
       title: Segment Tree
-    - icon: ':warning:'
+    - icon: ':question:'
       path: data-structure/segment-tree/src/wrapper.rs
       title: Segment Tree (Wrapper)
   - name: data-structure/union-find/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/union-find/src/lib.rs
       title: Union Find
   - name: data-structure/union-find-with-potential/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/union-find-with-potential/src/lib.rs
       title: Union Find with Potential
   - name: graph/bellman-ford/src
@@ -42,11 +52,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/bellman-ford/src/lib.rs
       title: Bellman Ford
+    - icon: ':warning:'
+      path: graph/bellman-ford/src/struct.rs
+      title: graph/bellman-ford/src/struct.rs
   - name: graph/dijkstra/src
     pages:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra/src/lib.rs
       title: Dijkstra
+    - icon: ':warning:'
+      path: graph/dijkstra/src/struct.rs
+      title: graph/dijkstra/src/struct.rs
   - name: graph/ford-fulkerson/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -57,31 +73,45 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/kruskal/src/lib.rs
       title: Kruskal
+    - icon: ':warning:'
+      path: graph/kruskal/src/struct.rs
+      title: graph/kruskal/src/struct.rs
   - name: graph/low-link/src
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/low-link/src/lib.rs
       title: Low Link
-  - name: graph/strongly-connected-components-kosaraju/src
+  - name: graph/maxflow/src
     pages:
     - icon: ':heavy_check_mark:'
+      path: graph/maxflow/src/lib.rs
+      title: Maxflow
+  - name: graph/strongly-connected-components-kosaraju/src
+    pages:
+    - icon: ':question:'
       path: graph/strongly-connected-components-kosaraju/src/lib.rs
       title: Strongly Connected Components (Kosaraju)
   - name: graph/strongly-connected-components-tarjan/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/strongly-connected-components-tarjan/src/lib.rs
       title: Strongly Connected Components (Tarjan)
   - name: graph/topological-sort/src
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/topological-sort/src/lib.rs
       title: graph/topological-sort/src/lib.rs
+    - icon: ':warning:'
+      path: graph/topological-sort/src/struct.rs
+      title: graph/topological-sort/src/struct.rs
   - name: graph/warshall-floyd/src
     pages:
     - icon: ':heavy_check_mark:'
       path: graph/warshall-floyd/src/lib.rs
       title: Warshall Floyd
+    - icon: ':warning:'
+      path: graph/warshall-floyd/src/struct.rs
+      title: graph/warshall-floyd/src/struct.rs
   - name: heuristic/time-keeper/src
     pages:
     - icon: ':warning:'
@@ -109,7 +139,7 @@ data:
       title: macro/input/src/lib.rs
   - name: macro/query/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: macro/query/src/lib.rs
       title: macro/query/src/lib.rs
   - name: math/combinatorics/src
@@ -124,39 +154,52 @@ data:
       title: Mersenne Modint
   - name: math/modint/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/modint/src/lib.rs
       title: Modint
   - name: string/aho-corasick/src
     pages:
     - icon: ':heavy_check_mark:'
       path: string/aho-corasick/src/lib.rs
-      title: Aho-Corasick
-  - name: string/lcp-array/src
+      title: Aho-Corasick algorithm
+  - name: string/knuth-morris-pratt/src
     pages:
     - icon: ':heavy_check_mark:'
+      path: string/knuth-morris-pratt/src/lib.rs
+      title: Knuth-Morris-Pratt algorithm
+  - name: string/lcp-array/src
+    pages:
+    - icon: ':x:'
       path: string/lcp-array/src/lib.rs
-      title: LCP Array
+      title: Longest Common Prefix
+  - name: string/manacher/src
+    pages:
+    - icon: ':x:'
+      path: string/manacher/src/lib.rs
+      title: Manacher
   - name: string/rolling-hash/src
     pages:
     - icon: ':heavy_check_mark:'
       path: string/rolling-hash/src/lib.rs
-      title: Rolling Hash
+      title: Rolling Hash (Rabin-Karp)
   - name: string/rolling-hash-segment-tree/src
     pages:
     - icon: ':heavy_check_mark:'
       path: string/rolling-hash-segment-tree/src/lib.rs
-      title: Rolling Hash + Segment Tree
+      title: Rolling Hash (Rabin-Karp)
   - name: string/run-length/src
     pages:
     - icon: ':warning:'
       path: string/run-length/src/lib.rs
       title: Run Length
+    - icon: ':warning:'
+      path: string/run-length/src/struct.rs
+      title: string/run-length/src/struct.rs
   - name: string/suffix-array/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/suffix-array/src/lib.rs
-      title: string/suffix-array/src/lib.rs
+      title: Suffix Array
   - name: string/trie/src
     pages:
     - icon: ':warning:'
@@ -164,9 +207,14 @@ data:
       title: string/trie/src/lib.rs
   - name: string/z-algorithm/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/z-algorithm/src/lib.rs
       title: Z Algorithm
+  - name: string/z-algorithm-online/src
+    pages:
+    - icon: ':x:'
+      path: string/z-algorithm-online/src/lib.rs
+      title: Z Algorithm (Online)
   - name: tree/cartesian-tree/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -174,7 +222,7 @@ data:
       title: Cartesian Tree
   - name: tree/euler-tour/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/euler-tour/src/lib.rs
       title: Euler Tour
   - name: tree/heavy-light-decomposition/src
@@ -187,9 +235,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/rerooting/src/lib.rs
       title: Rerooting
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/rerooting/src/wrapper.rs
-      title: tree/rerooting/src/wrapper.rs
+      title: Rerooting (Wrapper)
+  - name: verification/aizu-online-judge/grl_4_b/src
+    pages:
+    - icon: ':warning:'
+      path: verification/aizu-online-judge/grl_4_b/src/main.rs
+      title: verification/aizu-online-judge/grl_4_b/src/main.rs
   verificationCategories:
   - name: verification/aizu-online-judge/alds1_14_a/src
     pages:
@@ -201,6 +254,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/alds1_14_b/src/main.rs
       title: verification/aizu-online-judge/alds1_14_b/src/main.rs
+  - name: verification/aizu-online-judge/alds1_14_b_kmp/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/alds1_14_b_kmp/src/main.rs
+      title: verification/aizu-online-judge/alds1_14_b_kmp/src/main.rs
   - name: verification/aizu-online-judge/dpl_5_d/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -266,6 +324,31 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_2_a/src/main.rs
       title: verification/aizu-online-judge/grl_2_a/src/main.rs
+  - name: verification/aizu-online-judge/grl_3_a/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_3_a/src/main.rs
+      title: verification/aizu-online-judge/grl_3_a/src/main.rs
+  - name: verification/aizu-online-judge/grl_3_b/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_3_b/src/main.rs
+      title: verification/aizu-online-judge/grl_3_b/src/main.rs
+  - name: verification/aizu-online-judge/grl_3_c_kosaraju/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_3_c_kosaraju/src/main.rs
+      title: verification/aizu-online-judge/grl_3_c_kosaraju/src/main.rs
+  - name: verification/aizu-online-judge/grl_3_c_tarjan/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_3_c_tarjan/src/main.rs
+      title: verification/aizu-online-judge/grl_3_c_tarjan/src/main.rs
+  - name: verification/aizu-online-judge/grl_4_a/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_4_a/src/main.rs
+      title: verification/aizu-online-judge/grl_4_a/src/main.rs
   - name: verification/aizu-online-judge/grl_5_a/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -296,6 +379,21 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/aizu-online-judge/grl_6_a/src/main.rs
       title: verification/aizu-online-judge/grl_6_a/src/main.rs
+  - name: verification/aizu-online-judge/grl_6_a_maxflow/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_6_a_maxflow/src/main.rs
+      title: verification/aizu-online-judge/grl_6_a_maxflow/src/main.rs
+  - name: verification/aizu-online-judge/grl_7_a_maxflow/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/grl_7_a_maxflow/src/main.rs
+      title: verification/aizu-online-judge/grl_7_a_maxflow/src/main.rs
+  - name: verification/aizu-online-judge/volume28-2880/src
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verification/aizu-online-judge/volume28-2880/src/main.rs
+      title: verification/aizu-online-judge/volume28-2880/src/main.rs
   - name: verification/library-checker/aho_corasick/src
     pages:
     - icon: ':heavy_check_mark:'
@@ -306,76 +404,88 @@ data:
     - icon: ':heavy_check_mark:'
       path: verification/library-checker/cartesian_tree/src/main.rs
       title: verification/library-checker/cartesian_tree/src/main.rs
+  - name: verification/library-checker/enumerate_palindromes/src
+    pages:
+    - icon: ':x:'
+      path: verification/library-checker/enumerate_palindromes/src/main.rs
+      title: verification/library-checker/enumerate_palindromes/src/main.rs
   - name: verification/library-checker/lca/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/lca/src/main.rs
       title: verification/library-checker/lca/src/main.rs
   - name: verification/library-checker/number_of_substrings/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/number_of_substrings/src/main.rs
       title: verification/library-checker/number_of_substrings/src/main.rs
   - name: verification/library-checker/point_set_range_composite/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/point_set_range_composite/src/main.rs
       title: verification/library-checker/point_set_range_composite/src/main.rs
   - name: verification/library-checker/range_affine_range_sum/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/range_affine_range_sum/src/main.rs
       title: verification/library-checker/range_affine_range_sum/src/main.rs
   - name: verification/library-checker/scc-kosaraju/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/scc-kosaraju/src/main.rs
       title: verification/library-checker/scc-kosaraju/src/main.rs
   - name: verification/library-checker/scc-tarjan/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/scc-tarjan/src/main.rs
       title: verification/library-checker/scc-tarjan/src/main.rs
   - name: verification/library-checker/suffixarray/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/suffixarray/src/main.rs
       title: verification/library-checker/suffixarray/src/main.rs
   - name: verification/library-checker/unionfind/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/unionfind/src/main.rs
       title: verification/library-checker/unionfind/src/main.rs
   - name: verification/library-checker/unionfind_with_potential/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/unionfind_with_potential/src/main.rs
       title: verification/library-checker/unionfind_with_potential/src/main.rs
   - name: verification/library-checker/unionfind_with_potential_non_commutative_group/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
       title: verification/library-checker/unionfind_with_potential_non_commutative_group/src/main.rs
   - name: verification/library-checker/vertex_add_path_sum/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/vertex_add_path_sum/src/main.rs
       title: verification/library-checker/vertex_add_path_sum/src/main.rs
   - name: verification/library-checker/vertex_add_subtree_sum/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/vertex_add_subtree_sum/src/main.rs
       title: verification/library-checker/vertex_add_subtree_sum/src/main.rs
   - name: verification/library-checker/vertex_set_path_composite/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/vertex_set_path_composite/src/main.rs
       title: verification/library-checker/vertex_set_path_composite/src/main.rs
   - name: verification/library-checker/zalgorithm/src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verification/library-checker/zalgorithm/src/main.rs
       title: verification/library-checker/zalgorithm/src/main.rs
+  - name: verification/library-checker/zalgorithm-online/src
+    pages:
+    - icon: ':x:'
+      path: verification/library-checker/zalgorithm-online/src/main.rs
+      title: verification/library-checker/zalgorithm-online/src/main.rs
 layout: toppage
 ---
+[![Actions Status](https://github.com/naoya675/library-rs/workflows/verify/badge.svg)](https://github.com/naoya675/library-rs/actions)
 [![naoya675](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Fnaoya675)](https://atcoder.jp/users/naoya675)
+[![naoya675](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fcodeforces%2Fjson%2Fnaoya675)](https://codeforces.com/profile/naoya675)

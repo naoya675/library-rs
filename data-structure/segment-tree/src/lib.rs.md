@@ -1,11 +1,17 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: data-structure/segment-tree/src/wrapper.rs
+    title: Segment Tree (Wrapper)
   _extendedRequiredBy:
+  - icon: ':question:'
+    path: data-structure/segment-tree/src/wrapper.rs
+    title: Segment Tree (Wrapper)
   - icon: ':heavy_check_mark:'
     path: string/rolling-hash-segment-tree/src/lib.rs
-    title: Rolling Hash + Segment Tree
-  - icon: ':heavy_check_mark:'
+    title: Rolling Hash (Rabin-Karp)
+  - icon: ':x:'
     path: tree/euler-tour/src/lib.rs
     title: Euler Tour
   _extendedVerifiedWith:
@@ -15,34 +21,32 @@ data:
   - icon: ':heavy_check_mark:'
     path: verification/aizu-online-judge/dsl_2_b/src/main.rs
     title: verification/aizu-online-judge/dsl_2_b/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/point_set_range_composite/src/main.rs
     title: verification/library-checker/point_set_range_composite/src/main.rs
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verification/library-checker/vertex_set_path_composite/src/main.rs
     title: verification/library-checker/vertex_set_path_composite/src/main.rs
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: rs
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    links:
-    - https://atcoder.github.io/ac-library/production/document_en/segtree.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    links: []
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "// reference: https://atcoder.github.io/ac-library/production/document_en/segtree.html\n\
-    \n#[derive(Debug, Clone)]\npub struct SegmentTree<T> {\n    tree: Vec<T>,\n  \
-    \  size: usize,\n    size_log: usize,\n    // Monoids: operation (associativity)\
-    \ + identity element\n    op: fn(T, T) -> T,\n    e: T,\n    n: usize,\n}\n\n\
-    impl<T: Copy> SegmentTree<T> {\n    pub fn new(n: usize, op: fn(T, T) -> T, e:\
-    \ T) -> Self {\n        let size = n.next_power_of_two();\n        let size_log\
-    \ = (size.ilog2() + 1) as usize;\n        Self {\n            tree: vec![e; 2\
-    \ * size],\n            size,\n            size_log,\n            op,\n      \
-    \      e,\n            n,\n        }\n    }\n\n    pub fn build(&mut self, vec:\
-    \ Vec<T>) {\n        assert!(vec.len() == self.n);\n        for k in 0..self.n\
+  code: "pub mod wrapper;\n\n#[derive(Debug, Clone)]\npub struct SegmentTree<T> {\n\
+    \    tree: Vec<T>,\n    size: usize,\n    size_log: usize,\n    // Monoids: operation\
+    \ (associativity) + identity element\n    op: fn(T, T) -> T,\n    e: T,\n    n:\
+    \ usize,\n}\n\nimpl<T: Copy> SegmentTree<T> {\n    pub fn new(n: usize, op: fn(T,\
+    \ T) -> T, e: T) -> Self {\n        let size = n.next_power_of_two();\n      \
+    \  let size_log = (size.ilog2() + 1) as usize;\n        Self {\n            tree:\
+    \ vec![e; 2 * size],\n            size,\n            size_log,\n            op,\n\
+    \            e,\n            n,\n        }\n    }\n\n    pub fn build(&mut self,\
+    \ vec: &[T]) {\n        assert!(vec.len() == self.n);\n        for k in 0..self.n\
     \ {\n            self.tree[k + self.size] = vec[k];\n        }\n        for k\
     \ in (0..self.size).rev() {\n            self.update(k);\n        }\n    }\n\n\
     \    pub fn set(&mut self, mut k: usize, x: T) {\n        assert!(k < self.n);\n\
@@ -94,22 +98,30 @@ data:
     \            r & r.wrapping_neg() != r\n        } {}\n        0\n    }\n\n   \
     \ fn update(&mut self, k: usize) {\n        self.tree[k] = (self.op)(self.tree[k\
     \ << 1 | 0], self.tree[k << 1 | 1]);\n    }\n}\n"
-  dependsOn: []
+  dependsOn:
+  - data-structure/segment-tree/src/wrapper.rs
   isVerificationFile: false
   path: data-structure/segment-tree/src/lib.rs
   requiredBy:
-  - tree/euler-tour/src/lib.rs
   - string/rolling-hash-segment-tree/src/lib.rs
-  timestamp: '2025-08-21 20:46:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - data-structure/segment-tree/src/wrapper.rs
+  - tree/euler-tour/src/lib.rs
+  timestamp: '2026-01-01 00:11:18+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verification/aizu-online-judge/dsl_2_a/src/main.rs
   - verification/aizu-online-judge/dsl_2_b/src/main.rs
-  - verification/library-checker/vertex_set_path_composite/src/main.rs
+  - verification/aizu-online-judge/dsl_2_a/src/main.rs
   - verification/library-checker/point_set_range_composite/src/main.rs
+  - verification/library-checker/vertex_set_path_composite/src/main.rs
 documentation_of: data-structure/segment-tree/src/lib.rs
 layout: document
 title: Segment Tree
 ---
 
 ## Description
+
+## Reference
+<!--- [https://ei1333.github.io/library/structure/segment-tree/segment-tree.hpp](https://ei1333.github.io/library/structure/segment-tree/segment-tree.hpp)-->
+- [https://atcoder.github.io/ac-library/production/document_en/segtree.html](https://atcoder.github.io/ac-library/production/document_en/segtree.html)
+- [https://qiita.com/sysdev/items/6aaf0c9157cf96a64e59](https://qiita.com/sysdev/items/6aaf0c9157cf96a64e59)
+- [https://ikatakos.com/pot/programming_algorithm/data_structure/segment_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/segment_tree)

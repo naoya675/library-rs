@@ -13,25 +13,25 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
   code: "// verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\n\
-    \nuse proconio::input;\n\nuse dijkstra::Dijkstra;\n\nfn main() {\n    input! {\n\
+    \nuse proconio::input;\n\nuse dijkstra::dijkstra;\n\nfn main() {\n    input! {\n\
     \        v: usize,\n        e: usize,\n        r: usize,\n        std: [(usize,\
-    \ usize, i64); e],\n    }\n    let mut dij = Dijkstra::new(v);\n    std.iter().for_each(|&(s,\
-    \ t, d)| dij.add_edge(s, t, d));\n\n    let res = dij.dijkstra(r);\n    for i\
-    \ in 0..v {\n        println!(\"{}\", if res[i] < i64::MAX / 4 { res[i].to_string()\
+    \ usize, i64); e],\n    }\n    let mut graph = vec![vec![]; v];\n    std.iter().for_each(|&(s,\
+    \ t, d)| graph[s].push((t, d)));\n\n    let res = dijkstra(v, &graph, r);\n  \
+    \  for i in 0..v {\n        println!(\"{}\", if res[i] < i64::MAX / 4 { res[i].to_string()\
     \ } else { \"INF\".to_string() });\n    }\n}\n"
   dependsOn:
   - graph/dijkstra/src/lib.rs
   isVerificationFile: true
   path: verification/aizu-online-judge/grl_1_a/src/main.rs
   requiredBy: []
-  timestamp: '2025-09-06 15:04:09+09:00'
+  timestamp: '2026-01-01 00:11:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verification/aizu-online-judge/grl_1_a/src/main.rs

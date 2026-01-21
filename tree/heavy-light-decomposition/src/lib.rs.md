@@ -16,16 +16,14 @@ data:
   _pathExtension: rs
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links:
-    - https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp.html
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    links: []
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/rust.py\"\
     , line 288, in bundle\n    raise NotImplementedError\nNotImplementedError\n"
-  code: "// reference: https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp.html\n\
-    \n#[derive(Debug, Clone)]\npub struct Edge<Cost> {\n    from: usize,\n    to:\
+  code: "#[derive(Debug, Clone)]\npub struct Edge<Cost> {\n    from: usize,\n    to:\
     \ usize,\n    cost: Cost,\n}\n\nimpl<Cost: Copy> Edge<Cost> {\n    pub fn new(from:\
     \ usize, to: usize, cost: Cost) -> Self {\n        Self { from, to, cost }\n \
     \   }\n}\n\n#[derive(Debug, Clone)]\npub struct HeavyLightDecomposition<Cost>\
@@ -112,12 +110,12 @@ data:
   isVerificationFile: false
   path: tree/heavy-light-decomposition/src/lib.rs
   requiredBy: []
-  timestamp: '2025-08-21 20:48:10+09:00'
+  timestamp: '2025-10-04 01:11:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verification/aizu-online-judge/grl_5_c/src/main.rs
   - verification/aizu-online-judge/grl_5_d/src/main.rs
   - verification/aizu-online-judge/grl_5_e/src/main.rs
-  - verification/aizu-online-judge/grl_5_c/src/main.rs
 documentation_of: tree/heavy-light-decomposition/src/lib.rs
 layout: document
 title: Heavy-Light Decomposition
@@ -126,4 +124,7 @@ title: Heavy-Light Decomposition
 ## Description
 
 ## Reference
+- [https://ferin-tech.hatenablog.com/entry/2019/11/21/HL分解の実装](https://ferin-tech.hatenablog.com/entry/2019/11/21/HL分解の実装)
 - [https://math314.hateblo.jp/entry/2014/06/24/220107](https://math314.hateblo.jp/entry/2014/06/24/220107)
+- [https://qiita.com/ageprocpp/items/8dfe768218da83314989](https://qiita.com/ageprocpp/items/8dfe768218da83314989)
+<!--- [https://atcoder.jp/contests/abc269/editorial/4838](https://atcoder.jp/contests/abc269/editorial/4838)-->
