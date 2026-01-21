@@ -1,46 +1,56 @@
 name: verify
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+    push:
+        branches:
+            - main
+    pull_request:
 
 jobs:
-  verify:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    verify:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
 
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
+            - name: Set up Python
+              uses: actions/setup-python@v4
+              with:
+                  python-version: 3.11
 
-      - name: Install dependencies
-        run: pip3 install -U online-judge-verify-helper
+            - name: Install dependencies
+              run: pip3 install -U online-judge-verify-helper
 
-      - name: Set up Rust (1.70.0)
-        run: |
-          rustup set profile minimal
-          rustup install 1.70.0
-          rustup override set nightly
+            - name: Cache oj testcases
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      ~/.cache/online-judge-tools/
+                      ~/.verify-helper/cache/
+                  key: ${{ runner.os }}-oj-cache-${{ hashFiles('verification/**/*.rs','Cargo.lock','.github/workflows/verify.yml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-oj-cache-
 
-      # required by cargo-udeps
-      - name: Set up Rust (nightly)
-        run: |
-          rustup set profile minimal
-          rustup install nightly
-          rustup override set nightly
+            - name: Set up Rust (1.89.0)
+              run: |
+                  rustup set profile minimal
+                  rustup install 1.89.0
+                  rustup override set nightly
 
-      - name: Run tests
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: oj-verify all
+            # required by cargo-udeps
+            - name: Set up Rust (nightly)
+              run: |
+                  rustup set profile minimal
+                  rustup install nightly
+                  rustup override set nightly
+
+            - name: Run tests
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+                  GH_PAT: ${{ secrets.GH_PAT }}
+              run: oj-verify all
