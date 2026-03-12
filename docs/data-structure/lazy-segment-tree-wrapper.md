@@ -12,3 +12,6 @@ documentation_of: //data-structure/lazy-segment-tree/src/wrapper.rs
 
 - Range Arithmetic Sequence Add
     - [https://atcoder.jp/contests/abc407/editorial/13118](https://atcoder.jp/contests/abc407/editorial/13118)
+
+- Range Add + Flip Range Maximum Query
+    - [https://atcoder.jp/contests/abc441/editorial/15103](https://atcoder.jp/contests/abc441/editorial/15103)

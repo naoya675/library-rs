@@ -119,3 +119,52 @@ pub mod range_arithmetic_sequence_add {
         }
     }
 }
+
+pub mod range_add_and_flip_range_maximum {
+    use crate::LazySegmentTree;
+
+    #[derive(Debug, Clone, Copy)]
+    pub struct S {
+        max: i64,
+        up: usize,   // face up
+        down: usize, // face down
+    }
+
+    #[derive(Debug, Clone, Copy)]
+    pub struct F {
+        add: i64,
+        flip: usize,
+    }
+
+    pub struct RangeAddAndFlipRangeMaximumQuery;
+    impl RangeAddAndFlipRangeMaximumQuery {
+        pub fn new(n: usize) -> LazySegmentTree<S, F> {
+            LazySegmentTree::new(
+                n,
+                |x, y| S {
+                    max: std::cmp::max(x.max, y.max),
+                    up: x.up + y.up,
+                    down: x.down + y.down,
+                },
+                S { max: 0, up: 0, down: 0 },
+                |f, x| {
+                    let flip = f.flip & 1 == 1;
+                    S {
+                        max: if (if flip { x.down } else { x.up }) == 0 {
+                            0
+                        } else {
+                            f.add + if f.flip == 0 { x.max } else { 0 }
+                        },
+                        up: if flip { x.down } else { x.up },
+                        down: if flip { x.up } else { x.down },
+                    }
+                },
+                |f, g| F {
+                    add: f.add + if f.flip == 0 { g.add } else { 0 },
+                    flip: f.flip + g.flip,
+                },
+                F { add: 0, flip: 0 },
+            )
+        }
+    }
+}

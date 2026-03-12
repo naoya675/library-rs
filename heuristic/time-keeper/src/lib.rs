@@ -26,11 +26,11 @@ impl TimeKeeper {
         let elapsed_time = self.time.elapsed().as_nanos() as f64 * 1e-9;
         #[cfg(feature = "local")]
         {
-            elapsed_time * 0.90 >= self.time_threshold
+            elapsed_time >= self.time_threshold * 0.90
         }
         #[cfg(not(feature = "local"))]
         {
-            elapsed_time * 0.90 >= self.time_threshold
+            elapsed_time >= self.time_threshold * 0.90
         }
     }
 }
