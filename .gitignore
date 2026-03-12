@@ -1,3 +1,10 @@
 target
+examples
 Cargo.lock
 rustfmt.toml
+
+verify.sh
+verify.json
+result.json
+_jekyll/
+.competitive-verifier/cache/
