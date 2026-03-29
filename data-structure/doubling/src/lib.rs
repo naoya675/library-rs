@@ -8,24 +8,6 @@ pub struct Doubling<T> {
     e: T,
 }
 
-impl<T: Copy + Default> Doubling<T>
-where
-    T: std::ops::Add<T, Output = T>,
-    T: std::ops::AddAssign,
-{
-    pub fn new_default(n: usize, m: usize) -> Self {
-        fn op<T>(x: T, y: T) -> T
-        where
-            T: std::ops::Add<T, Output = T>,
-            T: std::ops::AddAssign,
-        {
-            x + y
-        }
-
-        Self::new(n, m, op, T::default())
-    }
-}
-
 impl<T: Copy> Doubling<T> {
     pub fn new(n: usize, m: usize, op: fn(T, T) -> T, e: T) -> Self {
         let m = (m.next_power_of_two().ilog2() + 1) as usize;

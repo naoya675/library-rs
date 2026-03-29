@@ -3,7 +3,7 @@ pub struct BipartiteUnionFind {
     n: usize,
     par: Vec<usize>,
     siz: Vec<usize>,
-    parity: Vec<u8>, // parity from x to root (0: same parity, 1: different parity)
+    parity: Vec<u8>,
     parity_count: Vec<[usize; 2]>,
     bipartite: Vec<bool>,
 }
@@ -12,7 +12,7 @@ impl BipartiteUnionFind {
     pub fn new(n: usize) -> Self {
         Self {
             n,
-            par: (0..n).collect::<Vec<usize>>(),
+            par: (0..n).collect(),
             siz: vec![1; n],
             parity: vec![0; n],
             parity_count: vec![[1, 0]; n],
@@ -119,6 +119,6 @@ impl BipartiteUnionFind {
         for i in 0..self.n {
             res[self.leader(i)].push(i);
         }
-        res.into_iter().filter(|f| !f.is_empty()).collect::<Vec<_>>()
+        res.into_iter().filter(|f| !f.is_empty()).collect()
     }
 }
