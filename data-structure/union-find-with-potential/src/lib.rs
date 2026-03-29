@@ -10,37 +10,11 @@ pub struct UnionFindWithPotential<T> {
     inv: fn(T) -> T,
 }
 
-impl<T: Copy + PartialEq + Eq + Default> UnionFindWithPotential<T>
-where
-    T: std::ops::Neg<Output = T>,
-    T: std::ops::Add<T, Output = T>,
-    T: std::ops::AddAssign,
-{
-    pub fn new_default(n: usize) -> Self {
-        fn op<T>(x: T, y: T) -> T
-        where
-            T: std::ops::Add<T, Output = T>,
-            T: std::ops::AddAssign,
-        {
-            x + y
-        }
-
-        fn neg<T>(x: T) -> T
-        where
-            T: std::ops::Neg<Output = T>,
-        {
-            x.neg()
-        }
-
-        Self::new(n, op, T::default(), neg)
-    }
-}
-
 impl<T: Copy + PartialEq + Eq> UnionFindWithPotential<T> {
     pub fn new(n: usize, op: fn(T, T) -> T, e: T, inv: fn(T) -> T) -> Self {
         Self {
             n,
-            par: (0..n).collect::<Vec<usize>>(),
+            par: (0..n).collect(),
             siz: vec![1; n],
             diff_potential: vec![e; n],
             op,
@@ -108,6 +82,6 @@ impl<T: Copy + PartialEq + Eq> UnionFindWithPotential<T> {
         for i in 0..self.n {
             res[self.leader(i)].push(i);
         }
-        res.into_iter().filter(|f| !f.is_empty()).collect::<Vec<_>>()
+        res.into_iter().filter(|f| !f.is_empty()).collect()
     }
 }

@@ -20,7 +20,7 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut uf = UnionFindWithPotential::<Mint>::new_default(n);
+    let mut uf = UnionFindWithPotential::<Mint>::new(n, |x, y| x + y, Mint::new(0), |x| -x);
 
     for query in queries {
         match query {

@@ -9,7 +9,7 @@ impl UnionFind {
     pub fn new(n: usize) -> Self {
         Self {
             n,
-            par: (0..n).collect::<Vec<usize>>(),
+            par: (0..n).collect(),
             siz: vec![1; n],
         }
     }
@@ -57,6 +57,6 @@ impl UnionFind {
         for i in 0..self.n {
             res[self.leader(i)].push(i);
         }
-        res.into_iter().filter(|f| !f.is_empty()).collect::<Vec<_>>()
+        res.into_iter().filter(|f| !f.is_empty()).collect()
     }
 }

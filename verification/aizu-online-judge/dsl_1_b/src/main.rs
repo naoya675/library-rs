@@ -17,7 +17,7 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut uf = UnionFindWithPotential::<i64>::new_default(n);
+    let mut uf = UnionFindWithPotential::<i64>::new(n, |x, y| x + y, 0, |x| -x);
 
     for query in queries {
         match query {
