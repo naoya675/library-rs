@@ -9,7 +9,7 @@ type Mint = StaticModint<998244353>;
 
 query::define_query! {
     Query {
-        0 => Query0(l: usize, r: usize, b: u64, c: u64),
+        0 => Query0(l: usize, r: usize, b: i64, c: i64),
         1 => Query1(l: usize, r: usize),
     }
 }
@@ -18,7 +18,7 @@ fn main() {
     input! {
         n: usize,
         q: usize,
-        a: [u64; n],
+        a: [i64; n],
         queries: [Query; q],
     }
     let mut lst = LazySegmentTree::<(Mint, Mint), (Mint, Mint)>::new(

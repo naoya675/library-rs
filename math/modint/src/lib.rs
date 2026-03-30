@@ -4,10 +4,9 @@ pub struct StaticModint<const MOD: u64> {
 }
 
 impl<const MOD: u64> StaticModint<MOD> {
-    pub fn new(n: u64) -> Self {
+    pub fn new(n: i64) -> Self {
         Self {
-            // value: (n % MOD),
-            value: (n.rem_euclid(MOD)),
+            value: n.rem_euclid(MOD as i64) as u64,
         }
     }
 
@@ -15,8 +14,8 @@ impl<const MOD: u64> StaticModint<MOD> {
         self.value
     }
 
-    // ax + by = gcd(a, b) -> (x, y, gcd(a, b))
-    fn ext_gcd(&self, a: i64, b: i64) -> (i64, i64, i64) {
+    // ax + by = gcd(a, b) -> (x mod b, y mod b, gcd(a, b))
+    fn ext_gcd(a: i64, b: i64) -> (i64, i64, i64) {
         let (mut x0, mut y0, mut r0) = (1, 0, a);
         let (mut x1, mut y1, mut r1) = (0, 1, b);
 
@@ -30,7 +29,6 @@ impl<const MOD: u64> StaticModint<MOD> {
             std::mem::swap(&mut y0, &mut y1);
             std::mem::swap(&mut r0, &mut r1);
         }
-        // (x0, y0, r0)
         (x0.rem_euclid(b), y0.rem_euclid(b), r0.rem_euclid(b))
     }
 
@@ -48,18 +46,19 @@ impl<const MOD: u64> StaticModint<MOD> {
     }
 
     pub fn inv(&self) -> Self {
-        let (x, _, _) = self.ext_gcd(self.value() as i64, MOD as i64);
+        let (x, _, _) = Self::ext_gcd(self.value() as i64, MOD as i64);
         Self { value: x as u64 }
-        // self.pow(MOD - 2)
     }
 }
 
 impl<const MOD: u64> std::ops::Add for StaticModint<MOD> {
     type Output = Self;
     fn add(self, rhs: Self) -> Self {
-        Self {
-            value: (self.value + rhs.value) % MOD,
+        let mut value = self.value + rhs.value;
+        if value >= MOD {
+            value -= MOD;
         }
+        Self { value }
     }
 }
 
@@ -71,13 +70,12 @@ impl<const MOD: u64> std::ops::AddAssign for StaticModint<MOD> {
 
 impl<const MOD: u64> std::ops::Sub for StaticModint<MOD> {
     type Output = Self;
-    fn sub(mut self, rhs: Self) -> Self {
-        if self.value < rhs.value {
-            self.value += MOD;
+    fn sub(self, rhs: Self) -> Self {
+        let mut value = MOD + self.value - rhs.value;
+        if value >= MOD {
+            value -= MOD;
         }
-        Self {
-            value: (self.value - rhs.value) % MOD,
-        }
+        Self { value }
     }
 }
 
@@ -127,31 +125,21 @@ impl<const MOD: u64> std::ops::Neg for StaticModint<MOD> {
 
 pub trait Zero {
     fn zero() -> Self;
-    fn is_zero(&self) -> bool;
 }
 
 impl<const MOD: u64> Zero for StaticModint<MOD> {
     fn zero() -> Self {
         Self::new(0)
     }
-
-    fn is_zero(&self) -> bool {
-        Self::new(0) == *self
-    }
 }
 
 pub trait One {
     fn one() -> Self;
-    fn is_one(&self) -> bool;
 }
 
 impl<const MOD: u64> One for StaticModint<MOD> {
     fn one() -> Self {
         Self::new(1)
-    }
-
-    fn is_one(&self) -> bool {
-        Self::new(1) == *self
     }
 }
 
@@ -167,19 +155,12 @@ impl<const MOD: u64> std::fmt::Display for StaticModint<MOD> {
     }
 }
 
-impl<const MOD: u64> From<u64> for StaticModint<MOD> {
-    fn from(value: u64) -> Self {
-        Self::new(value)
-    }
-}
-
-/*
 macro_rules! impl_from {
     ($($type:ty), *) => {
         $(
             impl<const MOD: u64> From<$type> for StaticModint<MOD> {
                 fn from(value: $type) -> Self {
-                    Self::new(value as u64)
+                    Self::new(value as i64)
                 }
             }
         )*
@@ -187,7 +168,6 @@ macro_rules! impl_from {
 }
 
 impl_from!(u8, i8, u16, i16, u32, i32, u64, i64, usize, isize);
-*/
 
 /*
 macro_rules! impl_ops {

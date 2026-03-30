@@ -9,15 +9,32 @@ impl MersenneModint {
     const MASK31: u64 = (1u64 << 31) - 1;
     const MASK61: u64 = Self::MOD;
 
-    pub fn new(n: u64) -> Self {
+    pub fn new(n: i64) -> Self {
         Self {
-            // value: (n % Self::MOD),
-            value: (n.rem_euclid(Self::MOD)),
+            value: n.rem_euclid(Self::MOD as i64) as u64,
         }
     }
 
     pub fn value(&self) -> u64 {
         self.value
+    }
+
+    // ax + by = gcd(a, b) -> (x mod b, y mod b, gcd(a, b))
+    fn ext_gcd(a: i64, b: i64) -> (i64, i64, i64) {
+        let (mut x0, mut y0, mut r0) = (1, 0, a);
+        let (mut x1, mut y1, mut r1) = (0, 1, b);
+
+        while r1 != 0 {
+            let t = r0 / r1;
+            x0 -= t * x1;
+            y0 -= t * y1;
+            r0 -= t * r1;
+
+            std::mem::swap(&mut x0, &mut x1);
+            std::mem::swap(&mut y0, &mut y1);
+            std::mem::swap(&mut r0, &mut r1);
+        }
+        (x0.rem_euclid(b), y0.rem_euclid(b), r0.rem_euclid(b))
     }
 
     pub fn pow(&self, mut n: u64) -> Self {
@@ -34,26 +51,29 @@ impl MersenneModint {
     }
 
     pub fn inv(&self) -> Self {
-        self.pow(Self::MOD - 2)
+        let (x, _, _) = Self::ext_gcd(self.value() as i64, Self::MOD as i64);
+        Self { value: x as u64 }
     }
 
     pub fn rand() -> Self {
         use rand::Rng;
         let mut rng = rand::rng();
-        Self::new(rng.random_range(Self::MASK31..Self::MASK61))
+        Self::new(rng.random_range(Self::MASK31 as i64..Self::MASK61 as i64))
 
         // rand = "0.8.5"
         // let mut rng = rand::thread_rng();
-        // Self::new(rng.gen_range(Self::MASK31..Self::MASK61))
+        // Self::new(rng.gen_range(Self::MASK31 as i64..Self::MASK61 as i64))
     }
 }
 
 impl std::ops::Add for MersenneModint {
     type Output = Self;
     fn add(self, rhs: Self) -> Self {
-        Self {
-            value: (self.value + rhs.value) % Self::MOD,
+        let mut value = self.value + rhs.value;
+        if value >= Self::MOD {
+            value -= Self::MOD;
         }
+        Self { value }
     }
 }
 
@@ -65,13 +85,12 @@ impl std::ops::AddAssign for MersenneModint {
 
 impl std::ops::Sub for MersenneModint {
     type Output = Self;
-    fn sub(mut self, rhs: Self) -> Self {
-        if self.value < rhs.value {
-            self.value += Self::MOD;
+    fn sub(self, rhs: Self) -> Self {
+        let mut value = Self::MOD + self.value - rhs.value;
+        if value >= Self::MOD {
+            value -= Self::MOD;
         }
-        Self {
-            value: (self.value - rhs.value) % Self::MOD,
-        }
+        Self { value }
     }
 }
 
@@ -129,31 +148,21 @@ impl std::ops::Neg for MersenneModint {
 
 pub trait Zero {
     fn zero() -> Self;
-    fn is_zero(&self) -> bool;
 }
 
 impl Zero for MersenneModint {
     fn zero() -> Self {
         Self::new(0)
     }
-
-    fn is_zero(&self) -> bool {
-        Self::new(0) == *self
-    }
 }
 
 pub trait One {
     fn one() -> Self;
-    fn is_one(&self) -> bool;
 }
 
 impl One for MersenneModint {
     fn one() -> Self {
         Self::new(1)
-    }
-
-    fn is_one(&self) -> bool {
-        Self::new(1) == *self
     }
 }
 
@@ -169,19 +178,12 @@ impl std::fmt::Display for MersenneModint {
     }
 }
 
-impl From<u64> for MersenneModint {
-    fn from(value: u64) -> Self {
-        Self::new(value)
-    }
-}
-
-/*
 macro_rules! impl_from {
     ($($type:ty), *) => {
         $(
             impl From<$type> for MersenneModint {
                 fn from(value: $type) -> Self {
-                    Self::new(value as u64)
+                    Self::new(value as i64)
                 }
             }
         )*
@@ -189,7 +191,6 @@ macro_rules! impl_from {
 }
 
 impl_from!(u8, i8, u16, i16, u32, i32, u64, i64, usize, isize);
-*/
 
 /*
 macro_rules! impl_ops {

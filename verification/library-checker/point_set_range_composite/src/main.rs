@@ -9,8 +9,8 @@ type Mint = StaticModint<998244353>;
 
 query::define_query! {
     Query {
-        0 => Query0(p: usize, c: u64, d: u64),
-        1 => Query1(l: usize, r: usize, x: u64),
+        0 => Query0(p: usize, c: i64, d: i64),
+        1 => Query1(l: usize, r: usize, x: i64),
     }
 }
 
@@ -18,7 +18,7 @@ fn main() {
     input! {
         n: usize,
         q: usize,
-        ab: [(u64, u64); n],
+        ab: [(i64, i64); n],
         queries: [Query; q],
     }
     let mut st = SegmentTree::<(Mint, Mint)>::new(n, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), (Mint::new(1), Mint::new(0)));

@@ -12,6 +12,6 @@ fn main() {
         n: usize,
         k: usize,
     }
-    let mut e = Combinatorics::<Mint>::new(n + k);
-    println!("{}", e.homo(k, n));
+    let mut comb = Combinatorics::<Mint>::new(n + k);
+    println!("{}", comb.homo(k, n));
 }
