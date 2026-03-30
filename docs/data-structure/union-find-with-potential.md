@@ -11,11 +11,11 @@ A data structure for managing disjoint sets with group-valued potentials. Suppor
 fn new(n: usize, op: fn(T, T) -> T, e: T, inv: fn(T) -> T) -> Self
 ```
 
-Creates $n$ sets with the given group $(\mathrm{op}, e, \mathrm{inv})$. Set $i$ ($0 \leq i < n$) initially contains only element $i$ with potential $e$.
+Creates $n$ sets with the given group (`op`, $e$, `inv`). Set $i$ ($0 \leq i < n$) initially contains only element $i$ with potential $e$.
 
 **Constraints**
 - $0 \leq n$
-- $(T, \mathrm{op}, e, \mathrm{inv})$ forms a group
+- $(T,$ `op`$, e,$ `inv`$)$ forms a group
 
 **Complexity**
 - $O(n)$

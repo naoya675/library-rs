@@ -11,7 +11,7 @@ A data structure for binary lifting on functional graphs. Supports k-th successo
 fn new(n: usize, m: usize, op: fn(T, T) -> T, e: T) -> Self
 ```
 
-Creates a doubling table for $n$ nodes with maximum $m$ steps, using the monoid $(\mathrm{op}, e)$ for path aggregation.
+Creates a doubling table for $n$ nodes with maximum $m$ steps, using the monoid (`op`, $e$) for path aggregation.
 
 **Constraints**
 - $0 \leq n$

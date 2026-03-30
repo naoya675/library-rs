@@ -89,4 +89,7 @@ Divides the elements into sets and returns the list of them. Both of the orders 
 ## Reference
 - [https://atcoder.github.io/ac-library/production/document_en/dsu.html](https://atcoder.github.io/ac-library/production/document_en/dsu.html)
 - [https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3](https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3)
+- [https://qiita.com/alumite14/items/1444e03b2d27a8452e61](https://qiita.com/alumite14/items/1444e03b2d27a8452e61)
+- [https://qiita.com/alumite14/items/1fd477a14cf5c3019326](https://qiita.com/alumite14/items/1fd477a14cf5c3019326)
+- [https://qiita.com/alumite14/items/f4c355720f2a6da88ca5](https://qiita.com/alumite14/items/f4c355720f2a6da88ca5)
 - [https://torus711.hatenablog.com/entry/2020/11/16/205309](https://torus711.hatenablog.com/entry/2020/11/16/205309)
