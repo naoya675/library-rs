@@ -3,6 +3,8 @@ title: Bipartite Union Find
 documentation_of: //data-structure/bipartite-union-find/src/lib.rs
 ---
 
+A union-find data structure that tracks parity constraints between elements. Supports merging with same/different parity constraints and querying whether a component is bipartite.
+
 ## new
 
 ```rust

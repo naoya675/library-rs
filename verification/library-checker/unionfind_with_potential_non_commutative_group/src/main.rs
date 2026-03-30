@@ -9,43 +9,44 @@ type Mint = StaticModint<998244353>;
 
 query::define_query! {
     Query {
-        0 => Query0(u: usize, v: usize, x: u64, y: u64, z: u64, w: u64),
+        0 => Query0(u: usize, v: usize, x: i64, y: i64, z: i64, w: i64),
         1 => Query1(u: usize, v: usize),
     }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Matrix {
-    mat: (Mint, Mint, Mint, Mint),
+    mat: [[Mint; 2]; 2],
 }
 
 impl Matrix {
-    pub fn new(x: u64, y: u64, z: u64, w: u64) -> Self {
-        Self {
-            mat: (Mint::new(x), Mint::new(y), Mint::new(z), Mint::new(w)),
-        }
+    pub fn new(mat: [[Mint; 2]; 2]) -> Self {
+        Self { mat }
     }
 
-    pub fn inv(x: Matrix) -> Self {
-        Self {
-            mat: (x.mat.3, -x.mat.1, -x.mat.2, x.mat.0),
+    pub fn mul(lhs: Self, rhs: Self) -> Self {
+        let mut ret = Self::new([[Mint::new(0); 2]; 2]);
+        for i in 0..2 {
+            for k in 0..2 {
+                for j in 0..2 {
+                    ret.mat[i][j] += lhs.mat[i][k] * rhs.mat[k][j];
+                }
+            }
         }
+        ret
     }
 
-    pub fn add(x: Matrix, y: Matrix) -> Self {
-        Self {
-            mat: (x.mat.0 + y.mat.0, x.mat.1 + y.mat.1, x.mat.2 + y.mat.2, x.mat.3 + y.mat.3),
+    pub fn identity() -> Self {
+        let mut mat = [[Mint::new(0); 2]; 2];
+        for i in 0..2 {
+            mat[i][i] = Mint::new(1);
         }
+        Self { mat }
     }
 
-    pub fn mul(x: Matrix, y: Matrix) -> Self {
+    pub fn inv(a: Self) -> Self {
         Self {
-            mat: (
-                x.mat.0 * y.mat.0 + x.mat.1 * y.mat.2,
-                x.mat.0 * y.mat.1 + x.mat.1 * y.mat.3,
-                x.mat.2 * y.mat.0 + x.mat.3 * y.mat.2,
-                x.mat.2 * y.mat.1 + x.mat.3 * y.mat.3,
-            ),
+            mat: [[a.mat[1][1], -a.mat[0][1]], [-a.mat[1][0], a.mat[0][0]]],
         }
     }
 }
@@ -56,17 +57,18 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut uf = UnionFindWithPotential::<Matrix>::new(n, |x, y| Matrix::mul(x, y), Matrix::new(1, 0, 0, 1), |x| Matrix::inv(x));
+    let mut uf = UnionFindWithPotential::<Matrix>::new(n, Matrix::mul, Matrix::identity(), Matrix::inv);
 
     for query in queries {
         match query {
             Query0(u, v, x, y, z, w) => {
-                println!("{}", if uf.merge(u, v, Matrix::new(x, y, z, w)).is_some() { 1 } else { 0 });
+                let m = Matrix::new([[Mint::new(x), Mint::new(y)], [Mint::new(z), Mint::new(w)]]);
+                println!("{}", if uf.merge(u, v, m).is_some() { 1 } else { 0 });
             }
             Query1(u, v) => {
                 if uf.same(u, v) {
-                    let (x, y, z, w) = uf.diff(u, v).mat;
-                    println!("{} {} {} {}", x, y, z, w);
+                    let m = uf.diff(u, v).mat;
+                    println!("{} {} {} {}", m[0][0], m[0][1], m[1][0], m[1][1]);
                 } else {
                     println!("-1");
                 }

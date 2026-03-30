@@ -9,7 +9,7 @@ type Mint = StaticModint<998244353>;
 
 query::define_query! {
     Query {
-        0 => Query0(u: usize, v: usize, x: u64),
+        0 => Query0(u: usize, v: usize, x: i64),
         1 => Query1(u: usize, v: usize),
     }
 }

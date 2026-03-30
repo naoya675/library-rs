@@ -68,7 +68,7 @@ impl AhoCorasick {
                         merged.extend(v.iter().cloned());
                         merged.sort_unstable();
                         merged.dedup();
-                        *self.trie.accpet_mut(next_id) = merged;
+                        *self.trie.accept_mut(next_id) = merged;
                     }
                     que.push_back(next_id);
                 } else {

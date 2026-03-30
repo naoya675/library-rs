@@ -57,24 +57,29 @@ impl Trie {
     }
 
     #[inline]
-    pub fn accpet_mut(&mut self, node_id: usize) -> &mut Vec<usize> {
+    pub fn accept_mut(&mut self, node_id: usize) -> &mut Vec<usize> {
         assert!(node_id < self.size());
         &mut self.nodes[node_id].accept
     }
 
+    #[inline]
+    pub fn common(&self, node_id: usize) -> usize {
+        assert!(node_id < self.size());
+        self.nodes[node_id].common
+    }
+
     fn insert_internal(&mut self, word: &[char], word_id: usize, node_id: usize, id: usize) {
+        self.nodes[node_id].common += 1;
         if word.len() == word_id {
             self.nodes[node_id].accept.push(id);
         } else {
             let c = (word[word_id] as usize) - (self.base as usize);
             if let Some(next_id) = self.nodes[node_id].next[c] {
-                self.nodes[node_id].common += 1;
                 self.insert_internal(word, word_id + 1, next_id, id);
             } else {
                 let next_id = self.nodes.len();
                 self.nodes.push(TrieNode::new(c, self.size));
                 self.nodes[node_id].next[c] = Some(next_id);
-                self.nodes[node_id].common += 1;
                 self.insert_internal(word, word_id + 1, next_id, id);
             }
         }
@@ -89,18 +94,18 @@ impl Trie {
     fn insert_internal(&mut self, word: &[char], word_id: usize) {
         let mut node_id = 0;
         for &w in word {
+            self.nodes[node_id].common += 1;
             let c = (w as usize) - (self.base as usize);
             if let Some(next_id) = self.nodes[node_id].next[c] {
-                self.nodes[node_id].common += 1;
                 node_id = next_id;
             } else {
                 let next_id = self.nodes.len();
                 self.nodes.push(TrieNode::new(c, self.size));
                 self.nodes[node_id].next[c] = Some(next_id);
-                self.nodes[node_id].common += 1;
                 node_id = next_id;
             }
         }
+        self.nodes[node_id].common += 1;
         self.nodes[node_id].accept.push(word_id);
     }
 
@@ -153,7 +158,7 @@ impl Trie {
     }
      */
 
-    fn query_internal<F>(&self, word: &[char], mut f: F, word_id: usize, node_id: usize)
+    fn query_internal<F>(&self, word: &[char], f: &mut F, word_id: usize, node_id: usize)
     where
         F: FnMut(usize),
     {
@@ -170,11 +175,11 @@ impl Trie {
         }
     }
 
-    pub fn query<F>(&self, word: &[char], f: F)
+    pub fn query<F>(&self, word: &[char], mut f: F)
     where
         F: FnMut(usize),
     {
-        self.query_internal(word, f, 0, 0);
+        self.query_internal(word, &mut f, 0, 0);
     }
 
     pub fn count(&self) -> usize {

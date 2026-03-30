@@ -25,28 +25,23 @@ fn main() {
     }
     let bit = RefCell::new(FenwickTree::<i64>::new(x.len()));
     let inv = Cell::new(0);
-    let all = Cell::new(0);
     let mut res = vec![0; q];
     mo.calculate_queries(
         |i| {
             inv.set(inv.get() + bit.borrow().sum(0, a[i]));
             bit.borrow_mut().add(a[i], 1);
-            all.set(all.get() + 1);
         },
         |i| {
-            inv.set(inv.get() + all.get() - bit.borrow().sum(0, a[i] + 1));
+            inv.set(inv.get() + bit.borrow().sum(a[i] + 1, x.len()));
             bit.borrow_mut().add(a[i], 1);
-            all.set(all.get() + 1);
         },
         |i| {
+            bit.borrow_mut().add(a[i], -1);
             inv.set(inv.get() - bit.borrow().sum(0, a[i]));
-            bit.borrow_mut().add(a[i], -1);
-            all.set(all.get() - 1);
         },
         |i| {
-            inv.set(inv.get() - (all.get() - bit.borrow().sum(0, a[i] + 1)));
             bit.borrow_mut().add(a[i], -1);
-            all.set(all.get() - 1);
+            inv.set(inv.get() - bit.borrow().sum(a[i] + 1, x.len()));
         },
         |idx| {
             res[idx] = inv.get();

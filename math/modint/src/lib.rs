@@ -123,9 +123,7 @@ impl<const MOD: u64> std::ops::Neg for StaticModint<MOD> {
     }
 }
 
-pub trait Zero {
-    fn zero() -> Self;
-}
+use numeric_traits::{Numeric, One, Zero};
 
 impl<const MOD: u64> Zero for StaticModint<MOD> {
     fn zero() -> Self {
@@ -133,15 +131,13 @@ impl<const MOD: u64> Zero for StaticModint<MOD> {
     }
 }
 
-pub trait One {
-    fn one() -> Self;
-}
-
 impl<const MOD: u64> One for StaticModint<MOD> {
     fn one() -> Self {
         Self::new(1)
     }
 }
+
+impl<const MOD: u64> Numeric for StaticModint<MOD> {}
 
 impl<const MOD: u64> Default for StaticModint<MOD> {
     fn default() -> Self {

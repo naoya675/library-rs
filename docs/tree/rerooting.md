@@ -11,3 +11,6 @@ documentation_of: //tree/rerooting/src/lib.rs
 - [https://ei1333.hateblo.jp/entry/2018/12/21/004022](https://ei1333.hateblo.jp/entry/2018/12/21/004022)
 - [https://snuke.hatenablog.com/entry/2019/01/15/211812](https://snuke.hatenablog.com/entry/2019/01/15/211812)
 - [https://snuke.hatenablog.com/entry/2019/01/16/203626](https://snuke.hatenablog.com/entry/2019/01/16/203626)
+
+## Verified
+- [https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e](https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e) ([submission](https://atcoder.jp/contests/njpc2017/submissions/74541193))
