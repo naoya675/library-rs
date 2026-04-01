@@ -12,3 +12,4 @@ documentation_of: //string/knuth-morris-pratt/src/lib.rs
 - [https://snuke.hatenablog.com/entry/2015/04/05/184819](https://snuke.hatenablog.com/entry/2015/04/05/184819)
 - [https://omochan.hatenablog.com/entry/2017/08/16/003840](https://omochan.hatenablog.com/entry/2017/08/16/003840)
 - [https://potetisensei.hatenablog.com/entry/2017/07/10/174908](https://potetisensei.hatenablog.com/entry/2017/07/10/174908)
+- [https://stackoverflow.com/questions/13271856/understanding-knuth-morris-pratt-algorithm](https://stackoverflow.com/questions/13271856/understanding-knuth-morris-pratt-algorithm)

@@ -1,4 +1,4 @@
-use std::collections::{HashMap, VecDeque};
+use std::collections::VecDeque;
 
 use trie::Trie;
 
@@ -6,7 +6,7 @@ use trie::Trie;
 pub struct AhoCorasick {
     trie: Trie,
     fail: usize,
-    pattern: Vec<usize>, // number of matches
+    pattern: Vec<usize>, // number of matches reachable via suffix links
     size: usize,
     base: char,
 }
@@ -37,6 +37,19 @@ impl AhoCorasick {
         self.trie.search_prefix(word)
     }
 
+    #[inline]
+    pub fn goto(&self, node_id: usize, c: char) -> usize {
+        assert!(!self.pattern.is_empty(), "call build() before goto()");
+        let c = (c as usize) - (self.base as usize);
+        self.trie.next(node_id, c).unwrap()
+    }
+
+    #[inline]
+    pub fn fail(&self, node_id: usize) -> usize {
+        assert!(!self.pattern.is_empty(), "call build() before fail()");
+        self.trie.next(node_id, self.fail).unwrap()
+    }
+
     // build Pattern Matching Automaton (PMA)
     pub fn build(&mut self, heavy: bool) {
         self.pattern.resize(self.trie.size(), 0);
@@ -61,13 +74,26 @@ impl AhoCorasick {
                     *self.trie.next_mut(next_id, self.fail) = self.trie.next(fail, i);
                     if heavy {
                         // set_union
-                        let mut merged = vec![];
-                        let u = self.trie.accept(next_id);
-                        let v = self.trie.accept(self.trie.next(fail, i).unwrap());
-                        merged.extend(u.iter().cloned());
-                        merged.extend(v.iter().cloned());
-                        merged.sort_unstable();
-                        merged.dedup();
+                        let u = self.trie.accept(next_id).clone();
+                        let v = self.trie.accept(self.trie.next(fail, i).unwrap()).clone();
+                        let mut merged = Vec::with_capacity(u.len() + v.len());
+                        let mut j = 0;
+                        let mut k = 0;
+                        while j < u.len() && k < v.len() {
+                            if u[j] == v[k] {
+                                merged.push(u[j]);
+                                j += 1;
+                                k += 1;
+                            } else if u[j] < v[k] {
+                                merged.push(u[j]);
+                                j += 1;
+                            } else if u[j] > v[k] {
+                                merged.push(v[k]);
+                                k += 1;
+                            }
+                        }
+                        merged.extend_from_slice(&u[j..]);
+                        merged.extend_from_slice(&v[k..]);
                         *self.trie.accept_mut(next_id) = merged;
                     }
                     que.push_back(next_id);
@@ -78,37 +104,35 @@ impl AhoCorasick {
         }
     }
 
-    pub fn matches(&self, word: &[char], mut now: usize) -> HashMap<usize, usize> {
-        let mut res: HashMap<usize, usize> = HashMap::new();
-        let mut cnt: HashMap<usize, usize> = HashMap::new();
-
+    pub fn matches_from(&self, word: &[char], mut node_id: usize) -> Vec<usize> {
+        let mut res = vec![0; self.trie.count()];
         for &c in word {
-            let c = (c as usize) - (self.base as usize);
-            now = self.trie.next(now, c).unwrap();
-            *cnt.entry(now).or_default() += 1;
-        }
-        for (now, cnt) in cnt {
-            for &id in self.trie.accept(now) {
-                *res.entry(id).or_default() += cnt;
+            node_id = self.goto(node_id, c);
+            for &id in self.trie.accept(node_id) {
+                res[id] += 1;
             }
         }
         res
     }
 
-    pub fn next_word(&self, word: &[char], mut now: usize) -> (usize, usize) {
-        let mut total = 0;
-        for &c in word {
-            let (pattern, next) = self.next(c, now);
-            total += pattern;
-            now = next;
-        }
-        (total, now)
+    pub fn matches(&self, word: &[char]) -> Vec<usize> {
+        self.matches_from(word, 0)
     }
 
-    pub fn next(&self, c: char, now: usize) -> (usize, usize) {
+    pub fn next_word(&self, word: &[char], mut node_id: usize) -> (usize, usize) {
+        let mut ret = 0;
+        for &c in word {
+            let (pattern, next) = self.next(node_id, c);
+            ret += pattern;
+            node_id = next;
+        }
+        (ret, node_id)
+    }
+
+    pub fn next(&self, node_id: usize, c: char) -> (usize, usize) {
         let c = (c as usize) - (self.base as usize);
-        if let Some(now) = self.trie.next(now, c) {
-            return (self.pattern[now], now);
+        if let Some(next) = self.trie.next(node_id, c) {
+            return (self.pattern[next], next);
         }
         unreachable!()
     }

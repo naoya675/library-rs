@@ -158,6 +158,36 @@ impl Trie {
     }
      */
 
+    fn remove_internal(&mut self, word: &[char], word_id: usize, node_id: usize) -> bool {
+        if word.len() == word_id {
+            if self.nodes[node_id].accept.is_empty() {
+                return false;
+            }
+            self.nodes[node_id].accept.pop();
+            self.nodes[node_id].common -= 1;
+            return true;
+        }
+        let c = (word[word_id] as usize) - (self.base as usize);
+        if let Some(next_id) = self.nodes[node_id].next[c] {
+            let result = self.remove_internal(word, word_id + 1, next_id);
+            if result {
+                // logical delete  [soft delete]
+                self.nodes[node_id].common -= 1;
+                // physical delete [hard delete]
+                // if self.nodes[next_id].common == 0 {
+                //     self.nodes[node_id].next[c] = None;
+                // }
+            }
+            result
+        } else {
+            false
+        }
+    }
+
+    pub fn remove(&mut self, word: &[char]) -> bool {
+        self.remove_internal(word, 0, 0)
+    }
+
     fn query_internal<F>(&self, word: &[char], f: &mut F, word_id: usize, node_id: usize)
     where
         F: FnMut(usize),
@@ -184,6 +214,19 @@ impl Trie {
 
     pub fn count(&self) -> usize {
         self.nodes[self.root].common
+    }
+
+    pub fn count_prefix(&self, word: &[char]) -> usize {
+        let mut node_id = self.root;
+        for &w in word {
+            let c = (w as usize) - (self.base as usize);
+            if let Some(next_id) = self.nodes[node_id].next[c] {
+                node_id = next_id;
+            } else {
+                return 0;
+            }
+        }
+        self.nodes[node_id].common
     }
 
     pub fn size(&self) -> usize {

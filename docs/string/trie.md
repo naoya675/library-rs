@@ -104,6 +104,17 @@ Returns whether any inserted word has the given prefix.
 **Complexity**
 - $O(\lvert w \rvert)$
 
+## remove
+
+```rust
+fn remove(&mut self, word: &[char]) -> bool
+```
+
+Removes a word from the trie by logical deletion (decrementing `common` along the path). Returns `true` if the word existed and was removed, `false` otherwise.
+
+**Complexity**
+- $O(\lvert w \rvert)$
+
 ## query
 
 ```rust
@@ -126,6 +137,17 @@ Returns the number of inserted words.
 **Complexity**
 - $O(1)$
 
+## count_prefix
+
+```rust
+fn count_prefix(&self, word: &[char]) -> usize
+```
+
+Returns the number of inserted words that have the given `word` as a prefix.
+
+**Complexity**
+- $O(\lvert w \rvert)$
+
 ## size
 
 ```rust
@@ -139,10 +161,7 @@ Returns the number of nodes in the trie.
 
 ## Reference
 - [https://atcoder.jp/contests/abc403/editorial/12825](https://atcoder.jp/contests/abc403/editorial/12825)
-- [https://qiita.com/hibit/items/8001325a0591f4681473](https://qiita.com/hibit/items/8001325a0591f4681473)
-- [https://qiita.com/butsurizuki/items/7c1dd4916b9495beacea](https://qiita.com/butsurizuki/items/7c1dd4916b9495beacea)
 - [https://algo-logic.info/trie-tree/](https://algo-logic.info/trie-tree/)
 
 ## Verified
 - [https://atcoder.jp/contests/abc353/tasks/abc353_e](https://atcoder.jp/contests/abc353/tasks/abc353_e) ([submission](https://atcoder.jp/contests/abc353/submissions/74547834))
-<!--- [https://atcoder.jp/contests/abc403/tasks/abc403_e](https://atcoder.jp/contests/abc403/tasks/abc403_e) ([submission]())-->

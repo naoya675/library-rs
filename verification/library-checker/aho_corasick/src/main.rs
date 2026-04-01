@@ -11,7 +11,9 @@ fn main() {
         s: [Chars; n],
     }
     let mut ac = AhoCorasick::new(26, 'a');
-    (0..n).for_each(|i| ac.insert(&s[i]));
+    for i in 0..n {
+        ac.insert(&s[i]);
+    }
     ac.build(true);
 
     let mut index = vec![None; s.iter().map(|s| s.len()).sum::<usize>() + 1];
@@ -21,8 +23,8 @@ fn main() {
     for i in 0..n {
         let mut now = 0;
         for &c in &s[i] {
-            let (_, next) = ac.next(c, now);
-            let (_, fail) = ac.next((26 + 'a' as u8) as char, next);
+            let next = ac.goto(now, c);
+            let fail = ac.fail(next);
             if index[next].is_none() {
                 index[next] = Some(ps.len());
                 ps.push((now, fail));
