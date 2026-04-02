@@ -1,38 +1,9 @@
-#[derive(Debug, Clone, Copy)]
+use compressed_sparse_row::Csr;
+
+#[derive(Debug, Clone, Copy, Default)]
 pub struct Edge {
-    from: usize,
-    to: usize,
-}
-
-impl Edge {
-    pub fn new(from: usize, to: usize) -> Self {
-        Self { from, to }
-    }
-}
-
-#[derive(Debug, Clone)]
-pub struct CompressedSparseRow {
-    start: Vec<usize>,
-    elist: Vec<Edge>,
-}
-
-impl CompressedSparseRow {
-    pub fn new(n: usize, edges: &[(usize, Edge)]) -> Self {
-        let mut start = vec![0; n + 1];
-        let mut elist = vec![Edge { from: 0, to: 0 }; edges.len()];
-        for &(from, _) in edges {
-            start[from + 1] += 1;
-        }
-        for i in 1..=n {
-            start[i] += start[i - 1];
-        }
-        let mut counter = start.clone();
-        for &(from, e) in edges {
-            elist[counter[from]] = e;
-            counter[from] += 1;
-        }
-        Self { start, elist }
-    }
+    pub from: usize,
+    pub to: usize,
 }
 
 #[derive(Debug, Clone)]
@@ -49,28 +20,32 @@ impl StronglyConnectedComponents {
     pub fn add_edge(&mut self, from: usize, to: usize) {
         assert!(from < self.size);
         assert!(to < self.size);
-        self.edge.push((from, Edge::new(from, to)));
+        self.edge.push((from, Edge { from: from, to: to }));
     }
 
     // Tarjan's strongly connected components algorithm
     pub fn scc_ids(&mut self) -> (usize, Vec<usize>) {
-        let g = CompressedSparseRow::new(self.size, &self.edge);
+        let g: Csr<Edge> = Csr::new(self.size, &self.edge);
 
         struct Env {
+            size: usize,
             group_num: usize,
             now_ord: usize,
-            visited: Vec<usize>,
-            low: Vec<usize>, // lowlink
+            used: Vec<bool>,
+            stack: Vec<usize>,
+            low: Vec<usize>, // low link
             ord: Vec<usize>, // dfs order
             ids: Vec<usize>,
         }
 
         let mut env = Env {
+            size: self.size,
             group_num: 0,
             now_ord: 0,
-            visited: Vec::with_capacity(self.size),
+            used: vec![false; self.size],
+            stack: Vec::with_capacity(self.size),
             low: vec![0; self.size],
-            ord: vec![usize::MAX; self.size],
+            ord: vec![0; self.size],
             ids: vec![0; self.size],
         };
 
@@ -82,23 +57,23 @@ impl StronglyConnectedComponents {
 
         let dfs = Recursive {
             f: &|dfs: &Recursive<'_>, env: &mut Env, v: usize| {
+                env.used[v] = true;
                 env.low[v] = env.now_ord;
                 env.ord[v] = env.now_ord;
                 env.now_ord += 1;
-                env.visited.push(v);
-                for i in g.start[v]..g.start[v + 1] {
-                    let to = g.elist[i].to;
-                    if env.ord[to] == usize::MAX {
-                        (dfs.f)(dfs, env, to);
-                        env.low[v] = env.low[v].min(env.low[to]);
+                env.stack.push(v);
+                for &edge in &g[v] {
+                    if !env.used[edge.to] {
+                        (dfs.f)(dfs, env, edge.to);
+                        env.low[v] = env.low[v].min(env.low[edge.to]);
                     } else {
-                        env.low[v] = env.low[v].min(env.ord[to]);
+                        env.low[v] = env.low[v].min(env.ord[edge.to]);
                     }
                 }
                 if env.low[v] == env.ord[v] {
                     loop {
-                        let u = env.visited.pop().unwrap();
-                        env.ord[u] = self.size;
+                        let u = env.stack.pop().unwrap();
+                        env.ord[u] = env.size;
                         env.ids[u] = env.group_num;
                         if u == v {
                             break;
@@ -110,7 +85,7 @@ impl StronglyConnectedComponents {
         };
 
         for i in 0..self.size {
-            if env.ord[i] == usize::MAX {
+            if !env.used[i] {
                 (dfs.f)(&dfs, &mut env, i);
             }
         }
