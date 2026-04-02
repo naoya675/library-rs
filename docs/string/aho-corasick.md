@@ -15,4 +15,4 @@ documentation_of: //string/aho-corasick/src/lib.rs
 - [https://atcoder.jp/contests/abc268/editorial/4793](https://atcoder.jp/contests/abc268/editorial/4793)
 
 ## Verified
-- [https://atcoder.jp/contests/abc268/tasks/abc268_h](https://atcoder.jp/contests/abc268/tasks/abc268_h) ([submission]())
+<!--- [https://atcoder.jp/contests/abc268/tasks/abc268_h](https://atcoder.jp/contests/abc268/tasks/abc268_h) ([submission]())-->

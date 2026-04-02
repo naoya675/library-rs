@@ -2,9 +2,9 @@
 
 macro_rules! chmin {
     ($base:expr, $($ex:expr),+ $(,)*) => {
-        let min = min!($($ex),+);
-        if $base > min {
-            $base = min;
+        let _chmin = min!($($ex),+);
+        if $base > _chmin {
+            $base = _chmin;
             true
         } else {
             false

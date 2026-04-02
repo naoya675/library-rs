@@ -2,9 +2,9 @@
 
 macro_rules! chmax {
     ($base:expr, $($ex:expr),+ $(,)*) => {
-        let max = max!($($ex),+);
-        if $base < max {
-            $base = max;
+        let _chmax = max!($($ex),+);
+        if $base < _chmax {
+            $base = _chmax;
             true
         } else {
             false
