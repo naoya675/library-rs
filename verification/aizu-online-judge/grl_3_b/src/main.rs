@@ -13,7 +13,6 @@ fn main() {
     let mut ll = LowLink::new(v);
     st.iter().for_each(|&(s, t)| {
         ll.add_edge(s, t);
-        ll.add_edge(t, s);
     });
     ll.build();
     let mut b = ll.bridge().iter().map(|&(s, t)| if s < t { (s, t) } else { (t, s) }).collect::<Vec<_>>();

@@ -13,10 +13,9 @@ fn main() {
     let mut ll = LowLink::new(v);
     st.iter().for_each(|&(s, t)| {
         ll.add_edge(s, t);
-        ll.add_edge(t, s);
     });
     ll.build();
-    let mut a = ll.articulation();
+    let mut a = ll.articulation().iter().map(|&v| v).collect::<Vec<_>>();
     a.sort();
 
     for &v in &a {
