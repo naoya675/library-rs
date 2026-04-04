@@ -141,6 +141,9 @@ jobs:
                   path: ${{ github.workspace }}/merged-result.json
                   key: ${{ runner.os }}-verify-result-${{ github.sha }}
 
+            - name: Override templates
+              run: cp .github/templates/toppage_body.html _jekyll/_includes/toppage_body.html
+
             - name: Setup Pages
               uses: actions/configure-pages@v5
 
