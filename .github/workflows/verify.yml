@@ -18,7 +18,7 @@ permissions:
 
 concurrency:
     group: "pages"
-    cancel-in-progress: true
+    cancel-in-progress: false
 
 jobs:
     setup:
@@ -45,10 +45,10 @@ jobs:
         runs-on: ubuntu-latest
         needs: [setup]
         env:
-            SPLIT_SIZE: "4"
+            SPLIT_SIZE: "8"
         strategy:
             matrix:
-                index: ["0", "1", "2", "3"]
+                index: ["0", "1", "2", "3", "4", "5", "6", "7"]
         steps:
             - uses: actions/checkout@v4
               with:
@@ -63,6 +63,27 @@ jobs:
                   key: ${{ runner.os }}-verify-result-${{ github.sha }}
                   restore-keys: |
                       ${{ runner.os }}-verify-result-
+
+            - name: Cache Cargo
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.cargo/registry
+                      ~/.cargo/git
+                      target
+                  key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}-${{ hashFiles('**/*.rs') }}
+                  restore-keys: |
+                      ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}-
+                      ${{ runner.os }}-cargo-
+
+            - name: Cache judge data
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.cache/online-judge-tools
+                  key: ${{ runner.os }}-judge-${{ hashFiles('verification/**/*.rs') }}
+                  restore-keys: |
+                      ${{ runner.os }}-judge-
 
             - name: Download verify_files.json
               uses: competitive-verifier/actions/download-verify-artifact@v2
@@ -89,7 +110,7 @@ jobs:
                   split-size: ${{ env.SPLIT_SIZE }}
                   split-index: ${{ matrix.index }}
                   timeout: 1800
-                  prev-result: ${{ steps.restore-cached-results.outputs.cache-hit && 'merged-result.json' || '' }}
+                  prev-result: ${{ steps.restore-cached-results.outputs.cache-matched-key && 'merged-result.json' || '' }}
               env:
                   YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
 
