@@ -24,28 +24,26 @@ impl StronglyConnectedComponents {
     }
 
     // Tarjan's strongly connected components algorithm
-    pub fn scc_ids(&mut self) -> (usize, Vec<usize>) {
-        let g: Csr<Edge> = Csr::new(self.size, &self.edge);
-
+    pub fn scc_ids(&self) -> (usize, Vec<usize>) {
         struct Env {
+            g: Csr<Edge>,
             size: usize,
             group_num: usize,
             now_ord: usize,
-            used: Vec<bool>,
             stack: Vec<usize>,
-            low: Vec<usize>, // low link
-            ord: Vec<usize>, // dfs order
+            low: Vec<usize>,
+            ord: Vec<Option<usize>>,
             ids: Vec<usize>,
         }
 
         let mut env = Env {
+            g: Csr::new(self.size, &self.edge),
             size: self.size,
             group_num: 0,
             now_ord: 0,
-            used: vec![false; self.size],
             stack: Vec::with_capacity(self.size),
             low: vec![0; self.size],
-            ord: vec![0; self.size],
+            ord: vec![None; self.size],
             ids: vec![0; self.size],
         };
 
@@ -57,23 +55,23 @@ impl StronglyConnectedComponents {
 
         let dfs = Recursive {
             f: &|dfs: &Recursive<'_>, env: &mut Env, v: usize| {
-                env.used[v] = true;
                 env.low[v] = env.now_ord;
-                env.ord[v] = env.now_ord;
+                env.ord[v] = Some(env.now_ord);
                 env.now_ord += 1;
                 env.stack.push(v);
-                for &edge in &g[v] {
-                    if !env.used[edge.to] {
+                for i in 0..env.g[v].len() {
+                    let edge = env.g[v][i];
+                    if let Some(x) = env.ord[edge.to] {
+                        env.low[v] = env.low[v].min(x);
+                    } else {
                         (dfs.f)(dfs, env, edge.to);
                         env.low[v] = env.low[v].min(env.low[edge.to]);
-                    } else {
-                        env.low[v] = env.low[v].min(env.ord[edge.to]);
                     }
                 }
-                if env.low[v] == env.ord[v] {
+                if env.low[v] == env.ord[v].unwrap() {
                     loop {
                         let u = env.stack.pop().unwrap();
-                        env.ord[u] = env.size;
+                        env.ord[u] = Some(env.size);
                         env.ids[u] = env.group_num;
                         if u == v {
                             break;
@@ -85,7 +83,7 @@ impl StronglyConnectedComponents {
         };
 
         for i in 0..self.size {
-            if !env.used[i] {
+            if env.ord[i].is_none() {
                 (dfs.f)(&dfs, &mut env, i);
             }
         }

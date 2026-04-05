@@ -30,11 +30,10 @@ impl StronglyConnectedComponents {
     }
 
     // Kosaraju's strongly connected components algorithm
-    pub fn scc_ids(&mut self) -> (usize, Vec<usize>) {
-        let fg: Csr<Edge> = Csr::new(self.size, &self.fedge);
-        let rg: Csr<Edge> = Csr::new(self.size, &self.redge);
-
+    pub fn scc_ids(&self) -> (usize, Vec<usize>) {
         struct Env {
+            fg: Csr<Edge>,
+            rg: Csr<Edge>,
             group_num: usize,
             used: Vec<bool>,
             ord: Vec<usize>,
@@ -42,6 +41,8 @@ impl StronglyConnectedComponents {
         }
 
         let mut env = Env {
+            fg: Csr::new(self.size, &self.fedge),
+            rg: Csr::new(self.size, &self.redge),
             group_num: 0,
             used: vec![false; self.size],
             ord: Vec::with_capacity(self.size),
@@ -58,7 +59,8 @@ impl StronglyConnectedComponents {
         let dfs1 = Recursive {
             f: &|dfs: &Recursive<'_>, env: &mut Env, v: usize| {
                 env.used[v] = true;
-                for &edge in &fg[v] {
+                for i in 0..env.fg[v].len() {
+                    let edge = env.fg[v][i];
                     if !env.used[edge.to] {
                         (dfs.f)(dfs, env, edge.to);
                     }
@@ -71,7 +73,8 @@ impl StronglyConnectedComponents {
             f: &|dfs: &Recursive<'_>, env: &mut Env, v: usize| {
                 env.ids[v] = env.group_num;
                 env.used[v] = true;
-                for &edge in &rg[v] {
+                for i in 0..env.rg[v].len() {
+                    let edge = env.rg[v][i];
                     if !env.used[edge.to] {
                         (dfs.f)(dfs, env, edge.to);
                     }

@@ -20,17 +20,14 @@ impl TwoEdgeConnectedComponents {
         }
     }
 
-    #[inline]
     pub fn comp(&self, v: usize) -> usize {
         self.comp[v]
     }
 
-    #[inline]
     pub fn tree(&self) -> &[Vec<usize>] {
         &self.tree
     }
 
-    #[inline]
     pub fn group(&self) -> &[Vec<usize>] {
         &self.group
     }

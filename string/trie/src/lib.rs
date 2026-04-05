@@ -36,33 +36,28 @@ impl Trie {
         }
     }
 
-    #[inline]
     pub fn next(&self, node_id: usize, i: usize) -> Option<usize> {
         assert!(node_id < self.size());
         assert!(i < self.size);
         self.nodes[node_id].next[i]
     }
 
-    #[inline]
     pub fn next_mut(&mut self, node_id: usize, i: usize) -> &mut Option<usize> {
         assert!(node_id < self.size());
         assert!(i < self.size);
         &mut self.nodes[node_id].next[i]
     }
 
-    #[inline]
     pub fn accept(&self, node_id: usize) -> &Vec<usize> {
         assert!(node_id < self.size());
         &self.nodes[node_id].accept
     }
 
-    #[inline]
     pub fn accept_mut(&mut self, node_id: usize) -> &mut Vec<usize> {
         assert!(node_id < self.size());
         &mut self.nodes[node_id].accept
     }
 
-    #[inline]
     pub fn common(&self, node_id: usize) -> usize {
         assert!(node_id < self.size());
         self.nodes[node_id].common

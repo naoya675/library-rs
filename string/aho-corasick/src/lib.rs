@@ -22,29 +22,24 @@ impl AhoCorasick {
         }
     }
 
-    #[inline]
     pub fn insert(&mut self, word: &[char]) {
         self.trie.insert(word);
     }
 
-    #[inline]
     pub fn search(&self, word: &[char]) -> bool {
         self.trie.search(word)
     }
 
-    #[inline]
     pub fn search_prefix(&self, word: &[char]) -> bool {
         self.trie.search_prefix(word)
     }
 
-    #[inline]
     pub fn goto(&self, node_id: usize, c: char) -> usize {
         assert!(!self.pattern.is_empty(), "call build() before goto()");
         let c = (c as usize) - (self.base as usize);
         self.trie.next(node_id, c).unwrap()
     }
 
-    #[inline]
     pub fn fail(&self, node_id: usize) -> usize {
         assert!(!self.pattern.is_empty(), "call build() before fail()");
         self.trie.next(node_id, self.fail).unwrap()

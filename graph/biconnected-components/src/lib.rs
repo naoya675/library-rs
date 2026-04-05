@@ -18,7 +18,10 @@ impl BiConnectedComponents {
         }
     }
 
-    #[inline]
+    pub fn low_link(&self) -> &LowLink {
+        &self.low_link
+    }
+
     pub fn bc(&self) -> &[Vec<(usize, usize)>] {
         &self.bc
     }

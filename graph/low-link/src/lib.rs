@@ -10,7 +10,6 @@ pub struct Edge {
 #[derive(Debug, Clone)]
 pub struct LowLink {
     size: usize,
-    esize: usize,
     edges: Vec<(usize, Edge)>,
     graph: Csr<Edge>,
     ord: Vec<usize>,
@@ -24,7 +23,6 @@ impl LowLink {
     pub fn new(size: usize) -> Self {
         Self {
             size,
-            esize: 0,
             edges: vec![],
             graph: Csr::new(0, &[]),
             ord: vec![],
@@ -35,32 +33,26 @@ impl LowLink {
         }
     }
 
-    #[inline]
     pub fn size(&self) -> usize {
         self.size
     }
 
-    #[inline]
     pub fn graph(&self) -> &Csr<Edge> {
         &self.graph
     }
 
-    #[inline]
     pub fn ord(&self, v: usize) -> usize {
         self.ord[v]
     }
 
-    #[inline]
     pub fn low(&self, v: usize) -> usize {
         self.low[v]
     }
 
-    #[inline]
     pub fn articulation(&self) -> &[usize] {
         &self.articulation
     }
 
-    #[inline]
     pub fn bridge(&self) -> &[(usize, usize)] {
         &self.bridge
     }
@@ -68,10 +60,9 @@ impl LowLink {
     pub fn add_edge(&mut self, u: usize, v: usize) {
         assert!(u < self.size);
         assert!(v < self.size);
-        let id = self.esize;
+        let id = self.edges.len() / 2;
         self.edges.push((u, Edge { from: u, to: v, id }));
         self.edges.push((v, Edge { from: v, to: u, id }));
-        self.esize += 1;
     }
 
     pub fn build(&mut self) {

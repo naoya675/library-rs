@@ -25,7 +25,6 @@ impl<E: Copy + Default> Csr<E> {
 
 impl<E> std::ops::Index<usize> for Csr<E> {
     type Output = [E];
-    #[inline]
     fn index(&self, v: usize) -> &[E] {
         &self.elist[self.start[v]..self.start[v + 1]]
     }
