@@ -1,3 +1,5 @@
+use segment_tree::SegmentTree;
+
 #[derive(Debug, Clone)]
 pub struct RollingHash<T> {
     base: T,
@@ -27,6 +29,15 @@ where
         let mut hash = vec![T::from(0u64); size + 1];
         for i in 0..size {
             hash[i + 1] = hash[i] * self.base + T::from(s[i] as u64);
+        }
+        hash
+    }
+
+    pub fn build_segment_tree(&mut self, s: &[char]) -> SegmentTree<(T, T)> {
+        let size = s.len();
+        let mut hash = SegmentTree::<(T, T)>::new(size, |a, b| (a.0 + (a.1 * b.0), a.1 * b.1), (T::from(0u64), T::from(1u64)));
+        for i in 0..size {
+            hash.set(i, (T::from(s[i] as u64), self.base));
         }
         hash
     }

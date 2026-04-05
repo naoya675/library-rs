@@ -3,7 +3,7 @@
 use proconio::{input, marker::Chars};
 
 use mersenne_modint::MersenneModint;
-use rolling_hash_segment_tree::RollingHash;
+use rolling_hash::RollingHash;
 
 fn main() {
     input! {

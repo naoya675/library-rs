@@ -1,5 +1,5 @@
 pub fn warshall_floyd(size: usize, edge: &[(usize, usize, i64)]) -> (bool, Vec<Vec<i64>>) {
-    let mut dist = vec![vec![i64::MAX / 4; size]; size];
+    let mut dist = vec![vec![i64::MAX; size]; size];
     for i in 0..size {
         dist[i][i] = 0;
     }
@@ -9,7 +9,7 @@ pub fn warshall_floyd(size: usize, edge: &[(usize, usize, i64)]) -> (bool, Vec<V
     for k in 0..size {
         for i in 0..size {
             for j in 0..size {
-                dist[i][j] = dist[i][j].min(dist[i][k] + dist[k][j])
+                dist[i][j] = dist[i][j].min(dist[i][k].saturating_add(dist[k][j]))
             }
         }
     }
