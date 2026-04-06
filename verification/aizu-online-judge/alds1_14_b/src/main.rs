@@ -2,7 +2,7 @@
 
 use proconio::{input, marker::Chars};
 
-use mersenne_modint::MersenneModint;
+use modint_mersenne61::ModintMersenne61;
 use rolling_hash::RollingHash;
 
 fn main() {
@@ -10,7 +10,7 @@ fn main() {
         t: Chars,
         p: Chars,
     }
-    let mut rh = RollingHash::<MersenneModint>::new(MersenneModint::rand());
+    let mut rh = RollingHash::<ModintMersenne61>::new(ModintMersenne61::rand());
     let mut ht = rh.build_segment_tree(&t);
     let mut hp = rh.build_segment_tree(&p);
 

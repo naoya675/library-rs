@@ -1,5 +1,5 @@
 [package]
-name = "zalgorithm-online"
+name = "zalgorithm_online"
 version = "0.1.0"
 edition = "2024"
 

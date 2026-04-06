@@ -1,37 +1,51 @@
 use std::sync::atomic::{AtomicU64, Ordering};
 
-pub struct Barrett {
+pub struct BarrettReduction {
     modulus: AtomicU64,
+    im: AtomicU64, // floor(2^64 / m)
 }
 
-impl Barrett {
+impl BarrettReduction {
     pub const fn new(m: u64) -> Self {
-        Self { modulus: AtomicU64::new(m) }
+        Self {
+            modulus: AtomicU64::new(m),
+            im: AtomicU64::new(u64::MAX / m),
+        }
     }
 
     pub fn set(&self, m: u64) {
         self.modulus.store(m, Ordering::Relaxed);
+        self.im.store(u64::MAX / m, Ordering::Relaxed);
     }
 
     pub fn modulus(&self) -> u64 {
         self.modulus.load(Ordering::Relaxed)
     }
 
-    // Barrett reduction
-    //
-    //
+    fn im(&self) -> u64 {
+        self.im.load(Ordering::Relaxed)
+    }
+
+    // Barrett reduction: lhs * rhs mod m (lhs, rhs < m < 2^31)
+    pub fn mul(&self, lhs: u64, rhs: u64) -> u64 {
+        let m = self.modulus();
+        let z = lhs * rhs;
+        let x = ((z as u128 * self.im() as u128) >> 64) as u64;
+        let v = z - x * m;
+        if v >= m { v - m } else { v }
+    }
 }
 
 pub trait Id {
-    fn barrett() -> &'static Barrett;
+    fn barrett() -> &'static BarrettReduction;
 }
 
 pub struct DefaultId;
 
 impl Id for DefaultId {
-    fn barrett() -> &'static Barrett {
-        static BARRETT: Barrett = Barrett::new(998244353);
-        &BARRETT
+    fn barrett() -> &'static BarrettReduction {
+        static BR: BarrettReduction = BarrettReduction::new(998244353);
+        &BR
     }
 }
 
@@ -160,7 +174,8 @@ impl<I: Id> std::ops::Mul for DynamicModint<I> {
     type Output = Self;
     fn mul(self, rhs: Self) -> Self {
         Self {
-            value: (self.value * rhs.value) % Self::get_mod(),
+            // value: (self.value * rhs.value) % Self::get_mod(),
+            value: I::barrett().mul(self.value, rhs.value),
             _phantom: std::marker::PhantomData,
         }
     }
@@ -175,9 +190,7 @@ impl<I: Id> std::ops::MulAssign for DynamicModint<I> {
 impl<I: Id> std::ops::Div for DynamicModint<I> {
     type Output = Self;
     fn div(self, rhs: Self) -> Self {
-        if rhs.value == 0 {
-            panic!();
-        }
+        assert!(rhs.value != 0);
         self * rhs.inv()
     }
 }

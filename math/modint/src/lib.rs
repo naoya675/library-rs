@@ -103,9 +103,7 @@ impl<const M: u64> std::ops::MulAssign for Modint<M> {
 impl<const M: u64> std::ops::Div for Modint<M> {
     type Output = Self;
     fn div(self, rhs: Self) -> Self {
-        if rhs.value == 0 {
-            panic!();
-        }
+        assert!(rhs.value != 0);
         self * rhs.inv()
     }
 }

@@ -1,5 +1,5 @@
 [package]
-name = "scc-tarjan"
+name = "scc_tarjan"
 version = "0.1.0"
 edition = "2024"
 
