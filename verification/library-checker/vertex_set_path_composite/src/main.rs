@@ -3,10 +3,10 @@
 use proconio::input;
 
 use euler_tour::EulerTour;
-use modint::StaticModint;
+use modint::Modint;
 use segment_tree::SegmentTree;
 
-type Mint = StaticModint<998244353>;
+type Mint = Modint<998244353>;
 
 query::define_query! {
     Query {

@@ -2,10 +2,10 @@
 
 use proconio::input;
 
-use modint::StaticModint;
+use modint::Modint;
 use union_find_with_potential::UnionFindWithPotential;
 
-type Mint = StaticModint<998244353>;
+type Mint = Modint<998244353>;
 
 query::define_query! {
     Query {

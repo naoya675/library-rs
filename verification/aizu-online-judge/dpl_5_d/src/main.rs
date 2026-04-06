@@ -3,9 +3,9 @@
 use proconio::input;
 
 use combinatorics::Combinatorics;
-use modint::StaticModint;
+use modint::Modint;
 
-type Mint = StaticModint<1000000007>;
+type Mint = Modint<1000000007>;
 
 fn main() {
     input! {

@@ -154,7 +154,7 @@ jobs:
               with:
                   verify-result: ${{ github.workspace }}/merged-result.json
                   destination: _jekyll
-                  write-summary: true
+                  write-summary: false
 
             - name: Save result
               uses: actions/cache/save@v4

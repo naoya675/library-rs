@@ -3,9 +3,9 @@
 use proconio::input;
 
 use lazy_segment_tree::LazySegmentTree;
-use modint::StaticModint;
+use modint::Modint;
 
-type Mint = StaticModint<998244353>;
+type Mint = Modint<998244353>;
 
 query::define_query! {
     Query {

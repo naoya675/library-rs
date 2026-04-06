@@ -1,12 +1,12 @@
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub struct StaticModint<const MOD: u64> {
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub struct Modint<const M: u64> {
     value: u64,
 }
 
-impl<const MOD: u64> StaticModint<MOD> {
+impl<const M: u64> Modint<M> {
     pub fn new(n: i64) -> Self {
         Self {
-            value: n.rem_euclid(MOD as i64) as u64,
+            value: n.rem_euclid(M as i64) as u64,
         }
     }
 
@@ -46,61 +46,61 @@ impl<const MOD: u64> StaticModint<MOD> {
     }
 
     pub fn inv(&self) -> Self {
-        let (x, _, _) = Self::ext_gcd(self.value() as i64, MOD as i64);
+        let (x, _, _) = Self::ext_gcd(self.value() as i64, M as i64);
         Self { value: x as u64 }
     }
 }
 
-impl<const MOD: u64> std::ops::Add for StaticModint<MOD> {
+impl<const M: u64> std::ops::Add for Modint<M> {
     type Output = Self;
     fn add(self, rhs: Self) -> Self {
         let mut value = self.value + rhs.value;
-        if value >= MOD {
-            value -= MOD;
+        if value >= M {
+            value -= M;
         }
         Self { value }
     }
 }
 
-impl<const MOD: u64> std::ops::AddAssign for StaticModint<MOD> {
+impl<const M: u64> std::ops::AddAssign for Modint<M> {
     fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
 
-impl<const MOD: u64> std::ops::Sub for StaticModint<MOD> {
+impl<const M: u64> std::ops::Sub for Modint<M> {
     type Output = Self;
     fn sub(self, rhs: Self) -> Self {
-        let mut value = MOD + self.value - rhs.value;
-        if value >= MOD {
-            value -= MOD;
+        let mut value = M + self.value - rhs.value;
+        if value >= M {
+            value -= M;
         }
         Self { value }
     }
 }
 
-impl<const MOD: u64> std::ops::SubAssign for StaticModint<MOD> {
+impl<const M: u64> std::ops::SubAssign for Modint<M> {
     fn sub_assign(&mut self, rhs: Self) {
         *self = *self - rhs;
     }
 }
 
-impl<const MOD: u64> std::ops::Mul for StaticModint<MOD> {
+impl<const M: u64> std::ops::Mul for Modint<M> {
     type Output = Self;
     fn mul(self, rhs: Self) -> Self {
         Self {
-            value: (self.value * rhs.value) % MOD,
+            value: (self.value * rhs.value) % M,
         }
     }
 }
 
-impl<const MOD: u64> std::ops::MulAssign for StaticModint<MOD> {
+impl<const M: u64> std::ops::MulAssign for Modint<M> {
     fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
 
-impl<const MOD: u64> std::ops::Div for StaticModint<MOD> {
+impl<const M: u64> std::ops::Div for Modint<M> {
     type Output = Self;
     fn div(self, rhs: Self) -> Self {
         if rhs.value == 0 {
@@ -110,13 +110,13 @@ impl<const MOD: u64> std::ops::Div for StaticModint<MOD> {
     }
 }
 
-impl<const MOD: u64> std::ops::DivAssign for StaticModint<MOD> {
+impl<const M: u64> std::ops::DivAssign for Modint<M> {
     fn div_assign(&mut self, rhs: Self) {
         *self = *self / rhs;
     }
 }
 
-impl<const MOD: u64> std::ops::Neg for StaticModint<MOD> {
+impl<const M: u64> std::ops::Neg for Modint<M> {
     type Output = Self;
     fn neg(self) -> Self {
         Self::new(0) - self
@@ -125,27 +125,33 @@ impl<const MOD: u64> std::ops::Neg for StaticModint<MOD> {
 
 use numeric_traits::{Numeric, One, Zero};
 
-impl<const MOD: u64> Zero for StaticModint<MOD> {
+impl<const M: u64> Zero for Modint<M> {
     fn zero() -> Self {
         Self::new(0)
     }
 }
 
-impl<const MOD: u64> One for StaticModint<MOD> {
+impl<const M: u64> One for Modint<M> {
     fn one() -> Self {
         Self::new(1)
     }
 }
 
-impl<const MOD: u64> Numeric for StaticModint<MOD> {}
+impl<const M: u64> Numeric for Modint<M> {}
 
-impl<const MOD: u64> Default for StaticModint<MOD> {
+impl<const M: u64> Default for Modint<M> {
     fn default() -> Self {
         Self::new(0)
     }
 }
 
-impl<const MOD: u64> std::fmt::Display for StaticModint<MOD> {
+impl<const M: u64> std::fmt::Debug for Modint<M> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.value)
+    }
+}
+
+impl<const M: u64> std::fmt::Display for Modint<M> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.value)
     }
@@ -154,7 +160,7 @@ impl<const MOD: u64> std::fmt::Display for StaticModint<MOD> {
 macro_rules! impl_from {
     ($($type:ty), *) => {
         $(
-            impl<const MOD: u64> From<$type> for StaticModint<MOD> {
+            impl<const M: u64> From<$type> for Modint<M> {
                 fn from(value: $type) -> Self {
                     Self::new(value as i64)
                 }
@@ -168,7 +174,7 @@ impl_from!(u8, i8, u16, i16, u32, i32, u64, i64, usize, isize);
 /*
 macro_rules! impl_ops {
     ($trait:ident, $fn:ident, $op:tt) => {
-        impl<const MOD: u64> std::ops::$trait for StaticModint<MOD> {
+        impl<const M: u64> std::ops::$trait for Modint<M> {
             fn $fn(&mut self, rhs: Self) {
                 *self = *self $op rhs;
             }

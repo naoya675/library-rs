@@ -1,0 +1,9 @@
+[package]
+name = "binomial_coefficient_prime_mod"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+combinatorics = { path = "../../../math/combinatorics" }
+dynamic-modint = { path = "../../../math/dynamic-modint" }
