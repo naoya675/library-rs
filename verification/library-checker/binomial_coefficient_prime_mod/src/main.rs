@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use combinatorics::Combinatorics;
+use binomial::Binomial;
 use dynamic_modint::{DefaultId, DynamicModint};
 
 type Mint = DynamicModint<DefaultId>;
@@ -14,9 +14,8 @@ fn main() {
         nk: [(usize, usize); t],
     }
     Mint::set_mod(m as u64);
-    let mut comb = Combinatorics::<Mint>::new((m - 1).min(nk.iter().map(|&(n, _)| n).max().unwrap()));
-
+    let mut bi = Binomial::<Mint>::new();
     for &(n, k) in &nk {
-        println!("{}", comb.comb(n, k));
+        println!("{}", bi.comb(n, k));
     }
 }

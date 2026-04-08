@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use combinatorics::Combinatorics;
+use binomial::Binomial;
 use modint::Modint;
 
 type Mint = Modint<1000000007>;
@@ -12,6 +12,6 @@ fn main() {
         n: usize,
         k: usize,
     }
-    let mut comb = Combinatorics::<Mint>::new(n + k);
-    println!("{}", comb.homo(k, n));
+    let mut bi = Binomial::<Mint>::with_capacity(n + k);
+    println!("{}", bi.homo(k, n));
 }
