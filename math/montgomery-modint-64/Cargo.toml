@@ -1,0 +1,7 @@
+[package]
+name = "montgomery-modint-64"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+numeric-traits = { path = '../numeric-traits' }
