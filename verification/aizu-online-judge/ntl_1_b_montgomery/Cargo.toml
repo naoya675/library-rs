@@ -1,0 +1,8 @@
+[package]
+name = "ntl_1_b_montgomery"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+montgomery-modint = { path = "../../../math/montgomery-modint" }

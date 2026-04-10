@@ -1,0 +1,9 @@
+[package]
+name = "dpl_5_d_montgomery"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+binomial = { path = "../../../math/binomial" }
+montgomery-modint = { path = "../../../math/montgomery-modint" }
