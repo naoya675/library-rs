@@ -66,6 +66,7 @@ impl<const M: u64> MontgomeryModint64<M> {
     }
 
     pub fn new(n: i64) -> Self {
+        const { assert!(M & 1 == 1) };
         let v = n.rem_euclid(M as i64) as u64;
         Self {
             value: Self::mul_reduce(v, Self::R2),

@@ -3,7 +3,7 @@ title: Dynamic Modint
 documentation_of: //math/dynamic-modint/src/lib.rs
 ---
 
-## 乗算 (Barrett reduction)
+## Barrett reduction
 
 事前に次の定数を計算しておく。
 
@@ -32,7 +32,7 @@ $$
 x = \left\lfloor \frac{z \cdot \mathit{im}}{2^{64}} \right\rfloor \leq \left\lfloor \frac{z}{m} \right\rfloor
 $$
 
-さらに、誤差は高々 $1$ であることが示せるので [[2]](https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp)、
+さらに、誤差は高々 $1$ であることが示せるので、
 
 $$
 x \in \lbrace \lfloor z/m \rfloor, \; \lfloor z/m \rfloor - 1 \rbrace
@@ -45,6 +45,30 @@ $v = z - x \cdot m$ とすると、
 
 いずれの場合も $v \in [0, 2m)$ に収まり、$v \geq m$ なら $m$ を引くことで正しい剰余が得られる。
 
+### 誤差の評価
+
+$\mathit{im} = \lfloor 2^{64} / m \rfloor$ は次のように表せる。
+
+$$
+\mathit{im} = \frac{2^{64}}{m} - \varepsilon \quad (0 \leq \varepsilon < 1)
+$$
+
+これを代入すると、
+
+$$
+x = \left\lfloor \frac{z \cdot \mathit{im}}{2^{64}} \right\rfloor = \left\lfloor \frac{z}{m} - \frac{z\varepsilon}{2^{64}} \right\rfloor
+$$
+
+$x$ の上界・下界は以下のように得られる。
+
+(上界) $z\varepsilon / 2^{64} \geq 0$ より、$x \leq \lfloor z / m \rfloor$
+
+(下界) $z\varepsilon / 2^{64} < 1$ より $(z < 2^{62}, \varepsilon < 1)$、$x \geq \lfloor z / m \rfloor - 1$
+
 ## Reference
 - [https://rsk0315.hatenablog.com/entry/2021/01/18/065720](https://rsk0315.hatenablog.com/entry/2021/01/18/065720)
-- [https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp](https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp)
+- [https://natsugiri.hatenablog.com/entry/2020/04/06/030559](https://natsugiri.hatenablog.com/entry/2020/04/06/030559)
+- [https://mitarushi.hatenablog.com/entry/2022/02/09/194722](https://mitarushi.hatenablog.com/entry/2022/02/09/194722)
+- [https://suisen-kyopro.hatenablog.com/entry/2023/09/13/060922](https://suisen-kyopro.hatenablog.com/entry/2023/09/13/060922)
+- [https://min-25.hatenablog.com/entry/2017/08/20/171214](https://web.archive.org/web/20211009144445/https://min-25.hatenablog.com/entry/2017/08/20/171214)
+- [https://qiita.com/AkariLuminous/items/cebb1f15bf482fddd85e](https://qiita.com/AkariLuminous/items/cebb1f15bf482fddd85e)

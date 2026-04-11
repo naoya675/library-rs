@@ -74,6 +74,7 @@ $\mathit{mid}$ の繰り上がり $\lfloor \mathit{mid} / 2^{32} \rfloor$ が上
 
 $$
 \text{high}(x \cdot y) = x_u y_u + \lfloor x_u y_d / 2^{32} \rfloor + \lfloor x_d y_u / 2^{32} \rfloor + \lfloor \mathit{mid} / 2^{32} \rfloor
+% \text{high}(x \cdot y) = x_u y_u + (x_u y_d \gg 32) + (x_d y_u \gg 32) + (\mathit{mid} \gg 32)
 $$
 
 ### $\text{low}$ の計算
