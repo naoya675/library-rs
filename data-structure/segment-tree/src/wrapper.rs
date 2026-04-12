@@ -34,7 +34,7 @@ impl ParenthesisCheckQuery {
         SegmentTree::new(n, |x, y| (x.0 + std::cmp::max(y.0 - x.1, 0), std::cmp::max(x.1 - y.0, 0) + y.1), (0, 0))
     }
 
-    pub fn new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {
+    pub fn new_build(n: usize, s: &[char]) -> SegmentTree<(i64, i64)> {
         let mut st = Self::new(n);
         let s = s
             .iter()
@@ -56,7 +56,7 @@ impl ParenthesisCheckQuery {
         SegmentTree::new(n, |x, y| (std::cmp::min(x.0, x.1 + y.0), x.1 + y.1), (0, 0))
     }
 
-    pub fn new_build(n: usize, s: &Vec<char>) -> SegmentTree<(i64, i64)> {
+    pub fn new_build(n: usize, s: &[char]) -> SegmentTree<(i64, i64)> {
         let mut st = Self::new(n);
         let s = s
             .iter()
@@ -90,7 +90,7 @@ impl IntervalCountQuery {
         )
     }
 
-    pub fn new_build(n: usize, s: &Vec<usize>) -> SegmentTree<(usize, usize, usize)> {
+    pub fn new_build(n: usize, s: &[usize]) -> SegmentTree<(usize, usize, usize)> {
         let mut st = Self::new(n);
         let s = s
             .iter()
@@ -115,29 +115,25 @@ pub mod range_maximum_subarray_sum_query {
         subarray: i64,
         whole: i64,
     }
-    impl S {
-        fn new(x: i64) -> Self {
-            Self {
-                prefix: x,
-                suffix: x,
-                subarray: x,
-                whole: x,
-            }
-        }
-        fn op(lhs: Self, rhs: Self) -> Self {
-            Self {
-                prefix: lhs.prefix.max(rhs.prefix + lhs.whole),
-                suffix: rhs.suffix.max(lhs.suffix + rhs.whole),
-                subarray: lhs.subarray.max(rhs.subarray).max(lhs.suffix + rhs.prefix),
-                whole: lhs.whole + rhs.whole,
-            }
-        }
-    }
 
     pub struct RangeMaximumSubarraySumQuery;
     impl RangeMaximumSubarraySumQuery {
         pub fn new(n: usize) -> SegmentTree<S> {
-            SegmentTree::new(n, S::op, S::new(0))
+            SegmentTree::new(
+                n,
+                |lhs, rhs| S {
+                    prefix: lhs.prefix.max(rhs.prefix + lhs.whole),
+                    suffix: rhs.suffix.max(lhs.suffix + rhs.whole),
+                    subarray: lhs.subarray.max(rhs.subarray).max(lhs.suffix + rhs.prefix),
+                    whole: lhs.whole + rhs.whole,
+                },
+                S {
+                    prefix: 0,
+                    suffix: 0,
+                    subarray: 0,
+                    whole: 0,
+                },
+            )
         }
     }
 }

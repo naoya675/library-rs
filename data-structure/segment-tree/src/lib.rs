@@ -14,7 +14,7 @@ pub struct SegmentTree<T> {
 impl<T: Copy> SegmentTree<T> {
     pub fn new(n: usize, op: fn(T, T) -> T, e: T) -> Self {
         let size = n.next_power_of_two();
-        let size_log = (size.ilog2() + 1) as usize;
+        let size_log = size.ilog2() as usize;
         Self {
             tree: vec![e; 2 * size],
             size,
@@ -30,7 +30,7 @@ impl<T: Copy> SegmentTree<T> {
         for k in 0..self.n {
             self.tree[k + self.size] = vec[k];
         }
-        for k in (0..self.size).rev() {
+        for k in (1..self.size).rev() {
             self.update(k);
         }
     }
@@ -39,24 +39,18 @@ impl<T: Copy> SegmentTree<T> {
         assert!(k < self.n);
         k += self.size;
         self.tree[k] = x;
-        for i in 1..self.size_log + 1 {
+        for i in 1..=self.size_log {
             self.update(k >> i);
         }
-        /*
-        while k > 0 {
-            k >>= 1;
-            self.update(k);
-        }
-        */
     }
 
-    pub fn get(&mut self, mut k: usize) -> T {
+    pub fn get(&self, mut k: usize) -> T {
         assert!(k < self.n);
         k += self.size;
-        self.tree[k].clone()
+        self.tree[k]
     }
 
-    pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {
+    pub fn prod(&self, mut l: usize, mut r: usize) -> T {
         assert!(l <= r && r <= self.n);
         if l == r {
             return self.e;
@@ -80,27 +74,21 @@ impl<T: Copy> SegmentTree<T> {
         (self.op)(l_res, r_res)
     }
 
-    pub fn all_prod(&mut self) -> T {
-        self.tree[1].clone()
+    pub fn all_prod(&self) -> T {
+        self.tree[1]
     }
 
-    /*
     pub fn apply(&mut self, mut k: usize, x: T) {
         assert!(k < self.n);
         k += self.size;
         self.tree[k] = (self.op)(self.tree[k], x);
-        while k > 0 {
-            k >>= 1;
-            self.update(k);
+        for i in 1..=self.size_log {
+            self.update(k >> i);
         }
     }
-    */
 
-    pub fn apply(&mut self, k: usize, x: T) {
-        self.apply_with(k, x, self.op)
-    }
-
-    pub fn apply_with<F>(&mut self, mut k: usize, x: T, f: F)
+    /*
+    pub fn apply<F>(&mut self, mut k: usize, x: T, f: F)
     where
         F: Fn(T, T) -> T,
     {
@@ -112,8 +100,9 @@ impl<T: Copy> SegmentTree<T> {
             self.update(k);
         }
     }
+     */
 
-    pub fn max_right<F>(&mut self, mut l: usize, f: F) -> usize
+    pub fn max_right<F>(&self, mut l: usize, f: F) -> usize
     where
         F: Fn(T) -> bool,
     {
@@ -145,7 +134,7 @@ impl<T: Copy> SegmentTree<T> {
         self.n
     }
 
-    pub fn min_left<F>(&mut self, mut r: usize, f: F) -> usize
+    pub fn min_left<F>(&self, mut r: usize, f: F) -> usize
     where
         F: Fn(T) -> bool,
     {

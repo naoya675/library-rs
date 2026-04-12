@@ -18,7 +18,7 @@ pub struct LazySegmentTree<T, F> {
 impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
     pub fn new(n: usize, op: fn(T, T) -> T, e: T, mapping: fn(F, T) -> T, composition: fn(F, F) -> F, id: F) -> Self {
         let size = n.next_power_of_two();
-        let size_log = (size.ilog2() + 1) as usize;
+        let size_log = size.ilog2() as usize;
         Self {
             tree: vec![e; 2 * size],
             lazy: vec![id; 2 * size],
@@ -38,7 +38,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         for k in 0..self.n {
             self.tree[k + self.size] = vec[k];
         }
-        for k in (0..self.size).rev() {
+        for k in (1..self.size).rev() {
             self.update(k);
         }
     }
@@ -46,11 +46,11 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
     pub fn set(&mut self, mut k: usize, x: T) {
         assert!(k < self.n);
         k += self.size;
-        for i in (1..self.size_log + 1).rev() {
+        for i in (1..=self.size_log).rev() {
             self.push(k >> i);
         }
         self.tree[k] = x;
-        for i in 1..self.size_log + 1 {
+        for i in 1..=self.size_log {
             self.update(k >> i);
         }
     }
@@ -58,10 +58,10 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
     pub fn get(&mut self, mut k: usize) -> T {
         assert!(k < self.n);
         k += self.size;
-        for i in (1..self.size_log + 1).rev() {
+        for i in (1..=self.size_log).rev() {
             self.push(k >> i);
         }
-        self.tree[k].clone()
+        self.tree[k]
     }
 
     pub fn prod(&mut self, mut l: usize, mut r: usize) -> T {
@@ -71,7 +71,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         }
         l += self.size;
         r += self.size;
-        for i in (1..self.size_log + 1).rev() {
+        for i in (1..=self.size_log).rev() {
             if ((l >> i) << i) != l {
                 self.push(l >> i);
             }
@@ -96,23 +96,9 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         (self.op)(l_res, r_res)
     }
 
-    pub fn all_prod(&mut self) -> T {
-        self.tree[1].clone()
+    pub fn all_prod(&self) -> T {
+        self.tree[1]
     }
-
-    /*
-    pub fn apply(&mut self, mut k: usize, f: F) {
-        assert!(k < self.n);
-        k += self.size;
-        for i in (1..self.size_log + 1).rev() {
-            self.push(k >> i);
-        }
-        self.tree[k] = (self.mapping)(f, self.tree[k]);
-        for i in 1..self.size_log + 1 {
-            self.update(k >> i);
-        }
-    }
-    */
 
     pub fn apply(&mut self, mut l: usize, mut r: usize, f: F) {
         assert!(l <= r && r <= self.n);
@@ -121,7 +107,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         }
         l += self.size;
         r += self.size;
-        for i in (1..self.size_log + 1).rev() {
+        for i in (1..=self.size_log).rev() {
             if ((l >> i) << i) != l {
                 self.push(l >> i);
             }
@@ -145,7 +131,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         }
         l = l2;
         r = r2;
-        for i in 1..self.size_log + 1 {
+        for i in 1..=self.size_log {
             if ((l >> i) << i) != l {
                 self.update(l >> i);
             }
@@ -165,7 +151,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
             return self.n;
         }
         l += self.size;
-        for i in (1..self.size_log + 1).rev() {
+        for i in (1..=self.size_log).rev() {
             self.push(l >> i);
         }
         let mut res = self.e;
@@ -201,7 +187,7 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
             return 0;
         }
         r += self.size;
-        for i in (1..self.size_log + 1).rev() {
+        for i in (1..=self.size_log).rev() {
             self.push((r - 1) >> i);
         }
         let mut res = self.e;
