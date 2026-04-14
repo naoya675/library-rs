@@ -1,0 +1,7 @@
+[package]
+name = "two-sat"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+strongly-connected-components-tarjan = { path = "../strongly-connected-components-tarjan" }

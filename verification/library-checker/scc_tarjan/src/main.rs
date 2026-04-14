@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/scc
 
-use itertools::Itertools;
+use itertools::Join;
 use proconio::input;
 
 use strongly_connected_components_tarjan::StronglyConnectedComponents;
