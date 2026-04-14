@@ -8,13 +8,7 @@ pub struct FenwickTreeAbstract<T> {
     inv: fn(T) -> T,
 }
 
-impl<T: Copy> FenwickTreeAbstract<T>
-where
-    T: std::ops::Add<T, Output = T>,
-    T: std::ops::AddAssign,
-    T: std::ops::Sub<T, Output = T>,
-    T: std::ops::SubAssign,
-{
+impl<T: Copy> FenwickTreeAbstract<T> {
     pub fn new(n: usize, op: fn(T, T) -> T, e: T, inv: fn(T) -> T) -> Self {
         let size = n;
         Self {
@@ -26,7 +20,6 @@ where
         }
     }
 
-    // apply
     pub fn add(&mut self, mut k: usize, x: T) {
         assert!(k < self.size);
         k += 1;
@@ -36,13 +29,12 @@ where
         }
     }
 
-    // prod
-    pub fn sum(&mut self, l: usize, r: usize) -> T {
+    pub fn sum(&self, l: usize, r: usize) -> T {
         assert!(l <= r && r <= self.size);
         (self.op)(self.prefix_sum(r), (self.inv)(self.prefix_sum(l)))
     }
 
-    pub fn prefix_sum(&mut self, mut r: usize) -> T {
+    fn prefix_sum(&self, mut r: usize) -> T {
         let mut s = self.e;
         while r > 0 {
             s = (self.op)(s, self.tree[r]);

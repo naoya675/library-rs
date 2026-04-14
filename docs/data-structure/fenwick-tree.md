@@ -1,5 +1,5 @@
 ---
-title: Fenwick Tree
+title: Fenwick Tree (Binary Indexed Tree)
 documentation_of: //data-structure/fenwick-tree/src/lib.rs
 ---
 
@@ -12,3 +12,6 @@ documentation_of: //data-structure/fenwick-tree/src/lib.rs
 - [https://qiita.com/ngtkana/items/7d50ff180a4e5c294cb7](https://qiita.com/ngtkana/items/7d50ff180a4e5c294cb7)
 - [https://qiita.com/Stakumi/items/b7593a99908c98cfe6d0](https://qiita.com/Stakumi/items/b7593a99908c98cfe6d0)
 - [https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree)
+
+## Verified
+- [https://atcoder.jp/contests/practice2/tasks/practice2_b](https://atcoder.jp/contests/practice2/tasks/practice2_b) ([submission](https://atcoder.jp/contests/practice2/submissions/74955081))

@@ -96,3 +96,6 @@ Divides the elements into sets and returns the list of them. Both of the orders 
 - [https://qiita.com/alumite14/items/1fd477a14cf5c3019326](https://qiita.com/alumite14/items/1fd477a14cf5c3019326)
 - [https://qiita.com/alumite14/items/f4c355720f2a6da88ca5](https://qiita.com/alumite14/items/f4c355720f2a6da88ca5)
 - [https://torus711.hatenablog.com/entry/2020/11/16/205309](https://torus711.hatenablog.com/entry/2020/11/16/205309)
+
+## Verified
+- [https://atcoder.jp/contests/practice2/tasks/practice2_a](https://atcoder.jp/contests/practice2/tasks/practice2_a) ([submission](https://atcoder.jp/contests/practice2/submissions/74955251))

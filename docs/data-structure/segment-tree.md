@@ -15,3 +15,6 @@ documentation_of: //data-structure/segment-tree/src/lib.rs
 - [https://ei1333.github.io/algorithm/segment-tree.html](https://ei1333.github.io/algorithm/segment-tree.html)
 - [https://hcpc-hokudai.github.io/archive/structure_segtree_001.pdf](https://hcpc-hokudai.github.io/archive/structure_segtree_001.pdf)
 <!--- [https://ei1333.github.io/library/structure/segment-tree/segment-tree.hpp](https://ei1333.github.io/library/structure/segment-tree/segment-tree.hpp)-->
+
+## Verified
+- [https://atcoder.jp/contests/practice2/tasks/practice2_j](https://atcoder.jp/contests/practice2/tasks/practice2_j) ([submission](https://atcoder.jp/contests/practice2/submissions/74955454))

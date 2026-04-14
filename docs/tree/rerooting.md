@@ -14,4 +14,4 @@ documentation_of: //tree/rerooting/src/lib.rs
 - [https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e](https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e)
 
 ## Verified
-- [https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e](https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e) ([submission](https://atcoder.jp/contests/njpc2017/submissions/74541193))
+- [https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e](https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e) ([submission](https://atcoder.jp/contests/njpc2017/submissions/74954882))

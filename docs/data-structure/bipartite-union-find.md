@@ -176,6 +176,6 @@ Returns all components as a list of lists. The order of components and elements 
 - [https://atcoder.jp/contests/abc451/editorial/18130](https://atcoder.jp/contests/abc451/editorial/18130)
 
 ## Verified
-- [https://atcoder.jp/contests/abc126/tasks/abc126_d](https://atcoder.jp/contests/abc126/tasks/abc126_d) ([submission](https://atcoder.jp/contests/abc126/submissions/74521212))
-- [https://atcoder.jp/contests/abc126/tasks/abc126_e](https://atcoder.jp/contests/abc126/tasks/abc126_e) ([submission](https://atcoder.jp/contests/abc126/submissions/74521255))
-- [https://atcoder.jp/contests/abc451/tasks/abc451_f](https://atcoder.jp/contests/abc451/tasks/abc451_f) ([submission](https://atcoder.jp/contests/abc451/submissions/74521590))
+- [https://atcoder.jp/contests/abc126/tasks/abc126_d](https://atcoder.jp/contests/abc126/tasks/abc126_d) ([submission](https://atcoder.jp/contests/abc126/submissions/74954211))
+- [https://atcoder.jp/contests/abc126/tasks/abc126_e](https://atcoder.jp/contests/abc126/tasks/abc126_e) ([submission](https://atcoder.jp/contests/abc126/submissions/74954212))
+- [https://atcoder.jp/contests/abc451/tasks/abc451_f](https://atcoder.jp/contests/abc451/tasks/abc451_f) ([submission](https://atcoder.jp/contests/abc451/submissions/74954220))

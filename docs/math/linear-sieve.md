@@ -17,5 +17,5 @@ documentation_of: //math/linear-sieve/src/lib.rs
 - [https://cp-algorithms.com/algebra/prime-sieve-linear.html](https://cp-algorithms.com/algebra/prime-sieve-linear.html)
 
 ## Verified
-- [https://atcoder.jp/contests/abc254/tasks/abc254_d](https://atcoder.jp/contests/abc254/tasks/abc254_d) ([submission](https://atcoder.jp/contests/abc254/submissions/74590392) / [editorial](https://atcoder.jp/contests/abc254/editorial/4090))
+- [https://atcoder.jp/contests/abc254/tasks/abc254_d](https://atcoder.jp/contests/abc254/tasks/abc254_d) ([submission](https://atcoder.jp/contests/abc254/submissions/74954809) / [editorial](https://atcoder.jp/contests/abc254/editorial/4090))
 <!--- [https://atcoder.jp/contests/abc368/tasks/abc368_f](https://atcoder.jp/contests/abc368/tasks/abc368_f)-->
