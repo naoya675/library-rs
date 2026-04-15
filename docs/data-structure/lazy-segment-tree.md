@@ -14,5 +14,5 @@ documentation_of: //data-structure/lazy-segment-tree/src/lib.rs
 - [https://ikatakos.com/pot/programming_algorithm/data_structure/segment_tree/lazy_segment_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/segment_tree/lazy_segment_tree)
 
 ## Verified
-- [https://atcoder.jp/contests/practice2/tasks/practice2_k](https://atcoder.jp/contests/practice2/tasks/practice2_k) ([submission](https://atcoder.jp/contests/practice2/submissions/74955518))
-- [https://atcoder.jp/contests/practice2/tasks/practice2_l](https://atcoder.jp/contests/practice2/tasks/practice2_l) ([submission](https://atcoder.jp/contests/practice2/submissions/74955520))
+- [https://atcoder.jp/contests/practice2/tasks/practice2_k](https://atcoder.jp/contests/practice2/tasks/practice2_k) ([submission](https://atcoder.jp/contests/practice2/submissions/74978709))
+- [https://atcoder.jp/contests/practice2/tasks/practice2_l](https://atcoder.jp/contests/practice2/tasks/practice2_l) ([submission](https://atcoder.jp/contests/practice2/submissions/74978710))

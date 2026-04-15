@@ -1,5 +1,3 @@
-pub mod wrapper;
-
 #[derive(Debug, Clone)]
 pub struct SegmentTree<T> {
     tree: Vec<T>,

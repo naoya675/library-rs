@@ -164,4 +164,4 @@ Returns the number of nodes in the trie.
 - [https://algo-logic.info/trie-tree/](https://algo-logic.info/trie-tree/)
 
 ## Verified
-- [https://atcoder.jp/contests/abc353/tasks/abc353_e](https://atcoder.jp/contests/abc353/tasks/abc353_e) ([submission](https://atcoder.jp/contests/abc353/submissions/74547834))
+- [https://atcoder.jp/contests/abc353/tasks/abc353_e](https://atcoder.jp/contests/abc353/tasks/abc353_e) ([submission](https://atcoder.jp/contests/abc353/submissions/74954850))

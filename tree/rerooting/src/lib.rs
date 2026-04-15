@@ -1,5 +1,3 @@
-pub mod wrapper;
-
 #[derive(Debug, Clone)]
 pub struct Edge<Cost> {
     from: usize,
@@ -25,14 +23,8 @@ pub struct Rerooting<Cost, Data, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data,
     n: usize,
 }
 
-impl<
-        Cost: Copy + Default,
-        Data: Copy,
-        Merge: Fn(Data, Data) -> Data,
-        E: Fn() -> Data,
-        Leaf: Fn(usize) -> Data,
-        Apply: Fn(Data, usize, usize, Cost) -> Data,
-    > Rerooting<Cost, Data, Merge, E, Leaf, Apply>
+impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Leaf: Fn(usize) -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data>
+    Rerooting<Cost, Data, Merge, E, Leaf, Apply>
 {
     pub fn new(n: usize, merge: Merge, e: E, leaf: Leaf, apply: Apply) -> Self {
         Self {
