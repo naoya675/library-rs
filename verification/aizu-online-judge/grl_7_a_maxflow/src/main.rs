@@ -15,7 +15,7 @@ fn main() {
 
     let source = x + y;
     let sink = source + 1;
-    let mut mf = Maxflow::<i64>::new(sink + 1);
+    let mut mf = Maxflow::new(sink + 1);
     (0..x).for_each(|i| {
         mf.add_edge(source, i, 1);
     });

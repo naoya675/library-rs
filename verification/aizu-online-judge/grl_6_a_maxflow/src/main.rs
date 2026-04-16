@@ -10,7 +10,7 @@ fn main() {
         e: usize,
         uvc: [(usize, usize, i64); e],
     }
-    let mut mf = Maxflow::<i64>::new(v);
+    let mut mf = Maxflow::new(v);
     uvc.iter().for_each(|&(u, v, c)| {
         mf.add_edge(u, v, c);
     });

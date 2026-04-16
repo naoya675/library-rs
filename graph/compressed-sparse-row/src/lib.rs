@@ -1,7 +1,7 @@
 #[derive(Debug, Clone)]
 pub struct Csr<E> {
-    start: Vec<usize>,
-    elist: Vec<E>,
+    pub start: Vec<usize>,
+    pub elist: Vec<E>,
 }
 
 impl<E: Copy + Default> Csr<E> {
