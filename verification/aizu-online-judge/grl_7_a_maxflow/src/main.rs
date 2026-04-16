@@ -13,18 +13,18 @@ fn main() {
     }
     let xy = xy.iter().map(|&(xi, yi)| (xi, x + yi)).collect::<Vec<_>>();
 
-    let source = x + y;
-    let sink = source + 1;
-    let mut mf = Maxflow::new(sink + 1);
+    let s = x + y;
+    let t = x + y + 1;
+    let mut mf = Maxflow::new(t + 1);
     (0..x).for_each(|i| {
-        mf.add_edge(source, i, 1);
+        mf.add_edge(s, i, 1);
+    });
+    (x..x + y).for_each(|i| {
+        mf.add_edge(i, t, 1);
     });
     xy.iter().for_each(|&(x, y)| {
         mf.add_edge(x, y, 1);
     });
-    (x..x + y).for_each(|i| {
-        mf.add_edge(i, sink, 1);
-    });
 
-    println!("{}", mf.flow(source, sink));
+    println!("{}", mf.flow(s, t)); // source -> sink
 }

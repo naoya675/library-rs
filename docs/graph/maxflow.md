@@ -9,4 +9,4 @@ documentation_of: //graph/maxflow/src/lib.rs
 - [https://atcoder.github.io/ac-library/production/document_en/maxflow.html](https://atcoder.github.io/ac-library/production/document_en/maxflow.html)
 
 ## Verified
-- [https://atcoder.jp/contests/practice2/tasks/practice2_d](https://atcoder.jp/contests/practice2/tasks/practice2_d) ([submission]())
+- [https://atcoder.jp/contests/practice2/tasks/practice2_d](https://atcoder.jp/contests/practice2/tasks/practice2_d) ([submission](https://atcoder.jp/contests/practice2/submissions/75020380))

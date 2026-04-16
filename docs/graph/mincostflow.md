@@ -9,4 +9,4 @@ documentation_of: //graph/mincostflow/src/lib.rs
 - [https://atcoder.github.io/ac-library/production/document_en/mincostflow.html](https://atcoder.github.io/ac-library/production/document_en/mincostflow.html)
 
 ## Verified
-- [https://atcoder.jp/contests/practice2/tasks/practice2_e](https://atcoder.jp/contests/practice2/tasks/practice2_e) ([submission]())
+- [https://atcoder.jp/contests/practice2/tasks/practice2_e](https://atcoder.jp/contests/practice2/tasks/practice2_e) ([submission](https://atcoder.jp/contests/practice2/submissions/75020381))
