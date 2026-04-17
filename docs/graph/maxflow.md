@@ -1,5 +1,5 @@
 ---
-title: Maxflow (Dinic's algorithm)
+title: (Dinic's algorithm)
 documentation_of: //graph/maxflow/src/lib.rs
 ---
 

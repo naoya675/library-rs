@@ -2,15 +2,14 @@
 
 use proconio::{input, marker::Chars};
 
-use lcp_array::LCPArray;
-use suffix_array::SuffixArray;
+use lcp_array::lcp_array;
+use suffix_array::suffix_array;
 
 fn main() {
     input! {
         s: Chars,
     }
-    let sa = SuffixArray::suffix_array(&s);
-    let lcp = LCPArray::lcp_array(&s, &sa);
+    let lcp = lcp_array(&s, &suffix_array(&s));
 
     println!("{}", s.len() * (s.len() + 1) / 2 - lcp.iter().sum::<usize>());
 }

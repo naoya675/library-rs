@@ -1,5 +1,5 @@
 ---
-title: MinCostFlow (Primal-Dual)
+title: (Primal-Dual)
 documentation_of: //graph/mincostflow/src/lib.rs
 ---
 
