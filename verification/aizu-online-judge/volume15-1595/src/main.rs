@@ -18,13 +18,7 @@ fn actual_main() {
         n: usize,
         uv: [(usize, usize); n - 1],
     }
-    let mut g = Rerooting::<usize, usize, _, _, _, _>::new(
-        n,
-        |x: usize, y: usize| std::cmp::max(x, y),
-        || 0,
-        |_: usize| 0,
-        |x: usize, _: usize, _: usize, w: usize| x + w,
-    );
+    let mut g = Rerooting::<usize, usize, _, _, _, _>::new(n, |x, y| std::cmp::max(x, y), || 0, |_| 0, |x, _, _, w| x + w);
     uv.iter().for_each(|&(u, v)| {
         g.add_edge(u - 1, v - 1, 1);
         g.add_edge(v - 1, u - 1, 1);

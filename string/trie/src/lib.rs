@@ -166,9 +166,7 @@ impl Trie {
         if let Some(next_id) = self.nodes[node_id].next[c] {
             let result = self.remove_internal(word, word_id + 1, next_id);
             if result {
-                // logical delete  [soft delete]
                 self.nodes[node_id].common -= 1;
-                // physical delete [hard delete]
                 // if self.nodes[next_id].common == 0 {
                 //     self.nodes[node_id].next[c] = None;
                 // }

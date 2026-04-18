@@ -1,14 +1,8 @@
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Copy)]
 pub struct Edge<Cost> {
     from: usize,
     to: usize,
     cost: Cost,
-}
-
-impl<Cost: Copy> Edge<Cost> {
-    pub fn new(from: usize, to: usize, cost: Cost) -> Self {
-        Self { from, to, cost }
-    }
 }
 
 #[derive(Debug, Clone)]
@@ -23,7 +17,7 @@ pub struct Rerooting<Cost, Data, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data,
     n: usize,
 }
 
-impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Leaf: Fn(usize) -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data>
+impl<Cost: Copy, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Leaf: Fn(usize) -> Data, Apply: Fn(Data, usize, usize, Cost) -> Data>
     Rerooting<Cost, Data, Merge, E, Leaf, Apply>
 {
     pub fn new(n: usize, merge: Merge, e: E, leaf: Leaf, apply: Apply) -> Self {
@@ -40,24 +34,25 @@ impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() ->
     }
 
     pub fn add_edge(&mut self, from: usize, to: usize, cost: Cost) {
-        self.graph[from].push(Edge::new(from, to, cost));
+        self.graph[from].push(Edge { from, to, cost });
     }
 
     pub fn run(&mut self) -> Vec<Data> {
         self.memo.resize(self.n, (self.e)());
         self.dp.resize(self.n, (self.e)());
-        self.dfs1(0, usize::MAX);
-        self.dfs2(0, usize::MAX, (self.e)());
+        self.dfs1(0, None);
+        self.dfs2(0, None, (self.e)());
         self.dp.clone()
     }
 
-    fn dfs1(&mut self, c: usize, p: usize) {
+    fn dfs1(&mut self, c: usize, p: Option<usize>) {
         let mut upd = false;
-        for edge in self.graph[c].clone() {
-            if edge.to == p {
+        for j in 0..self.graph[c].len() {
+            let edge = self.graph[c][j];
+            if Some(edge.to) == p {
                 continue;
             }
-            self.dfs1(edge.to, c);
+            self.dfs1(edge.to, Some(c));
             upd = true;
             self.memo[c] = (self.merge)(self.memo[c], (self.apply)(self.memo[edge.to], edge.to, c, edge.cost));
         }
@@ -66,13 +61,14 @@ impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() ->
         }
     }
 
-    fn dfs2(&mut self, c: usize, p: usize, val: Data) {
+    fn dfs2(&mut self, c: usize, p: Option<usize>, val: Data) {
         let mut ds = vec![(self.e)()];
-        for edge in self.graph[c].clone() {
-            if edge.to != p {
-                ds.push((self.apply)(self.memo[edge.to], edge.to, c, edge.cost));
-            } else {
+        for j in 0..self.graph[c].len() {
+            let edge = self.graph[c][j];
+            if Some(edge.to) == p {
                 ds.push((self.apply)(val, edge.to, c, edge.cost));
+            } else {
+                ds.push((self.apply)(self.memo[edge.to], edge.to, c, edge.cost));
             }
         }
         let n = ds.len();
@@ -86,20 +82,24 @@ impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() ->
             tail[i] = (self.merge)(tail[i + 1], ds[i]);
         }
         self.dp[c] = head[n];
-        for edge in self.graph[c].clone() {
-            if edge.to != p {
-                self.dfs2(edge.to, c, (self.merge)(head[idx], tail[idx + 1]));
+        for j in 0..self.graph[c].len() {
+            let edge = self.graph[c][j];
+            if Some(edge.to) == p {
+                idx += 1;
+                continue;
             }
+            self.dfs2(edge.to, Some(c), (self.merge)(head[idx], tail[idx + 1]));
             idx += 1;
         }
     }
 
     /*
-     * Warning
-    fn dfs2(&mut self, c: usize, p: usize, val: Data) {
+     * Symmetric
+    fn dfs2(&mut self, c: usize, p: Option<usize>, val: Data) {
         let mut ds = vec![val];
-        for edge in self.graph[c].clone() {
-            if edge.to == p {
+        for j in 0..self.graph[c].len() {
+            let edge = self.graph[c][j];
+            if Some(edge.to) == p {
                 continue;
             }
             ds.push((self.apply)(self.memo[edge.to], edge.to, c, edge.cost));
@@ -115,14 +115,15 @@ impl<Cost: Copy + Default, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() ->
             tail[i] = (self.merge)(tail[i + 1], ds[i]);
         }
         self.dp[c] = head[n];
-        for edge in self.graph[c].clone() {
-            if edge.to == p {
+        for j in 0..self.graph[c].len() {
+            let edge = self.graph[c][j];
+            if Some(edge.to) == p {
                 continue;
             }
             let sub = (self.merge)(head[idx], tail[idx + 1]);
-            self.dfs2(edge.to, c, (self.apply)(sub, c, edge.to, edge.cost));
+            self.dfs2(edge.to, Some(c), (self.apply)(sub, c, edge.to, edge.cost));
             idx += 1;
         }
     }
-    */
+     */
 }

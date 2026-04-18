@@ -10,7 +10,7 @@ fn main() {
         n: usize,
         a: [usize; n],
     }
-    let mut ct = CartesianTree::new(a);
+    let mut ct = CartesianTree::new(&a);
 
-    println!("{}", ct.run(true).iter().enumerate().map(|(i, &p)| if p == n { i } else { p }).join(" "));
+    println!("{}", ct.run(true).iter().enumerate().map(|(i, p)| p.unwrap_or(i)).join(" "));
 }

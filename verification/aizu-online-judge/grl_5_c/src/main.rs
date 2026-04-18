@@ -31,7 +31,7 @@ fn actual_main() {
         q: usize,
         uv: [(usize, usize); q],
     }
-    for (u, v) in uv {
+    for &(u, v) in &uv {
         println!("{}", hld.lca(u, v));
     }
 }
