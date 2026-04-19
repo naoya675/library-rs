@@ -36,6 +36,10 @@ impl Trie {
         }
     }
 
+    pub fn ctoi(&self, c: char) -> usize {
+        (c as usize) - (self.base as usize)
+    }
+
     pub fn next(&self, node_id: usize, i: usize) -> Option<usize> {
         assert!(node_id < self.size());
         assert!(i < self.size);
@@ -48,7 +52,7 @@ impl Trie {
         &mut self.nodes[node_id].next[i]
     }
 
-    pub fn accept(&self, node_id: usize) -> &Vec<usize> {
+    pub fn accept(&self, node_id: usize) -> &[usize] {
         assert!(node_id < self.size());
         &self.nodes[node_id].accept
     }
@@ -63,34 +67,38 @@ impl Trie {
         self.nodes[node_id].common
     }
 
-    fn insert_internal(&mut self, word: &[char], word_id: usize, node_id: usize, id: usize) {
+    pub fn insert(&mut self, word: &[char]) {
+        self.insert_inner(word, 0, 0, self.nodes[0].common);
+    }
+
+    fn insert_inner(&mut self, word: &[char], word_id: usize, node_id: usize, id: usize) {
         self.nodes[node_id].common += 1;
         if word.len() == word_id {
             self.nodes[node_id].accept.push(id);
         } else {
-            let c = (word[word_id] as usize) - (self.base as usize);
+            let c = self.ctoi(word[word_id]);
             if let Some(next_id) = self.nodes[node_id].next[c] {
-                self.insert_internal(word, word_id + 1, next_id, id);
+                self.insert_inner(word, word_id + 1, next_id, id);
             } else {
                 let next_id = self.nodes.len();
                 self.nodes.push(TrieNode::new(c, self.size));
                 self.nodes[node_id].next[c] = Some(next_id);
-                self.insert_internal(word, word_id + 1, next_id, id);
+                self.insert_inner(word, word_id + 1, next_id, id);
             }
         }
     }
 
-    pub fn insert(&mut self, word: &[char]) {
-        self.insert_internal(word, 0, 0, self.nodes[0].common);
-    }
-
     /*
      * Non-recursive
-    fn insert_internal(&mut self, word: &[char], word_id: usize) {
+    pub fn insert(&mut self, word: &[char]) {
+        self.insert_inner(word, self.nodes[0].common);
+    }
+
+    fn insert_inner(&mut self, word: &[char], word_id: usize) {
         let mut node_id = 0;
         for &w in word {
             self.nodes[node_id].common += 1;
-            let c = (w as usize) - (self.base as usize);
+            let c = self.ctoi(w);
             if let Some(next_id) = self.nodes[node_id].next[c] {
                 node_id = next_id;
             } else {
@@ -103,38 +111,42 @@ impl Trie {
         self.nodes[node_id].common += 1;
         self.nodes[node_id].accept.push(word_id);
     }
-
-    pub fn insert(&mut self, word: &[char]) {
-        self.insert_internal(word, self.nodes[0].common);
-    }
      */
 
-    fn search_internal(&self, word: &[char], word_id: usize, node_id: usize, prefix: bool) -> bool {
+    pub fn search(&self, word: &[char]) -> bool {
+        self.search_inner(word, 0, 0, false)
+    }
+
+    pub fn search_prefix(&self, word: &[char]) -> bool {
+        self.search_inner(word, 0, 0, true)
+    }
+
+    fn search_inner(&self, word: &[char], word_id: usize, node_id: usize, prefix: bool) -> bool {
         if word.len() == word_id {
             return if prefix { true } else { !self.nodes[node_id].accept.is_empty() };
         }
-        let c = (word[word_id] as usize) - (self.base as usize);
+        let c = self.ctoi(word[word_id]);
         if let Some(next_id) = self.nodes[node_id].next[c] {
-            self.search_internal(word, word_id + 1, next_id, prefix)
+            self.search_inner(word, word_id + 1, next_id, prefix)
         } else {
             false
         }
     }
 
+    /*
+     * Non-recursive
     pub fn search(&self, word: &[char]) -> bool {
-        self.search_internal(word, 0, 0, false)
+        self.search_inner(word, false)
     }
 
     pub fn search_prefix(&self, word: &[char]) -> bool {
-        self.search_internal(word, 0, 0, true)
+        self.search_inner(word, true)
     }
 
-    /*
-     * Non-recursive
-    fn search_internal(&self, word: &[char], prefix: bool) -> bool {
+    fn search_inner(&self, word: &[char], prefix: bool) -> bool {
         let mut node_id = self.root;
         for &w in word {
-            let c = (w as usize) - (self.base as usize);
+            let c = self.ctoi(w);
             if let Some(next_id) = self.nodes[node_id].next[c] {
                 node_id = next_id;
             } else {
@@ -143,17 +155,13 @@ impl Trie {
         }
         return if prefix { true } else { !self.nodes[node_id].accept.is_empty() };
     }
-
-    pub fn search(&self, word: &[char]) -> bool {
-        self.search_internal(word, false)
-    }
-
-    pub fn search_prefix(&self, word: &[char]) -> bool {
-        self.search_internal(word, true)
-    }
      */
 
-    fn remove_internal(&mut self, word: &[char], word_id: usize, node_id: usize) -> bool {
+    pub fn remove(&mut self, word: &[char]) -> bool {
+        self.remove_inner(word, 0, 0)
+    }
+
+    fn remove_inner(&mut self, word: &[char], word_id: usize, node_id: usize) -> bool {
         if word.len() == word_id {
             if self.nodes[node_id].accept.is_empty() {
                 return false;
@@ -162,9 +170,9 @@ impl Trie {
             self.nodes[node_id].common -= 1;
             return true;
         }
-        let c = (word[word_id] as usize) - (self.base as usize);
+        let c = self.ctoi(word[word_id]);
         if let Some(next_id) = self.nodes[node_id].next[c] {
-            let result = self.remove_internal(word, word_id + 1, next_id);
+            let result = self.remove_inner(word, word_id + 1, next_id);
             if result {
                 self.nodes[node_id].common -= 1;
                 // if self.nodes[next_id].common == 0 {
@@ -177,11 +185,14 @@ impl Trie {
         }
     }
 
-    pub fn remove(&mut self, word: &[char]) -> bool {
-        self.remove_internal(word, 0, 0)
+    pub fn query<F>(&self, word: &[char], mut f: F)
+    where
+        F: FnMut(usize),
+    {
+        self.query_inner(word, &mut f, 0, 0);
     }
 
-    fn query_internal<F>(&self, word: &[char], f: &mut F, word_id: usize, node_id: usize)
+    fn query_inner<F>(&self, word: &[char], f: &mut F, word_id: usize, node_id: usize)
     where
         F: FnMut(usize),
     {
@@ -191,18 +202,11 @@ impl Trie {
         if word.len() == word_id {
             return;
         } else {
-            let c = (word[word_id] as usize) - (self.base as usize);
+            let c = self.ctoi(word[word_id]);
             if let Some(next_id) = self.nodes[node_id].next[c] {
-                self.query_internal(word, f, word_id + 1, next_id)
+                self.query_inner(word, f, word_id + 1, next_id)
             }
         }
-    }
-
-    pub fn query<F>(&self, word: &[char], mut f: F)
-    where
-        F: FnMut(usize),
-    {
-        self.query_internal(word, &mut f, 0, 0);
     }
 
     pub fn count(&self) -> usize {
@@ -212,7 +216,7 @@ impl Trie {
     pub fn count_prefix(&self, word: &[char]) -> usize {
         let mut node_id = self.root;
         for &w in word {
-            let c = (w as usize) - (self.base as usize);
+            let c = self.ctoi(w);
             if let Some(next_id) = self.nodes[node_id].next[c] {
                 node_id = next_id;
             } else {

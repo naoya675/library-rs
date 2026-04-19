@@ -23,7 +23,7 @@ pub fn kmp_table<T: Copy + PartialEq>(pattern: &[T]) -> Vec<usize> {
 }
 
 pub fn kmp<T: Copy + PartialEq>(target: &[T], pattern: &[T]) -> Vec<usize> {
-    let failure = kmp_table(pattern);
+    let failure = kmp_table(pattern); // failure function
     let mut j = 0;
     let mut res = vec![];
     for i in 0..target.len() {

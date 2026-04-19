@@ -4,7 +4,7 @@ use std::collections::VecDeque;
 pub struct ZAlgorithm<T> {
     s: Vec<T>,
     z: Vec<usize>,
-    delete: Vec<usize>,
+    delete: Vec<bool>,
     delete_memo: Vec<Vec<usize>>,
     cur: VecDeque<usize>,
 }
@@ -26,16 +26,10 @@ impl<T: Copy + PartialEq> ZAlgorithm<T> {
         }
     }
 
-    fn delete(&mut self, q: usize, len: usize) {
-        self.delete[q] = 1;
-        self.delete_memo[len].push(q);
-        self.z[q] = len - q - 1;
-    }
-
     pub fn set(&mut self, c: T) {
         self.s.push(c);
         self.z.push(0);
-        self.delete.push(0);
+        self.delete.push(false);
         self.delete_memo.push(vec![]);
         self.z[0] += 1;
 
@@ -46,11 +40,11 @@ impl<T: Copy + PartialEq> ZAlgorithm<T> {
         if self.s[0] == c {
             self.cur.push_back(len - 1);
         } else {
-            self.delete[len - 1] = 1;
+            self.delete[len - 1] = true;
         }
 
         while let Some(&q) = self.cur.front() {
-            if self.delete[q] != 0 {
+            if self.delete[q] {
                 self.cur.pop_front();
                 continue;
             }
@@ -69,16 +63,22 @@ impl<T: Copy + PartialEq> ZAlgorithm<T> {
         }
     }
 
+    fn delete(&mut self, q: usize, len: usize) {
+        self.delete[q] = true;
+        self.delete_memo[len].push(q);
+        self.z[q] = len - q - 1;
+    }
+
     pub fn get(&self) -> Vec<usize> {
         let mut res = vec![0; self.s.len()];
         for i in 0..self.s.len() {
-            res[i] = self.internal_get(i);
+            res[i] = self.get_inner(i);
         }
         res
     }
 
-    fn internal_get(&self, k: usize) -> usize {
+    fn get_inner(&self, k: usize) -> usize {
         assert!(k < self.s.len());
-        if self.delete[k] != 0 { self.z[k] } else { self.s.len() - k }
+        if self.delete[k] { self.z[k] } else { self.s.len() - k }
     }
 }

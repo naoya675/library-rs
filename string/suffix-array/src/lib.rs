@@ -1,3 +1,18 @@
+pub fn suffix_array<T: Copy + Ord>(s: &[T]) -> Vec<usize> {
+    let n = s.len();
+    let mut idx = (0..n).collect::<Vec<usize>>();
+    idx.sort_by(|&a, &b| s[a].cmp(&s[b]));
+    let mut t = vec![0; n];
+    let mut now = 0;
+    for i in 0..n {
+        if i > 0 && s[idx[i - 1]] != s[idx[i]] {
+            now += 1;
+        }
+        t[idx[i]] = now;
+    }
+    sa_is(&t, now)
+}
+
 fn sa_naive<T: Copy + Ord>(s: &[T]) -> Vec<usize> {
     let n = s.len();
     let mut sa = (0..n).collect::<Vec<usize>>();
@@ -168,19 +183,4 @@ fn sa_is(s: &[usize], upper: usize) -> Vec<usize> {
         induce(&sorted_lms, &mut sa);
     }
     sa.into_iter().map(|a| a.unwrap()).collect()
-}
-
-pub fn suffix_array<T: Copy + Ord>(s: &[T]) -> Vec<usize> {
-    let n = s.len();
-    let mut idx = (0..n).collect::<Vec<usize>>();
-    idx.sort_by(|&a, &b| s[a].cmp(&s[b]));
-    let mut t = vec![0; n];
-    let mut now = 0;
-    for i in 0..n {
-        if i > 0 && s[idx[i - 1]] != s[idx[i]] {
-            now += 1;
-        }
-        t[idx[i]] = now;
-    }
-    sa_is(&t, now)
 }

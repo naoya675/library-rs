@@ -26,6 +26,7 @@ where
 
     pub fn build(&mut self, s: &[char]) -> Vec<T> {
         let size = s.len();
+        self.build_power(size);
         let mut hash = vec![T::from(0u64); size + 1];
         for i in 0..size {
             hash[i + 1] = hash[i] * self.base + T::from(s[i] as u64);
@@ -35,6 +36,7 @@ where
 
     pub fn build_segment_tree(&mut self, s: &[char]) -> SegmentTree<(T, T)> {
         let size = s.len();
+        self.build_power(size);
         let mut hash = SegmentTree::<(T, T)>::new(size, |a, b| (a.0 + (a.1 * b.0), a.1 * b.1), (T::from(0u64), T::from(1u64)));
         for i in 0..size {
             hash.set(i, (T::from(s[i] as u64), self.base));
@@ -50,9 +52,9 @@ where
     }
 
     // [l, r)
-    pub fn rolling_hash(&mut self, hash: &[T], l: usize, r: usize) -> T {
-        assert!(l <= r && r <= hash.len());
-        self.build_power(r - l);
+    pub fn rolling_hash(&self, hash: &[T], l: usize, r: usize) -> T {
+        assert!(l <= r && r < hash.len());
+        assert!(r - l < self.power.len());
         hash[r] - hash[l] * self.power[r - l]
     }
 }

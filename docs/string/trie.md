@@ -3,7 +3,7 @@ title: Trie
 documentation_of: //string/trie/src/lib.rs
 ---
 
-A tree-shaped data structure for efficient storage and retrieval of strings. Each node represents a character, and paths from root to nodes represent prefixes of inserted strings.
+A trie (prefix tree) is a tree data structure for efficient storage and retrieval of strings. Each node represents a character, and paths from root to nodes represent prefixes of inserted strings.
 
 ## new
 
@@ -12,6 +12,17 @@ fn new(size: usize, base: char) -> Self
 ```
 
 Creates an empty trie with alphabet size `size` and base character `base`. For lowercase English letters, use `new(26, 'a')`.
+
+**Complexity**
+- $O(s)$
+
+## ctoi
+
+```rust
+fn ctoi(&self, c: char) -> usize
+```
+
+Converts a character to its index based on `base`.
 
 **Complexity**
 - $O(1)$
@@ -41,7 +52,7 @@ Returns a mutable reference to the child node id for character $i$ from the give
 ## accept
 
 ```rust
-fn accept(&self, node_id: usize) -> &Vec<usize>
+fn accept(&self, node_id: usize) -> &[usize]
 ```
 
 Returns the list of word ids that end at the given node.
@@ -160,8 +171,8 @@ Returns the number of nodes in the trie.
 - $O(1)$
 
 ## Reference
-- [https://atcoder.jp/contests/abc403/editorial/12825](https://atcoder.jp/contests/abc403/editorial/12825)
 - [https://algo-logic.info/trie-tree/](https://algo-logic.info/trie-tree/)
+- [https://atcoder.jp/contests/abc403/editorial/12825](https://atcoder.jp/contests/abc403/editorial/12825)
 
 ## Verified
 - [https://atcoder.jp/contests/abc353/tasks/abc353_e](https://atcoder.jp/contests/abc353/tasks/abc353_e) ([submission](https://atcoder.jp/contests/abc353/submissions/74954850))

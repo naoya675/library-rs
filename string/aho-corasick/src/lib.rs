@@ -36,8 +36,7 @@ impl AhoCorasick {
 
     pub fn goto(&self, node_id: usize, c: char) -> usize {
         assert!(!self.pattern.is_empty(), "call build() before goto()");
-        let c = (c as usize) - (self.base as usize);
-        self.trie.next(node_id, c).unwrap()
+        self.trie.next(node_id, self.trie.ctoi(c)).unwrap()
     }
 
     pub fn fail(&self, node_id: usize) -> usize {
@@ -45,7 +44,7 @@ impl AhoCorasick {
         self.trie.next(node_id, self.fail).unwrap()
     }
 
-    // build Pattern Matching Automaton (PMA)
+    // build PMA (Pattern Matching Automaton)
     pub fn build(&mut self, heavy: bool) {
         self.pattern.resize(self.trie.size(), 0);
         for i in 0..self.trie.size() {
@@ -69,8 +68,8 @@ impl AhoCorasick {
                     *self.trie.next_mut(next_id, self.fail) = self.trie.next(fail, i);
                     if heavy {
                         // set_union
-                        let u = self.trie.accept(next_id).clone();
-                        let v = self.trie.accept(self.trie.next(fail, i).unwrap()).clone();
+                        let u = self.trie.accept(next_id).to_vec();
+                        let v = self.trie.accept(self.trie.next(fail, i).unwrap()).to_vec();
                         let mut merged = Vec::with_capacity(u.len() + v.len());
                         let mut j = 0;
                         let mut k = 0;
@@ -99,6 +98,10 @@ impl AhoCorasick {
         }
     }
 
+    pub fn matches(&self, word: &[char]) -> Vec<usize> {
+        self.matches_from(word, 0)
+    }
+
     pub fn matches_from(&self, word: &[char], mut node_id: usize) -> Vec<usize> {
         let mut res = vec![0; self.trie.count()];
         for &c in word {
@@ -108,10 +111,6 @@ impl AhoCorasick {
             }
         }
         res
-    }
-
-    pub fn matches(&self, word: &[char]) -> Vec<usize> {
-        self.matches_from(word, 0)
     }
 
     pub fn next_word(&self, word: &[char], mut node_id: usize) -> (usize, usize) {
@@ -125,8 +124,7 @@ impl AhoCorasick {
     }
 
     pub fn next(&self, node_id: usize, c: char) -> (usize, usize) {
-        let c = (c as usize) - (self.base as usize);
-        if let Some(next) = self.trie.next(node_id, c) {
+        if let Some(next) = self.trie.next(node_id, self.trie.ctoi(c)) {
             return (self.pattern[next], next);
         }
         unreachable!()

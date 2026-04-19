@@ -27,6 +27,7 @@ pub fn z_algorithm<T: Copy + PartialEq>(s: &[T]) -> Vec<usize> {
 }
 
 /*
+ *
 pub fn z_algorithm<T: Copy + PartialEq>(s: &[T]) -> Vec<usize> {
     if s.len() == 0 {
         return vec![];
@@ -47,4 +48,4 @@ pub fn z_algorithm<T: Copy + PartialEq>(s: &[T]) -> Vec<usize> {
     res[0] = s.len();
     res
 }
-*/
+ */
