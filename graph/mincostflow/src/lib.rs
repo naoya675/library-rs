@@ -121,8 +121,8 @@ impl MinCostFlow {
             dist: Vec<i64>,
             prev_e: Vec<usize>,
             vis: Vec<bool>,
-            que_min: Vec<usize>,
             que: BinaryHeap<Reverse<(i64, usize)>>,
+            que_min: Vec<usize>,
         }
 
         let mut env = Env {
@@ -130,8 +130,8 @@ impl MinCostFlow {
             dist: vec![0; self.n],
             prev_e: vec![0; self.n],
             vis: vec![false; self.n],
-            que_min: vec![],
             que: BinaryHeap::new(),
+            que_min: vec![],
         };
 
         fn dual_ref(s: usize, t: usize, g: &Csr<InnerEdge>, env: &mut Env) -> bool {

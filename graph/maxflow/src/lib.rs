@@ -106,6 +106,22 @@ impl Maxflow {
         flow
     }
 
+    pub fn min_cut(&self, s: usize) -> Vec<bool> {
+        let mut visited = vec![false; self.n];
+        let mut que = VecDeque::new();
+        que.push_back(s);
+        while let Some(p) = que.pop_front() {
+            visited[p] = true;
+            for e in &self.g[p] {
+                if e.cap > 0 && !visited[e.to] {
+                    visited[e.to] = true;
+                    que.push_back(e.to);
+                }
+            }
+        }
+        visited
+    }
+
     fn bfs(&mut self, s: usize, t: usize, que: &mut VecDeque<usize>, level: &mut [i64]) {
         level.fill(-1);
         level[s] = 0;
@@ -156,21 +172,5 @@ impl Maxflow {
         }
         level[v] = self.n as i64;
         res
-    }
-
-    pub fn min_cut(&self, s: usize) -> Vec<bool> {
-        let mut visited = vec![false; self.n];
-        let mut que = VecDeque::new();
-        que.push_back(s);
-        while let Some(p) = que.pop_front() {
-            visited[p] = true;
-            for e in &self.g[p] {
-                if e.cap > 0 && !visited[e.to] {
-                    visited[e.to] = true;
-                    que.push_back(e.to);
-                }
-            }
-        }
-        visited
     }
 }
