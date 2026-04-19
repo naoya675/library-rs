@@ -53,12 +53,11 @@ $$
 は整数であり、$r \cdot M \equiv 0 \pmod{M}$ より、$\text{reduce}(v) \equiv v \cdot R^{-1} \pmod{M}$ が成り立つ。
 
 ## Reference
-- [https://rsk0315.hatenablog.com/entry/2022/11/27/060616](https://rsk0315.hatenablog.com/entry/2022/11/27/060616)
-- [https://ei1333.hateblo.jp/entry/2020/01/16/173956](https://ei1333.hateblo.jp/entry/2020/01/16/173956)
-- [https://drken1215.hatenablog.com/entry/2023/05/23/233000](https://drken1215.hatenablog.com/entry/2023/05/23/233000)
 - [https://andantesoft.hatenablog.com/entry/2025/05/21/164352](https://andantesoft.hatenablog.com/entry/2025/05/21/164352)
+- [https://drken1215.hatenablog.com/entry/2023/05/23/233000](https://drken1215.hatenablog.com/entry/2023/05/23/233000)
+- [https://ei1333.hateblo.jp/entry/2020/01/16/173956](https://ei1333.hateblo.jp/entry/2020/01/16/173956)
+- [https://rsk0315.hatenablog.com/entry/2022/11/27/060616](https://rsk0315.hatenablog.com/entry/2022/11/27/060616)
 - [https://tex2e.github.io/blog/crypto/montgomery-mul](https://tex2e.github.io/blog/crypto/montgomery-mul)
-
 - [https://zenn.dev/herumi/articles/finite-field-01-add](https://zenn.dev/herumi/articles/finite-field-01-add)
 - [https://zenn.dev/herumi/articles/finite-field-02-sub](https://zenn.dev/herumi/articles/finite-field-02-sub)
 - [https://zenn.dev/herumi/articles/finite-field-03-mul](https://zenn.dev/herumi/articles/finite-field-03-mul)

@@ -2,7 +2,7 @@ use std::sync::atomic::{AtomicU64, Ordering};
 
 pub struct MontgomeryReduction {
     modulus: AtomicU64,
-    inv_m: AtomicU64,
+    im: AtomicU64,
     r2: AtomicU64,
 }
 
@@ -10,7 +10,7 @@ impl MontgomeryReduction {
     pub const fn new(m: u64) -> Self {
         Self {
             modulus: AtomicU64::new(m),
-            inv_m: AtomicU64::new(0),
+            im: AtomicU64::new(0),
             r2: AtomicU64::new(0),
         }
     }
@@ -18,7 +18,7 @@ impl MontgomeryReduction {
     pub fn set(&self, m: u64) {
         assert!(m & 1 == 1);
         self.modulus.store(m, Ordering::Relaxed);
-        self.inv_m.store(Self::get_inv_m(m), Ordering::Relaxed);
+        self.im.store(Self::get_im(m), Ordering::Relaxed);
         self.r2.store(Self::get_r2(m), Ordering::Relaxed);
     }
 
@@ -26,15 +26,15 @@ impl MontgomeryReduction {
         self.modulus.load(Ordering::Relaxed)
     }
 
-    pub fn inv_m(&self) -> u64 {
-        self.inv_m.load(Ordering::Relaxed)
+    pub fn im(&self) -> u64 {
+        self.im.load(Ordering::Relaxed)
     }
 
     pub fn r2(&self) -> u64 {
         self.r2.load(Ordering::Relaxed)
     }
 
-    fn get_inv_m(m: u64) -> u64 {
+    fn get_im(m: u64) -> u64 {
         let mut r = m;
         for _ in 0..5 {
             r = r.wrapping_mul(2u64.wrapping_sub(m.wrapping_mul(r)));
@@ -97,12 +97,6 @@ impl<I: Id> DynamicMontgomeryModint<I> {
         I::montgomery().modulus()
     }
 
-    fn reduce(v: u128) -> u64 {
-        let mr = I::montgomery();
-        let r = (v as u64).wrapping_mul(mr.inv_m().wrapping_neg());
-        ((v + r as u128 * mr.modulus() as u128) >> 64) as u64
-    }
-
     pub fn new(n: i64) -> Self {
         let v = n.rem_euclid(Self::get_mod() as i64) as u64;
         Self {
@@ -114,6 +108,24 @@ impl<I: Id> DynamicMontgomeryModint<I> {
     pub fn value(&self) -> u64 {
         let res = Self::reduce(self.value as u128);
         if res >= Self::get_mod() { res - Self::get_mod() } else { res }
+    }
+
+    pub fn pow(&self, mut n: u64) -> Self {
+        let mut value = *self;
+        let mut res = Self::new(1);
+        while n > 0 {
+            if n & 1 != 0 {
+                res = res * value;
+            }
+            value = value * value;
+            n >>= 1;
+        }
+        res
+    }
+
+    pub fn inv(&self) -> Self {
+        let (x, _, _) = Self::ext_gcd(self.value() as i64, Self::get_mod() as i64);
+        Self::new(x as i64)
     }
 
     // ax + by = gcd(a, b) -> (x mod b, y mod b, gcd(a, b))
@@ -134,22 +146,10 @@ impl<I: Id> DynamicMontgomeryModint<I> {
         (x0.rem_euclid(b), y0.rem_euclid(b), r0.rem_euclid(b))
     }
 
-    pub fn pow(&self, mut n: u64) -> Self {
-        let mut value = *self;
-        let mut res = Self::new(1);
-        while n > 0 {
-            if n & 1 != 0 {
-                res = res * value;
-            }
-            value = value * value;
-            n >>= 1;
-        }
-        res
-    }
-
-    pub fn inv(&self) -> Self {
-        let (x, _, _) = Self::ext_gcd(self.value() as i64, Self::get_mod() as i64);
-        Self::new(x as i64)
+    fn reduce(v: u128) -> u64 {
+        let mr = I::montgomery();
+        let r = (v as u64).wrapping_mul(mr.im().wrapping_neg());
+        ((v + r as u128 * mr.modulus() as u128) >> 64) as u64
     }
 }
 

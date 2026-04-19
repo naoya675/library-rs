@@ -14,11 +14,11 @@ impl<const M: u64> PartialEq for MontgomeryModint64<M> {
 impl<const M: u64> Eq for MontgomeryModint64<M> {}
 
 impl<const M: u64> MontgomeryModint64<M> {
-    const INV_M: u64 = Self::get_inv_m(M);
+    const IM: u64 = Self::get_im(M);
     const R2: u64 = Self::get_r2(M);
 
-    // INV_M * M ≡ 1 (mod 2^64)
-    const fn get_inv_m(m: u64) -> u64 {
+    // IM * M ≡ 1 (mod 2^64)
+    const fn get_im(m: u64) -> u64 {
         let mut r = m;
         let mut i = 0;
         while i < 5 {
@@ -42,29 +42,6 @@ impl<const M: u64> MontgomeryModint64<M> {
         r
     }
 
-    fn mul_high(x: u64, y: u64) -> u64 {
-        let mask = (1u64 << 32) - 1;
-        let xh = x >> 32;
-        let yh = y >> 32;
-        let xl = x & mask;
-        let yl = y & mask;
-        let mid = (xh * yl & mask) + (xl * yh & mask) + (xl * yl >> 32);
-        xh * yh + (xh * yl >> 32) + (xl * yh >> 32) + (mid >> 32)
-    }
-
-    fn mul_low(x: u64, y: u64) -> u64 {
-        x.wrapping_mul(y)
-    }
-
-    // Multiplication + Montgomery reduction: x * y * R^{-1} mod M
-    fn mul_reduce(x: u64, y: u64) -> u64 {
-        let hi = Self::mul_high(x, y);
-        let lo = Self::mul_low(x, y);
-        let correction = Self::mul_high(Self::mul_low(lo, Self::INV_M.wrapping_neg()), M);
-        let carry = if lo == 0 { 0 } else { 1 };
-        hi + correction + carry
-    }
-
     pub fn new(n: i64) -> Self {
         const { assert!(M & 1 == 1) };
         let v = n.rem_euclid(M as i64) as u64;
@@ -76,6 +53,24 @@ impl<const M: u64> MontgomeryModint64<M> {
     pub fn value(&self) -> u64 {
         let res = Self::mul_reduce(self.value, 1);
         if res >= M { res - M } else { res }
+    }
+
+    pub fn pow(&self, mut n: u64) -> Self {
+        let mut value = *self;
+        let mut res = Self::new(1);
+        while n > 0 {
+            if n & 1 != 0 {
+                res = res * value;
+            }
+            value = value * value;
+            n >>= 1;
+        }
+        res
+    }
+
+    pub fn inv(&self) -> Self {
+        let (x, _, _) = Self::ext_gcd(self.value() as i64, M as i64);
+        Self::new(x as i64)
     }
 
     // ax + by = gcd(a, b) -> (x mod b, y mod b, gcd(a, b))
@@ -96,22 +91,27 @@ impl<const M: u64> MontgomeryModint64<M> {
         (x0.rem_euclid(b), y0.rem_euclid(b), r0.rem_euclid(b))
     }
 
-    pub fn pow(&self, mut n: u64) -> Self {
-        let mut value = *self;
-        let mut res = Self::new(1);
-        while n > 0 {
-            if n & 1 != 0 {
-                res = res * value;
-            }
-            value = value * value;
-            n >>= 1;
-        }
-        res
+    fn mul_high(x: u64, y: u64) -> u64 {
+        let mask = (1u64 << 32) - 1;
+        let xh = x >> 32;
+        let yh = y >> 32;
+        let xl = x & mask;
+        let yl = y & mask;
+        let mid = (xh * yl & mask) + (xl * yh & mask) + (xl * yl >> 32);
+        xh * yh + (xh * yl >> 32) + (xl * yh >> 32) + (mid >> 32)
     }
 
-    pub fn inv(&self) -> Self {
-        let (x, _, _) = Self::ext_gcd(self.value() as i64, M as i64);
-        Self::new(x as i64)
+    fn mul_low(x: u64, y: u64) -> u64 {
+        x.wrapping_mul(y)
+    }
+
+    // Multiplication + Montgomery reduction: x * y * R^{-1} mod M
+    fn mul_reduce(x: u64, y: u64) -> u64 {
+        let hi = Self::mul_high(x, y);
+        let lo = Self::mul_low(x, y);
+        let correction = Self::mul_high(Self::mul_low(lo, Self::IM.wrapping_neg()), M);
+        let carry = if lo == 0 { 0 } else { 1 };
+        hi + correction + carry
     }
 }
 

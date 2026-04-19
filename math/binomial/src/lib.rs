@@ -101,8 +101,8 @@ where
 
     // catalan number
     pub fn catalan(&mut self, n: usize) -> T {
-        // self.comb(2 * n, n) - self.comb(2 * n, n - 1)
         self.comb(2 * n, n) / T::from((n + 1) as u64)
+        // self.comb(2 * n, n) - self.comb(2 * n, n - 1)
     }
 }
 

@@ -33,7 +33,11 @@ impl LinearSieve {
     }
 
     pub fn least_factor(&self, n: usize) -> Option<usize> {
-        if n < 2 { None } else { Some(self.lpf[n]) }
+        if n < 2 {
+            None
+        } else {
+            Some(self.lpf[n])
+        }
     }
 
     pub fn factors_dup(&self, n: usize) -> impl Iterator<Item = usize> + '_ {

@@ -16,24 +16,6 @@ impl ModintMersenne61 {
         self.value
     }
 
-    // ax + by = gcd(a, b) -> (x mod b, y mod b, gcd(a, b))
-    fn ext_gcd(a: i64, b: i64) -> (i64, i64, i64) {
-        let (mut x0, mut y0, mut r0) = (1, 0, a);
-        let (mut x1, mut y1, mut r1) = (0, 1, b);
-
-        while r1 != 0 {
-            let t = r0 / r1;
-            x0 -= t * x1;
-            y0 -= t * y1;
-            r0 -= t * r1;
-
-            std::mem::swap(&mut x0, &mut x1);
-            std::mem::swap(&mut y0, &mut y1);
-            std::mem::swap(&mut r0, &mut r1);
-        }
-        (x0.rem_euclid(b), y0.rem_euclid(b), r0.rem_euclid(b))
-    }
-
     pub fn pow(&self, mut n: u64) -> Self {
         let mut value = *self;
         let mut res = Self::new(1);
@@ -50,6 +32,24 @@ impl ModintMersenne61 {
     pub fn inv(&self) -> Self {
         let (x, _, _) = Self::ext_gcd(self.value() as i64, Self::M as i64);
         Self { value: x as u64 }
+    }
+
+    // ax + by = gcd(a, b) -> (x mod b, y mod b, gcd(a, b))
+    fn ext_gcd(a: i64, b: i64) -> (i64, i64, i64) {
+        let (mut x0, mut y0, mut r0) = (1, 0, a);
+        let (mut x1, mut y1, mut r1) = (0, 1, b);
+
+        while r1 != 0 {
+            let t = r0 / r1;
+            x0 -= t * x1;
+            y0 -= t * y1;
+            r0 -= t * r1;
+
+            std::mem::swap(&mut x0, &mut x1);
+            std::mem::swap(&mut y0, &mut y1);
+            std::mem::swap(&mut r0, &mut r1);
+        }
+        (x0.rem_euclid(b), y0.rem_euclid(b), r0.rem_euclid(b))
     }
 
     fn mod_mersenne(v: u64) -> u64 {

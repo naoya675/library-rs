@@ -65,6 +65,6 @@ $n$ が十分小さいときは、$a$ を適切に選ぶことで決定的アル
 - [https://theswissbay.ch/pdf/Gentoomen%20Library/Cryptography/Handbook%20of%20Applied%20Cryptography%20-%20Alfred%20J.%20Menezes.pdf](https://theswissbay.ch/pdf/Gentoomen%20Library/Cryptography/Handbook%20of%20Applied%20Cryptography%20-%20Alfred%20J.%20Menezes.pdf)
 
 ## Reference
-- [https://drken1215.hatenablog.com/entry/2023/05/23/233000](https://drken1215.hatenablog.com/entry/2023/05/23/233000)
 - [https://37zigen.com/miller-rabin/](https://37zigen.com/miller-rabin/)
+- [https://drken1215.hatenablog.com/entry/2023/05/23/233000](https://drken1215.hatenablog.com/entry/2023/05/23/233000)
 - [https://tex2e.github.io/blog/crypto/miller-rabin-test](https://tex2e.github.io/blog/crypto/miller-rabin-test)

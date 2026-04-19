@@ -14,11 +14,11 @@ impl<const M: u64> PartialEq for MontgomeryModint<M> {
 impl<const M: u64> Eq for MontgomeryModint<M> {}
 
 impl<const M: u64> MontgomeryModint<M> {
-    const INV_M: u64 = Self::get_inv_m(M);
+    const IM: u64 = Self::get_im(M);
     const R2: u64 = Self::get_r2(M);
 
-    // INV_M * M ≡ 1 (mod 2^64)
-    const fn get_inv_m(m: u64) -> u64 {
+    // IM * M ≡ 1 (mod 2^64)
+    const fn get_im(m: u64) -> u64 {
         let mut r = m;
         let mut i = 0;
         while i < 5 {
@@ -43,12 +43,6 @@ impl<const M: u64> MontgomeryModint<M> {
         // (m as u128).wrapping_neg() % m as u128) as u64
     }
 
-    // Montgomery reduction: v * R^{-1} mod M
-    fn reduce(v: u128) -> u64 {
-        let r = (v as u64).wrapping_mul(Self::INV_M.wrapping_neg());
-        ((v + r as u128 * M as u128) >> 64) as u64
-    }
-
     pub fn new(n: i64) -> Self {
         const { assert!(M & 1 == 1) };
         let v = n.rem_euclid(M as i64) as u64;
@@ -60,6 +54,24 @@ impl<const M: u64> MontgomeryModint<M> {
     pub fn value(&self) -> u64 {
         let res = Self::reduce(self.value as u128);
         if res >= M { res - M } else { res }
+    }
+
+    pub fn pow(&self, mut n: u64) -> Self {
+        let mut value = *self;
+        let mut res = Self::new(1);
+        while n > 0 {
+            if n & 1 != 0 {
+                res = res * value;
+            }
+            value = value * value;
+            n >>= 1;
+        }
+        res
+    }
+
+    pub fn inv(&self) -> Self {
+        let (x, _, _) = Self::ext_gcd(self.value() as i64, M as i64);
+        Self::new(x as i64)
     }
 
     // ax + by = gcd(a, b) -> (x mod b, y mod b, gcd(a, b))
@@ -80,22 +92,10 @@ impl<const M: u64> MontgomeryModint<M> {
         (x0.rem_euclid(b), y0.rem_euclid(b), r0.rem_euclid(b))
     }
 
-    pub fn pow(&self, mut n: u64) -> Self {
-        let mut value = *self;
-        let mut res = Self::new(1);
-        while n > 0 {
-            if n & 1 != 0 {
-                res = res * value;
-            }
-            value = value * value;
-            n >>= 1;
-        }
-        res
-    }
-
-    pub fn inv(&self) -> Self {
-        let (x, _, _) = Self::ext_gcd(self.value() as i64, M as i64);
-        Self::new(x as i64)
+    // Montgomery reduction: v * R^{-1} mod M
+    fn reduce(v: u128) -> u64 {
+        let r = (v as u64).wrapping_mul(Self::IM.wrapping_neg());
+        ((v + r as u128 * M as u128) >> 64) as u64
     }
 }
 

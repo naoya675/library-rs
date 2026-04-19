@@ -42,7 +42,7 @@ Returns $n!$.
 - $0 \leq n$
 
 **Complexity**
-- amortized $O(1)$
+- $O(1)$ amortized
 
 ## finv
 
@@ -56,7 +56,7 @@ Returns $(n!)^{-1}$, the multiplicative inverse of $n!$.
 - $0 \leq n$
 
 **Complexity**
-- amortized $O(1)$
+- $O(1)$ amortized
 
 ## inv
 
@@ -70,7 +70,7 @@ Returns $n^{-1}$, the multiplicative inverse of $n$. Panics when $n = 0$.
 - $1 \leq n$
 
 **Complexity**
-- amortized $O(1)$
+- $O(1)$ amortized
 
 ## perm
 
@@ -84,7 +84,7 @@ Returns ${}_nP_r = \dfrac{n!}{(n - r)!}$, the number of ways to arrange $r$ dist
 - $0 \leq n, r$
 
 **Complexity**
-- amortized $O(1)$
+- $O(1)$ amortized
 
 ## comb
 
@@ -98,7 +98,7 @@ Returns the binomial coefficient $\dbinom{n}{r}$, the number of ways to choose $
 - $0 \leq n, r$
 
 **Complexity**
-- amortized $O(1)$
+- $O(1)$ amortized
 
 ## multinomial
 
@@ -112,7 +112,7 @@ Returns the multinomial coefficient $\dbinom{n}{k_1, k_2, \ldots, k_m} = \dfrac{
 - $0 \leq k_i$ for each $i$
 
 **Complexity**
-- amortized $O(\lvert k \rvert)$
+- $O(\lvert k \rvert)$ amortized
 
 ## homo
 
@@ -126,7 +126,7 @@ Returns ${}_nH_r = \dbinom{n + r - 1}{r}$, the number of ways to place $r$ indis
 - $0 \leq n, r$
 
 **Complexity**
-- amortized $O(1)$
+- $O(1)$ amortized
 
 ## catalan
 
@@ -140,7 +140,7 @@ Returns $C_n = \dfrac{1}{n + 1} \dbinom{2n}{n}$, the $n$-th Catalan number, whic
 - $0 \leq n$
 
 **Complexity**
-- amortized $O(1)$
+- $O(1)$ amortized
 
 ## Reference
 - [https://cses.fi/book/book.pdf](https://cses.fi/book/book.pdf) (Antti Laaksonen, *Competitive Programmer's Handbook*)

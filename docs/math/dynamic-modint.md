@@ -66,9 +66,9 @@ $x$ の上界・下界は以下のように得られる。
 (下界) $z\varepsilon / 2^{64} < 1$ より $(z < 2^{62}, \varepsilon < 1)$、$x \geq \lfloor z / m \rfloor - 1$
 
 ## Reference
-- [https://rsk0315.hatenablog.com/entry/2021/01/18/065720](https://rsk0315.hatenablog.com/entry/2021/01/18/065720)
-- [https://natsugiri.hatenablog.com/entry/2020/04/06/030559](https://natsugiri.hatenablog.com/entry/2020/04/06/030559)
-- [https://mitarushi.hatenablog.com/entry/2022/02/09/194722](https://mitarushi.hatenablog.com/entry/2022/02/09/194722)
-- [https://suisen-kyopro.hatenablog.com/entry/2023/09/13/060922](https://suisen-kyopro.hatenablog.com/entry/2023/09/13/060922)
 - [https://min-25.hatenablog.com/entry/2017/08/20/171214](https://web.archive.org/web/20211009144445/https://min-25.hatenablog.com/entry/2017/08/20/171214)
+- [https://mitarushi.hatenablog.com/entry/2022/02/09/194722](https://mitarushi.hatenablog.com/entry/2022/02/09/194722)
+- [https://natsugiri.hatenablog.com/entry/2020/04/06/030559](https://natsugiri.hatenablog.com/entry/2020/04/06/030559)
 - [https://qiita.com/AkariLuminous/items/cebb1f15bf482fddd85e](https://qiita.com/AkariLuminous/items/cebb1f15bf482fddd85e)
+- [https://rsk0315.hatenablog.com/entry/2021/01/18/065720](https://rsk0315.hatenablog.com/entry/2021/01/18/065720)
+- [https://suisen-kyopro.hatenablog.com/entry/2023/09/13/060922](https://suisen-kyopro.hatenablog.com/entry/2023/09/13/060922)

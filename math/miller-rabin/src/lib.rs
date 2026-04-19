@@ -2,6 +2,23 @@ use dynamic_montgomery_modint::{DefaultId, DynamicMontgomeryModint};
 
 type Mint = DynamicMontgomeryModint<DefaultId>;
 
+pub fn is_prime(n: u64) -> bool {
+    if n <= 1 {
+        return false;
+    }
+    if n == 2 {
+        return true;
+    }
+    if n & 1 == 0 {
+        return false;
+    }
+    if n < 4759123141 {
+        miller_rabin(n, &[2, 7, 61])
+    } else {
+        miller_rabin(n, &[2, 325, 9375, 28178, 450775, 9780504, 1795265022])
+    }
+}
+
 fn miller_rabin(n: u64, ws: &[u64]) -> bool {
     Mint::set_mod(n);
 
@@ -31,21 +48,4 @@ fn miller_rabin(n: u64, ws: &[u64]) -> bool {
         }
     }
     true
-}
-
-pub fn is_prime(n: u64) -> bool {
-    if n <= 1 {
-        return false;
-    }
-    if n == 2 {
-        return true;
-    }
-    if n & 1 == 0 {
-        return false;
-    }
-    if n < 4759123141 {
-        miller_rabin(n, &[2, 7, 61])
-    } else {
-        miller_rabin(n, &[2, 325, 9375, 28178, 450775, 9780504, 1795265022])
-    }
 }
