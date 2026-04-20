@@ -11,8 +11,8 @@ documentation_of: //data-structure/segment-tree/src/wrapper.rs
 - [https://qiita.com/keymoon/items/0f929a19ed30f34ae6e8](https://qiita.com/keymoon/items/0f929a19ed30f34ae6e8)
 
 - Parenthesis Check
-    - [https://atcoder.jp/contests/abc223/editorial/2774](https://atcoder.jp/contests/abc223/editorial/2774)
     - [https://zenn.dev/magurofly/articles/0b3805b3614126](https://zenn.dev/magurofly/articles/0b3805b3614126)
+    - [https://atcoder.jp/contests/abc223/editorial/2774](https://atcoder.jp/contests/abc223/editorial/2774)
     - Parenthesis Sequence
         - [https://37zigen.com/parenthesis/](https://37zigen.com/parenthesis/)
         - [https://betrue12.hateblo.jp/entry/2020/05/10/224429](https://betrue12.hateblo.jp/entry/2020/05/10/224429)

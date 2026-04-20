@@ -12,4 +12,4 @@ documentation_of: //string/lcp-array/src/lib.rs
 - [https://naoyat.hatenablog.jp/entry/construct-suffix-array-and-lcp-in-linear-time](https://naoyat.hatenablog.jp/entry/construct-suffix-array-and-lcp-in-linear-time)
 
 ## Verified
-- [https://atcoder.jp/contests/practice2/tasks/practice2_i](https://atcoder.jp/contests/practice2/tasks/practice2_i) ([submission](https://atcoder.jp/contests/practice2/submissions/75020818))
+- [https://atcoder.jp/contests/practice2/tasks/practice2_i](https://atcoder.jp/contests/practice2/tasks/practice2_i) ([submission](https://atcoder.jp/contests/practice2/submissions/75110940))

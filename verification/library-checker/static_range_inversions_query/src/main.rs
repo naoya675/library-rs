@@ -26,7 +26,7 @@ fn main() {
     let bit = RefCell::new(FenwickTree::<i64>::new(x.len()));
     let inv = Cell::new(0);
     let mut res = vec![0; q];
-    mo.calculate_queries(
+    mo.run_queries(
         |i| {
             inv.set(inv.get() + bit.borrow().sum(0, a[i]));
             bit.borrow_mut().add(a[i], 1);

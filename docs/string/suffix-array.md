@@ -12,4 +12,4 @@ documentation_of: //string/suffix-array/src/lib.rs
     - [https://atcoder.jp/contests/abc433/editorial/14659](https://atcoder.jp/contests/abc433/editorial/14659)
 
 ## Verified
-- [https://atcoder.jp/contests/practice2/tasks/practice2_i](https://atcoder.jp/contests/practice2/tasks/practice2_i) ([submission](https://atcoder.jp/contests/practice2/submissions/75020818))
+- [https://atcoder.jp/contests/practice2/tasks/practice2_i](https://atcoder.jp/contests/practice2/tasks/practice2_i) ([submission](https://atcoder.jp/contests/practice2/submissions/75110940))

@@ -214,8 +214,8 @@ Returns an iterator over all intervals as $(l, r,$ `val`$)$ tuples, sorted by $l
 - $O(n)$
 
 ## Reference
-- [https://rsk0315.hatenablog.com/entry/2020/10/11/125049](https://rsk0315.hatenablog.com/entry/2020/10/11/125049)
 - [https://qiita.com/hibit/items/7e27a41212f849179a79](https://qiita.com/hibit/items/7e27a41212f849179a79)
+- [https://rsk0315.hatenablog.com/entry/2020/10/11/125049](https://rsk0315.hatenablog.com/entry/2020/10/11/125049)
 - [https://github.com/drken1215/algorithm/blob/master/DataStructureSegment/intervals_set.cpp](https://github.com/drken1215/algorithm/blob/master/DataStructureSegment/intervals_set.cpp)
 <!--- [https://github.com/drken1215/algorithm/blob/master/DataStructureSegment/intervals_set_with_noninvertible_del.cpp](https://github.com/drken1215/algorithm/blob/master/DataStructureSegment/intervals_set_with_noninvertible_del.cpp)-->
 <!--- [https://github.com/drken1215/algorithm/blob/master/DataStructure/intervals_management.cpp](https://github.com/drken1215/algorithm/blob/master/DataStructure/intervals_management.cpp)-->
@@ -223,5 +223,5 @@ Returns an iterator over all intervals as $(l, r,$ `val`$)$ tuples, sorted by $l
 ## Verified
 <!--- [https://atcoder.jp/contests/abc255/tasks/abc255_h](https://atcoder.jp/contests/abc255/tasks/abc255_h) ([submission]())-->
 <!--- [https://atcoder.jp/contests/abc256/tasks/abc256_h](https://atcoder.jp/contests/abc256/tasks/abc256_h) ([submission]())-->
-- [https://atcoder.jp/contests/abc330/tasks/abc330_e](https://atcoder.jp/contests/abc330/tasks/abc330_e) ([submission](https://atcoder.jp/contests/abc330/submissions/74954633))
-- [https://atcoder.jp/contests/past202012-open/tasks/past202012_n](https://atcoder.jp/contests/past202012-open/tasks/past202012_n) ([submission](https://atcoder.jp/contests/past202012-open/submissions/74954635))
+- [https://atcoder.jp/contests/abc330/tasks/abc330_e](https://atcoder.jp/contests/abc330/tasks/abc330_e) ([submission](https://atcoder.jp/contests/abc330/submissions/75110998))
+- [https://atcoder.jp/contests/past202012-open/tasks/past202012_n](https://atcoder.jp/contests/past202012-open/tasks/past202012_n) ([submission](https://atcoder.jp/contests/past202012-open/submissions/75111004))

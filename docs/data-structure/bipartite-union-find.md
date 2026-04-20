@@ -32,7 +32,7 @@ Adds an edge $(x, y)$ with parity $w$ ($w = 1$: different parity constraint, $w 
 - $w \in \{0, 1\}$
 
 **Complexity**
-- amortized $O(\alpha(n))$
+- $O(\alpha(n))$ amortized
 
 ## merge
 
@@ -46,7 +46,7 @@ Adds an edge $(x, y)$ with different parity constraint. Equivalent to `merge_wit
 - $0 \leq x, y < n$
 
 **Complexity**
-- amortized $O(\alpha(n))$
+- $O(\alpha(n))$ amortized
 
 ## merge_same
 
@@ -60,7 +60,7 @@ Adds an edge $(x, y)$ with same parity constraint. Equivalent to `merge_with_par
 - $0 \leq x, y < n$
 
 **Complexity**
-- amortized $O(\alpha(n))$
+- $O(\alpha(n))$ amortized
 
 ## same
 
@@ -74,7 +74,7 @@ Returns whether $x$ and $y$ belong to the same component.
 - $0 \leq x, y < n$
 
 **Complexity**
-- amortized $O(\alpha(n))$
+- $O(\alpha(n))$ amortized
 
 ## leader
 
@@ -88,7 +88,7 @@ Returns the representative of the component containing $x$.
 - $0 \leq x < n$
 
 **Complexity**
-- amortized $O(\alpha(n))$
+- $O(\alpha(n))$ amortized
 
 ## size
 
@@ -102,7 +102,7 @@ Returns the number of elements in the component containing $x$.
 - $0 \leq x < n$
 
 **Complexity**
-- amortized $O(\alpha(n))$
+- $O(\alpha(n))$ amortized
 
 ## parity
 
@@ -116,7 +116,7 @@ Returns the parity of $x$ relative to the root of its component ($0$: same parit
 - $0 \leq x < n$
 
 **Complexity**
-- amortized $O(\alpha(n))$
+- $O(\alpha(n))$ amortized
 
 ## same_parity
 
@@ -131,7 +131,7 @@ Returns whether $x$ and $y$ have the same parity. Requires $x$ and $y$ to be in 
 - $x$ and $y$ are in the same component
 
 **Complexity**
-- amortized $O(\alpha(n))$
+- $O(\alpha(n))$ amortized
 
 ## is_bipartite_component
 
@@ -145,7 +145,7 @@ Returns whether the component containing $x$ is bipartite (i.e., no inconsistent
 - $0 \leq x < n$
 
 **Complexity**
-- amortized $O(\alpha(n))$
+- $O(\alpha(n))$ amortized
 
 ## is_bipartite
 
@@ -170,9 +170,9 @@ Returns all components as a list of lists. The order of components and elements 
 - $O(n)$
 
 ## Reference
-- [https://qiita.com/HMMNRST/items/0d4906b40e9cdf0da0e4](https://qiita.com/HMMNRST/items/0d4906b40e9cdf0da0e4)
-- [https://noshi91.hatenablog.com/entry/2018/04/17/183132](https://noshi91.hatenablog.com/entry/2018/04/17/183132)
 - [https://cp-algorithms.com/data_structures/disjoint_set_union.html](https://cp-algorithms.com/data_structures/disjoint_set_union.html)
+- [https://noshi91.hatenablog.com/entry/2018/04/17/183132](https://noshi91.hatenablog.com/entry/2018/04/17/183132)
+- [https://qiita.com/HMMNRST/items/0d4906b40e9cdf0da0e4](https://qiita.com/HMMNRST/items/0d4906b40e9cdf0da0e4)
 - [https://atcoder.jp/contests/abc451/editorial/18130](https://atcoder.jp/contests/abc451/editorial/18130)
 
 ## Verified

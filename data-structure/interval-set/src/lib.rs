@@ -80,8 +80,12 @@ where
         if let Some((_, r, _)) = self.get(p) { r } else { p }
     }
 
+    pub fn update(&mut self, l: T, r: T, val: VAL) {
+        self.update_inner(l, r, val, |_, _, _| {}, |_, _, _| {});
+    }
+
     // update [l, r) with value val
-    pub fn inner_update<F, G>(&mut self, mut l: T, mut r: T, val: VAL, mut add: F, mut del: G)
+    pub fn update_inner<F, G>(&mut self, mut l: T, mut r: T, val: VAL, mut add: F, mut del: G)
     where
         F: FnMut(T, T, &VAL),
         G: FnMut(T, T, &VAL),
@@ -163,24 +167,24 @@ where
         add(l, r, &val);
     }
 
-    pub fn update(&mut self, l: T, r: T, val: VAL) {
-        self.inner_update(l, r, val, |_, _, _| {}, |_, _, _| {});
+    pub fn insert(&mut self, l: T, r: T) {
+        self.update_inner(l, r, self.identity.clone(), |_, _, _| {}, |_, _, _| {});
     }
 
-    pub fn inner_insert<F, G>(&mut self, l: T, r: T, add: F, del: G)
+    pub fn insert_inner<F, G>(&mut self, l: T, r: T, add: F, del: G)
     where
         F: FnMut(T, T, &VAL),
         G: FnMut(T, T, &VAL),
     {
-        self.inner_update(l, r, self.identity.clone(), add, del);
+        self.update_inner(l, r, self.identity.clone(), add, del);
     }
 
-    pub fn insert(&mut self, l: T, r: T) {
-        self.inner_update(l, r, self.identity.clone(), |_, _, _| {}, |_, _, _| {});
+    pub fn erase(&mut self, l: T, r: T) {
+        self.erase_inner(l, r, |_, _, _| {}, |_, _, _| {});
     }
 
     // erase [l, r)
-    pub fn inner_erase<F, G>(&mut self, l: T, r: T, mut add: F, mut del: G)
+    pub fn erase_inner<F, G>(&mut self, l: T, r: T, mut add: F, mut del: G)
     where
         F: FnMut(T, T, &VAL),
         G: FnMut(T, T, &VAL),
@@ -221,10 +225,6 @@ where
                 add(nl, l, &nval);
             }
         }
-    }
-
-    pub fn erase(&mut self, l: T, r: T) {
-        self.inner_erase(l, r, |_, _, _| {}, |_, _, _| {});
     }
 
     pub fn iter(&self) -> impl Iterator<Item = (T, T, VAL)> + '_ {
