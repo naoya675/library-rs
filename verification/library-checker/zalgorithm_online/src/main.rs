@@ -9,7 +9,7 @@ fn main() {
     input! {
         s: Chars,
     }
-    let mut za = ZAlgorithm::<char>::new();
+    let mut za = ZAlgorithm::new();
     za.build(&s);
     println!("{}", za.get().iter().join(" "));
 }

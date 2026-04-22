@@ -32,7 +32,7 @@ fn actual_main() {
         uv: [(usize, usize); n - 1],
         queries: [Query; q],
     }
-    let mut et = EulerTour::<usize>::new(n);
+    let mut et = EulerTour::new(n);
     for &(u, v) in &uv {
         et.add_edge(u, v, 0);
         et.add_edge(v, u, 0);

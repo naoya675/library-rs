@@ -10,7 +10,7 @@ fn main() {
         t: Chars,
         p: Chars,
     }
-    let mut rh = RollingHash::<ModintMersenne61>::new(ModintMersenne61::rand());
+    let mut rh = RollingHash::new(ModintMersenne61::rand());
     let ht = rh.build(&t);
     let hp = rh.build(&p);
 

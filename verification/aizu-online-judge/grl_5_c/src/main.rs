@@ -17,7 +17,7 @@ fn actual_main() {
     input! {
         n: usize,
     }
-    let mut hld = HeavyLightDecomposition::<usize>::new(n);
+    let mut hld = HeavyLightDecomposition::new(n);
     for i in 0..n {
         input! { k: usize, c: [usize; k], }
         c.iter().for_each(|&c| {

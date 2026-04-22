@@ -18,7 +18,7 @@ fn main() {
         a: [i64; n],
         queries: [Query; q],
     }
-    let mut ft = FenwickTreeAbstract::new(n, |x, y| x + y, 0, |x| -x);
+    let mut ft = FenwickTreeAbstract::<i64>::new(n, |x, y| x + y, 0, |x| -x);
     for i in 0..n {
         ft.add(i, a[i]);
     }

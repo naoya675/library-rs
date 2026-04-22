@@ -29,7 +29,7 @@ fn actual_main() {
         p: [usize; n - 1],
         queries: [Query; q],
     }
-    let mut et = EulerTour::<usize>::new(n);
+    let mut et = EulerTour::new(n);
     p.iter().enumerate().for_each(|(i, &p)| {
         et.add_edge(i + 1, p, 0);
         et.add_edge(p, i + 1, 0);
