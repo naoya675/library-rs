@@ -4,21 +4,22 @@ pub struct Csr<E> {
     pub elist: Vec<E>,
 }
 
-impl<E: Copy + Default> Csr<E> {
+impl<E: Copy> Csr<E> {
     pub fn new(n: usize, edges: &[(usize, E)]) -> Self {
         let mut start = vec![0; n + 1];
-        let mut elist = vec![E::default(); edges.len()];
         for &(from, _) in edges {
             start[from + 1] += 1;
         }
-        for i in 1..=n {
-            start[i] += start[i - 1];
+        for i in 0..n {
+            start[i + 1] += start[i];
         }
         let mut counter = start.clone();
-        for &(from, e) in edges {
-            elist[counter[from]] = e;
+        let mut perm = vec![0; edges.len()];
+        for (i, &(from, _)) in edges.iter().enumerate() {
+            perm[counter[from]] = i;
             counter[from] += 1;
         }
+        let elist = perm.into_iter().map(|i| edges[i].1).collect();
         Self { start, elist }
     }
 }

@@ -1,3 +1,4 @@
+#[derive(Debug, Clone)]
 pub struct DynamicSegmentTree<T> {
     n: usize,
     root: Option<Box<Node<T>>>,
@@ -5,6 +6,7 @@ pub struct DynamicSegmentTree<T> {
     e: T,
 }
 
+#[derive(Debug, Clone)]
 struct Node<T> {
     l: Option<Box<Node<T>>>,
     r: Option<Box<Node<T>>>,

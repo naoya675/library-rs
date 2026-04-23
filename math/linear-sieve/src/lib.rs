@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct LinearSieve {
     lpf: Vec<usize>,
     lpf_e: Vec<(usize, u32)>,

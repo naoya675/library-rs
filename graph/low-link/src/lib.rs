@@ -1,6 +1,6 @@
 use compressed_sparse_row::Csr;
 
-#[derive(Debug, Clone, Copy, Default)]
+#[derive(Debug, Clone, Copy)]
 pub struct Edge {
     pub from: usize,
     pub to: usize,

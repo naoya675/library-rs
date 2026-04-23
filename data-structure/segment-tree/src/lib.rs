@@ -23,10 +23,10 @@ impl<T: Copy> SegmentTree<T> {
         }
     }
 
-    pub fn build(&mut self, vec: &[T]) {
-        assert!(vec.len() == self.n);
+    pub fn build(&mut self, v: &[T]) {
+        assert!(v.len() == self.n);
         for k in 0..self.n {
-            self.tree[k + self.size] = vec[k];
+            self.tree[k + self.size] = v[k];
         }
         for k in (1..self.size).rev() {
             self.update(k);

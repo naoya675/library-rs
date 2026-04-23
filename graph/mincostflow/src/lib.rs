@@ -12,7 +12,7 @@ pub struct Edge {
     pub cost: i64,
 }
 
-#[derive(Clone, Copy, Default)]
+#[derive(Debug, Clone, Copy)]
 struct InnerEdge {
     to: usize,
     rev: usize,

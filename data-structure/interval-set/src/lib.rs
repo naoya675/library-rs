@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-#[derive(Clone, Debug)]
+#[derive(Debug, Clone)]
 pub struct IntervalSet<T, VAL> {
     identity: VAL,
     map: BTreeMap<T, (T, VAL)>, // l -> (r, val), representing [l, r)

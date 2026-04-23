@@ -1,6 +1,6 @@
 use std::collections::VecDeque;
 
-#[derive(Clone, Debug)]
+#[derive(Debug, Clone, Copy)]
 pub struct Edge {
     pub from: usize,
     pub to: usize,
@@ -8,7 +8,7 @@ pub struct Edge {
     pub flow: i64,
 }
 
-#[derive(Clone, Debug)]
+#[derive(Debug, Clone, Copy)]
 struct InnerEdge {
     to: usize,
     rev: usize,
