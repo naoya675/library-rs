@@ -1,10 +1,41 @@
-use std::{cmp::Reverse, collections::BinaryHeap};
+use std::{
+    cmp::Reverse,
+    collections::{BinaryHeap, VecDeque},
+};
 
-pub fn topological_sort(size: usize, graph: &[Vec<usize>]) -> Vec<usize> {
+pub fn topological_sort(size: usize, graph: &[Vec<usize>]) -> Option<Vec<usize>> {
     let mut indegree = vec![0; size];
     for from in 0..size {
-        for i in 0..graph[from].len() {
-            let to = graph[from][i];
+        for &to in &graph[from] {
+            indegree[to] += 1;
+        }
+    }
+    let mut queue = VecDeque::new();
+    for from in 0..size {
+        if indegree[from] == 0 {
+            queue.push_back(from);
+        }
+    }
+    let mut res = vec![];
+    while let Some(from) = queue.pop_front() {
+        res.push(from);
+        for &to in &graph[from] {
+            indegree[to] -= 1;
+            if indegree[to] == 0 {
+                queue.push_back(to);
+            }
+        }
+    }
+    if res.len() != size {
+        return None;
+    }
+    Some(res)
+}
+
+pub fn topological_sort_lex(size: usize, graph: &[Vec<usize>]) -> Option<Vec<usize>> {
+    let mut indegree = vec![0; size];
+    for from in 0..size {
+        for &to in &graph[from] {
             indegree[to] += 1;
         }
     }
@@ -17,8 +48,7 @@ pub fn topological_sort(size: usize, graph: &[Vec<usize>]) -> Vec<usize> {
     let mut res = vec![];
     while let Some(Reverse(from)) = heap.pop() {
         res.push(from);
-        for i in 0..graph[from].len() {
-            let to = graph[from][i];
+        for &to in &graph[from] {
             indegree[to] -= 1;
             if indegree[to] == 0 {
                 heap.push(Reverse(to));
@@ -26,7 +56,7 @@ pub fn topological_sort(size: usize, graph: &[Vec<usize>]) -> Vec<usize> {
         }
     }
     if res.len() != size {
-        return vec![];
+        return None;
     }
-    res
+    Some(res)
 }

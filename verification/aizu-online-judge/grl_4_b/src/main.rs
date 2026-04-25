@@ -14,5 +14,5 @@ fn main() {
     let mut graph = vec![vec![]; v];
     st.iter().for_each(|&(s, t)| graph[s].push(t));
 
-    println!("{}", topological_sort(v, &graph).iter().join("\n"));
+    println!("{}", topological_sort(v, &graph).unwrap().iter().join("\n"));
 }
