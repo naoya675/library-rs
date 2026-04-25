@@ -1,5 +1,5 @@
 ---
-title: Union Find (Disjoint Set Union)
+title: Union-Find (Disjoint Set Union)
 documentation_of: //data-structure/union-find/src/lib.rs
 ---
 

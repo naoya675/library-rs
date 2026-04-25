@@ -1,5 +1,5 @@
 ---
-title: Union Find with Potential
+title: Union-Find with Potential
 documentation_of: //data-structure/union-find-with-potential/src/lib.rs
 ---
 

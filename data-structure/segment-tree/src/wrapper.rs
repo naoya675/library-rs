@@ -1,79 +1,70 @@
-use crate::SegmentTree;
+pub mod range_minimum_query {
+    use crate::SegmentTree;
 
-pub struct RangeMinimumQuery;
-impl RangeMinimumQuery {
     pub fn new(n: usize) -> SegmentTree<i64> {
         SegmentTree::new(n, |x, y| std::cmp::min(x, y), i64::MAX)
     }
 }
 
-pub struct RangeMaximumQuery;
-impl RangeMaximumQuery {
+pub mod range_maximum_query {
+    use crate::SegmentTree;
+
     pub fn new(n: usize) -> SegmentTree<i64> {
         SegmentTree::new(n, |x, y| std::cmp::max(x, y), i64::MIN)
     }
 }
 
-pub struct RangeSumQuery;
-impl RangeSumQuery {
+pub mod range_sum_query {
+    use crate::SegmentTree;
+
     pub fn new(n: usize) -> SegmentTree<i64> {
         SegmentTree::new(n, |x, y| x + y, 0)
     }
 }
 
-pub struct RangeCompositeQuery;
-impl RangeCompositeQuery {
+pub mod range_composite_query {
+    use crate::SegmentTree;
+
     pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
         SegmentTree::new(n, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), (1, 0))
     }
 }
 
-pub struct ParenthesisCheckQuery;
-impl ParenthesisCheckQuery {
+pub mod parenthesis_check_query1 {
+    use crate::SegmentTree;
+
     pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
         SegmentTree::new(n, |x, y| (x.0 + std::cmp::max(y.0 - x.1, 0), std::cmp::max(x.1 - y.0, 0) + y.1), (0, 0))
     }
 
-    pub fn new_build(n: usize, s: &[char]) -> SegmentTree<(i64, i64)> {
-        let mut st = Self::new(n);
-        let s = s
-            .iter()
-            .map(|&s| match s {
-                '(' => (0, 1),
-                ')' => (1, 0),
-                _ => unreachable!(),
-            })
-            .collect::<Vec<_>>();
-        st.build(&s);
-        st
+    pub fn encode(c: char) -> (i64, i64) {
+        match c {
+            '(' => (0, 1),
+            ')' => (1, 0),
+            _ => unreachable!(),
+        }
     }
 }
 
-/*
-pub struct ParenthesisCheckQuery;
-impl ParenthesisCheckQuery {
+pub mod parenthesis_check_query2 {
+    use crate::SegmentTree;
+
     pub fn new(n: usize) -> SegmentTree<(i64, i64)> {
         SegmentTree::new(n, |x, y| (std::cmp::min(x.0, x.1 + y.0), x.1 + y.1), (0, 0))
     }
 
-    pub fn new_build(n: usize, s: &[char]) -> SegmentTree<(i64, i64)> {
-        let mut st = Self::new(n);
-        let s = s
-            .iter()
-            .map(|&s| match s {
-                '(' => (0, 1),
-                ')' => (-1, -1),
-                _ => unreachable!(),
-            })
-            .collect::<Vec<_>>();
-        st.build(&s);
-        st
+    pub fn encode(c: char) -> (i64, i64) {
+        match c {
+            '(' => (0, 1),
+            ')' => (-1, -1),
+            _ => unreachable!(),
+        }
     }
 }
-*/
 
-pub struct IntervalCountQuery;
-impl IntervalCountQuery {
+pub mod interval_count_query {
+    use crate::SegmentTree;
+
     pub fn new(n: usize) -> SegmentTree<(usize, usize, usize)> {
         SegmentTree::new(
             n,
@@ -90,18 +81,12 @@ impl IntervalCountQuery {
         )
     }
 
-    pub fn new_build(n: usize, s: &[usize]) -> SegmentTree<(usize, usize, usize)> {
-        let mut st = Self::new(n);
-        let s = s
-            .iter()
-            .map(|&s| match s {
-                0 => (0, 0, 0),      // Black
-                1 => (1, 1, 1),      // White
-                _ => unreachable!(), // Invalid
-            })
-            .collect::<Vec<_>>();
-        st.build(&s);
-        st
+    pub fn encode(x: usize) -> (usize, usize, usize) {
+        match x {
+            0 => (0, 0, 0),      // Black
+            1 => (1, 1, 1),      // White
+            _ => unreachable!(), // Invalid
+        }
     }
 }
 
@@ -116,24 +101,21 @@ pub mod range_maximum_subarray_sum_query {
         whole: i64,
     }
 
-    pub struct RangeMaximumSubarraySumQuery;
-    impl RangeMaximumSubarraySumQuery {
-        pub fn new(n: usize) -> SegmentTree<S> {
-            SegmentTree::new(
-                n,
-                |lhs, rhs| S {
-                    prefix: lhs.prefix.max(rhs.prefix + lhs.whole),
-                    suffix: rhs.suffix.max(lhs.suffix + rhs.whole),
-                    subarray: lhs.subarray.max(rhs.subarray).max(lhs.suffix + rhs.prefix),
-                    whole: lhs.whole + rhs.whole,
-                },
-                S {
-                    prefix: 0,
-                    suffix: 0,
-                    subarray: 0,
-                    whole: 0,
-                },
-            )
-        }
+    pub fn new(n: usize) -> SegmentTree<S> {
+        SegmentTree::new(
+            n,
+            |lhs, rhs| S {
+                prefix: lhs.prefix.max(rhs.prefix + lhs.whole),
+                suffix: rhs.suffix.max(lhs.suffix + rhs.whole),
+                subarray: lhs.subarray.max(rhs.subarray).max(lhs.suffix + rhs.prefix),
+                whole: lhs.whole + rhs.whole,
+            },
+            S {
+                prefix: 0,
+                suffix: 0,
+                subarray: 0,
+                whole: 0,
+            },
+        )
     }
 }

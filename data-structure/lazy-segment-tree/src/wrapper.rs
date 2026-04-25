@@ -1,28 +1,30 @@
-use crate::LazySegmentTree;
+pub mod range_add_range_minimum_query {
+    use crate::LazySegmentTree;
 
-pub struct RangeAddRangeMinimumQuery;
-impl RangeAddRangeMinimumQuery {
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(n, |x, y| std::cmp::min(x, y), i64::MAX, |f, x| f + x, |f, g| f + g, 0)
     }
 }
 
-pub struct RangeAddRangeMaximumQuery;
-impl RangeAddRangeMaximumQuery {
+pub mod range_add_range_maximum_query {
+    use crate::LazySegmentTree;
+
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(n, |x, y| std::cmp::max(x, y), i64::MIN, |f, x| f + x, |f, g| f + g, 0)
     }
 }
 
-pub struct RangeAddRangeSumQuery;
-impl RangeAddRangeSumQuery {
+pub mod range_add_range_sum_query {
+    use crate::LazySegmentTree;
+
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), i64> {
         LazySegmentTree::new(n, |x, y| (x.0 + y.0, x.1 + y.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0)
     }
 }
 
-pub struct RangeUpdateRangeMinimumQuery;
-impl RangeUpdateRangeMinimumQuery {
+pub mod range_update_range_minimum_query {
+    use crate::LazySegmentTree;
+
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(
             n,
@@ -35,8 +37,9 @@ impl RangeUpdateRangeMinimumQuery {
     }
 }
 
-pub struct RangeUpdateRangeMaximumQuery;
-impl RangeUpdateRangeMaximumQuery {
+pub mod range_update_range_maximum_query {
+    use crate::LazySegmentTree;
+
     pub fn new(n: usize) -> LazySegmentTree<i64, i64> {
         LazySegmentTree::new(
             n,
@@ -49,8 +52,9 @@ impl RangeUpdateRangeMaximumQuery {
     }
 }
 
-pub struct RangeUpdateRangeSumQuery;
-impl RangeUpdateRangeSumQuery {
+pub mod range_update_range_sum_query {
+    use crate::LazySegmentTree;
+
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), i64> {
         LazySegmentTree::new(
             n,
@@ -63,8 +67,9 @@ impl RangeUpdateRangeSumQuery {
     }
 }
 
-pub struct RangeAffineRangeSumQuery;
-impl RangeAffineRangeSumQuery {
+pub mod range_affine_range_sum_query {
+    use crate::LazySegmentTree;
+
     pub fn new(n: usize) -> LazySegmentTree<(i64, i64), (i64, i64)> {
         LazySegmentTree::new(
             n,
@@ -93,34 +98,31 @@ pub mod range_arithmetic_sequence_add {
         b: i64,
     }
 
-    pub struct RangeArithmeticSequenceAdd;
-    impl RangeArithmeticSequenceAdd {
-        pub fn new(n: usize) -> LazySegmentTree<S, F> {
-            LazySegmentTree::new(
-                n,
-                |x, y| S {
-                    value_sum: x.value_sum + y.value_sum,
-                    index_sum: x.index_sum + y.index_sum,
-                    len: x.len + y.len,
-                },
-                S {
-                    value_sum: 0,
-                    index_sum: 0,
-                    len: 0,
-                },
-                |f, x| S {
-                    value_sum: x.value_sum + x.index_sum * f.a + x.len * f.b,
-                    index_sum: x.index_sum,
-                    len: x.len,
-                },
-                |f, g| F { a: f.a + g.a, b: f.b + g.b },
-                F { a: 0, b: 0 },
-            )
-        }
+    pub fn new(n: usize) -> LazySegmentTree<S, F> {
+        LazySegmentTree::new(
+            n,
+            |x, y| S {
+                value_sum: x.value_sum + y.value_sum,
+                index_sum: x.index_sum + y.index_sum,
+                len: x.len + y.len,
+            },
+            S {
+                value_sum: 0,
+                index_sum: 0,
+                len: 0,
+            },
+            |f, x| S {
+                value_sum: x.value_sum + x.index_sum * f.a + x.len * f.b,
+                index_sum: x.index_sum,
+                len: x.len,
+            },
+            |f, g| F { a: f.a + g.a, b: f.b + g.b },
+            F { a: 0, b: 0 },
+        )
     }
 }
 
-pub mod range_add_and_flip_range_maximum {
+pub mod range_add_and_flip_range_maximum_query {
     use crate::LazySegmentTree;
 
     #[derive(Debug, Clone, Copy)]
@@ -136,35 +138,32 @@ pub mod range_add_and_flip_range_maximum {
         flip: usize,
     }
 
-    pub struct RangeAddAndFlipRangeMaximumQuery;
-    impl RangeAddAndFlipRangeMaximumQuery {
-        pub fn new(n: usize) -> LazySegmentTree<S, F> {
-            LazySegmentTree::new(
-                n,
-                |x, y| S {
-                    max: std::cmp::max(x.max, y.max),
-                    up: x.up + y.up,
-                    down: x.down + y.down,
-                },
-                S { max: 0, up: 0, down: 0 },
-                |f, x| {
-                    let flip = f.flip & 1 == 1;
-                    S {
-                        max: if (if flip { x.down } else { x.up }) == 0 {
-                            0
-                        } else {
-                            f.add + if f.flip == 0 { x.max } else { 0 }
-                        },
-                        up: if flip { x.down } else { x.up },
-                        down: if flip { x.up } else { x.down },
-                    }
-                },
-                |f, g| F {
-                    add: f.add + if f.flip == 0 { g.add } else { 0 },
-                    flip: f.flip + g.flip,
-                },
-                F { add: 0, flip: 0 },
-            )
-        }
+    pub fn new(n: usize) -> LazySegmentTree<S, F> {
+        LazySegmentTree::new(
+            n,
+            |x, y| S {
+                max: std::cmp::max(x.max, y.max),
+                up: x.up + y.up,
+                down: x.down + y.down,
+            },
+            S { max: 0, up: 0, down: 0 },
+            |f, x| {
+                let flip = f.flip & 1 == 1;
+                S {
+                    max: if (if flip { x.down } else { x.up }) == 0 {
+                        0
+                    } else {
+                        f.add + if f.flip == 0 { x.max } else { 0 }
+                    },
+                    up: if flip { x.down } else { x.up },
+                    down: if flip { x.up } else { x.down },
+                }
+            },
+            |f, g| F {
+                add: f.add + if f.flip == 0 { g.add } else { 0 },
+                flip: f.flip + g.flip,
+            },
+            F { add: 0, flip: 0 },
+        )
     }
 }

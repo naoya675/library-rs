@@ -1,5 +1,5 @@
 ---
-title: Bipartite Union Find
+title: Bipartite Union-Find
 documentation_of: //data-structure/bipartite-union-find/src/lib.rs
 ---
 
