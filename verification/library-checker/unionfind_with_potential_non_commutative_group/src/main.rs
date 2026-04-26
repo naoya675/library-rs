@@ -15,16 +15,16 @@ query::define_query! {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub struct Matrix {
+struct Matrix {
     mat: [[Mint; 2]; 2],
 }
 
 impl Matrix {
-    pub fn new(mat: [[Mint; 2]; 2]) -> Self {
+    fn new(mat: [[Mint; 2]; 2]) -> Self {
         Self { mat }
     }
 
-    pub fn mul(lhs: Self, rhs: Self) -> Self {
+    fn mul(lhs: Self, rhs: Self) -> Self {
         let mut ret = Self::new([[Mint::new(0); 2]; 2]);
         for i in 0..2 {
             for k in 0..2 {
@@ -36,7 +36,7 @@ impl Matrix {
         ret
     }
 
-    pub fn identity() -> Self {
+    fn identity() -> Self {
         let mut mat = [[Mint::new(0); 2]; 2];
         for i in 0..2 {
             mat[i][i] = Mint::new(1);
@@ -44,7 +44,7 @@ impl Matrix {
         Self { mat }
     }
 
-    pub fn inv(a: Self) -> Self {
+    fn inv(a: Self) -> Self {
         Self {
             mat: [[a.mat[1][1], -a.mat[0][1]], [-a.mat[1][0], a.mat[0][0]]],
         }

@@ -16,14 +16,14 @@ fn main() {
     sorted.dedup();
     let mut pos = vec![vec![]; sorted.len()];
     for (i, &a) in a.iter().enumerate() {
-        let idx = sorted.lower_bound(&a);
-        pos[idx].push(i);
+        let rank = sorted.lower_bound(&a);
+        pos[rank].push(i);
     }
 
     for &(l, r, x) in &queries {
-        let idx = sorted.lower_bound(&x);
-        let res = if idx < sorted.len() && sorted[idx] == x {
-            pos[idx].lower_bound(&r) - pos[idx].lower_bound(&l)
+        let rank = sorted.lower_bound(&x);
+        let res = if rank < sorted.len() && sorted[rank] == x {
+            pos[rank].lower_bound(&r) - pos[rank].lower_bound(&l)
         } else {
             0
         };

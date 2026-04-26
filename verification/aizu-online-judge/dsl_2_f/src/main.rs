@@ -17,19 +17,12 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut lst = LazySegmentTree::<i64, i64>::new(
-        n,
-        |x, y| std::cmp::min(x, y),
-        i64::MAX,
-        |f, x| if f == i64::MAX { x } else { f },
-        |f, g| if f == i64::MAX { g } else { f },
-        i64::MAX,
-    );
+    let mut lst = LazySegmentTree::<i64, Option<i64>>::new(n, |x, y| std::cmp::min(x, y), i64::MAX, |f, x| f.unwrap_or(x), |f, g| f.or(g), None);
     lst.build(&vec![(1 << 31) - 1; n]);
 
     for query in queries {
         match query {
-            Query0(s, t, x) => lst.apply(s, t + 1, x),
+            Query0(s, t, x) => lst.apply(s, t + 1, Some(x)),
             Query1(s, t) => {
                 println!("{}", lst.prod(s, t + 1));
             }

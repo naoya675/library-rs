@@ -16,7 +16,6 @@ documentation_of: //data-structure/segment-tree/src/wrapper.rs
     - Parenthesis Sequence
         - [https://37zigen.com/parenthesis/](https://37zigen.com/parenthesis/)
         - [https://betrue12.hateblo.jp/entry/2020/05/10/224429](https://betrue12.hateblo.jp/entry/2020/05/10/224429)
-        - [https://qiita.com/Nauclhlt/items/b700cf31f524214a0735](https://qiita.com/Nauclhlt/items/b700cf31f524214a0735)
 
 - Range Maximum Subarray Sum (Prefix Sum, Suffix Sum)
     - [https://atcoder.jp/contests/abc175/editorial/4722](https://atcoder.jp/contests/abc175/editorial/4722)

@@ -18,3 +18,5 @@ documentation_of: //data-structure/segment-tree/src/lib.rs
 
 ## Verified
 - [https://atcoder.jp/contests/practice2/tasks/practice2_j](https://atcoder.jp/contests/practice2/tasks/practice2_j) ([submission](https://atcoder.jp/contests/practice2/submissions/74978637))
+- [https://atcoder.jp/contests/abc453/tasks/abc453_g](https://atcoder.jp/contests/abc453/tasks/abc453_g) ([submission]() / [editorial](https://atcoder.jp/contests/abc453/editorial/18562))
+- [https://atcoder.jp/contests/abc453/tasks/abc453_g](https://atcoder.jp/contests/abc453/tasks/abc453_g) ([submission]() / [editorial](https://atcoder.jp/contests/abc453/editorial/18564))

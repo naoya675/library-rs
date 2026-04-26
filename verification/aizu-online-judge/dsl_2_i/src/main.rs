@@ -17,19 +17,22 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut lst = LazySegmentTree::<(i64, i64), i64>::new(
+    let mut lst = LazySegmentTree::<(i64, i64), Option<i64>>::new(
         n,
         |x, y| (x.0 + y.0, x.1 + y.1),
         (0, 0),
-        |f, x| if f != i64::MAX { (f * x.1, x.1) } else { x },
-        |f, g| if f == i64::MAX { g } else { f },
-        i64::MAX,
+        |f, x| match f {
+            Some(f) => (f * x.1, x.1),
+            None => x,
+        },
+        |f, g| f.or(g),
+        None,
     );
     lst.build(&vec![(0, 1); n]);
 
     for query in queries {
         match query {
-            Query0(s, t, x) => lst.apply(s, t + 1, x),
+            Query0(s, t, x) => lst.apply(s, t + 1, Some(x)),
             Query1(s, t) => {
                 println!("{}", lst.prod(s, t + 1).0);
             }

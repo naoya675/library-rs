@@ -1,0 +1,11 @@
+[package]
+name = "range_set_range_composite_intervalset"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+query = { path = "../../../macro/query" }
+segment-tree = { path = "../../../data-structure/segment-tree" }
+interval-set = { path = "../../../data-structure/interval-set" }
+modint = { path = "../../../math/modint" }

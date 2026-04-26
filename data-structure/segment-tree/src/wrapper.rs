@@ -65,27 +65,25 @@ pub mod parenthesis_check_query2 {
 pub mod interval_count_query {
     use crate::SegmentTree;
 
-    pub fn new(n: usize) -> SegmentTree<(usize, usize, usize)> {
+    pub fn new(n: usize) -> SegmentTree<Option<(usize, usize, usize)>> {
         SegmentTree::new(
             n,
             |x, y| {
-                if (x.0, x.1) == (2, 2) {
-                    return y;
+                if let (Some(x), Some(y)) = (x, y) {
+                    let merge = if x.1 == 1 && y.0 == 1 { 1 } else { 0 };
+                    return Some((x.0, y.1, x.2 + y.2 - merge));
                 }
-                if (y.0, y.1) == (2, 2) {
-                    return x;
-                }
-                (x.0, y.1, x.2 + y.2 - if x.1 == y.0 && y.0 == 1 { 1 } else { 0 })
+                x.or(y)
             },
-            (2, 2, 0),
+            None,
         )
     }
 
-    pub fn encode(x: usize) -> (usize, usize, usize) {
+    pub fn encode(x: usize) -> Option<(usize, usize, usize)> {
         match x {
-            0 => (0, 0, 0),      // Black
-            1 => (1, 1, 1),      // White
-            _ => unreachable!(), // Invalid
+            0 => Some((0, 0, 0)), // Black
+            1 => Some((1, 1, 1)), // White
+            _ => unreachable!(),  // Invalid
         }
     }
 }
