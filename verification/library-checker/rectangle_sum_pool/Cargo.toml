@@ -1,0 +1,9 @@
+[package]
+name = "rectangle_sum_pool"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+lower-bound = { path = "../../../macro/lower-bound" }
+persistent-segment-tree-pool = { path = "../../../data-structure/persistent-segment-tree-pool" }
