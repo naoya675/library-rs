@@ -88,9 +88,9 @@ Divides the elements into sets and returns the list of them. Both of the orders 
 
 ## Reference
 - [https://atcoder.github.io/ac-library/production/document_en/dsu.html](https://atcoder.github.io/ac-library/production/document_en/dsu.html)
+- [https://info.atcoder.jp/entry/algorithm_lectures/unionfind_complexity](https://info.atcoder.jp/entry/algorithm_lectures/unionfind_complexity)
 - [https://37zigen.com/union-find/](https://37zigen.com/union-find/)
 - [https://37zigen.com/union-find-complexity-1/](https://37zigen.com/union-find-complexity-1/)
-- [https://info.atcoder.jp/entry/algorithm_lectures/unionfind_complexity](https://info.atcoder.jp/entry/algorithm_lectures/unionfind_complexity)
 - [https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3](https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3)
 - [https://qiita.com/alumite14/items/1444e03b2d27a8452e61](https://qiita.com/alumite14/items/1444e03b2d27a8452e61)
 - [https://qiita.com/alumite14/items/1fd477a14cf5c3019326](https://qiita.com/alumite14/items/1fd477a14cf5c3019326)
