@@ -69,7 +69,7 @@ impl State {
         );
     }
 
-    fn split_at(&mut self, p: usize) {
+    fn apply_split(&mut self, p: usize) {
         if let Some((a, _, val)) = self.set.get(p) {
             if a < p {
                 self.apply(a, p, val.0);
@@ -96,8 +96,8 @@ fn main() {
                 state.apply(l, r, (Mint::new(c), Mint::new(d)));
             }
             Query1(l, r, x) => {
-                state.split_at(l);
-                state.split_at(r);
+                state.apply_split(l);
+                state.apply_split(r);
                 let (a, b) = state.st.borrow().prod(l, r);
                 println!("{}", Mint::new(x) * a + b);
             }
