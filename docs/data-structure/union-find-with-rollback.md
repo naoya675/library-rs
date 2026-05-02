@@ -104,4 +104,4 @@ Divides the elements into sets and returns the list of them. Both of the orders 
 
 ## Verified
 - [https://atcoder.jp/contests/abc302/tasks/abc302_h](https://atcoder.jp/contests/abc302/tasks/abc302_h) ([submission](https://atcoder.jp/contests/abc302/submissions/75479665) / [editorial](https://atcoder.jp/contests/abc302/editorial/6409))
-    - [https://atcoder.jp/contests/arc111/tasks/arc111_b](https://atcoder.jp/contests/arc111/tasks/arc111_b) ([submission](https://atcoder.jp/contests/arc111/submissions/75479687))
+- ([https://atcoder.jp/contests/arc111/tasks/arc111_b](https://atcoder.jp/contests/arc111/tasks/arc111_b) ([submission](https://atcoder.jp/contests/arc111/submissions/75479687)))

@@ -34,6 +34,6 @@ fn main() {
                 lo = mi + 1;
             }
         }
-        println!("{}", sorted[lo]);
+        println!("{}", sorted[hi]);
     }
 }
