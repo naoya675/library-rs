@@ -55,9 +55,9 @@ impl PartiallyPersistentUnionFind {
 
     pub fn size(&self, t: usize, x: usize) -> usize {
         assert!(x < self.n);
-        let r = self.leader(t, x);
-        let k = self.siz_history[r].partition_point(|&(tt, _)| tt <= t);
-        self.siz_history[r][k - 1].1
+        let x = self.leader(t, x);
+        let k = self.siz_history[x].partition_point(|&(tt, _)| tt <= t);
+        self.siz_history[x][k - 1].1
     }
 
     pub fn now(&self) -> usize {
