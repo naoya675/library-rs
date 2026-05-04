@@ -5,5 +5,5 @@ edition = "2024"
 
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
-modint-mersenne61 = { path = '../../../math/modint-mersenne61' }
+modint-mersenne61 = { path = '../../../math/modint/modint-mersenne61' }
 rolling-hash = { path = '../../../string/rolling-hash' }

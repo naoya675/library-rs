@@ -1,6 +1,6 @@
 ---
 title: Dynamic Modint
-documentation_of: //math/dynamic-modint/src/lib.rs
+documentation_of: //math/modint/dynamic-modint/src/lib.rs
 ---
 
 ## Barrett reduction

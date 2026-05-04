@@ -1,6 +1,6 @@
 ---
 title: Montgomery Modint (64bit)
-documentation_of: //math/montgomery-modint-64/src/lib.rs
+documentation_of: //math/modint/montgomery-modint-64/src/lib.rs
 ---
 
 奇数の法 $M$ に対する modint。

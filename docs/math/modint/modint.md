@@ -1,6 +1,6 @@
 ---
 title: Modint
-documentation_of: //math/modint/src/lib.rs
+documentation_of: //math/modint/modint/src/lib.rs
 ---
 
 ## Description

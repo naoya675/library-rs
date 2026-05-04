@@ -1,6 +1,6 @@
 ---
 title: Modint ($\mathbb{F}_{2^{61}-1}$)
-documentation_of: //math/modint-mersenne61/src/lib.rs
+documentation_of: //math/modint/modint-mersenne61/src/lib.rs
 ---
 
 メルセンヌ素数 $M = 2^{61}-1$ を法とする modint。

@@ -5,4 +5,4 @@ edition = "2024"
 
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
-montgomery-modint-64 = { path = "../../../math/montgomery-modint-64" }
+montgomery-modint-64 = { path = "../../../math/modint/montgomery-modint-64" }

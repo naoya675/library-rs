@@ -1,6 +1,6 @@
 ---
 title: Dynamic Montgomery Modint
-documentation_of: //math/dynamic-montgomery-modint/src/lib.rs
+documentation_of: //math/modint/dynamic-montgomery-modint/src/lib.rs
 ---
 
 奇数の法 $M$ に対する modint。

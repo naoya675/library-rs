@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-numeric-traits = { path = "../numeric-traits" }
+numeric-traits = { path = '../../../math/numeric-traits' }

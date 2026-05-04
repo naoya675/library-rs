@@ -6,4 +6,4 @@ edition = "2024"
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
 binomial = { path = "../../../math/binomial" }
-modint = { path = "../../../math/modint" }
+modint = { path = "../../../math/modint/modint" }
