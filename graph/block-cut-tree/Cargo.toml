@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-biconnected-components = { path = "../biconnected-components" }
+biconnected-components = { path = "../../graph/biconnected-components" }

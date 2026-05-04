@@ -1,16 +1,38 @@
 {%- for top in page.data.top -%}
 <h2>{{ top.type }}</h2>
 
-{%- assign prev_group = "" -%}
+{%- comment -%} Pre-pass: collect all groups (path excluding last two segments {libname}/src/). {%- endcomment -%}
+{%- assign group_names = "" -%}
 {%- for category in top.categories -%}
-
-    {%- comment -%} group by path excluding last two segments ({libname}/src/) {%- endcomment -%}
     {%- assign parts = category.name | split: "/" -%}
     {%- assign parts_size = parts | size -%}
+    {%- assign limit = parts_size | minus: 2 -%}
     {%- assign group = "" -%}
     {%- for part in parts -%}
         {%- assign idx = forloop.index0 -%}
-        {%- assign limit = parts_size | minus: 2 -%}
+        {%- if idx < limit -%}
+            {%- if group == "" -%}
+                {%- assign group = part -%}
+            {%- else -%}
+                {%- capture group -%}{{ group }}/{{ part }}{%- endcapture -%}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endfor -%}
+    {%- assign group_names = group_names | append: group | append: "|" -%}
+{%- endfor -%}
+{%- assign group_list = group_names | split: "|" | uniq | sort -%}
+
+{%- for current_group in group_list -%}
+{%- if current_group == "" -%}{%- continue -%}{%- endif -%}
+<h3>{{ current_group }}</h3>
+<ul>
+{%- for category in top.categories -%}
+    {%- assign parts = category.name | split: "/" -%}
+    {%- assign parts_size = parts | size -%}
+    {%- assign limit = parts_size | minus: 2 -%}
+    {%- assign group = "" -%}
+    {%- for part in parts -%}
+        {%- assign idx = forloop.index0 -%}
         {%- if idx < limit -%}
             {%- if group == "" -%}
                 {%- assign group = part -%}
@@ -20,39 +42,24 @@
         {%- endif -%}
     {%- endfor -%}
 
-    {%- comment -%} previous implementation (group by first segment only):
-    {%- assign parts = category.name | split: "/" -%}
-    {%- assign group = parts[0] -%}
-    {%- endcomment -%}
+    {%- if group == current_group -%}
+        {%- for item in category.pages -%}
+            {%- if site.filename-index -%}
+                {%- assign name = item.filename -%}
+            {%- else -%}
+                {%- assign name = item.path -%}
+            {%- endif -%}
 
-    {%- if group != prev_group -%}
-        {%- if prev_group != "" -%}
-</ul>
-        {%- endif -%}
-<h3>{{ group }}</h3>
-<ul>
-        {%- assign prev_group = group -%}
-    {%- endif -%}
-
-    {%- for item in category.pages -%}
-        {%- if site.filename-index -%}
-            {%- assign name = item.filename -%}
-        {%- else -%}
-            {%- assign name = item.path -%}
-        {%- endif -%}
-
-        {%- if item.title -%}
-            {%- capture link_title -%}{{item.title | xml_escape }} <small>({{ name | xml_escape }})</small>{%- endcapture -%}
-        {%- else -%}
-            {%- capture link_title -%}{{name | xml_escape }}{%- endcapture -%}
-        {%- endif -%}
+            {%- if item.title -%}
+                {%- capture link_title -%}{{item.title | xml_escape }} <small>({{ name | xml_escape }})</small>{%- endcapture -%}
+            {%- else -%}
+                {%- capture link_title -%}{{name | xml_escape }}{%- endcapture -%}
+            {%- endif -%}
         <li><a href="{{ item.path | relative_url }}">{{ site.icons[item.icon] }} {{ link_title | xml_escape }}</a></li>
-    {%- endfor -%}
-
+        {%- endfor -%}
+    {%- endif -%}
 {%- endfor -%}
-
-{%- if prev_group != "" -%}
 </ul>
-{%- endif -%}
+{%- endfor -%}
 
 {%- endfor -%}
