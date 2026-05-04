@@ -1,6 +1,6 @@
 ---
 title: Lazy Segment Tree (Wrapper)
-documentation_of: //data-structure/lazy-segment-tree/src/wrapper.rs
+documentation_of: //data-structure/segment-tree/lazy-segment-tree/src/wrapper.rs
 ---
 
 <!--## Description-->

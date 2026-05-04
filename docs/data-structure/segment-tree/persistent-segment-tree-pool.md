@@ -1,6 +1,6 @@
 ---
 title: Persistent Segment Tree (Pool)
-documentation_of: //data-structure/persistent-segment-tree-pool/src/lib.rs
+documentation_of: //data-structure/segment-tree/persistent-segment-tree-pool/src/lib.rs
 ---
 
 ## Description

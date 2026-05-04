@@ -7,5 +7,5 @@ edition = "2024"
 proconio = { version = "0.5.0", features = ["derive"] }
 query = { path = '../../../macro/query' }
 euler-tour = { path = "../../../tree/euler-tour" }
-segment-tree = { path = '../../../data-structure/segment-tree' }
+segment-tree = { path = '../../../data-structure/segment-tree/segment-tree' }
 modint = { path = "../../../math/modint" }

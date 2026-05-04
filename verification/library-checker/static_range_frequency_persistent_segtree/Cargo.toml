@@ -5,4 +5,4 @@ edition = "2024"
 
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
-persistent-segment-tree = { path = "../../../data-structure/persistent-segment-tree" }
+persistent-segment-tree = { path = "../../../data-structure/segment-tree/persistent-segment-tree" }

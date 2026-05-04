@@ -1,6 +1,6 @@
 ---
 title: Persistent Segment Tree
-documentation_of: //data-structure/persistent-segment-tree/src/lib.rs
+documentation_of: //data-structure/segment-tree/persistent-segment-tree/src/lib.rs
 ---
 
 ## Description

@@ -1,6 +1,6 @@
 ---
 title: Dynamic Segment Tree
-documentation_of: //data-structure/dynamic-segment-tree/src/lib.rs
+documentation_of: //data-structure/segment-tree/dynamic-segment-tree/src/lib.rs
 ---
 
 ## Description

@@ -1,6 +1,6 @@
 ---
 title: Lazy Segment Tree
-documentation_of: //data-structure/lazy-segment-tree/src/lib.rs
+documentation_of: //data-structure/segment-tree/lazy-segment-tree/src/lib.rs
 ---
 
 ## Description

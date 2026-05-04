@@ -1,6 +1,6 @@
 ---
 title: Segment Tree
-documentation_of: //data-structure/segment-tree/src/lib.rs
+documentation_of: //data-structure/segment-tree/segment-tree/src/lib.rs
 ---
 
 ## Description
