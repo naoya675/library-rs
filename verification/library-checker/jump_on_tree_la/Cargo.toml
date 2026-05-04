@@ -1,0 +1,9 @@
+[package]
+name = "jump_on_tree_la"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+doubling = { path = "../../../data-structure/doubling" }
+level-ancestor = { path = "../../../tree/level-ancestor" }

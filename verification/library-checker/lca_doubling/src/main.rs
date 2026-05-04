@@ -13,14 +13,13 @@ fn main() {
     }
     let mut db = Doubling::<usize>::new(n, n, |x, y| x + y, 0);
     let mut f = vec![0; n];
-    let mut g = vec![0; n];
     let mut d = vec![0; n];
     f[0] = 0;
     for (i, &p) in p.iter().enumerate() {
         f[i + 1] = p;
         d[i + 1] = d[p] + 1;
     }
-    db.doubling(&f, &g);
+    db.doubling(&f, &vec![0; n]);
 
     let log = (n.next_power_of_two().ilog2() + 1) as usize;
     for (u, v) in uv {
