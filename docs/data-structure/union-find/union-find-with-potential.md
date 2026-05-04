@@ -1,6 +1,6 @@
 ---
 title: Union-Find with Potential
-documentation_of: //data-structure/union-find-with-potential/src/lib.rs
+documentation_of: //data-structure/union-find/union-find-with-potential/src/lib.rs
 ---
 
 A data structure for managing disjoint sets with group-valued potentials. Supports merging with potential constraints and querying potential differences between elements.

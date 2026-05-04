@@ -1,6 +1,6 @@
 ---
 title: Union-Find (Disjoint Set Union)
-documentation_of: //data-structure/union-find/src/lib.rs
+documentation_of: //data-structure/union-find/union-find/src/lib.rs
 ---
 
 A data structure for managing disjoint sets. Supports merging two sets and querying whether two elements belong to the same set.

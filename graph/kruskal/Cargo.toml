@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-union-find = { path = "../../data-structure/union-find" }
+union-find = { path = "../../data-structure/union-find/union-find" }

@@ -1,6 +1,6 @@
 ---
 title: Union-Find with Rollback 
-documentation_of: //data-structure/union-find-with-rollback/src/lib.rs
+documentation_of: //data-structure/union-find/union-find-with-rollback/src/lib.rs
 ---
 
 A data structure for managing disjoint sets with rollback. Supports merging two sets, querying whether two elements belong to the same set, and undoing the last `merge` operation.

@@ -1,6 +1,6 @@
 ---
 title: Partially Persistent Union-Find (部分永続 Union-Find)
-documentation_of: //data-structure/partially-persistent-union-find/src/lib.rs
+documentation_of: //data-structure/union-find/partially-persistent-union-find/src/lib.rs
 ---
 
 A data structure for managing disjoint sets with access to past states. Each `merge` advances an internal time counter, and queries can target any past time.

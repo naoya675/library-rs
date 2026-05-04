@@ -6,4 +6,4 @@ edition = "2024"
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
 query = { path = "../../../macro/query" }
-union-find-with-rollback = { path = "../../../data-structure/union-find-with-rollback" }
+union-find-with-rollback = { path = "../../../data-structure/union-find/union-find-with-rollback" }

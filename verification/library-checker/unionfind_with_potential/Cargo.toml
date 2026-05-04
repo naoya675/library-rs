@@ -6,5 +6,5 @@ edition = "2024"
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
 query = { path = '../../../macro/query' }
-union-find-with-potential = { path = "../../../data-structure/union-find-with-potential" }
+union-find-with-potential = { path = "../../../data-structure/union-find/union-find-with-potential" }
 modint = { path = "../../../math/modint" }

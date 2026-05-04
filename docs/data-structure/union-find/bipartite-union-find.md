@@ -1,6 +1,6 @@
 ---
 title: Bipartite Union-Find
-documentation_of: //data-structure/bipartite-union-find/src/lib.rs
+documentation_of: //data-structure/union-find/bipartite-union-find/src/lib.rs
 ---
 
 A data structure for managing disjoint sets with parity constraints between elements. Supports merging two sets with same/different parity constraints, querying whether two elements belong to the same set, and querying whether a component is bipartite.
