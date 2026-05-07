@@ -45,9 +45,7 @@ fn main() {
         let d = depth[s] + depth[t] - 2 * depth[l];
         if i > d {
             println!("-1");
-            continue;
-        }
-        if i <= depth[s] - depth[l] {
+        } else if i <= depth[s] - depth[l] {
             println!("{}", la.la(s, i).unwrap());
         } else {
             println!("{}", la.la(t, d - i).unwrap());

@@ -31,9 +31,7 @@ fn actual_main() {
         let d = hld.distance(s, t);
         if i > d {
             println!("-1");
-            continue;
-        }
-        if i <= hld.distance(s, hld.lca(s, t)) {
+        } else if i <= hld.distance(s, hld.lca(s, t)) {
             println!("{}", hld.la(s, i));
         } else {
             println!("{}", hld.la(t, d - i));

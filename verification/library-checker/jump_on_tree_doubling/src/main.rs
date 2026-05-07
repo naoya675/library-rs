@@ -5,7 +5,6 @@ use std::collections::VecDeque;
 use proconio::input;
 
 use doubling::Doubling;
-use level_ancestor_offline::level_ancestor_offline;
 
 fn main() {
     input! {
@@ -36,24 +35,15 @@ fn main() {
     db.doubling(&f, &vec![0; n]);
 
     let log = (n.next_power_of_two().ilog2() + 1) as usize;
-    let mut queries = vec![];
     for &(s, t, i) in &sti {
         let l = lca(&db, &depth, log, s, t);
         let d = depth[s] + depth[t] - 2 * depth[l];
         if i > d {
-            queries.push((0, n));
-        } else if i <= depth[s] - depth[l] {
-            queries.push((s, i));
-        } else {
-            queries.push((t, d - i));
-        }
-    }
-    let res = level_ancestor_offline(&graph, 0, &queries);
-    for i in 0..q {
-        if let Some(v) = res[i] {
-            println!("{}", v);
-        } else {
             println!("-1");
+        } else if i <= depth[s] - depth[l] {
+            println!("{}", db.kth(s, i).0);
+        } else {
+            println!("{}", db.kth(t, d - i).0);
         }
     }
 }
