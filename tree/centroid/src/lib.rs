@@ -1,8 +1,8 @@
 pub fn centroids(tree: &[Vec<usize>]) -> Vec<usize> {
     let n = tree.len();
+    let mut res = vec![];
     let mut siz = vec![1; n];
     let mut par = vec![None; n];
-    let mut res = vec![];
     let mut stack = vec![(0, None, false)];
     while let Some((v, p, visited)) = stack.pop() {
         if !visited {
@@ -32,6 +32,7 @@ pub fn centroids(tree: &[Vec<usize>]) -> Vec<usize> {
 pub fn centroids_dead(tree: &[Vec<usize>], root: usize, dead: &[bool]) -> Vec<usize> {
     let n = tree.len();
     let mut comp = vec![];
+    let mut res = vec![];
     let mut siz = vec![1; n];
     let mut par = vec![None; n];
     let mut stack = vec![(root, None, false)];
@@ -53,15 +54,14 @@ pub fn centroids_dead(tree: &[Vec<usize>], root: usize, dead: &[bool]) -> Vec<us
             }
         }
     }
-    let mut res = vec![];
     for &v in &comp {
-        let mut max = siz[root] - siz[v];
+        let mut max = 0;
         for &to in &tree[v] {
             if !dead[to] && Some(to) != par[v] {
                 max = max.max(siz[to]);
             }
         }
-        if max <= siz[root] / 2 {
+        if max.max(siz[root] - siz[v]) <= siz[root] / 2 {
             res.push(v);
         }
     }

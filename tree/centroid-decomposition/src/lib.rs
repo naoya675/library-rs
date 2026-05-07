@@ -63,13 +63,6 @@ impl CentroidDecomposition {
         (parent, root)
     }
 
-    pub fn for_each_centroid<G>(&mut self, tree: &[Vec<usize>], g: G)
-    where
-        G: FnMut(usize, Option<usize>, &[bool]),
-    {
-        self.for_each_centroid_with(tree, |_, _, _| {}, g);
-    }
-
     pub fn for_each_centroid_with<F, G>(&mut self, tree: &[Vec<usize>], mut f: F, mut g: G)
     where
         F: FnMut(usize, Option<usize>, &[bool]),
@@ -93,5 +86,12 @@ impl CentroidDecomposition {
                 g(v, p, &dead);
             }
         }
+    }
+
+    pub fn for_each_centroid<G>(&mut self, tree: &[Vec<usize>], g: G)
+    where
+        G: FnMut(usize, Option<usize>, &[bool]),
+    {
+        self.for_each_centroid_with(tree, |_, _, _| {}, g);
     }
 }

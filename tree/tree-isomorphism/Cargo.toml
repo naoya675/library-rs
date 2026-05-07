@@ -1,0 +1,8 @@
+[package]
+name = "tree-isomorphism"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+centroid = { path = "../../tree/centroid" }
+modint-mersenne61 = { path = "../../math/modint/modint-mersenne61" }

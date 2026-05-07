@@ -73,6 +73,7 @@ impl ModintMersenne61 {
 
     pub fn rand() -> Self {
         use rand::Rng;
+        // rand = "0.9.2"
         let mut rng = rand::rng();
         Self::new(rng.random_range(1..Self::M as i64))
 
