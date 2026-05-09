@@ -1,18 +1,18 @@
 use std::rc::Rc;
 
 #[derive(Debug, Clone)]
+struct Node<T> {
+    l: Option<Rc<Node<T>>>,
+    r: Option<Rc<Node<T>>>,
+    product: T,
+}
+
+#[derive(Debug, Clone)]
 pub struct PersistentSegmentTree<T> {
     n: usize,
     root: Option<Rc<Node<T>>>,
     op: fn(T, T) -> T,
     e: T,
-}
-
-#[derive(Debug, Clone)]
-struct Node<T> {
-    l: Option<Rc<Node<T>>>,
-    r: Option<Rc<Node<T>>>,
-    product: T,
 }
 
 impl<T: Copy> PersistentSegmentTree<T> {

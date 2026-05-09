@@ -3,7 +3,7 @@ title: Partially Persistent Union-Find (部分永続 Union-Find)
 documentation_of: //data-structure/union-find/partially-persistent-union-find/src/lib.rs
 ---
 
-A data structure for managing disjoint sets with access to past states. Each `merge` advances an internal time counter, and queries can target any past time.
+A data structure for managing disjoint sets with access to past states. Each `merge` advances an internal time counter, and queries can target any past time. Let $T$ denote the current time (the number of `merge` calls so far).
 
 ## new
 
@@ -43,7 +43,7 @@ Returns whether $x$ and $y$ belong to the same set at time $t$.
 
 **Constraints**
 - $0 \leq x, y < n$
-- $0 \leq t \leq$ `self.now()`
+- $0 \leq t \leq T$
 
 **Complexity**
 - $O(\log n)$
@@ -58,7 +58,7 @@ Returns the representative of the set that contains $x$ at time $t$.
 
 **Constraints**
 - $0 \leq x < n$
-- $0 \leq t \leq$ `self.now()`
+- $0 \leq t \leq T$
 
 **Complexity**
 - $O(\log n)$
@@ -73,7 +73,7 @@ Returns the number of elements in the set that contains $x$ at time $t$.
 
 **Constraints**
 - $0 \leq x < n$
-- $0 \leq t \leq$ `self.now()`
+- $0 \leq t \leq T$
 
 **Complexity**
 - $O(\log n)$

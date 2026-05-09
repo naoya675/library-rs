@@ -1,3 +1,11 @@
+#[derive(Debug, Clone)]
+struct Node<T> {
+    l: Option<u32>,
+    r: Option<u32>,
+    product: T,
+}
+
+#[derive(Debug, Clone)]
 pub struct PersistentSegmentTreePool<T> {
     n: usize,
     nodes: Vec<Node<T>>,
@@ -5,13 +13,7 @@ pub struct PersistentSegmentTreePool<T> {
     e: T,
 }
 
-struct Node<T> {
-    l: Option<u32>,
-    r: Option<u32>,
-    product: T,
-}
-
-#[derive(Clone, Copy, Debug)]
+#[derive(Debug, Clone, Copy)]
 pub struct Version {
     root: Option<u32>,
 }

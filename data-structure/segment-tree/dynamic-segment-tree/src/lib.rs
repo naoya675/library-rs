@@ -1,16 +1,16 @@
 #[derive(Debug, Clone)]
+struct Node<T> {
+    l: Option<Box<Node<T>>>,
+    r: Option<Box<Node<T>>>,
+    product: T,
+}
+
+#[derive(Debug, Clone)]
 pub struct DynamicSegmentTree<T> {
     n: usize,
     root: Option<Box<Node<T>>>,
     op: fn(T, T) -> T,
     e: T,
-}
-
-#[derive(Debug, Clone)]
-struct Node<T> {
-    l: Option<Box<Node<T>>>,
-    r: Option<Box<Node<T>>>,
-    product: T,
 }
 
 impl<T: Copy> DynamicSegmentTree<T> {

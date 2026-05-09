@@ -29,7 +29,7 @@ Adds an edge $(x, y)$ with parity $w$ ($w = 1$: different parity constraint, $w 
 
 **Constraints**
 - $0 \leq x, y < n$
-- $w \in \{0, 1\}$
+- $w \in \lbrace 0, 1 \rbrace$
 
 **Complexity**
 - $O(\alpha(n))$ amortized
