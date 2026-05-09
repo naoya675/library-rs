@@ -1,6 +1,6 @@
 ---
 title: Trie
-documentation_of: //string/trie/src/lib.rs
+documentation_of: //data-structure/trie/trie/src/lib.rs
 ---
 
 A trie (prefix tree) is a tree data structure for efficient storage and retrieval of strings. Each node represents a character, and paths from root to nodes represent prefixes of inserted strings.

@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-trie = { path = '../../string/trie' }
+trie = { path = '../../data-structure/trie/trie' }
