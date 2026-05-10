@@ -13,8 +13,9 @@ fn main() {
         queries: [(i64, i64, i64, i64); q],
     }
     xyw.sort_by_key(|&(x, _, _)| x);
-    let sorted_x = xyw.iter().map(|&(x, _, _)| x).collect::<Vec<_>>();
+    let mut sorted_x = xyw.iter().map(|&(x, _, _)| x).collect::<Vec<_>>();
     let mut sorted_y = xyw.iter().map(|&(_, y, _)| y).collect::<Vec<_>>();
+    sorted_x.sort();
     sorted_y.sort();
     sorted_y.dedup();
     let mut versions = vec![PersistentSegmentTree::<i64>::new(sorted_y.len(), |x, y| x + y, 0)];

@@ -37,18 +37,30 @@ fn main() {
                 trie.remove(x);
             }
             Query2(x) => {
-                println!("{}", if x <= trie.len() { trie.kth(x - 1).to_string() } else { "-1".to_string() });
+                if x <= trie.len() {
+                    println!("{}", trie.kth(x - 1));
+                } else {
+                    println!("-1");
+                }
             }
             Query3(x) => {
                 println!("{}", trie.upper_bound(x));
             }
             Query4(x) => {
                 let k = trie.upper_bound(x);
-                println!("{}", if k > 0 { trie.kth(k - 1).to_string() } else { "-1".to_string() })
+                if k > 0 {
+                    println!("{}", trie.kth(k - 1));
+                } else {
+                    println!("-1");
+                }
             }
             Query5(x) => {
                 let k = trie.lower_bound(x);
-                println!("{}", if k < trie.len() { trie.kth(k).to_string() } else { "-1".to_string() });
+                if k < trie.len() {
+                    println!("{}", trie.kth(k));
+                } else {
+                    println!("-1");
+                }
             }
         }
     }

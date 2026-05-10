@@ -38,8 +38,8 @@ impl BinaryTrie {
         let mut cur = 0;
         for i in (0..self.bits).rev() {
             let b = (x >> i) & 1;
-            if let Some(c) = self.nodes[cur].child[b] {
-                cur = c;
+            if let Some(nxt) = self.nodes[cur].child[b] {
+                cur = nxt;
             } else {
                 return 0;
             }
@@ -52,7 +52,7 @@ impl BinaryTrie {
         let mut cur = 0;
         let mut x = 0;
         for i in (0..self.bits).rev() {
-            let lhs_count = if let Some(c) = self.nodes[cur].child[0] { self.nodes[c].count } else { 0 };
+            let lhs_count = if let Some(nxt) = self.nodes[cur].child[0] { self.nodes[nxt].count } else { 0 };
             if k < lhs_count {
                 cur = self.nodes[cur].child[0].unwrap();
             } else {
@@ -78,8 +78,8 @@ impl BinaryTrie {
         let mut y = 0;
         for i in (0..self.bits).rev() {
             let b = (x >> i) & 1;
-            let (c, bit) = self.descend(cur, b).or_else(|| self.descend(cur, b ^ 1)).unwrap();
-            cur = c;
+            let (nxt, bit) = self.descend(cur, b).or_else(|| self.descend(cur, b ^ 1)).unwrap();
+            cur = nxt;
             y |= bit << i;
         }
         x ^ y
@@ -91,8 +91,8 @@ impl BinaryTrie {
         let mut y = 0;
         for i in (0..self.bits).rev() {
             let b = (x >> i) & 1;
-            let (c, bit) = self.descend(cur, b ^ 1).or_else(|| self.descend(cur, b)).unwrap();
-            cur = c;
+            let (nxt, bit) = self.descend(cur, b ^ 1).or_else(|| self.descend(cur, b)).unwrap();
+            cur = nxt;
             y |= bit << i;
         }
         x ^ y
@@ -104,12 +104,12 @@ impl BinaryTrie {
         for i in (0..self.bits).rev() {
             let b = (x >> i) & 1;
             if b == 1 {
-                if let Some(c) = self.nodes[cur].child[0] {
-                    res += self.nodes[c].count;
+                if let Some(nxt) = self.nodes[cur].child[0] {
+                    res += self.nodes[nxt].count;
                 }
             }
-            if let Some(c) = self.nodes[cur].child[b] {
-                cur = c;
+            if let Some(nxt) = self.nodes[cur].child[b] {
+                cur = nxt;
             } else {
                 return res;
             }
@@ -123,12 +123,12 @@ impl BinaryTrie {
         for i in (0..self.bits).rev() {
             let b = (x >> i) & 1;
             if b == 1 {
-                if let Some(c) = self.nodes[cur].child[0] {
-                    res += self.nodes[c].count;
+                if let Some(nxt) = self.nodes[cur].child[0] {
+                    res += self.nodes[nxt].count;
                 }
             }
-            if let Some(c) = self.nodes[cur].child[b] {
-                cur = c;
+            if let Some(nxt) = self.nodes[cur].child[b] {
+                cur = nxt;
             } else {
                 return res;
             }
@@ -154,15 +154,15 @@ impl BinaryTrie {
         self.nodes[cur].count += w;
         for i in (0..self.bits).rev() {
             let b = (x >> i) & 1;
-            let c = if let Some(c) = self.nodes[cur].child[b] {
-                c
+            let nxt = if let Some(nxt) = self.nodes[cur].child[b] {
+                nxt
             } else {
-                let c = self.nodes.len();
+                let nxt = self.nodes.len();
                 self.nodes.push(Node { child: [None, None], count: 0 });
-                self.nodes[cur].child[b] = Some(c);
-                c
+                self.nodes[cur].child[b] = Some(nxt);
+                nxt
             };
-            cur = c;
+            cur = nxt;
             self.nodes[cur].count += w;
         }
     }
@@ -175,14 +175,14 @@ impl BinaryTrie {
         self.nodes[cur].count -= w;
         for i in (0..self.bits).rev() {
             let b = (x >> i) & 1;
-            let c = self.nodes[cur].child[b].unwrap();
-            cur = c;
+            let nxt = self.nodes[cur].child[b].unwrap();
+            cur = nxt;
             self.nodes[cur].count -= w;
         }
         true
     }
 
     fn descend(&self, v: usize, b: usize) -> Option<(usize, usize)> {
-        self.nodes[v].child[b].filter(|&c| self.nodes[c].count > 0).map(|c| (c, b))
+        self.nodes[v].child[b].filter(|&nxt| self.nodes[nxt].count > 0).map(|nxt| (nxt, b))
     }
 }
