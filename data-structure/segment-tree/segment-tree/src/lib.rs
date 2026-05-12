@@ -1,4 +1,4 @@
-#[derive(Debug, Clone)]
+#[derive(Clone)]
 pub struct SegmentTree<T> {
     tree: Vec<T>,
     size: usize,
@@ -166,5 +166,23 @@ impl<T: Copy> SegmentTree<T> {
 
     fn update(&mut self, k: usize) {
         self.tree[k] = (self.op)(self.tree[k << 1 | 0], self.tree[k << 1 | 1]);
+    }
+}
+
+impl<T: std::fmt::Display> std::fmt::Display for SegmentTree<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        for i in 0..self.n {
+            write!(f, "{} ", &self.tree[i + self.size])?;
+        }
+        Ok(())
+    }
+}
+
+impl<T: std::fmt::Debug> std::fmt::Debug for SegmentTree<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        for i in 0..self.n {
+            write!(f, "{:?} ", &self.tree[i + self.size])?;
+        }
+        Ok(())
     }
 }

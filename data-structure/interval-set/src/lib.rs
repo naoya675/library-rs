@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-#[derive(Debug, Clone)]
+#[derive(Clone)]
 pub struct IntervalSet<T, VAL> {
     identity: VAL,
     map: BTreeMap<T, (T, VAL)>, // l -> (r, val), representing [l, r)
@@ -240,6 +240,19 @@ where
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         for (&l, (r, val)) in &self.map {
             write!(f, "([{}, {}): {}) ", l, r, val)?;
+        }
+        Ok(())
+    }
+}
+
+impl<T, VAL> std::fmt::Debug for IntervalSet<T, VAL>
+where
+    T: Copy + std::fmt::Debug,
+    VAL: Clone + std::fmt::Debug,
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        for (&l, (r, val)) in &self.map {
+            write!(f, "([{:?}, {:?}): {:?}) ", l, r, val)?;
         }
         Ok(())
     }

@@ -186,3 +186,4 @@ Returns the number of elements less than or equal to $x$.
 ## Reference
 - [https://inthebloom.github.io/post/uec-advent2024/](https://inthebloom.github.io/post/uec-advent2024/)
 - [https://kazuma8128.hatenablog.com/entry/2018/05/06/022654](https://kazuma8128.hatenablog.com/entry/2018/05/06/022654)
+<!--- [https://qiita.com/drken/items/1b7e6e459c24a83bb7fd](https://qiita.com/drken/items/1b7e6e459c24a83bb7fd)-->

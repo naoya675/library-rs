@@ -67,4 +67,5 @@ $n$ が十分小さいときは、$a$ を適切に選ぶことで決定的アル
 ## Reference
 - [https://37zigen.com/miller-rabin/](https://37zigen.com/miller-rabin/)
 - [https://drken1215.hatenablog.com/entry/2023/05/23/233000](https://drken1215.hatenablog.com/entry/2023/05/23/233000)
+- [https://qiita.com/srtk86/items/609737d50c9ef5f5dc59](https://qiita.com/srtk86/items/609737d50c9ef5f5dc59)
 - [https://tex2e.github.io/blog/crypto/miller-rabin-test](https://tex2e.github.io/blog/crypto/miller-rabin-test)
