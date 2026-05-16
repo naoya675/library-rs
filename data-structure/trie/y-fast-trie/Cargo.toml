@@ -1,0 +1,7 @@
+[package]
+name = "y-fast-trie"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+x-fast-trie = { path = "../../../data-structure/trie/x-fast-trie" }

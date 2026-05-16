@@ -1,9 +1,9 @@
 ---
-title: X-Fast Trie
-documentation_of: //data-structure/trie/x-fast-trie/src/lib.rs
+title: Y-Fast Trie
+documentation_of: //data-structure/trie/y-fast-trie/src/lib.rs
 ---
 
-A predecessor data structure for non-negative integers in $[0, 2^B)$, where $B$ is the bit length. Stores a binary trie augmented with per-level hash maps, descendant pointers, and a doubly linked list of leaves. Predecessor and successor queries run in $O(\log B)$, while insertion and removal run in $O(B)$.
+A predecessor data structure for non-negative integers in $[0, 2^B)$, where $B$ is the bit length. Improves the space of an X-Fast Trie from $O(n B)$ to $O(n)$ by partitioning the elements into balanced binary search trees of size $\Theta(B)$ and storing only their representatives in an X-Fast Trie. Predecessor and successor queries run in $O(\log B)$, while insertion and removal run in $O(\log B)$ amortized.
 
 ## new
 
@@ -11,7 +11,7 @@ A predecessor data structure for non-negative integers in $[0, 2^B)$, where $B$ 
 fn new(bits: u32) -> Self
 ```
 
-Creates an empty X-Fast Trie that stores values in $[0, 2^B)$, where $B$ is `bits`.
+Creates an empty Y-Fast Trie that stores values in $[0, 2^B)$, where $B$ is `bits`.
 
 **Constraints**
 - $0 < B < 64$
@@ -42,7 +42,7 @@ Returns `true` if $x$ is in the set.
 - $0 \leq x < 2^B$
 
 **Complexity**
-- $O(1)$ expected
+- $O(\log B)$ expected
 
 ## min
 
@@ -64,7 +64,7 @@ fn max(&self) -> Option<usize>
 Returns the largest element, or `None` if the set is empty.
 
 **Complexity**
-- $O(1)$
+- $O(\log B)$
 
 ## successor
 
@@ -106,7 +106,7 @@ Inserts $x$ into the set. Does nothing if $x$ is already present.
 - $0 \leq x < 2^B$
 
 **Complexity**
-- $O(B)$ expected
+- $O(\log B)$ amortized
 
 ## remove
 
@@ -120,11 +120,11 @@ Removes $x$ from the set and returns `true` if $x$ was present, otherwise does n
 - $0 \leq x < 2^B$
 
 **Complexity**
-- $O(B)$ expected
+- $O(\log B)$ amortized
 
 ## Reference
 - D. E. Willard, [Log-logarithmic worst-case range queries are possible in space $\Theta(N)$](https://www.sciencedirect.com/science/article/abs/pii/0020019083900753), Information Processing Letters 17 (1983), 81–84.
 - [https://courses.csail.mit.edu/6.851/spring14/scribe/L11.pdf](https://courses.csail.mit.edu/6.851/spring14/scribe/L11.pdf)
-- [https://en.wikipedia.org/wiki/X-fast_trie](https://en.wikipedia.org/wiki/X-fast_trie)
+- [https://en.wikipedia.org/wiki/Y-fast_trie](https://en.wikipedia.org/wiki/Y-fast_trie)
 - [https://inthebloom.github.io/post/uec-advent2024/](https://inthebloom.github.io/post/uec-advent2024/)
 - [https://qiita.com/goonew/items/6ffac4b5e48dc05ca884](https://qiita.com/goonew/items/6ffac4b5e48dc05ca884)
