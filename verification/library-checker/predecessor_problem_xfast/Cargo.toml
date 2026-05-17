@@ -1,0 +1,9 @@
+[package]
+name = "predecessor_problem_xfast"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+x-fast-trie = { path = "../../../data-structure/trie/x-fast-trie" }
+query = { path = "../../../macro/query" }
