@@ -3,7 +3,9 @@ title: X-Fast Trie
 documentation_of: //data-structure/trie/x-fast-trie/src/lib.rs
 ---
 
-A predecessor data structure for non-negative integers in $[0, 2^B)$, where $B$ is the bit length. Stores a binary trie augmented with per-level hash maps, descendant pointers, and a doubly linked list of leaves. Predecessor and successor queries run in $O(\log B)$, while insertion and removal run in $O(B)$.
+A predecessor data structure for non-negative integers in $[0, 2^B)$, where $B$ is the bit length.
+Stores a binary trie augmented with per-level hash maps, descendant pointers, and a doubly linked list of leaves.
+Predecessor and successor queries run in $O(\log B)$, while insertion and removal run in $O(B)$.
 
 ## new
 
@@ -100,7 +102,8 @@ Returns the largest element less than or equal to $x$, or `None` if no such elem
 fn insert(&mut self, x: usize)
 ```
 
-Inserts $x$ into the set. Does nothing if $x$ is already present.
+Inserts $x$ into the set.
+Does nothing if $x$ is already present.
 
 **Constraints**
 - $0 \leq x < 2^B$

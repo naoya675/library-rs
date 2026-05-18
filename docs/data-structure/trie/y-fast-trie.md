@@ -3,7 +3,9 @@ title: Y-Fast Trie
 documentation_of: //data-structure/trie/y-fast-trie/src/lib.rs
 ---
 
-A predecessor data structure for non-negative integers in $[0, 2^B)$, where $B$ is the bit length. Improves the space of an X-Fast Trie from $O(n B)$ to $O(n)$ by partitioning the elements into balanced binary search trees of size $\Theta(B)$ and storing only their representatives in an X-Fast Trie. Predecessor and successor queries run in $O(\log B)$, while insertion and removal run in $O(\log B)$ amortized.
+A predecessor data structure for non-negative integers in $[0, 2^B)$, where $B$ is the bit length.
+Improves the space of an X-Fast Trie from $O(n B)$ to $O(n)$ by partitioning the elements into balanced binary search trees of size $\Theta(B)$ and storing only their representatives in an X-Fast Trie.
+Predecessor and successor queries run in $O(\log B)$, while insertion and removal run in $O(\log B)$ amortized.
 
 ## new
 
@@ -100,7 +102,8 @@ Returns the largest element less than or equal to $x$, or `None` if no such elem
 fn insert(&mut self, x: usize)
 ```
 
-Inserts $x$ into the set. Does nothing if $x$ is already present.
+Inserts $x$ into the set.
+Does nothing if $x$ is already present.
 
 **Constraints**
 - $0 \leq x < 2^B$
