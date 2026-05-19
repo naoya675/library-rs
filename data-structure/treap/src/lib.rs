@@ -1,21 +1,21 @@
 use xorshift_64::XorShift64;
 
 #[derive(Debug, Clone)]
-struct Node {
-    key: usize,
+struct Node<T: Ord + Copy> {
+    key: T,
     priority: u64,
     size: usize,
-    l: Option<Box<Node>>,
-    r: Option<Box<Node>>,
+    l: Option<Box<Node<T>>>,
+    r: Option<Box<Node<T>>>,
 }
 
 #[derive(Debug, Clone)]
-pub struct Treap {
-    root: Option<Box<Node>>,
+pub struct Treap<T: Ord + Copy> {
+    root: Option<Box<Node<T>>>,
     rng: XorShift64,
 }
 
-impl Treap {
+impl<T: Ord + Copy> Treap<T> {
     pub fn new() -> Self {
         Self {
             root: None,
@@ -27,7 +27,7 @@ impl Treap {
         Self::size(&self.root)
     }
 
-    pub fn insert(&mut self, x: usize) {
+    pub fn insert(&mut self, x: T) {
         let node = Box::new(Node {
             key: x,
             priority: self.rng.next_u64(),
@@ -42,7 +42,7 @@ impl Treap {
         self.root = t;
     }
 
-    pub fn remove(&mut self, x: usize) -> bool {
+    pub fn remove(&mut self, x: T) -> bool {
         let root = self.root.take();
         let (l, r) = Self::split_by_key(root, x);
         let (t, r) = Self::split_at_index(r, 1);
@@ -57,7 +57,7 @@ impl Treap {
         removed
     }
 
-    pub fn contains(&self, x: usize) -> bool {
+    pub fn contains(&self, x: T) -> bool {
         let mut cur = self.root.as_deref();
         while let Some(n) = cur {
             if n.key == x {
@@ -68,11 +68,11 @@ impl Treap {
         false
     }
 
-    pub fn count(&self, x: usize) -> usize {
+    pub fn count(&self, x: T) -> usize {
         self.upper_bound(x) - self.lower_bound(x)
     }
 
-    pub fn kth(&self, mut k: usize) -> usize {
+    pub fn kth(&self, mut k: usize) -> T {
         let mut cur = self.root.as_deref();
         while let Some(n) = cur {
             let l_size = Self::size(&n.l);
@@ -88,7 +88,7 @@ impl Treap {
         unreachable!()
     }
 
-    pub fn min(&self) -> Option<usize> {
+    pub fn min(&self) -> Option<T> {
         let mut cur = self.root.as_deref()?;
         while let Some(l) = cur.l.as_deref() {
             cur = l;
@@ -96,7 +96,7 @@ impl Treap {
         Some(cur.key)
     }
 
-    pub fn max(&self) -> Option<usize> {
+    pub fn max(&self) -> Option<T> {
         let mut cur = self.root.as_deref()?;
         while let Some(r) = cur.r.as_deref() {
             cur = r;
@@ -104,7 +104,7 @@ impl Treap {
         Some(cur.key)
     }
 
-    pub fn lower_bound(&self, x: usize) -> usize {
+    pub fn lower_bound(&self, x: T) -> usize {
         let mut cur = self.root.as_deref();
         let mut pos = 0;
         while let Some(n) = cur {
@@ -118,7 +118,7 @@ impl Treap {
         pos
     }
 
-    pub fn upper_bound(&self, x: usize) -> usize {
+    pub fn upper_bound(&self, x: T) -> usize {
         let mut cur = self.root.as_deref();
         let mut pos = 0;
         while let Some(n) = cur {
@@ -132,7 +132,7 @@ impl Treap {
         pos
     }
 
-    pub fn successor(&self, x: usize) -> Option<usize> {
+    pub fn successor(&self, x: T) -> Option<T> {
         let mut cur = self.root.as_deref();
         let mut res = None;
         while let Some(n) = cur {
@@ -146,7 +146,7 @@ impl Treap {
         res
     }
 
-    pub fn predecessor(&self, x: usize) -> Option<usize> {
+    pub fn predecessor(&self, x: T) -> Option<T> {
         let mut cur = self.root.as_deref();
         let mut res = None;
         while let Some(n) = cur {
@@ -160,7 +160,7 @@ impl Treap {
         res
     }
 
-    pub fn split_off(&mut self, x: usize) -> Self {
+    pub fn split_off(&mut self, x: T) -> Self {
         let root = self.root.take();
         let (l, r) = Self::split_by_key(root, x);
         self.root = l;
@@ -189,22 +189,22 @@ impl Treap {
                 break 'check true;
             };
             lhs < rhs
-        },);
+        });
         let l = self.root.take();
         let r = other.root.take();
         self.root = Self::merge_inner(l, r);
     }
 
-    fn size(node: &Option<Box<Node>>) -> usize {
+    fn size(node: &Option<Box<Node<T>>>) -> usize {
         node.as_ref().map_or(0, |n| n.size)
     }
 
-    fn update(n: &mut Node) {
+    fn update(n: &mut Node<T>) {
         n.size = 1 + Self::size(&n.l) + Self::size(&n.r);
     }
 
     // Split by key: l = {k : k < key}, r = {k : k >= key}.
-    fn split_by_key(node: Option<Box<Node>>, key: usize) -> (Option<Box<Node>>, Option<Box<Node>>) {
+    fn split_by_key(node: Option<Box<Node<T>>>, key: T) -> (Option<Box<Node<T>>>, Option<Box<Node<T>>>) {
         let Some(mut n) = node else {
             return (None, None);
         };
@@ -222,7 +222,7 @@ impl Treap {
     }
 
     // Split at index: l = first k elements, r = rest.
-    fn split_at_index(node: Option<Box<Node>>, k: usize) -> (Option<Box<Node>>, Option<Box<Node>>) {
+    fn split_at_index(node: Option<Box<Node<T>>>, k: usize) -> (Option<Box<Node<T>>>, Option<Box<Node<T>>>) {
         let Some(mut n) = node else {
             return (None, None);
         };
@@ -240,7 +240,7 @@ impl Treap {
         }
     }
 
-    fn merge_inner(l: Option<Box<Node>>, r: Option<Box<Node>>) -> Option<Box<Node>> {
+    fn merge_inner(l: Option<Box<Node<T>>>, r: Option<Box<Node<T>>>) -> Option<Box<Node<T>>> {
         let Some(mut l) = l else {
             return r;
         };

@@ -4,7 +4,7 @@ documentation_of: //data-structure/treap/src/lib.rs
 ---
 
 A randomized self-balancing binary search tree that maintains the BST property by key and a max-heap property by a random priority assigned to each node.
-Operates as an ordered multiset over `usize`, supporting predecessor/successor, $k$-th element, and split/merge queries in $O(\log n)$ expected time.
+Operates as an ordered multiset over a key type `T: Ord + Copy`, supporting predecessor/successor, $k$-th element, and split/merge queries in $O(\log n)$ expected time.
 
 ## new
 
@@ -31,7 +31,7 @@ Returns the number of elements in the multiset.
 ## insert
 
 ```rust
-fn insert(&mut self, x: usize)
+fn insert(&mut self, x: T)
 ```
 
 Inserts $x$ into the multiset.
@@ -43,7 +43,7 @@ Duplicates are kept.
 ## remove
 
 ```rust
-fn remove(&mut self, x: usize) -> bool
+fn remove(&mut self, x: T) -> bool
 ```
 
 Removes one occurrence of $x$ from the multiset and returns `true` if $x$ was present, otherwise does nothing and returns `false`.
@@ -54,7 +54,7 @@ Removes one occurrence of $x$ from the multiset and returns `true` if $x$ was pr
 ## contains
 
 ```rust
-fn contains(&self, x: usize) -> bool
+fn contains(&self, x: T) -> bool
 ```
 
 Returns `true` if $x$ is in the multiset.
@@ -65,7 +65,7 @@ Returns `true` if $x$ is in the multiset.
 ## count
 
 ```rust
-fn count(&self, x: usize) -> usize
+fn count(&self, x: T) -> usize
 ```
 
 Returns the multiplicity of $x$.
@@ -76,7 +76,7 @@ Returns the multiplicity of $x$.
 ## kth
 
 ```rust
-fn kth(&self, k: usize) -> usize
+fn kth(&self, k: usize) -> T
 ```
 
 Returns the $k$-th smallest element (0-indexed).
@@ -90,7 +90,7 @@ Returns the $k$-th smallest element (0-indexed).
 ## min
 
 ```rust
-fn min(&self) -> Option<usize>
+fn min(&self) -> Option<T>
 ```
 
 Returns the smallest element, or `None` if the multiset is empty.
@@ -101,7 +101,7 @@ Returns the smallest element, or `None` if the multiset is empty.
 ## max
 
 ```rust
-fn max(&self) -> Option<usize>
+fn max(&self) -> Option<T>
 ```
 
 Returns the largest element, or `None` if the multiset is empty.
@@ -112,10 +112,10 @@ Returns the largest element, or `None` if the multiset is empty.
 ## lower_bound
 
 ```rust
-fn lower_bound(&self, x: usize) -> usize
+fn lower_bound(&self, x: T) -> usize
 ```
 
-Returns the number of elements strictly less than $x$, i.e. $|\lbrace y : y < x \rbrace|$.
+Returns the number of elements strictly less than $x$.
 
 **Complexity**
 - $O(\log n)$ expected
@@ -123,10 +123,10 @@ Returns the number of elements strictly less than $x$, i.e. $|\lbrace y : y < x 
 ## upper_bound
 
 ```rust
-fn upper_bound(&self, x: usize) -> usize
+fn upper_bound(&self, x: T) -> usize
 ```
 
-Returns the number of elements less than or equal to $x$, i.e. $|\lbrace y : y \leq x \rbrace|$.
+Returns the number of elements less than or equal to $x$.
 
 **Complexity**
 - $O(\log n)$ expected
@@ -134,7 +134,7 @@ Returns the number of elements less than or equal to $x$, i.e. $|\lbrace y : y \
 ## successor
 
 ```rust
-fn successor(&self, x: usize) -> Option<usize>
+fn successor(&self, x: T) -> Option<T>
 ```
 
 Returns the smallest element greater than or equal to $x$, or `None` if no such element exists.
@@ -145,7 +145,7 @@ Returns the smallest element greater than or equal to $x$, or `None` if no such 
 ## predecessor
 
 ```rust
-fn predecessor(&self, x: usize) -> Option<usize>
+fn predecessor(&self, x: T) -> Option<T>
 ```
 
 Returns the largest element less than or equal to $x$, or `None` if no such element exists.
@@ -156,7 +156,7 @@ Returns the largest element less than or equal to $x$, or `None` if no such elem
 ## split_off
 
 ```rust
-fn split_off(&mut self, x: usize) -> Self
+fn split_off(&mut self, x: T) -> Self
 ```
 
 Splits the multiset by value.

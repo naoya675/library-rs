@@ -21,11 +21,10 @@ fn main() {
         t: Chars,
         queries: [Query; q],
     }
-    let t = t.iter().map(|&t| t as usize - '0' as usize).collect::<Vec<_>>();
     let bits = n.next_power_of_two().ilog2().max(1);
     let mut trie = XFastTrie::new(bits);
     for (i, &c) in t.iter().enumerate() {
-        if c == 1 {
+        if c == '1' {
             trie.insert(i);
         }
     }

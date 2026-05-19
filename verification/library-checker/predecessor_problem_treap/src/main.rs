@@ -2,7 +2,7 @@
 
 use proconio::{input, marker::Chars};
 
-use y_fast_trie::YFastTrie;
+use treap::Treap;
 
 query::define_query! {
     Query {
@@ -16,34 +16,35 @@ query::define_query! {
 
 fn main() {
     input! {
-        n: usize,
+        _n: usize,
         q: usize,
         t: Chars,
         queries: [Query; q],
     }
-    let bits = n.next_power_of_two().ilog2().max(1);
-    let mut trie = YFastTrie::new(bits);
+    let mut treap = Treap::new();
     for (i, &c) in t.iter().enumerate() {
         if c == '1' {
-            trie.insert(i);
+            treap.insert(i);
         }
     }
     for query in queries {
         match query {
             Query0(k) => {
-                trie.insert(k);
+                if !treap.contains(k) {
+                    treap.insert(k);
+                }
             }
             Query1(k) => {
-                trie.remove(k);
+                treap.remove(k);
             }
             Query2(k) => {
-                println!("{}", if trie.contains(k) { 1 } else { 0 });
+                println!("{}", if treap.contains(k) { 1 } else { 0 });
             }
             Query3(k) => {
-                println!("{}", trie.successor(k).map(|x| x as i64).unwrap_or(-1));
+                println!("{}", treap.successor(k).map(|x| x as i64).unwrap_or(-1));
             }
             Query4(k) => {
-                println!("{}", trie.predecessor(k).map(|x| x as i64).unwrap_or(-1));
+                println!("{}", treap.predecessor(k).map(|x| x as i64).unwrap_or(-1));
             }
         }
     }
