@@ -28,6 +28,17 @@ Returns the number of elements in the multiset.
 **Complexity**
 - $O(1)$
 
+## is_empty
+
+```rust
+fn is_empty(&self) -> bool
+```
+
+Returns `true` if the multiset is empty.
+
+**Complexity**
+- $O(1)$
+
 ## insert
 
 ```rust
@@ -194,7 +205,6 @@ Requires that every element of `self` is strictly less than every element of `ot
 
 ## Reference
 - R. Seidel and C. R. Aragon, [Randomized search trees](https://link.springer.com/article/10.1007/BF01940876), Algorithmica 16 (1996), 464–497.
-- [https://ikatakos.com/pot/programming_algorithm/data_structure/balancing_binary_search_tree/treap](https://ikatakos.com/pot/programming_algorithm/data_structure/balancing_binary_search_tree/treap)
 - [https://www.slideshare.net/slideshow/2-12188757/12188757](https://www.slideshare.net/slideshow/2-12188757/12188757)
 - [http://www.prefield.com/algorithm/container/treap.html](https://web.archive.org/web/20200221155641/http://www.prefield.com/algorithm/container/treap.html)
 - [https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268](https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268)

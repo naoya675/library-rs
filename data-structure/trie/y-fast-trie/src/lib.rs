@@ -1,12 +1,13 @@
-use std::collections::{BTreeSet, HashMap};
+use std::collections::HashMap;
 
+use treap::Treap;
 use x_fast_trie::XFastTrie;
 
 #[derive(Debug, Clone)]
 pub struct YFastTrie {
     bits: u32,
-    reps: XFastTrie,                       // representatives (min of each map)
-    maps: HashMap<usize, BTreeSet<usize>>, // reps -> maps; consider replacing BTreeSet with Treap
+    reps: XFastTrie,                    // representatives (min of each map)
+    maps: HashMap<usize, Treap<usize>>, // reps -> maps
     len: usize,
 }
 
@@ -27,7 +28,7 @@ impl YFastTrie {
 
     pub fn contains(&self, x: usize) -> bool {
         if let Some(r) = self.reps.predecessor(x) {
-            self.maps[&r].contains(&x)
+            self.maps[&r].contains(x)
         } else {
             false
         }
@@ -38,12 +39,12 @@ impl YFastTrie {
     }
 
     pub fn max(&self) -> Option<usize> {
-        self.reps.max().map(|r| *self.maps[&r].iter().next_back().unwrap())
+        self.reps.max().and_then(|r| self.maps[&r].max())
     }
 
     pub fn successor(&self, x: usize) -> Option<usize> {
         if let Some(r) = self.reps.predecessor(x) {
-            if let Some(&y) = self.maps[&r].range(x..).next() {
+            if let Some(y) = self.maps[&r].successor(x) {
                 return Some(y);
             }
         }
@@ -52,7 +53,7 @@ impl YFastTrie {
 
     pub fn predecessor(&self, x: usize) -> Option<usize> {
         if let Some(r) = self.reps.predecessor(x) {
-            if let Some(&y) = self.maps[&r].range(..=x).next_back() {
+            if let Some(y) = self.maps[&r].predecessor(x) {
                 return Some(y);
             }
         }
@@ -66,7 +67,9 @@ impl YFastTrie {
 
         if self.reps.len() == 0 {
             self.reps.insert(x);
-            self.maps.insert(x, BTreeSet::from([x]));
+            let mut map = Treap::new();
+            map.insert(x);
+            self.maps.insert(x, map);
             self.len += 1;
             return;
         }
@@ -103,13 +106,13 @@ impl YFastTrie {
             return false;
         };
         let mut map = self.maps.remove(&target).unwrap();
-        map.remove(&x);
+        map.remove(x);
         if map.is_empty() {
             self.reps.remove(target);
             self.len -= 1;
             return true;
         }
-        let rep = *map.iter().next().unwrap();
+        let rep = map.min().unwrap();
         if rep != target {
             self.reps.remove(target);
             self.reps.insert(rep);
@@ -129,30 +132,26 @@ impl YFastTrie {
         true
     }
 
-    fn split_map(&mut self, rep: usize, map: BTreeSet<usize>) -> (usize, usize) {
-        let mid = *map.iter().nth(map.len() / 2).unwrap();
-        let l_map: BTreeSet<usize> = map.range(..mid).copied().collect();
-        let r_map: BTreeSet<usize> = map.range(mid..).copied().collect();
-        self.maps.insert(rep, l_map);
+    fn split_map(&mut self, rep: usize, mut map: Treap<usize>) -> (usize, usize) {
+        let r_map = map.split_off_at(map.len() / 2);
+        let mid = r_map.min().unwrap();
+        self.maps.insert(rep, map);
         self.maps.insert(mid, r_map);
         (rep, mid)
     }
 
-    fn merge_map(&mut self, rep: usize, mut map: BTreeSet<usize>) -> (usize, BTreeSet<usize>) {
-        let right = if rep < usize::MAX { self.reps.successor(rep + 1) } else { None };
-        if let Some(r) = right {
+    fn merge_map(&mut self, rep: usize, mut map: Treap<usize>) -> (usize, Treap<usize>) {
+        if let Some(r) = self.reps.successor(rep + 1) {
             let r_map = self.maps.remove(&r).unwrap();
-            map.extend(r_map);
+            map.merge(r_map);
             self.reps.remove(r);
             return (rep, map);
         }
-        let left = if rep > 0 { self.reps.predecessor(rep - 1) } else { None };
-        if let Some(l) = left {
-            let l_map = self.maps.remove(&l).unwrap();
-            let mut merged = l_map;
-            merged.extend(map);
+        if let Some(l) = if rep > 0 { self.reps.predecessor(rep - 1) } else { None } {
+            let mut l_map = self.maps.remove(&l).unwrap();
+            l_map.merge(map);
             self.reps.remove(rep);
-            return (l, merged);
+            return (l, l_map);
         }
         (rep, map)
     }

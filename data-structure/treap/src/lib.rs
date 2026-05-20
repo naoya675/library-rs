@@ -27,6 +27,10 @@ impl<T: Ord + Copy> Treap<T> {
         Self::size(&self.root)
     }
 
+    pub fn is_empty(&self) -> bool {
+        self.root.is_none()
+    }
+
     pub fn insert(&mut self, x: T) {
         let node = Box::new(Node {
             key: x,
