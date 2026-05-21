@@ -211,4 +211,5 @@ Requires that every element of `self` is strictly less than every element of `ot
 - Implicit Treap
     - [https://qiita.com/hamamu/items/570e7c36bf73913cbeb8](https://qiita.com/hamamu/items/570e7c36bf73913cbeb8)
     - [https://xuzijian629.hatenablog.com/entry/2018/12/08/000452](https://xuzijian629.hatenablog.com/entry/2018/12/08/000452)
+    - [https://xuzijian629.hatenablog.com/entry/2019/10/25/234938](https://xuzijian629.hatenablog.com/entry/2019/10/25/234938)
     <!--- [https://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3108610](https://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3108610)-->

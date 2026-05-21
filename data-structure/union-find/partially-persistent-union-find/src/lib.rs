@@ -44,6 +44,25 @@ impl PartiallyPersistentUnionFind {
         self.leader(t, x) == self.leader(t, y)
     }
 
+    pub fn same_latest(&self, x: usize, y: usize) -> Option<usize> {
+        assert!(x < self.n);
+        assert!(y < self.n);
+        if !self.same(self.now, x, y) {
+            return None;
+        }
+        let mut lo = 0;
+        let mut hi = self.now;
+        while lo < hi {
+            let mi = (lo + hi) / 2;
+            if self.same(mi, x, y) {
+                hi = mi;
+            } else {
+                lo = mi + 1;
+            }
+        }
+        Some(lo)
+    }
+
     pub fn leader(&self, t: usize, x: usize) -> usize {
         assert!(x < self.n);
         if self.par_time[x].is_some_and(|tt| tt <= t) {

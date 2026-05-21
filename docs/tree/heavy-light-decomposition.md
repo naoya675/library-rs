@@ -12,3 +12,5 @@ documentation_of: //tree/heavy-light-decomposition/src/lib.rs
 - [https://qiita.com/recuraki/items/cb888afdc107b64a4a6e](https://qiita.com/recuraki/items/cb888afdc107b64a4a6e)
 - [https://qiita.com/Pro_ktmr/items/4e1e051ea0561772afa3](https://qiita.com/Pro_ktmr/items/4e1e051ea0561772afa3)
 - [https://atcoder.jp/contests/abc269/editorial/4838](https://atcoder.jp/contests/abc269/editorial/4838)
+- Weighted Ancestor Query
+    - [https://qiita.com/ScrubCrabClub/items/0214110763f30f6c9630](https://qiita.com/ScrubCrabClub/items/0214110763f30f6c9630)

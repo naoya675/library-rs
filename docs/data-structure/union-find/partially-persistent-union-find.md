@@ -48,6 +48,20 @@ Returns whether $x$ and $y$ belong to the same set at time $t$.
 **Complexity**
 - $O(\log n)$
 
+## same_latest
+
+```rust
+fn same_latest(&self, x: usize, y: usize) -> Option<usize>
+```
+
+Returns the smallest time $t$ at which $x$ and $y$ belong to the same set, or `None` if they never become the same.
+
+**Constraints**
+- $0 \leq x, y < n$
+
+**Complexity**
+- $O(\log T \log n)$
+
 ## leader
 
 ```rust
@@ -100,5 +114,5 @@ Returns the current time, equal to the number of `merge` calls performed so far.
 - [https://speakerdeck.com/camypaper/persistent-dsu](https://speakerdeck.com/camypaper/persistent-dsu)
 
 ## Verified
-- [https://atcoder.jp/contests/code-thanks-festival-2017/tasks/code_thanks_festival_2017_h](https://atcoder.jp/contests/code-thanks-festival-2017/tasks/code_thanks_festival_2017_h) ([submission](https://atcoder.jp/contests/code-thanks-festival-2017/submissions/75494801))
+- [https://atcoder.jp/contests/code-thanks-festival-2017/tasks/code_thanks_festival_2017_h](https://atcoder.jp/contests/code-thanks-festival-2017/tasks/code_thanks_festival_2017_h) ([submission](https://atcoder.jp/contests/code-thanks-festival-2017/submissions/75984296))
 - [https://atcoder.jp/contests/agc002/tasks/agc002_d](https://atcoder.jp/contests/agc002/tasks/agc002_d) ([submission](https://atcoder.jp/contests/agc002/submissions/75494734) / [editorial](https://www.mathenachia.blog/agc002d-usereditorial/))
