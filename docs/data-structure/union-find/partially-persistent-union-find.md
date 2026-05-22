@@ -113,6 +113,7 @@ Returns the current time, equal to the number of `merge` calls performed so far.
 - [https://qiita.com/alumite14/items/1fd477a14cf5c3019326](https://qiita.com/alumite14/items/1fd477a14cf5c3019326)
 - [https://qiita.com/alumite14/items/f4c355720f2a6da88ca5](https://qiita.com/alumite14/items/f4c355720f2a6da88ca5)
 - [https://speakerdeck.com/camypaper/persistent-dsu](https://speakerdeck.com/camypaper/persistent-dsu)
+- [https://wakuwinmail.hatenablog.com/entry/2020/03/10/235349](https://wakuwinmail.hatenablog.com/entry/2020/03/10/235349)
 
 ## Verified
 - [https://atcoder.jp/contests/code-thanks-festival-2017/tasks/code_thanks_festival_2017_h](https://atcoder.jp/contests/code-thanks-festival-2017/tasks/code_thanks_festival_2017_h) ([submission](https://atcoder.jp/contests/code-thanks-festival-2017/submissions/75984296))

@@ -1,0 +1,7 @@
+[package]
+name = "persistent-union-find"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+persistent-array = { path = "../../../data-structure/persistent-array" }
