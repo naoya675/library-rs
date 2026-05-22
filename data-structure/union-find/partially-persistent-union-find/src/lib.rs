@@ -5,6 +5,7 @@ pub struct PartiallyPersistentUnionFind {
     par: Vec<usize>,
     par_time: Vec<Option<usize>>,
     siz_history: Vec<Vec<(usize, usize)>>,
+    // siz: PartiallyPersistentArray<usize>,
 }
 
 impl PartiallyPersistentUnionFind {

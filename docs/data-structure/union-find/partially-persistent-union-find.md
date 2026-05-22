@@ -109,6 +109,7 @@ Returns the current time, equal to the number of `merge` calls performed so far.
 - [https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree)
 - [https://noshi91.hatenablog.com/entry/2018/02/18/161529](https://noshi91.hatenablog.com/entry/2018/02/18/161529)
 - [https://noshi91.hatenablog.com/entry/2018/05/30/191943](https://noshi91.hatenablog.com/entry/2018/05/30/191943)
+- [https://noshi91.hatenablog.com/entry/2020/09/25/015106](http://noshi91.hatenablog.com/entry/2020/09/25/015106)
 - [https://qiita.com/alumite14/items/1fd477a14cf5c3019326](https://qiita.com/alumite14/items/1fd477a14cf5c3019326)
 - [https://qiita.com/alumite14/items/f4c355720f2a6da88ca5](https://qiita.com/alumite14/items/f4c355720f2a6da88ca5)
 - [https://speakerdeck.com/camypaper/persistent-dsu](https://speakerdeck.com/camypaper/persistent-dsu)
