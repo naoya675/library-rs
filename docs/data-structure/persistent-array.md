@@ -1,5 +1,5 @@
 ---
-title: Persistent Array (完全永続配列)
+title: Persistent Array
 documentation_of: //data-structure/persistent-array/src/lib.rs
 ---
 

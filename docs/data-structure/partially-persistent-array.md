@@ -1,5 +1,5 @@
 ---
-title: Partially Persistent Array (部分永続配列)
+title: Partially Persistent Array
 documentation_of: //data-structure/partially-persistent-array/src/lib.rs
 ---
 
