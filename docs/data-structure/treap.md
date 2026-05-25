@@ -204,7 +204,12 @@ Requires that every element of `self` is strictly less than every element of `ot
 - $O(\log (n + m))$ expected, where $n$ and $m$ are the sizes of `self` and `other`.
 
 ## Reference
+- Guy E. Blelloch and Margaret Reid-Miller, ["Fast Set Operations Using Treaps"](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.pdf), SPAA 1998.
+    - [https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.html](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.html)
+    - [https://www.cs.cmu.edu/~scandal/treaps.html](https://www.cs.cmu.edu/~scandal/treaps.html)
 - R. Seidel and C. R. Aragon, ["Randomized search trees"](https://link.springer.com/article/10.1007/BF01940876), Algorithmica 16 (1996), 464–497.
+- [https://cp-algorithms.com/data_structures/treap.html](https://cp-algorithms.com/data_structures/treap.html)
+- [https://www.cs.umd.edu/class/fall2020/cmsc420-0201/Lects/lect08-treap.pdf](https://www.cs.umd.edu/class/fall2020/cmsc420-0201/Lects/lect08-treap.pdf)
 - [https://www.slideshare.net/slideshow/2-12188757/12188757](https://www.slideshare.net/slideshow/2-12188757/12188757)
 - [http://www.prefield.com/algorithm/container/treap.html](https://web.archive.org/web/20200221155641/http://www.prefield.com/algorithm/container/treap.html)
 - [https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268](https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268)

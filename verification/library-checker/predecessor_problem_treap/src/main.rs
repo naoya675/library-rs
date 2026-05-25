@@ -30,21 +30,19 @@ fn main() {
     for query in queries {
         match query {
             Query0(k) => {
-                if !treap.contains(k) {
-                    treap.insert(k);
-                }
+                treap.insert(k);
             }
             Query1(k) => {
-                treap.remove(k);
+                treap.remove(&k);
             }
             Query2(k) => {
-                println!("{}", if treap.contains(k) { 1 } else { 0 });
+                println!("{}", if treap.contains(&k) { 1 } else { 0 });
             }
             Query3(k) => {
-                println!("{}", treap.successor(k).map(|x| x as i64).unwrap_or(-1));
+                println!("{}", treap.successor(&k).map(|&x| x as i64).unwrap_or(-1));
             }
             Query4(k) => {
-                println!("{}", treap.predecessor(k).map(|x| x as i64).unwrap_or(-1));
+                println!("{}", treap.predecessor(&k).map(|&x| x as i64).unwrap_or(-1));
             }
         }
     }
