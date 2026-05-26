@@ -42,8 +42,7 @@ impl<T: Ord> Treap<T> {
             l: None,
             r: None,
         });
-        Self::insert_inner(&mut self.root, node);
-        true
+        Self::insert_inner(&mut self.root, node)
     }
 
     pub fn remove(&mut self, x: &T) -> bool {
@@ -68,10 +67,10 @@ impl<T: Ord> Treap<T> {
         let mut cur = self.root.as_deref();
         while let Some(n) = cur {
             let l_size = Self::size(&n.l);
-            if k == l_size {
-                return &n.key;
-            } else if k < l_size {
+            if k < l_size {
                 cur = n.l.as_deref();
+            } else if k < l_size + 1 {
+                return &n.key;
             } else {
                 k -= l_size + 1;
                 cur = n.r.as_deref();
@@ -212,13 +211,23 @@ impl<T: Ord> Treap<T> {
     }
 
     pub fn iter(&self) -> Iter<'_, T> {
-        let mut stack = Vec::new();
+        let mut next = vec![];
+        let mut back = vec![];
         let mut cur = &self.root;
         while let Some(n) = cur {
-            stack.push(n.as_ref());
+            next.push(n.as_ref());
             cur = &n.l;
         }
-        Iter { stack }
+        let mut cur = &self.root;
+        while let Some(n) = cur {
+            back.push(n.as_ref());
+            cur = &n.r;
+        }
+        Iter {
+            next,
+            back,
+            remaining: self.len(),
+        }
     }
 
     fn size(node: &Option<Box<Node<T>>>) -> usize {
@@ -251,10 +260,10 @@ impl<T: Ord> Treap<T> {
     }
      */
 
-    fn insert_inner(t: &mut Option<Box<Node<T>>>, mut it: Box<Node<T>>) {
+    fn insert_inner(t: &mut Option<Box<Node<T>>>, mut it: Box<Node<T>>) -> bool {
         let Some(node) = t.as_ref() else {
             *t = Some(it);
-            return;
+            return true;
         };
         if it.priority > node.priority {
             let (l, r) = Self::split_inner(t.take(), &it.key);
@@ -271,6 +280,7 @@ impl<T: Ord> Treap<T> {
             }
             Self::update(node);
         }
+        true
     }
 
     fn remove_inner(t: &mut Option<Box<Node<T>>>, x: &T) -> bool {
@@ -378,18 +388,40 @@ impl<T: Ord> Treap<T> {
 }
 
 pub struct Iter<'a, T: Ord> {
-    stack: Vec<&'a Node<T>>,
+    next: Vec<&'a Node<T>>,
+    back: Vec<&'a Node<T>>,
+    remaining: usize,
 }
 
 impl<'a, T: Ord> Iterator for Iter<'a, T> {
     type Item = &'a T;
 
     fn next(&mut self) -> Option<Self::Item> {
-        let node = self.stack.pop()?;
-        let mut child = &node.r;
-        while let Some(n) = child {
-            self.stack.push(n);
-            child = &n.l;
+        if self.remaining == 0 {
+            return None;
+        }
+        let node = self.next.pop()?;
+        self.remaining -= 1;
+        let mut cur = &node.r;
+        while let Some(n) = cur {
+            self.next.push(n);
+            cur = &n.l;
+        }
+        Some(&node.key)
+    }
+}
+
+impl<'a, T: Ord> DoubleEndedIterator for Iter<'a, T> {
+    fn next_back(&mut self) -> Option<Self::Item> {
+        if self.remaining == 0 {
+            return None;
+        }
+        let node = self.back.pop()?;
+        self.remaining -= 1;
+        let mut cur = &node.l;
+        while let Some(n) = cur {
+            self.back.push(n);
+            cur = &n.r;
         }
         Some(&node.key)
     }

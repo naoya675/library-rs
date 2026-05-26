@@ -4,7 +4,8 @@ documentation_of: //data-structure/treap/src/lib.rs
 ---
 
 A randomized self-balancing binary search tree that maintains the BST property by key and a max-heap property by a random priority assigned to each node.
-Operates as an ordered multiset over a key type `T: Ord + Copy`, supporting predecessor/successor, $k$-th element, and split/merge queries in $O(\log n)$ expected time.
+Operates as an ordered set over a key type `T: Ord`, supporting predecessor/successor, $k$-th element, split/merge, and set operations in $O(\log n)$ expected time.
+The `insert` method rejects duplicates (set semantics), but the internal `insert_inner` allows duplicates; removing the `contains` guard in `insert` turns this into an ordered multiset.
 
 ## new
 
@@ -23,7 +24,7 @@ Creates an empty Treap.
 fn len(&self) -> usize
 ```
 
-Returns the number of elements in the multiset.
+Returns the number of elements in the set.
 
 **Complexity**
 - $O(1)$
@@ -34,7 +35,7 @@ Returns the number of elements in the multiset.
 fn is_empty(&self) -> bool
 ```
 
-Returns `true` if the multiset is empty.
+Returns `true` if the set is empty.
 
 **Complexity**
 - $O(1)$
@@ -42,11 +43,11 @@ Returns `true` if the multiset is empty.
 ## insert
 
 ```rust
-fn insert(&mut self, x: T)
+fn insert(&mut self, x: T) -> bool
 ```
 
-Inserts $x$ into the multiset.
-Duplicates are kept.
+Inserts $x$ into the set.
+Returns `true` if $x$ was not already present, `false` if it was already present (no duplicate is added).
 
 **Complexity**
 - $O(\log n)$ expected
@@ -54,10 +55,11 @@ Duplicates are kept.
 ## remove
 
 ```rust
-fn remove(&mut self, x: T) -> bool
+fn remove(&mut self, x: &T) -> bool
 ```
 
-Removes one occurrence of $x$ from the multiset and returns `true` if $x$ was present, otherwise does nothing and returns `false`.
+Removes $x$ from the set.
+Returns `true` if $x$ was present, `false` otherwise.
 
 **Complexity**
 - $O(\log n)$ expected
@@ -65,21 +67,10 @@ Removes one occurrence of $x$ from the multiset and returns `true` if $x$ was pr
 ## contains
 
 ```rust
-fn contains(&self, x: T) -> bool
+fn contains(&self, x: &T) -> bool
 ```
 
-Returns `true` if $x$ is in the multiset.
-
-**Complexity**
-- $O(\log n)$ expected
-
-## count
-
-```rust
-fn count(&self, x: T) -> usize
-```
-
-Returns the multiplicity of $x$.
+Returns `true` if $x$ is in the set.
 
 **Complexity**
 - $O(\log n)$ expected
@@ -87,10 +78,10 @@ Returns the multiplicity of $x$.
 ## kth
 
 ```rust
-fn kth(&self, k: usize) -> T
+fn kth(&self, k: usize) -> &T
 ```
 
-Returns the $k$-th smallest element (0-indexed).
+Returns a reference to the $k$-th smallest element (0-indexed).
 
 **Constraints**
 - $0 \leq k < n$
@@ -101,10 +92,10 @@ Returns the $k$-th smallest element (0-indexed).
 ## min
 
 ```rust
-fn min(&self) -> Option<T>
+fn min(&self) -> Option<&T>
 ```
 
-Returns the smallest element, or `None` if the multiset is empty.
+Returns a reference to the smallest element, or `None` if the set is empty.
 
 **Complexity**
 - $O(\log n)$ expected
@@ -112,18 +103,51 @@ Returns the smallest element, or `None` if the multiset is empty.
 ## max
 
 ```rust
-fn max(&self) -> Option<T>
+fn max(&self) -> Option<&T>
 ```
 
-Returns the largest element, or `None` if the multiset is empty.
+Returns a reference to the largest element, or `None` if the set is empty.
 
 **Complexity**
 - $O(\log n)$ expected
 
+## pop_min
+
+```rust
+fn pop_min(&mut self) -> Option<T>
+```
+
+Removes and returns the smallest element, or `None` if the set is empty.
+
+**Complexity**
+- $O(\log n)$ expected
+
+## pop_max
+
+```rust
+fn pop_max(&mut self) -> Option<T>
+```
+
+Removes and returns the largest element, or `None` if the set is empty.
+
+**Complexity**
+- $O(\log n)$ expected
+
+## clear
+
+```rust
+fn clear(&mut self)
+```
+
+Removes all elements from the set.
+
+**Complexity**
+- $O(n)$
+
 ## lower_bound
 
 ```rust
-fn lower_bound(&self, x: T) -> usize
+fn lower_bound(&self, x: &T) -> usize
 ```
 
 Returns the number of elements strictly less than $x$.
@@ -134,7 +158,7 @@ Returns the number of elements strictly less than $x$.
 ## upper_bound
 
 ```rust
-fn upper_bound(&self, x: T) -> usize
+fn upper_bound(&self, x: &T) -> usize
 ```
 
 Returns the number of elements less than or equal to $x$.
@@ -145,10 +169,10 @@ Returns the number of elements less than or equal to $x$.
 ## successor
 
 ```rust
-fn successor(&self, x: T) -> Option<T>
+fn successor(&self, x: &T) -> Option<&T>
 ```
 
-Returns the smallest element greater than or equal to $x$, or `None` if no such element exists.
+Returns a reference to the smallest element greater than or equal to $x$, or `None` if no such element exists.
 
 **Complexity**
 - $O(\log n)$ expected
@@ -156,10 +180,10 @@ Returns the smallest element greater than or equal to $x$, or `None` if no such 
 ## predecessor
 
 ```rust
-fn predecessor(&self, x: T) -> Option<T>
+fn predecessor(&self, x: &T) -> Option<&T>
 ```
 
-Returns the largest element less than or equal to $x$, or `None` if no such element exists.
+Returns a reference to the largest element less than or equal to $x$, or `None` if no such element exists.
 
 **Complexity**
 - $O(\log n)$ expected
@@ -167,10 +191,10 @@ Returns the largest element less than or equal to $x$, or `None` if no such elem
 ## split_off
 
 ```rust
-fn split_off(&mut self, x: T) -> Self
+fn split_off(&mut self, x: &T) -> Self
 ```
 
-Splits the multiset by value.
+Splits the set by value.
 After the call, `self` contains the elements less than $x$ and the returned Treap contains the elements greater than or equal to $x$.
 
 **Complexity**
@@ -182,7 +206,7 @@ After the call, `self` contains the elements less than $x$ and the returned Trea
 fn split_off_at(&mut self, k: usize) -> Self
 ```
 
-Splits the multiset by index.
+Splits the set by index.
 After the call, `self` contains the smallest $k$ elements and the returned Treap contains the rest.
 
 **Complexity**
@@ -191,17 +215,40 @@ After the call, `self` contains the smallest $k$ elements and the returned Treap
 ## merge
 
 ```rust
-fn merge(&mut self, other: Self)
+fn merge(&mut self, rhs: Self)
 ```
 
-Merges `other` into `self`.
-Requires that every element of `self` is strictly less than every element of `other`.
+Merges `rhs` into `self`.
+Requires that every element of `self` is strictly less than every element of `rhs`.
 
 **Constraints**
-- `self.max() < other.min()`
+- `self.max() < rhs.min()`
 
 **Complexity**
-- $O(\log (n + m))$ expected, where $n$ and $m$ are the sizes of `self` and `other`.
+- $O(\log (n + m))$ expected, where $n$ and $m$ are the sizes of `self` and `rhs`.
+
+## union
+
+```rust
+fn union(&mut self, rhs: Self)
+```
+
+Merges `rhs` into `self`, removing duplicate keys.
+No ordering constraint on inputs.
+
+**Complexity**
+- $O((n + m) \log (n + m))$ expected
+
+## iter
+
+```rust
+fn iter(&self) -> Iter<'_, T>
+```
+
+Returns an iterator that visits the elements in ascending order.
+
+**Complexity**
+- $O(n)$ for full traversal
 
 ## Reference
 - Guy E. Blelloch and Margaret Reid-Miller, ["Fast Set Operations Using Treaps"](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.pdf), SPAA 1998.
