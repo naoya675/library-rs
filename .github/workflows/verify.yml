@@ -163,7 +163,10 @@ jobs:
                   key: ${{ runner.os }}-verify-result-${{ github.sha }}
 
             - name: Override templates
-              run: cp .github/templates/toppage_body.html _jekyll/_includes/toppage_body.html
+              run: |
+                  cp .github/templates/toppage_body.html _jekyll/_includes/toppage_body.html
+                  cp .github/templates/head-custom.html _jekyll/_includes/head-custom.html
+                  cp .github/templates/custom.scss _jekyll/assets/css/custom.scss
 
             - name: Setup Pages
               uses: actions/configure-pages@v5
