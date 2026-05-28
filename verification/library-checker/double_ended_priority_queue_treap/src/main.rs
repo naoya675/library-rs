@@ -2,7 +2,7 @@
 
 use proconio::input;
 
-use treap::Treap;
+use treap_map::TreapMap;
 
 query::define_query! {
     Query {
@@ -19,23 +19,39 @@ fn main() {
         s: [i64; n],
         queries: [Query; q],
     }
-    let mut treap = Treap::<i64>::new();
+    let mut treap = TreapMap::<i64, usize>::new();
     for &s in &s {
-        treap.insert(s);
+        if let Some(c) = treap.get_mut(&s) {
+            *c += 1;
+        } else {
+            treap.insert(s, 1);
+        }
     }
     for query in queries {
         match query {
             Query0(x) => {
-                treap.insert(x);
+                if let Some(c) = treap.get_mut(&x) {
+                    *c += 1;
+                } else {
+                    treap.insert(x, 1);
+                }
             }
             Query1() => {
-                let min = treap.min().unwrap();
-                treap.remove(min);
+                let (&min, &c) = treap.min().unwrap();
+                if c > 1 {
+                    *treap.get_mut(&min).unwrap() -= 1;
+                } else {
+                    treap.remove(&min);
+                }
                 println!("{}", min);
             }
             Query2() => {
-                let max = treap.max().unwrap();
-                treap.remove(max);
+                let (&max, &c) = treap.max().unwrap();
+                if c > 1 {
+                    *treap.get_mut(&max).unwrap() -= 1;
+                } else {
+                    treap.remove(&max);
+                }
                 println!("{}", max);
             }
         }

@@ -28,7 +28,7 @@ impl YFastTrie {
 
     pub fn contains(&self, x: usize) -> bool {
         if let Some(r) = self.reps.predecessor(x) {
-            self.maps[&r].contains(x)
+            self.maps[&r].contains(&x)
         } else {
             false
         }
@@ -39,12 +39,12 @@ impl YFastTrie {
     }
 
     pub fn max(&self) -> Option<usize> {
-        self.reps.max().and_then(|r| self.maps[&r].max())
+        self.reps.max().and_then(|r| self.maps[&r].max().copied())
     }
 
     pub fn successor(&self, x: usize) -> Option<usize> {
         if let Some(r) = self.reps.predecessor(x) {
-            if let Some(y) = self.maps[&r].successor(x) {
+            if let Some(&y) = self.maps[&r].successor(&x) {
                 return Some(y);
             }
         }
@@ -53,7 +53,7 @@ impl YFastTrie {
 
     pub fn predecessor(&self, x: usize) -> Option<usize> {
         if let Some(r) = self.reps.predecessor(x) {
-            if let Some(y) = self.maps[&r].predecessor(x) {
+            if let Some(&y) = self.maps[&r].predecessor(&x) {
                 return Some(y);
             }
         }
@@ -106,13 +106,13 @@ impl YFastTrie {
             return false;
         };
         let mut map = self.maps.remove(&target).unwrap();
-        map.remove(x);
+        map.remove(&x);
         if map.is_empty() {
             self.reps.remove(target);
             self.len -= 1;
             return true;
         }
-        let rep = map.min().unwrap();
+        let rep = *map.min().unwrap();
         if rep != target {
             self.reps.remove(target);
             self.reps.insert(rep);
@@ -134,7 +134,7 @@ impl YFastTrie {
 
     fn split_map(&mut self, rep: usize, mut map: Treap<usize>) -> (usize, usize) {
         let r_map = map.split_off_at(map.len() / 2);
-        let mid = r_map.min().unwrap();
+        let mid = *r_map.min().unwrap();
         self.maps.insert(rep, map);
         self.maps.insert(mid, r_map);
         (rep, mid)

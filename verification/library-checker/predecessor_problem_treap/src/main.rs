@@ -30,7 +30,9 @@ fn main() {
     for query in queries {
         match query {
             Query0(k) => {
-                treap.insert(k);
+                if !treap.contains(&k) {
+                    treap.insert(k);
+                }
             }
             Query1(k) => {
                 treap.remove(&k);

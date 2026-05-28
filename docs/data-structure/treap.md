@@ -49,7 +49,7 @@ fn insert(&mut self, x: T) -> bool
 ```
 
 Inserts $x$ into the set.
-Returns `true` if $x$ was not already present, `false` if it was already present (no duplicate is added).
+Returns `true` if $x$ was not already present, `false` otherwise (no duplicate is added).
 
 **Complexity**
 - $O(\log n)$ expected
