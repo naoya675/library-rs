@@ -1,6 +1,6 @@
 ---
-title: Knuth-Morris-Pratt algorithm
-documentation_of: //string/knuth-morris-pratt/src/lib.rs
+title: KMP (Knuth-Morris-Pratt algorithm)
+documentation_of: //string/kmp/src/lib.rs
 ---
 
 ## Description

@@ -2,7 +2,7 @@
 
 use proconio::{input, marker::Chars};
 
-use knuth_morris_pratt::kmp;
+use kmp::kmp;
 
 fn main() {
     input! {

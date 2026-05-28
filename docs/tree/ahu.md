@@ -1,5 +1,5 @@
 ---
-title: AHU
+title: AHU (Aho-Hopcroft-Ullman algorithm)
 documentation_of: //tree/ahu/src/lib.rs
 ---
 
