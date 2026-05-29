@@ -258,9 +258,12 @@ Returns an iterator that visits the elements in ascending order.
 - Guy E. Blelloch and Margaret Reid-Miller, ["Fast Set Operations Using Treaps"](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.pdf), SPAA 1998.
     - [https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.html](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.html)
     - [https://www.cs.cmu.edu/~scandal/treaps.html](https://www.cs.cmu.edu/~scandal/treaps.html)
+    <!--- [https://www.cs.cmu.edu/~scandal/papers/treaps-spaa98.pdf](https://www.cs.cmu.edu/~scandal/papers/treaps-spaa98.pdf)-->
     <!--- [https://www.cs.umd.edu/class/fall2020/cmsc420-0201/Lects/lect08-treap.pdf](https://www.cs.umd.edu/class/fall2020/cmsc420-0201/Lects/lect08-treap.pdf)-->
 - R. Seidel and C. R. Aragon, ["Randomized search trees"](https://link.springer.com/article/10.1007/BF01940876), Algorithmica 16 (1996), 464–497.
+- [https://betrue12.hateblo.jp/entry/2020/08/05/204120](https://betrue12.hateblo.jp/entry/2020/08/05/204120)
 - [https://cp-algorithms.com/data_structures/treap.html](https://cp-algorithms.com/data_structures/treap.html)
+- [https://ferin-tech.hatenablog.com/entry/2020/01/29/155239](https://ferin-tech.hatenablog.com/entry/2020/01/29/155239)
 - [https://www.slideshare.net/slideshow/2-12188757/12188757](https://www.slideshare.net/slideshow/2-12188757/12188757)
 - [http://www.prefield.com/algorithm/container/treap.html](https://web.archive.org/web/20200221155641/http://www.prefield.com/algorithm/container/treap.html)
 - [https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268](https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268)

@@ -445,3 +445,87 @@ impl<T: Ord, S> FromIterator<(T, S)> for TreapMap<T, S> {
         treap
     }
 }
+
+impl<T: Ord, S> TreapMap<T, S> {
+    pub fn entry(&mut self, key: T) -> Entry<'_, T, S> {
+        if self.contains_key(&key) {
+            Entry::Occupied(OccupiedEntry { map: self, key })
+        } else {
+            Entry::Vacant(VacantEntry { map: self, key })
+        }
+    }
+}
+
+pub enum Entry<'a, T: Ord, S> {
+    Occupied(OccupiedEntry<'a, T, S>),
+    Vacant(VacantEntry<'a, T, S>),
+}
+
+pub struct OccupiedEntry<'a, T: Ord, S> {
+    map: &'a mut TreapMap<T, S>,
+    key: T,
+}
+
+pub struct VacantEntry<'a, T: Ord, S> {
+    map: &'a mut TreapMap<T, S>,
+    key: T,
+}
+
+impl<'a, T: Ord + Clone, S> Entry<'a, T, S> {
+    pub fn or_insert(self, default: S) -> &'a mut S {
+        match self {
+            Entry::Occupied(e) => e.into_mut(),
+            Entry::Vacant(e) => e.insert(default),
+        }
+    }
+
+    pub fn or_insert_with<F: FnOnce() -> S>(self, default: F) -> &'a mut S {
+        match self {
+            Entry::Occupied(e) => e.into_mut(),
+            Entry::Vacant(e) => e.insert(default()),
+        }
+    }
+
+    pub fn and_modify<F: FnOnce(&mut S)>(mut self, f: F) -> Self {
+        if let Entry::Occupied(e) = &mut self {
+            f(e.get_mut());
+        }
+        self
+    }
+}
+
+impl<'a, T: Ord + Clone, S: Default> Entry<'a, T, S> {
+    pub fn or_default(self) -> &'a mut S {
+        self.or_insert_with(S::default)
+    }
+}
+
+impl<'a, T: Ord, S> OccupiedEntry<'a, T, S> {
+    pub fn get(&self) -> &S {
+        self.map.get(&self.key).unwrap()
+    }
+
+    pub fn get_mut(&mut self) -> &mut S {
+        self.map.get_mut(&self.key).unwrap()
+    }
+
+    pub fn into_mut(self) -> &'a mut S {
+        self.map.get_mut(&self.key).unwrap()
+    }
+
+    pub fn insert(&mut self, value: S) -> S {
+        std::mem::replace(self.get_mut(), value)
+    }
+
+    pub fn remove(self) -> S {
+        self.map.remove(&self.key).unwrap()
+    }
+}
+
+impl<'a, T: Ord + Clone, S> VacantEntry<'a, T, S> {
+    pub fn insert(self, value: S) -> &'a mut S {
+        let VacantEntry { map, key } = self;
+        map.insert(key.clone(), value);
+        map.get_mut(&key).unwrap()
+    }
+}

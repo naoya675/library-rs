@@ -22,7 +22,7 @@ fn main() {
         queries: [Query; q],
     }
     let t = t.iter().map(|&t| t as usize - '0' as usize).collect::<Vec<_>>();
-    let mut lst = LazySegmentTree::<usize, usize>::new(n, |x, y| x + y, 0, |f, t| f + t, |f, g| f + g, 0);
+    let mut lst = LazySegmentTree::<usize, usize>::new(n, |x, y| x + y, 0, |f, x| f + x, |f, g| f + g, 0);
     lst.build(&t);
     for query in queries {
         match query {

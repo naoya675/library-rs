@@ -21,35 +21,27 @@ fn main() {
     }
     let mut treap = TreapMap::<i64, usize>::new();
     for &s in &s {
-        if let Some(c) = treap.get_mut(&s) {
-            *c += 1;
-        } else {
-            treap.insert(s, 1);
-        }
+        *treap.entry(s).or_insert(0) += 1;
     }
     for query in queries {
         match query {
             Query0(x) => {
-                if let Some(c) = treap.get_mut(&x) {
-                    *c += 1;
-                } else {
-                    treap.insert(x, 1);
-                }
+                *treap.entry(x).or_insert(0) += 1;
             }
             Query1() => {
-                let (&min, &c) = treap.min().unwrap();
-                if c > 1 {
-                    *treap.get_mut(&min).unwrap() -= 1;
-                } else {
+                let min = *treap.min().unwrap().0;
+                let c = treap.get_mut(&min).unwrap();
+                *c -= 1;
+                if *c == 0 {
                     treap.remove(&min);
                 }
                 println!("{}", min);
             }
             Query2() => {
-                let (&max, &c) = treap.max().unwrap();
-                if c > 1 {
-                    *treap.get_mut(&max).unwrap() -= 1;
-                } else {
+                let max = *treap.max().unwrap().0;
+                let c = treap.get_mut(&max).unwrap();
+                *c -= 1;
+                if *c == 0 {
                     treap.remove(&max);
                 }
                 println!("{}", max);
