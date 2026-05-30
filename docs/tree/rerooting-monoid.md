@@ -1,6 +1,6 @@
 ---
-title: Rerooting (Wrapper)
-documentation_of: //tree/rerooting/src/wrapper.rs
+title: (Monoid)
+documentation_of: //tree/rerooting/src/monoid.rs
 ---
 
 <!--## Description-->

@@ -1,6 +1,6 @@
 ---
-title: Lazy Segment Tree (Wrapper)
-documentation_of: //data-structure/segment-tree/lazy-segment-tree/src/wrapper.rs
+title: (Monoid)
+documentation_of: //data-structure/segment-tree/lazy-segment-tree/src/monoid.rs
 ---
 
 <!--## Description-->

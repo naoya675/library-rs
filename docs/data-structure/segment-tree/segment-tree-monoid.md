@@ -1,6 +1,6 @@
 ---
-title: Segment Tree (Wrapper)
-documentation_of: //data-structure/segment-tree/segment-tree/src/wrapper.rs
+title: (Monoid)
+documentation_of: //data-structure/segment-tree/segment-tree/src/monoid.rs
 ---
 
 <!--## Description-->
