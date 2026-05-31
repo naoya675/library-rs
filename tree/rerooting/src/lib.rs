@@ -40,29 +40,37 @@ impl<Cost: Copy, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Lea
     pub fn run(&mut self) -> Vec<Data> {
         self.memo.resize(self.n, (self.e)());
         self.dp.resize(self.n, (self.e)());
-        self.dfs1(0, None);
-        self.dfs2(0, None, (self.e)());
+        let mut visited = vec![false; self.n];
+        for c in 0..self.n {
+            if !visited[c] {
+                self.dfs1(c, None, &mut visited);
+                self.dfs2(c, None, (self.e)());
+            }
+        }
         self.dp.clone()
     }
 
-    fn dfs1(&mut self, c: usize, p: Option<usize>) {
-        let mut upd = false;
+    fn dfs1(&mut self, c: usize, p: Option<usize>, visited: &mut [bool]) {
+        // let mut upd = false;
+        visited[c] = true;
+        self.memo[c] = (self.leaf)(c);
         for j in 0..self.graph[c].len() {
             let edge = self.graph[c][j];
             if Some(edge.to) == p {
                 continue;
             }
-            self.dfs1(edge.to, Some(c));
-            upd = true;
+            // upd = true;
+            self.dfs1(edge.to, Some(c), visited);
             self.memo[c] = (self.merge)(self.memo[c], (self.apply)(self.memo[edge.to], edge.to, c, edge.cost));
         }
-        if !upd {
-            self.memo[c] = (self.leaf)(c);
-        }
+        // if !upd {
+        //     self.memo[c] = (self.leaf)(c);
+        // }
     }
 
     fn dfs2(&mut self, c: usize, p: Option<usize>, val: Data) {
-        let mut ds = vec![(self.e)()];
+        // let mut ds = vec![(self.e)()];
+        let mut ds = vec![(self.leaf)(c)];
         for j in 0..self.graph[c].len() {
             let edge = self.graph[c][j];
             if Some(edge.to) == p {
@@ -96,7 +104,8 @@ impl<Cost: Copy, Data: Copy, Merge: Fn(Data, Data) -> Data, E: Fn() -> Data, Lea
     /*
      * Symmetric
     fn dfs2(&mut self, c: usize, p: Option<usize>, val: Data) {
-        let mut ds = vec![val];
+        // let mut ds = vec![val];
+        let mut ds = vec![(self.merge)(val, (self.leaf)(c))];
         for j in 0..self.graph[c].len() {
             let edge = self.graph[c][j];
             if Some(edge.to) == p {
