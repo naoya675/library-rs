@@ -23,6 +23,8 @@ concurrency:
 jobs:
     setup:
         runs-on: ubuntu-latest
+        outputs:
+            hash: ${{ steps.create-hash.outputs.hash }}
         steps:
             - uses: actions/checkout@v4
 
@@ -36,14 +38,44 @@ jobs:
               with:
                   output-path: verify_files.json
 
+            - name: Create hash
+              id: create-hash
+              run: echo "hash=${{ hashFiles('verify_files.json') }}" >> "$GITHUB_OUTPUT"
+
             - name: Upload verify_files.json
               uses: competitive-verifier/actions/upload-verify-artifact@v2
               with:
                   file: verify_files.json
 
-    verify:
+    download:
         runs-on: ubuntu-latest
         needs: [setup]
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Download verify_files.json
+              uses: competitive-verifier/actions/download-verify-artifact@v2
+
+            - name: Set up competitive-verifier
+              uses: competitive-verifier/actions/setup@v2
+              with:
+                  cache-pip: true
+
+            - name: Cache judge data
+              uses: actions/cache@v4
+              with:
+                  path: .competitive-verifier/cache
+                  key: ${{ runner.os }}-verify-cache-${{ needs.setup.outputs.hash }}
+                  restore-keys: ${{ runner.os }}-verify-cache-
+
+            - name: Download problems
+              uses: competitive-verifier/actions/download-problems@v2
+              env:
+                  YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+
+    verify:
+        runs-on: ubuntu-latest
+        needs: [setup, download]
         env:
             SPLIT_SIZE: "8"
         strategy:
@@ -61,29 +93,14 @@ jobs:
               with:
                   path: ${{ github.workspace }}/merged-result.json
                   key: ${{ runner.os }}-verify-result-${{ github.sha }}
-                  restore-keys: |
-                      ${{ runner.os }}-verify-result-
+                  restore-keys: ${{ runner.os }}-verify-result-
 
-            - name: Cache Cargo
-              uses: actions/cache@v4
+            - name: Restore judge data
+              uses: actions/cache/restore@v4
               with:
-                  path: |
-                      ~/.cargo/registry
-                      ~/.cargo/git
-                      target
-                  key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}-${{ hashFiles('**/*.rs') }}
-                  restore-keys: |
-                      ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}-
-                      ${{ runner.os }}-cargo-
-
-            - name: Cache judge data
-              uses: actions/cache@v4
-              with:
-                  path: |
-                      ~/.cache/online-judge-tools
-                  key: ${{ runner.os }}-judge-${{ hashFiles('verification/**/*.rs') }}
-                  restore-keys: |
-                      ${{ runner.os }}-judge-
+                  path: .competitive-verifier/cache
+                  key: ${{ runner.os }}-verify-cache-${{ needs.setup.outputs.hash }}
+                  restore-keys: ${{ runner.os }}-verify-cache-
 
             - name: Download verify_files.json
               uses: competitive-verifier/actions/download-verify-artifact@v2
@@ -94,14 +111,10 @@ jobs:
                   cache-pip: true
 
             - name: Set up Rust
-              run: |
-                  rustup set profile minimal
-                  rustup install 1.89.0
-                  rustup override set 1.89.0
+              run: rustup install 1.89.0
 
             - name: Set up Rust (nightly)
-              run: |
-                  rustup install nightly
+              run: rustup install nightly
 
             - name: Verify
               uses: competitive-verifier/actions/verify@v2
