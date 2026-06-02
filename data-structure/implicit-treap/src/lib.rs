@@ -40,12 +40,31 @@ impl<T: Copy, F: Copy> ImplicitTreap<T, F> {
         }
     }
 
-    pub fn build(&mut self, v: &[T]) {
-        self.root = None;
-        for &x in v {
-            let len = self.len();
-            self.insert(len, x);
+    pub fn from_slice(v: &[T], op: fn(T, T) -> T, e: T, mapping: fn(F, T) -> T, composition: fn(F, F) -> F, id: F) -> Self {
+        assert!(v.len() > 0);
+        let mut treap = Self::new(op, e, mapping, composition, id);
+        let n = v.len();
+        let priorities: Vec<u64> = (0..n).map(|_| treap.rng.next_u64()).collect();
+        let mut lnode: Vec<Option<usize>> = vec![None; n];
+        let mut rnode: Vec<Option<usize>> = vec![None; n];
+        let mut stack: Vec<usize> = vec![];
+        for i in 0..n {
+            let mut p = None;
+            while let Some(&last) = stack.last() {
+                if priorities[i] < priorities[last] {
+                    break;
+                }
+                rnode[last] = p;
+                p = stack.pop();
+            }
+            lnode[i] = p;
+            stack.push(i);
         }
+        for i in 0..stack.len() - 1 {
+            rnode[stack[i]] = Some(stack[i + 1]);
+        }
+        treap.root = Some(treap.build_inner(stack[0], v, &priorities, &lnode, &rnode));
+        treap
     }
 
     pub fn len(&self) -> usize {
@@ -286,6 +305,25 @@ impl<T: Copy, F: Copy> ImplicitTreap<T, F> {
             self.update(&mut n);
             (Some(n), r)
         }
+    }
+
+    fn build_inner(&self, root: usize, v: &[T], pri: &[u64], lnode: &[Option<usize>], rnode: &[Option<usize>]) -> Box<Node<T, F>> {
+        let l = lnode[root].map(|li| self.build_inner(li, v, pri, lnode, rnode));
+        let r = rnode[root].map(|ri| self.build_inner(ri, v, pri, lnode, rnode));
+        let val = v[root];
+        let mut node = Box::new(Node {
+            val,
+            prod: val,
+            rev_prod: val,
+            rev: false,
+            lazy: self.id,
+            size: 1,
+            priority: pri[root],
+            l,
+            r,
+        });
+        self.update(&mut node);
+        node
     }
 
     fn max_right_inner<G>(&self, t: Link<T, F>, g: &G, acc: &mut T, add: &mut usize) -> Link<T, F>

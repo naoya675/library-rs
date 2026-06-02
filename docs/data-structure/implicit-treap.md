@@ -22,16 +22,19 @@ Creates an empty sequence.
 **Complexity**
 - $O(1)$
 
-## build
+## from_slice
 
 ```rust
-fn build(&mut self, v: &[T])
+fn from_slice(v: &[T], op: fn(T, T) -> T, e: T, mapping: fn(F, T) -> T, composition: fn(F, F) -> F, id: F) -> Self
 ```
 
-Replaces the contents with the elements of `v`.
+Creates a sequence initialized with the elements of `v`.
+
+**Constraints**
+- $n > 0$
 
 **Complexity**
-- $O(n \log n)$ expected
+- $O(n)$ expected
 
 ## len
 
