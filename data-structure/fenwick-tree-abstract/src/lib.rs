@@ -20,6 +20,21 @@ impl<T: Copy> FenwickTreeAbstract<T> {
         }
     }
 
+    pub fn from_slice(v: &[T], op: fn(T, T) -> T, e: T, inv: fn(T) -> T) -> Self {
+        let n = v.len();
+        let mut tree = vec![e; n + 1];
+        for i in 0..n {
+            tree[i + 1] = v[i];
+        }
+        for i in 1..=n {
+            let j = i + (i & i.wrapping_neg());
+            if j <= n {
+                tree[j] = op(tree[j], tree[i]);
+            }
+        }
+        Self { tree, size: n, op, e, inv }
+    }
+
     pub fn add(&mut self, mut k: usize, x: T) {
         assert!(k < self.size);
         k += 1;
