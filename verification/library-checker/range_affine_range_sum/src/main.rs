@@ -21,16 +21,15 @@ fn main() {
         a: [i64; n],
         queries: [Query; q],
     }
-    let mut lst = LazySegmentTree::<(Mint, Mint), (Mint, Mint)>::new(
-        n,
+    let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();
+    let mut lst = LazySegmentTree::<(Mint, Mint), (Mint, Mint)>::from_slice(
+        &a,
         |x, y| (x.0 + y.0, x.1 + y.1),
         (Mint::new(0), Mint::new(0)),
         |f, x| (f.0 * x.0 + f.1 * x.1, x.1),
         |f, g| (f.0 * g.0, f.0 * g.1 + f.1),
         (Mint::new(1), Mint::new(0)),
     );
-    let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();
-    lst.build(&a);
 
     for query in queries {
         match query {

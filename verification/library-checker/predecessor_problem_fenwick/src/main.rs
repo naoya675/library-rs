@@ -21,13 +21,8 @@ fn main() {
         t: Chars,
         queries: [Query; q],
     }
-    let t = t.iter().map(|&t| t as usize - '0' as usize).collect::<Vec<_>>();
-    let mut ft = FenwickTree::<i64>::new(n);
-    for (i, &c) in t.iter().enumerate() {
-        if c == 1 {
-            ft.add(i, 1);
-        }
-    }
+    let t = t.iter().map(|&t| (t as usize - '0' as usize) as i64).collect::<Vec<_>>();
+    let mut ft = FenwickTree::<i64>::from_slice(&t);
     for query in queries {
         match query {
             Query0(k) => {

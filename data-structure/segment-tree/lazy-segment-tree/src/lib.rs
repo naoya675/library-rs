@@ -31,14 +31,30 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         }
     }
 
-    pub fn build(&mut self, v: &[T]) {
-        assert!(v.len() == self.n);
-        for k in 0..self.n {
-            self.tree[k + self.size] = v[k];
+    pub fn from_slice(v: &[T], op: fn(T, T) -> T, e: T, mapping: fn(F, T) -> T, composition: fn(F, F) -> F, id: F) -> Self {
+        assert!(v.len() > 0);
+        let n = v.len();
+        let size = n.next_power_of_two();
+        let size_log = size.ilog2() as usize;
+        let mut st = Self {
+            tree: vec![e; 2 * size],
+            lazy: vec![id; 2 * size],
+            size,
+            size_log,
+            op,
+            e,
+            mapping,
+            composition,
+            id,
+            n,
+        };
+        for k in 0..n {
+            st.tree[k + size] = v[k];
         }
-        for k in (1..self.size).rev() {
-            self.update(k);
+        for k in (1..size).rev() {
+            st.update(k);
         }
+        st
     }
 
     pub fn set(&mut self, mut k: usize, x: T) {

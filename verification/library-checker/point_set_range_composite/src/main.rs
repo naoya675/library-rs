@@ -21,9 +21,8 @@ fn main() {
         ab: [(i64, i64); n],
         queries: [Query; q],
     }
-    let mut st = SegmentTree::<(Mint, Mint)>::new(n, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), (Mint::new(1), Mint::new(0)));
     let ab = ab.iter().map(|&(a, b)| (Mint::new(a), Mint::new(b))).collect::<Vec<_>>();
-    st.build(&ab);
+    let mut st = SegmentTree::<(Mint, Mint)>::from_slice(&ab, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), (Mint::new(1), Mint::new(0)));
 
     for query in queries {
         match query {

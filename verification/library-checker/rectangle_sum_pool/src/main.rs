@@ -18,7 +18,7 @@ fn main() {
     sorted_y.sort();
     sorted_y.dedup();
     let mut pool = PersistentSegmentTreePool::<i64>::new(sorted_y.len(), |x, y| x + y, 0);
-    let mut versions = vec![pool.empty()];
+    let mut versions = vec![None];
     for &(_, y, w) in &xyw {
         let rank = sorted_y.lower_bound(&y);
         let v = versions.last().copied().unwrap();

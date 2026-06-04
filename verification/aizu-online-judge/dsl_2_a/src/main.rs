@@ -17,8 +17,7 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut st = SegmentTree::<i64>::new(n, |x, y| std::cmp::min(x, y), i64::MAX);
-    st.build(&vec![(1 << 31) - 1; n]);
+    let mut st = SegmentTree::<i64>::new(n, |x, y| std::cmp::min(x, y), (1 << 31) - 1);
 
     for query in queries {
         match query {

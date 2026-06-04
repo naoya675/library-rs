@@ -22,8 +22,7 @@ fn main() {
         queries: [Query; q],
     }
     let t = t.iter().map(|&t| t as usize - '0' as usize).collect::<Vec<_>>();
-    let mut st = DynamicSegmentTree::<usize>::new(n, |x, y| x + y, 0);
-    st.build(&t);
+    let mut st = DynamicSegmentTree::<usize>::from_slice(&t, |x, y| x + y, 0);
     for query in queries {
         match query {
             Query0(k) => {

@@ -17,8 +17,8 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut lst = LazySegmentTree::<i64, Option<i64>>::new(n, |x, y| std::cmp::min(x, y), i64::MAX, |f, x| f.unwrap_or(x), |f, g| f.or(g), None);
-    lst.build(&vec![(1 << 31) - 1; n]);
+    let init = vec![(1 << 31) - 1; n];
+    let mut lst = LazySegmentTree::<i64, Option<i64>>::from_slice(&init, |x, y| std::cmp::min(x, y), i64::MAX, |f, x| f.unwrap_or(x), |f, g| f.or(g), None);
 
     for query in queries {
         match query {

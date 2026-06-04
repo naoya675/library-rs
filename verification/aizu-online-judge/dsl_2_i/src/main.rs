@@ -17,8 +17,9 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut lst = LazySegmentTree::<(i64, i64), Option<i64>>::new(
-        n,
+    let init = vec![(0, 1); n];
+    let mut lst = LazySegmentTree::<(i64, i64), Option<i64>>::from_slice(
+        &init,
         |x, y| (x.0 + y.0, x.1 + y.1),
         (0, 0),
         |f, x| match f {
@@ -28,7 +29,6 @@ fn main() {
         |f, g| f.or(g),
         None,
     );
-    lst.build(&vec![(0, 1); n]);
 
     for query in queries {
         match query {

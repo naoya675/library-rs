@@ -17,8 +17,8 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut lst = LazySegmentTree::<(i64, i64), i64>::new(n, |x, y| (x.0 + y.0, x.1 + y.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0);
-    lst.build(&vec![(0, 1); n]);
+    let init = vec![(0, 1); n];
+    let mut lst = LazySegmentTree::<(i64, i64), i64>::from_slice(&init, |x, y| (x.0 + y.0, x.1 + y.1), (0, 0), |f, x| (x.0 + f * x.1, x.1), |f, g| f + g, 0);
 
     for query in queries {
         match query {

@@ -20,6 +20,7 @@ where
     }
 
     pub fn from_slice(v: &[T]) -> Self {
+        assert!(v.len() > 0);
         let n = v.len();
         let mut tree = vec![T::default(); n + 1];
         for i in 0..n {

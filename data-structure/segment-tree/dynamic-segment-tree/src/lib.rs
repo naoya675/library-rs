@@ -18,9 +18,15 @@ impl<T: Copy> DynamicSegmentTree<T> {
         Self { n, root: None, op, e }
     }
 
-    pub fn build(&mut self, v: &[T]) {
-        assert!(v.len() == self.n);
-        self.root = Some(Self::build_inner(0, self.n, v, self.op));
+    pub fn from_slice(v: &[T], op: fn(T, T) -> T, e: T) -> Self {
+        assert!(v.len() > 0);
+        let n = v.len();
+        Self {
+            n,
+            root: Some(Self::build_inner(0, n, v, op)),
+            op,
+            e,
+        }
     }
 
     pub fn set(&mut self, p: usize, x: T) {

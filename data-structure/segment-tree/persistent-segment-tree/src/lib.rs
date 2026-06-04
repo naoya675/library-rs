@@ -20,13 +20,14 @@ impl<T: Copy> PersistentSegmentTree<T> {
         Self { n, root: None, op, e }
     }
 
-    pub fn build(&self, v: &[T]) -> Self {
-        assert!(v.len() == self.n);
+    pub fn from_slice(v: &[T], op: fn(T, T) -> T, e: T) -> Self {
+        assert!(v.len() > 0);
+        let n = v.len();
         Self {
-            n: self.n,
-            root: Some(self.build_inner(0, self.n, v)),
-            op: self.op,
-            e: self.e,
+            n,
+            root: Some(Self::build_inner(0, n, v, op)),
+            op,
+            e,
         }
     }
 
@@ -87,7 +88,7 @@ impl<T: Copy> PersistentSegmentTree<T> {
         self.min_left_inner(self.root.as_ref(), 0, self.n, r, &f, &mut product)
     }
 
-    fn build_inner(&self, nl: usize, nr: usize, v: &[T]) -> Rc<Node<T>> {
+    fn build_inner(nl: usize, nr: usize, v: &[T], op: fn(T, T) -> T) -> Rc<Node<T>> {
         if nr - nl == 1 {
             return Rc::new(Node {
                 l: None,
@@ -96,9 +97,9 @@ impl<T: Copy> PersistentSegmentTree<T> {
             });
         }
         let mid = (nl + nr) >> 1;
-        let l = self.build_inner(nl, mid, v);
-        let r = self.build_inner(mid, nr, v);
-        let product = (self.op)(l.product, r.product);
+        let l = Self::build_inner(nl, mid, v, op);
+        let r = Self::build_inner(mid, nr, v, op);
+        let product = op(l.product, r.product);
         Rc::new(Node {
             l: Some(l),
             r: Some(r),

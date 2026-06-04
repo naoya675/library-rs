@@ -22,7 +22,7 @@ fn main() {
         queries: [Query; q],
     }
     let t = t.iter().map(|&t| t as usize - '0' as usize).collect::<Vec<_>>();
-    let mut pst = PersistentSegmentTree::<usize>::new(n, |x, y| x + y, 0).build(&t);
+    let mut pst = PersistentSegmentTree::<usize>::from_slice(&t, |x, y| x + y, 0);
     for query in queries {
         match query {
             Query0(k) => {

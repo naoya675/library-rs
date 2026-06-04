@@ -40,8 +40,9 @@ fn main() {
         ab: [(i64, i64); n],
         queries: [Query; q],
     }
-    let mut lst = LazySegmentTree::<((Mint, Mint), u64), Option<(Mint, Mint)>>::new(
-        n,
+    let ab = ab.iter().map(|&(a, b)| ((Mint::new(a), Mint::new(b)), 1)).collect::<Vec<_>>();
+    let mut lst = LazySegmentTree::<((Mint, Mint), u64), Option<(Mint, Mint)>>::from_slice(
+        &ab,
         |x, y| {
             let ((a1, b1), l1) = x;
             let ((a2, b2), l2) = y;
@@ -55,8 +56,6 @@ fn main() {
         |f, g| f.or(g),
         None,
     );
-    let ab = ab.iter().map(|&(a, b)| ((Mint::new(a), Mint::new(b)), 1)).collect::<Vec<_>>();
-    lst.build(&ab);
 
     for query in queries {
         match query {
