@@ -1,6 +1,6 @@
 ---
 title: Treap
-documentation_of: //data-structure/treap/src/lib.rs
+documentation_of: //data-structure/balanced-binary-search-tree/treap/src/lib.rs
 ---
 
 A randomized self-balancing binary search tree that maintains the BST property by key and a max-heap property by a random priority assigned to each node.
@@ -264,6 +264,8 @@ Returns an iterator that visits the elements in ascending order.
 - [https://betrue12.hateblo.jp/entry/2020/08/05/204120](https://betrue12.hateblo.jp/entry/2020/08/05/204120)
 - [https://cp-algorithms.com/data_structures/treap.html](https://cp-algorithms.com/data_structures/treap.html)
 - [https://ferin-tech.hatenablog.com/entry/2020/01/29/155239](https://ferin-tech.hatenablog.com/entry/2020/01/29/155239)
+- [https://qiita.com/drken/items/1b7e6e459c24a83bb7fd](https://qiita.com/drken/items/1b7e6e459c24a83bb7fd)
+- [https://qiita.com/tubo28/items/f058582e457f6870a800](https://qiita.com/tubo28/items/f058582e457f6870a800)
 - [https://www.slideshare.net/slideshow/2-12188757/12188757](https://www.slideshare.net/slideshow/2-12188757/12188757)
 - [http://www.prefield.com/algorithm/container/treap.html](https://web.archive.org/web/20200221155641/http://www.prefield.com/algorithm/container/treap.html)
 - [https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268](https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268)

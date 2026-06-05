@@ -5,4 +5,4 @@ edition = "2024"
 
 [dependencies]
 x-fast-trie = { path = "../../../data-structure/trie/x-fast-trie" }
-treap = { path = "../../../data-structure/treap" }
+treap = { path = "../../../data-structure/balanced-binary-search-tree/treap" }

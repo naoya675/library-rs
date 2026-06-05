@@ -1,6 +1,6 @@
 ---
 title: Implicit Treap
-documentation_of: //data-structure/implicit-treap/src/lib.rs
+documentation_of: //data-structure/balanced-binary-search-tree/implicit-treap/src/lib.rs
 ---
 
 A treap whose nodes are ordered by their implicit position in the sequence (tracked via subtree sizes) rather than by a key, behaving as a dynamic sequence.

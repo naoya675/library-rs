@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-xorshift-64 = { path = "../../math/xorshift-64" }
+xorshift-64 = { path = "../../../math/xorshift-64" }

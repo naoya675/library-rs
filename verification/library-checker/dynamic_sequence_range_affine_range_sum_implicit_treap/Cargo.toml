@@ -5,6 +5,6 @@ edition = "2024"
 
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
-implicit-treap = { path = "../../../data-structure/implicit-treap" }
+implicit-treap = { path = "../../../data-structure/balanced-binary-search-tree/implicit-treap" }
 modint = { path = "../../../math/modint/modint" }
 query = { path = "../../../macro/query" }
