@@ -13,14 +13,9 @@ pub struct PersistentSegmentTreePool<T> {
     e: T,
 }
 
-#[derive(Debug, Clone, Copy)]
-pub struct Version {
-    root: Option<u32>,
-}
-
 impl<T: Copy> PersistentSegmentTreePool<T> {
     pub fn new(n: usize, op: fn(T, T) -> T, e: T) -> Self {
-        Self { n, nodes: Vec::new(), op, e }
+        Self { n, nodes: vec![], op, e }
     }
 
     pub fn with_capacity(n: usize, capacity: usize, op: fn(T, T) -> T, e: T) -> Self {
@@ -32,64 +27,54 @@ impl<T: Copy> PersistentSegmentTreePool<T> {
         }
     }
 
-    pub fn empty(&self) -> Version {
-        Version { root: None }
-    }
-
-    pub fn build(&mut self, v: &[T]) -> Version {
+    pub fn from_slice(&mut self, v: &[T]) -> Option<u32> {
         assert!(v.len() == self.n);
-        Version {
-            root: Some(self.build_inner(0, self.n, v)),
-        }
+        Some(self.build_inner(0, self.n, v))
     }
 
-    pub fn set(&mut self, ver: Version, p: usize, x: T) -> Version {
+    pub fn set(&mut self, root: Option<u32>, p: usize, x: T) -> Option<u32> {
         assert!(p < self.n);
-        Version {
-            root: Some(self.set_inner(ver.root, 0, self.n, p, x)),
-        }
+        Some(self.set_inner(root, 0, self.n, p, x))
     }
 
-    pub fn get(&self, ver: Version, p: usize) -> T {
+    pub fn get(&self, root: Option<u32>, p: usize) -> T {
         assert!(p < self.n);
-        self.get_inner(ver.root, 0, self.n, p)
+        self.get_inner(root, 0, self.n, p)
     }
 
     // [l, r)
-    pub fn prod(&self, ver: Version, l: usize, r: usize) -> T {
+    pub fn prod(&self, root: Option<u32>, l: usize, r: usize) -> T {
         assert!(l <= r && r <= self.n);
-        self.prod_inner(ver.root, 0, self.n, l, r)
+        self.prod_inner(root, 0, self.n, l, r)
     }
 
-    pub fn all_prod(&self, ver: Version) -> T {
-        ver.root.map_or(self.e, |i| self.nodes[i as usize].product)
+    pub fn all_prod(&self, root: Option<u32>) -> T {
+        root.map_or(self.e, |i| self.nodes[i as usize].product)
     }
 
-    pub fn apply(&mut self, ver: Version, p: usize, x: T) -> Version {
+    pub fn apply(&mut self, root: Option<u32>, p: usize, x: T) -> Option<u32> {
         assert!(p < self.n);
-        Version {
-            root: Some(self.apply_inner(ver.root, 0, self.n, p, x)),
-        }
+        Some(self.apply_inner(root, 0, self.n, p, x))
     }
 
-    pub fn max_right<F>(&self, ver: Version, l: usize, f: F) -> usize
+    pub fn max_right<F>(&self, root: Option<u32>, l: usize, f: F) -> usize
     where
         F: Fn(T) -> bool,
     {
         assert!(l <= self.n);
         assert!(f(self.e));
         let mut product = self.e;
-        self.max_right_inner(ver.root, 0, self.n, l, &f, &mut product)
+        self.max_right_inner(root, 0, self.n, l, &f, &mut product)
     }
 
-    pub fn min_left<F>(&self, ver: Version, r: usize, f: F) -> usize
+    pub fn min_left<F>(&self, root: Option<u32>, r: usize, f: F) -> usize
     where
         F: Fn(T) -> bool,
     {
         assert!(r <= self.n);
         assert!(f(self.e));
         let mut product = self.e;
-        self.min_left_inner(ver.root, 0, self.n, r, &f, &mut product)
+        self.min_left_inner(root, 0, self.n, r, &f, &mut product)
     }
 
     fn alloc(&mut self, l: Option<u32>, r: Option<u32>, product: T) -> u32 {
@@ -221,11 +206,9 @@ impl<T: Copy> PersistentSegmentTreePool<T> {
 }
 
 impl<T: Copy + PartialEq> PersistentSegmentTreePool<T> {
-    pub fn reset(&mut self, ver: Version, l: usize, r: usize) -> Version {
+    pub fn reset(&mut self, root: Option<u32>, l: usize, r: usize) -> Option<u32> {
         assert!(l <= r && r <= self.n);
-        Version {
-            root: self.reset_inner(ver.root, 0, self.n, l, r),
-        }
+        self.reset_inner(root, 0, self.n, l, r)
     }
 
     fn reset_inner(&mut self, t: Option<u32>, nl: usize, nr: usize, l: usize, r: usize) -> Option<u32> {
