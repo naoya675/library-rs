@@ -266,8 +266,13 @@ Returns an iterator that visits the elements in ascending order.
 - [https://ferin-tech.hatenablog.com/entry/2020/01/29/155239](https://ferin-tech.hatenablog.com/entry/2020/01/29/155239)
 - [https://qiita.com/drken/items/1b7e6e459c24a83bb7fd](https://qiita.com/drken/items/1b7e6e459c24a83bb7fd)
 - [https://qiita.com/tubo28/items/f058582e457f6870a800](https://qiita.com/tubo28/items/f058582e457f6870a800)
+<!--- [https://usaco.guide/adv/treaps?lang=cpp](https://usaco.guide/adv/treaps?lang=cpp)-->
 - [https://www.slideshare.net/slideshow/2-12188757/12188757](https://www.slideshare.net/slideshow/2-12188757/12188757)
 - [http://www.prefield.com/algorithm/container/treap.html](https://web.archive.org/web/20200221155641/http://www.prefield.com/algorithm/container/treap.html)
+<!--- [https://yaox.hatenadiary.jp/entry/2024/12/11/000500](https://yaox.hatenadiary.jp/entry/2024/12/11/000500)-->
+<!--- [https://yaox.hatenadiary.jp/entry/2024/12/14/000500](https://yaox.hatenadiary.jp/entry/2024/12/14/000500)-->
+<!--- [https://yaox.hatenadiary.jp/entry/2024/12/16/000500](https://yaox.hatenadiary.jp/entry/2024/12/16/000500)-->
+<!--- [https://yaox.hatenadiary.jp/entry/2024/12/17/031154](https://yaox.hatenadiary.jp/entry/2024/12/17/031154)-->
 - [https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268](https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268)
 - Implicit Treap
     - [https://qiita.com/hamamu/items/570e7c36bf73913cbeb8](https://qiita.com/hamamu/items/570e7c36bf73913cbeb8)

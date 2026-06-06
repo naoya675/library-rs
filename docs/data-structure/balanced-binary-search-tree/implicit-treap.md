@@ -222,6 +222,12 @@ Returns the smallest $l$ such that $g$ applied to the product of $[l, r)$ return
 ## Reference
 - [https://cp-algorithms.com/data_structures/treap.html](https://cp-algorithms.com/data_structures/treap.html)
 - [https://qiita.com/hamamu/items/570e7c36bf73913cbeb8](https://qiita.com/hamamu/items/570e7c36bf73913cbeb8)
+- [https://scale.iti.kit.edu/_media/teaching/2023ws/slides_treap.pdf](https://scale.iti.kit.edu/_media/teaching/2023ws/slides_treap.pdf)
+<!--- [https://usaco.guide/adv/treaps?lang=cpp](https://usaco.guide/adv/treaps?lang=cpp)-->
 - [https://xuzijian629.hatenablog.com/entry/2018/12/08/000452](https://xuzijian629.hatenablog.com/entry/2018/12/08/000452)
 - [https://xuzijian629.hatenablog.com/entry/2019/10/25/234938](https://xuzijian629.hatenablog.com/entry/2019/10/25/234938)
+- [https://x.com/tau0529/status/2056321593773850930](https://x.com/tau0529/status/2056321593773850930)
 <!--- [https://nyaannyaan.github.io/library/rbst/treap.hpp](https://nyaannyaan.github.io/library/rbst/treap.hpp)-->
+
+## Verified
+- [https://atcoder.jp/contests/arc074/tasks/arc074_b](https://atcoder.jp/contests/arc074/tasks/arc074_b) ([submission](https://atcoder.jp/contests/arc074/submissions/76417444))
