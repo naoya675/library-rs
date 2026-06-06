@@ -457,16 +457,16 @@ impl<T: Ord, S> TreapMap<T, S> {
 }
 
 pub enum Entry<'a, T: Ord, S> {
-    Occupied(OccupiedEntry<'a, T, S>),
     Vacant(VacantEntry<'a, T, S>),
+    Occupied(OccupiedEntry<'a, T, S>),
 }
 
-pub struct OccupiedEntry<'a, T: Ord, S> {
+pub struct VacantEntry<'a, T: Ord, S> {
     map: &'a mut TreapMap<T, S>,
     key: T,
 }
 
-pub struct VacantEntry<'a, T: Ord, S> {
+pub struct OccupiedEntry<'a, T: Ord, S> {
     map: &'a mut TreapMap<T, S>,
     key: T,
 }
@@ -486,6 +486,25 @@ impl<'a, T: Ord + Clone, S> Entry<'a, T, S> {
         }
     }
 
+    pub fn or_insert_with_key<F: FnOnce(&T) -> S>(self, default: F) -> &'a mut S {
+        match self {
+            Entry::Occupied(e) => e.into_mut(),
+            Entry::Vacant(e) => {
+                let value = default(e.key());
+                e.insert(value)
+            }
+        }
+    }
+}
+
+impl<'a, T: Ord, S> Entry<'a, T, S> {
+    pub fn key(&self) -> &T {
+        match self {
+            Entry::Occupied(e) => e.key(),
+            Entry::Vacant(e) => e.key(),
+        }
+    }
+
     pub fn and_modify<F: FnOnce(&mut S)>(mut self, f: F) -> Self {
         if let Entry::Occupied(e) = &mut self {
             f(e.get_mut());
@@ -500,7 +519,34 @@ impl<'a, T: Ord + Clone, S: Default> Entry<'a, T, S> {
     }
 }
 
+impl<'a, T: Ord, S> VacantEntry<'a, T, S> {
+    pub fn key(&self) -> &T {
+        &self.key
+    }
+
+    pub fn into_key(self) -> T {
+        self.key
+    }
+}
+
+impl<'a, T: Ord + Clone, S> VacantEntry<'a, T, S> {
+    pub fn insert(self, value: S) -> &'a mut S {
+        let VacantEntry { map, key } = self;
+        map.insert(key.clone(), value);
+        map.get_mut(&key).unwrap()
+    }
+}
+
 impl<'a, T: Ord, S> OccupiedEntry<'a, T, S> {
+    pub fn key(&self) -> &T {
+        &self.key
+    }
+
+    pub fn remove_entry(self) -> (T, S) {
+        let value = self.map.remove(&self.key).unwrap();
+        (self.key, value)
+    }
+
     pub fn get(&self) -> &S {
         self.map.get(&self.key).unwrap()
     }
@@ -519,13 +565,5 @@ impl<'a, T: Ord, S> OccupiedEntry<'a, T, S> {
 
     pub fn remove(self) -> S {
         self.map.remove(&self.key).unwrap()
-    }
-}
-
-impl<'a, T: Ord + Clone, S> VacantEntry<'a, T, S> {
-    pub fn insert(self, value: S) -> &'a mut S {
-        let VacantEntry { map, key } = self;
-        map.insert(key.clone(), value);
-        map.get_mut(&key).unwrap()
     }
 }

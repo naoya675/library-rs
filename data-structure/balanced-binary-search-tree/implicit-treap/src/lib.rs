@@ -179,6 +179,17 @@ impl<T: Copy, F: Copy> ImplicitTreap<T, F> {
         self.root = self.merge(nt, nr);
     }
 
+    pub fn rotate(&mut self, l: usize, r: usize, k: usize) {
+        assert!(l <= r && r <= self.len());
+        assert!(k <= r - l);
+        if k == 0 || k == r - l {
+            return;
+        }
+        self.reverse(l, l + k);
+        self.reverse(l + k, r);
+        self.reverse(l, r);
+    }
+
     pub fn max_right<G>(&mut self, l: usize, g: G) -> usize
     where
         G: Fn(T) -> bool,

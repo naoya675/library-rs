@@ -169,6 +169,22 @@ Reverses the order of the elements in the half-open range $[l, r)$.
 **Complexity**
 - $O(\log n)$ expected
 
+## rotate
+
+```rust
+fn rotate(&mut self, l: usize, r: usize, k: usize)
+```
+
+Left-rotates the elements in the half-open range $[l, r)$ by $k$ positions.
+After the call, the element previously at position $l + k$ becomes the new element at position $l$.
+
+**Constraints**
+- $0 \leq l \leq r \leq n$
+- $0 \leq k \leq r - l$
+
+**Complexity**
+- $O(\log n)$ expected
+
 ## max_right
 
 ```rust
