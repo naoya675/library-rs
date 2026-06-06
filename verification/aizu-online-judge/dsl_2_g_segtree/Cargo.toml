@@ -1,0 +1,9 @@
+[package]
+name = "dsl_2_g_segtree"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+query = { path = '../../../macro/query' }
+segment-tree = { path = '../../../data-structure/segment-tree/segment-tree' }

@@ -102,11 +102,11 @@ pub mod range_maximum_subarray_sum_query {
     pub fn new(n: usize) -> SegmentTree<S> {
         SegmentTree::new(
             n,
-            |lhs, rhs| S {
-                prefix: lhs.prefix.max(rhs.prefix + lhs.whole),
-                suffix: rhs.suffix.max(lhs.suffix + rhs.whole),
-                subarray: lhs.subarray.max(rhs.subarray).max(lhs.suffix + rhs.prefix),
-                whole: lhs.whole + rhs.whole,
+            |x, y| S {
+                prefix: x.prefix.max(y.prefix + x.whole),
+                suffix: y.suffix.max(x.suffix + y.whole),
+                subarray: x.subarray.max(y.subarray).max(x.suffix + y.prefix),
+                whole: x.whole + y.whole,
             },
             S {
                 prefix: 0,
@@ -114,6 +114,71 @@ pub mod range_maximum_subarray_sum_query {
                 subarray: 0,
                 whole: 0,
             },
+        )
+    }
+}
+
+pub mod range_add_range_minimum_query {
+    use crate::SegmentTree;
+
+    #[derive(Debug, Clone, Copy)]
+    pub struct S {
+        pub min: i64,
+        pub sum: i64,
+    }
+
+    pub fn new(n: usize) -> SegmentTree<S> {
+        SegmentTree::new(
+            n,
+            |x, y| S {
+                min: std::cmp::min(x.min, x.sum.saturating_add(y.min)),
+                sum: x.sum.saturating_add(y.sum),
+            },
+            S { min: i64::MAX, sum: 0 },
+        )
+    }
+}
+
+pub mod range_add_range_maximum_query {
+    use crate::SegmentTree;
+
+    #[derive(Debug, Clone, Copy)]
+    pub struct S {
+        pub max: i64,
+        pub sum: i64,
+    }
+
+    pub fn new(n: usize) -> SegmentTree<S> {
+        SegmentTree::new(
+            n,
+            |x, y| S {
+                max: std::cmp::max(x.max, x.sum.saturating_add(y.max)),
+                sum: x.sum.saturating_add(y.sum),
+            },
+            S { max: i64::MIN, sum: 0 },
+        )
+    }
+}
+
+pub mod range_add_range_sum_query {
+    use crate::SegmentTree;
+
+    #[derive(Debug, Clone, Copy)]
+    pub struct S {
+        pub sum: i64,
+        pub wsum: i64,
+        pub len: i64,
+    }
+
+    pub fn new(n: usize) -> SegmentTree<S> {
+        SegmentTree::new(
+            n,
+            |x, y| S {
+                sum: x.sum + y.sum,
+                wsum: x.wsum + y.len * x.sum + y.wsum,
+                len: x.len + y.len,
+            },
+            S { sum: 0, wsum: 0, len: 0 },
         )
     }
 }

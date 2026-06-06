@@ -1,9 +1,0 @@
-[package]
-name = "predecessor_problem_lazy_segtree"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-proconio = { version = "0.5.0", features = ["derive"] }
-lazy-segment-tree = { path = "../../../data-structure/segment-tree/lazy-segment-tree" }
-query = { path = "../../../macro/query" }

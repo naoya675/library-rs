@@ -9,6 +9,7 @@ documentation_of: //data-structure/segment-tree/segment-tree/src/monoid.rs
 - [https://elliptic-shiho.github.io/segtree/segtree.pdf](https://elliptic-shiho.github.io/segtree/segtree.pdf)
 - [https://elliptic-shiho.hatenablog.com/entry/2024/02/14/033532](https://elliptic-shiho.hatenablog.com/entry/2024/02/14/033532)
 - [https://qiita.com/keymoon/items/0f929a19ed30f34ae6e8](https://qiita.com/keymoon/items/0f929a19ed30f34ae6e8)
+- [https://sigma1113.hatenablog.com/entry/2019/12/14/192945](https://sigma1113.hatenablog.com/entry/2019/12/14/192945)
 
 - Parenthesis Check
     - [https://zenn.dev/magurofly/articles/0b3805b3614126](https://zenn.dev/magurofly/articles/0b3805b3614126)
