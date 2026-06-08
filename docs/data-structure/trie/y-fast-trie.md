@@ -131,3 +131,4 @@ Removes $x$ from the set and returns `true` if $x$ was present, otherwise does n
 - [https://en.wikipedia.org/wiki/Y-fast_trie](https://en.wikipedia.org/wiki/Y-fast_trie)
 - [https://inthebloom.github.io/post/uec-advent2024/](https://inthebloom.github.io/post/uec-advent2024/)
 - [https://qiita.com/goonew/items/6ffac4b5e48dc05ca884](https://qiita.com/goonew/items/6ffac4b5e48dc05ca884)
+- [https://web.stanford.edu/class/archive/cs/cs166/cs166.1206/lectures/15/Small15.pdf](https://web.stanford.edu/class/archive/cs/cs166/cs166.1206/lectures/15/Small15.pdf)
