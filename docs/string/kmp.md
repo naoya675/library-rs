@@ -3,8 +3,6 @@ title: KMP (Knuth-Morris-Pratt algorithm)
 documentation_of: //string/kmp/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [http://www-igm.univ-mlv.fr/~lecroq/string/node8.html](http://www-igm.univ-mlv.fr/~lecroq/string/node8.html)
 - [https://omochan.hatenablog.com/entry/2017/08/16/003840](https://omochan.hatenablog.com/entry/2017/08/16/003840)

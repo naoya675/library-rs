@@ -3,8 +3,6 @@ title: Fenwick Tree (Binary Indexed Tree)
 documentation_of: //data-structure/fenwick-tree/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html](https://atcoder.github.io/ac-library/production/document_en/fenwicktree.html)
 - [https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/binary_indexed_tree)

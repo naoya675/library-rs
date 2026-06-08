@@ -3,8 +3,6 @@ title: (Monoid)
 documentation_of: //data-structure/segment-tree/lazy-segment-tree/src/monoid.rs
 ---
 
-<!--## Description-->
-
 ## Reference
 - [https://rsk0315.hatenablog.com/entry/2022/05/02/205504](https://rsk0315.hatenablog.com/entry/2022/05/02/205504)
 

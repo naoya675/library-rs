@@ -3,8 +3,6 @@ title: Level Ancestor
 documentation_of: //tree/level-ancestor/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://37zigen.com/level-ancestor-problem/](https://37zigen.com/level-ancestor-problem/)
 - [https://hdbn.hatenadiary.org/entry/20111125/1322194487](https://hdbn.hatenadiary.org/entry/20111125/1322194487)

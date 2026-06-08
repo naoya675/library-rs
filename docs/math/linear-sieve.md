@@ -3,8 +3,6 @@ title: Linear Sieve
 documentation_of: //math/linear-sieve/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://37zigen.com/linear-sieve/](https://37zigen.com/linear-sieve/)
 - [https://cp-algorithms.com/algebra/prime-sieve-linear.html](https://cp-algorithms.com/algebra/prime-sieve-linear.html)

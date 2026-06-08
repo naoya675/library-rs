@@ -3,8 +3,6 @@ title: LCP Array (Longest Common Prefix Array)
 documentation_of: //string/lcp-array/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://atcoder.github.io/ac-library/production/document_en/string.html](https://atcoder.github.io/ac-library/production/document_en/string.html)
 - [https://betrue12.hateblo.jp/entry/2020/09/09/131810](https://betrue12.hateblo.jp/entry/2020/09/09/131810)

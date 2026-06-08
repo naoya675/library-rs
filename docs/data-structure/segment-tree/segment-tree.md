@@ -3,8 +3,6 @@ title: Segment Tree
 documentation_of: //data-structure/segment-tree/segment-tree/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://atcoder.github.io/ac-library/production/document_en/segtree.html](https://atcoder.github.io/ac-library/production/document_en/segtree.html)
 - [https://hcpc-hokudai.github.io/archive/structure_segtree_001.pdf](https://hcpc-hokudai.github.io/archive/structure_segtree_001.pdf)

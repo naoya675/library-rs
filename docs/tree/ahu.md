@@ -3,8 +3,6 @@ title: AHU (Aho-Hopcroft-Ullman algorithm)
 documentation_of: //tree/ahu/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://logic.pdmi.ras.ru/~smal/files/smal_jass08.pdf](https://logic.pdmi.ras.ru/~smal/files/smal_jass08.pdf)
 - [https://logic.pdmi.ras.ru/~smal/files/smal_jass08_slides.pdf](https://logic.pdmi.ras.ru/~smal/files/smal_jass08_slides.pdf)

@@ -3,8 +3,6 @@ title: Tree Isomorphism
 documentation_of: //tree/tree-isomorphism/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - Schwartz–Zippel lemma
     - [https://info.atcoder.jp/entry/algorithm_lectures/polynomial_over_Fp](https://info.atcoder.jp/entry/algorithm_lectures/polynomial_over_Fp)

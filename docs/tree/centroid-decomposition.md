@@ -3,8 +3,6 @@ title: Centroid Decomposition
 documentation_of: //tree/centroid-decomposition/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://ferin-tech.hatenablog.com/entry/2020/03/06/162311](https://ferin-tech.hatenablog.com/entry/2020/03/06/162311)
 - [https://qiita.com/drken/items/4b4c3f1824339b090202](https://qiita.com/drken/items/4b4c3f1824339b090202)

@@ -3,8 +3,6 @@ title: Topological Sort
 documentation_of: //graph/topological-sort/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://cp-algorithms.com/graph/topological-sort.html](https://cp-algorithms.com/graph/topological-sort.html)
 

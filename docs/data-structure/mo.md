@@ -3,8 +3,6 @@ title: Mo's Algorithm
 documentation_of: //data-structure/mo/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://37zigen.com/mos-algorithm-で解ける問題/](https://37zigen.com/mos-algorithm-で解ける問題/)
 - [https://codeforces.com/blog/entry/7383](https://codeforces.com/blog/entry/7383)

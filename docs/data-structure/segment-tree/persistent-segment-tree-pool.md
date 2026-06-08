@@ -3,8 +3,6 @@ title: Persistent Segment Tree (Pool)
 documentation_of: //data-structure/segment-tree/persistent-segment-tree-pool/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://info.atcoder.jp/entry/algorithm_lectures/persistent_segment_tree](https://info.atcoder.jp/entry/algorithm_lectures/persistent_segment_tree)
 - [https://37zigen.com/persistent-segment-tree/](https://37zigen.com/persistent-segment-tree/)

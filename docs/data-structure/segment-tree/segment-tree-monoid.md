@@ -3,8 +3,6 @@ title: (Monoid)
 documentation_of: //data-structure/segment-tree/segment-tree/src/monoid.rs
 ---
 
-<!--## Description-->
-
 ## Reference
 - [https://elliptic-shiho.github.io/segtree/segtree.pdf](https://elliptic-shiho.github.io/segtree/segtree.pdf)
 - [https://elliptic-shiho.hatenablog.com/entry/2024/02/14/033532](https://elliptic-shiho.hatenablog.com/entry/2024/02/14/033532)

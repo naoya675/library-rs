@@ -3,8 +3,6 @@ title: (Primal-Dual)
 documentation_of: //graph/mincostflow/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://atcoder.github.io/ac-library/production/document_en/mincostflow.html](https://atcoder.github.io/ac-library/production/document_en/mincostflow.html)
 

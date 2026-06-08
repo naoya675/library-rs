@@ -3,8 +3,6 @@ title: Strongly Connected Components (Kosaraju)
 documentation_of: //graph/strongly-connected-components-kosaraju/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://atcoder.github.io/ac-library/production/document_en/scc.html](https://atcoder.github.io/ac-library/production/document_en/scc.html)
 - [https://ngtkana.hatenablog.com/entry/2024/12/10/011904](https://ngtkana.hatenablog.com/entry/2024/12/10/011904)

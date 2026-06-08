@@ -3,8 +3,6 @@ title: Tree Isomorphism (Rerooting)
 documentation_of: //tree/tree-isomorphism-rerooting/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://snuke.hatenablog.com/entry/2017/02/03/054210](https://snuke.hatenablog.com/entry/2017/02/03/054210)
 - [https://snuke.hatenablog.com/entry/2017/02/03/035524](https://snuke.hatenablog.com/entry/2017/02/03/035524)

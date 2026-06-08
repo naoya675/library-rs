@@ -3,8 +3,6 @@ title: Z Algorithm
 documentation_of: //string/z-algorithm/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://atcoder.github.io/ac-library/production/document_en/string.html](https://atcoder.github.io/ac-library/production/document_en/string.html)
 

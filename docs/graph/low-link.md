@@ -3,8 +3,6 @@ title: Low Link
 documentation_of: //graph/low-link/src/lib.rs
 ---
 
-## Description
-
 ## Reference
 - [https://hos.ac/slides/20110504_graph.pdf](https://hos.ac/slides/20110504_graph.pdf)
 - [https://kagamiz.hatenablog.com/entry/2013/10/05/005213](https://kagamiz.hatenablog.com/entry/2013/10/05/005213)
