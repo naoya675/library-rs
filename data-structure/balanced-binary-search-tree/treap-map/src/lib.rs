@@ -20,7 +20,7 @@ impl<T: Ord, S> TreapMap<T, S> {
     pub fn new() -> Self {
         Self {
             root: None,
-            rng: XorShift64::new(XorShift64::seed()),
+            rng: XorShift64::default(),
         }
     }
 

@@ -31,7 +31,7 @@ impl<T: Copy, F: Copy> ImplicitTreap<T, F> {
     pub fn new(op: fn(T, T) -> T, e: T, mapping: fn(F, T) -> T, composition: fn(F, F) -> F, id: F) -> Self {
         Self {
             root: None,
-            rng: XorShift64::new(XorShift64::seed()),
+            rng: XorShift64::default(),
             op,
             e,
             mapping,

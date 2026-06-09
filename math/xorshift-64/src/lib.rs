@@ -9,12 +9,13 @@ impl XorShift64 {
         Self { state: splitmix64(&mut sm) }
     }
 
-    pub fn seed() -> u64 {
+    pub fn new_seed() -> Self {
+        Self::new(Self::seed())
+    }
+
+    fn seed() -> u64 {
         use std::time::{SystemTime, UNIX_EPOCH};
-        SystemTime::now()
-            .duration_since(UNIX_EPOCH)
-            .unwrap()
-            .as_nanos() as u64
+        SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_nanos() as u64
     }
 
     pub fn next_u64(&mut self) -> u64 {
@@ -49,4 +50,10 @@ fn splitmix64(x: &mut u64) -> u64 {
     z = (z ^ (z >> 30)).wrapping_mul(0xBF58476D1CE4E5B9);
     z = (z ^ (z >> 27)).wrapping_mul(0x94D049BB133111EB);
     z ^ (z >> 31)
+}
+
+impl Default for XorShift64 {
+    fn default() -> Self {
+        Self { state: 88172645463325252 }
+    }
 }
