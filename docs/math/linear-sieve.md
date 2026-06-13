@@ -15,5 +15,6 @@ documentation_of: //math/linear-sieve/src/lib.rs
 - [https://rsk0315.github.io/library-rs/nekolib/math/struct.LinearSieve.html](https://rsk0315.github.io/library-rs/nekolib/math/struct.LinearSieve.html)
 
 ## Verified
-- [https://atcoder.jp/contests/abc254/tasks/abc254_d](https://atcoder.jp/contests/abc254/tasks/abc254_d) ([submission](https://atcoder.jp/contests/abc254/submissions/74954809) / [editorial](https://atcoder.jp/contests/abc254/editorial/4090))
+- [https://atcoder.jp/contests/abc206/tasks/abc206_e](https://atcoder.jp/contests/abc206/tasks/abc206_e) ([submission](https://atcoder.jp/contests/abc206/submissions/76798311))
+- [https://atcoder.jp/contests/abc254/tasks/abc254_d](https://atcoder.jp/contests/abc254/tasks/abc254_d) ([submission](https://atcoder.jp/contests/abc254/submissions/76798337) / [editorial](https://atcoder.jp/contests/abc254/editorial/4090))
 <!--- [https://atcoder.jp/contests/abc368/tasks/abc368_f](https://atcoder.jp/contests/abc368/tasks/abc368_f)-->
