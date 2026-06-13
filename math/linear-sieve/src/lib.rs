@@ -33,11 +33,7 @@ impl LinearSieve {
     }
 
     pub fn least_factor(&self, n: usize) -> Option<usize> {
-        if n < 2 {
-            None
-        } else {
-            Some(self.lpf[n])
-        }
+        if n < 2 { None } else { Some(self.lpf[n]) }
     }
 
     pub fn factors_dup(&self, n: usize) -> impl Iterator<Item = usize> + '_ {
@@ -57,6 +53,17 @@ impl LinearSieve {
             .take_while(|&n| n > 1)
             .map(|n| self.lpf_e[n].0 / self.lpf[n] * (self.lpf[n] - 1))
             .product()
+    }
+
+    pub fn mobius(&self, n: usize) -> i32 {
+        let mut res = 1;
+        for (_, e) in self.factors(n) {
+            if e >= 2 {
+                return 0;
+            }
+            res = -res;
+        }
+        res
     }
 
     pub fn divisors(&self, n: usize) -> impl Iterator<Item = usize> + DoubleEndedIterator {
