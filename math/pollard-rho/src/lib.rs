@@ -15,7 +15,7 @@ fn factorize_inner(n: u64, res: &mut Vec<u64>) {
     if n <= 1 {
         return;
     }
-    let p = pollard_rho_floyd(n);
+    let p = pollard_rho_brent(n);
     if p == n {
         res.push(p);
         return;
