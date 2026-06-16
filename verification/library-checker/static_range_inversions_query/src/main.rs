@@ -19,6 +19,7 @@ fn main() {
     x.sort();
     x.dedup();
     let a: Vec<usize> = a.iter().map(|&a| x.lower_bound(&a)).collect();
+
     let mut mo = Mo::new(n, q);
     for &(l, r) in &lr {
         mo.add_query(l, r);
