@@ -17,6 +17,5 @@ fn main() {
             }
         }
     }
-    let (x, _) = minimum_spanning_tree(n, &mut edges);
-    println!("{}", x);
+    println!("{}", minimum_spanning_tree(n, &mut edges).0);
 }
