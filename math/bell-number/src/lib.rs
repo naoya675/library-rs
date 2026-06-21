@@ -1,6 +1,6 @@
 use binomial::Binomial;
 
-pub fn stirling_number_second<T>(n: usize, k: usize) -> T
+pub fn bell_number<T>(n: usize, k: usize) -> T
 where
     T: Copy + From<u64>,
     T: std::ops::Add<T, Output = T>,
@@ -13,16 +13,21 @@ where
     T: std::ops::DivAssign,
 {
     let mut bi = Binomial::<T>::new();
+    let mut pre = vec![T::from(0); k + 1];
+    let mut acc = T::from(0);
+    for i in 0..=k {
+        if i % 2 == 0 {
+            acc += bi.finv(i);
+        } else {
+            acc -= bi.finv(i);
+        }
+        pre[i] = acc;
+    }
     let mut res = T::from(0);
     for i in 0..=k {
-        let term = pow(T::from(i as u64), n) * bi.comb(k, i);
-        if (k - i) % 2 == 0 {
-            res += term;
-        } else {
-            res -= term;
-        }
+        res += pow(T::from(i as u64), n) * bi.finv(i) * pre[k - i];
     }
-    res * bi.finv(k)
+    res
 }
 
 fn pow<T>(mut p: T, mut e: usize) -> T

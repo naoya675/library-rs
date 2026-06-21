@@ -1,6 +1,6 @@
 ---
-title: Stirling Number of the Second Kind
-documentation_of: //math/stirling-number-second/src/lib.rs
+title: Bell Number
+documentation_of: //math/bell-number/src/lib.rs
 ---
 
 ## Reference
