@@ -144,3 +144,4 @@ Returns $C_n = \dfrac{1}{n + 1} \dbinom{2n}{n}$, the $n$-th Catalan number, whic
 
 ## Reference
 - [https://cses.fi/book/book.pdf](https://cses.fi/book/book.pdf) (Antti Laaksonen, *Competitive Programmer's Handbook*)
+- [https://qiita.com/drken/items/f2ea4b58b0d21621bd51](https://qiita.com/drken/items/f2ea4b58b0d21621bd51)
