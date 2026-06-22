@@ -4,18 +4,18 @@ use proconio::input;
 
 use segment_tree::SegmentTree;
 
-#[derive(Debug, Clone, Copy)]
-struct S {
-    sum: i64,
-    wsum: i64,
-    len: i64,
-}
-
 query::define_query! {
     Query {
         0 => Query0(s: usize, t: usize, x: i64),
         1 => Query1(s: usize, t: usize),
     }
+}
+
+#[derive(Debug, Clone, Copy)]
+struct S {
+    sum: i64,
+    wsum: i64,
+    len: i64,
 }
 
 fn main() {

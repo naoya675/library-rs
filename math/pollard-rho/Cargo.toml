@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-miller-rabin = { path = "../../math/miller-rabin" }
 dynamic-montgomery-modint = { path = "../../math/modint/dynamic-montgomery-modint" }
+miller-rabin = { path = "../../math/miller-rabin" }
 xorshift-64 = { path = "../../math/xorshift-64" }

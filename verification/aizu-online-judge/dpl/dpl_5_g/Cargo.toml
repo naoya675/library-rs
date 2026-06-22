@@ -5,5 +5,5 @@ edition = "2024"
 
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
-modint = { path = "../../../../math/modint/modint" }
 bell-number = { path = "../../../../math/bell-number" }
+modint = { path = "../../../../math/modint/modint" }

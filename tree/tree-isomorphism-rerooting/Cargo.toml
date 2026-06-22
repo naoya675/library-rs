@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rerooting = { path = "../../tree/rerooting" }
 modint-mersenne61 = { path = "../../math/modint/modint-mersenne61" }
+rerooting = { path = "../../tree/rerooting" }
