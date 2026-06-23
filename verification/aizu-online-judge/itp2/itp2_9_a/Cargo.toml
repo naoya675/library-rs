@@ -1,8 +1,8 @@
 [package]
-name = "itp2_6_c"
+name = "itp2_9_a"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
-lower-bound = { path = "../../../macro/lower-bound" }
+treap = { path = "../../../../data-structure/balanced-binary-search-tree/treap" }
