@@ -1,8 +1,8 @@
 [package]
-name = "ntl_1_b"
+name = "ntl_1_d_linear_sieve"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
-modint = { path = "../../../math/modint/modint" }
+linear-sieve = { path = "../../../../math/linear-sieve" }

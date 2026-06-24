@@ -1,8 +1,8 @@
 [package]
-name = "ntl_1_a"
+name = "ntl_1_d_eratosthenes"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
 proconio = { version = "0.5.0", features = ["derive"] }
-linear-sieve = { path = "../../../math/linear-sieve" }
+eratosthenes-factorization = { path = "../../../../math/eratosthenes-factorization" }
