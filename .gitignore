@@ -1,5 +1,4 @@
 target
-examples
 Cargo.lock
 rustfmt.toml
 
@@ -8,3 +7,5 @@ verify.json
 result.json
 _jekyll/
 .competitive-verifier/cache/
+
+.DS_Store
