@@ -5,7 +5,7 @@ macro_rules! define_query {
             $( $tag:literal => $variant:ident ( $( $field:ident : $ty:ty ),* $(,)? ) ),* $(,)?
         }
     ) => {
-        #[derive(Clone, Debug, Eq, PartialEq)]
+        #[derive(Copy, Clone, Debug, Eq, PartialEq)]
         enum $name {
             $( $variant( $( $ty ),* ), )*
         }
