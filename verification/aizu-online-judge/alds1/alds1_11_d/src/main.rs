@@ -16,6 +16,7 @@ fn main() {
     for &(s, t) in &st {
         uf.merge(s, t);
     }
+
     for &(s, t) in &queries {
         println!("{}", if uf.same(s, t) { "yes" } else { "no" })
     }

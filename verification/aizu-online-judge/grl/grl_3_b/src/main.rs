@@ -16,6 +16,7 @@ fn main() {
 
     let mut b = ll.bridge().iter().map(|&(s, t)| if s < t { (s, t) } else { (t, s) }).collect::<Vec<_>>();
     b.sort();
+
     for &(s, t) in &b {
         println!("{} {}", s, t);
     }

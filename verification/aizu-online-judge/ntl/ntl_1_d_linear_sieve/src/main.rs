@@ -25,5 +25,6 @@ fn main() {
     if n > 1 {
         phi = phi / n * (n - 1);
     }
+
     println!("{}", phi);
 }

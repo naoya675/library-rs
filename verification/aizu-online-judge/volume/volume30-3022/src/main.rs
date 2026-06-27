@@ -73,6 +73,7 @@ fn actual_main() {
     }
 
     dfs(&mut env, 0, None);
+
     for i in 0..n {
         println!("{}", env.res[i]);
     }

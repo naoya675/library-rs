@@ -17,6 +17,7 @@ fn main() {
     ac.build(true);
 
     let res = ac.matches(&t);
+
     for i in 0..q {
         println!("{}", if res[i] == 0 { 0 } else { 1 });
     }

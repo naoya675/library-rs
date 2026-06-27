@@ -9,12 +9,13 @@ fn main() {
         q: usize,
     }
     let mut map = TreapMap::<String, Vec<i64>>::new();
+
     for _ in 0..q {
         input! { t: usize }
         match t {
             0 => {
                 input! { key: String, x: i64 }
-                map.entry(key).or_insert_with(Vec::new).push(x);
+                map.entry(key).or_default().push(x);
             }
             1 => {
                 input! { key: String }

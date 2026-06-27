@@ -7,19 +7,15 @@ use dijkstra::dijkstra;
 fn main() {
     input! {
         n: usize,
+        uvc: [(usize, [(usize, i64)]); n],
     }
     let mut graph = vec![vec![]; n];
-    for _ in 0..n {
-        input! {
-            u: usize,
-            k: usize,
-            vc: [(usize, i64); k],
-        }
-        for &(v, c) in &vc {
-            graph[u].push((v, c));
-        }
+    for (u, vc) in uvc {
+        graph[u] = vc;
     }
+
     let dist = dijkstra(n, &graph, 0);
+
     for i in 0..n {
         println!("{} {}", i, dist[i]);
     }

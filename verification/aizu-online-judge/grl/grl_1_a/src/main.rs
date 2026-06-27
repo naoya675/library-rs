@@ -15,6 +15,7 @@ fn main() {
     std.iter().for_each(|&(s, t, d)| graph[s].push((t, d)));
 
     let res = dijkstra(v, &graph, r);
+
     for i in 0..v {
         println!("{}", if res[i] != i64::MAX { res[i].to_string() } else { "INF".to_string() });
     }

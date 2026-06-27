@@ -9,6 +9,7 @@ fn main() {
         q: usize,
     }
     let mut map = TreapMap::<String, i64>::new();
+
     for _ in 0..q {
         input! { t: usize }
         match t {

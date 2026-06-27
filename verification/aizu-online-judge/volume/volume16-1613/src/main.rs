@@ -26,6 +26,7 @@ fn main() {
         let mut canonical: HashMap<Vec<usize>, usize> = HashMap::new();
         let l1 = labels(&tree1, 0, &mut canonical)[0];
         let l2 = labels(&tree2, 0, &mut canonical)[0];
+
         println!("{}", if l1 == l2 { "yes" } else { "no" });
     }
 }

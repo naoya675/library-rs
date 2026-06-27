@@ -18,6 +18,7 @@ fn main() {
     for &x in &b {
         treap.insert(x);
     }
+
     for &v in treap.iter() {
         println!("{}", v);
     }

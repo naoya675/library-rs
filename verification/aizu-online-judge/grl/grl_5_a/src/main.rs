@@ -24,6 +24,5 @@ fn actual_main() {
         g.add_edge(t, s, w);
     });
 
-    let res = g.run();
-    println!("{}", res.iter().max().unwrap());
+    println!("{}", g.run().iter().max().unwrap());
 }

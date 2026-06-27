@@ -13,5 +13,6 @@ fn main() {
         k: usize,
     }
     let mut bi = Binomial::<Mint>::new();
+
     println!("{}", bi.comb(n - 1, k - 1));
 }

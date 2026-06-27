@@ -10,14 +10,16 @@ fn main() {
         n: usize,
         a: [i64; n],
     }
-    let mut b = a.clone();
-    b.sort();
+    let mut x = a.clone();
+    x.sort();
     let mut ft = FenwickTree::<i64>::new(n);
     let mut res = 0;
+
     for i in 0..n {
-        let p = b.lower_bound(&a[i]);
+        let p = x.lower_bound(&a[i]);
         res += ft.sum(p + 1, n);
         ft.add(p, 1);
     }
+
     println!("{}", res);
 }

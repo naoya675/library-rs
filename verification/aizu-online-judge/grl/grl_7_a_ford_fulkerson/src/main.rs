@@ -14,6 +14,7 @@ fn main() {
     let xy = xy.iter().map(|&(xi, yi)| (xi, x + yi)).collect::<Vec<_>>();
     let s = x + y;
     let t = x + y + 1;
+
     let mut ff = FordFulkerson::new(t + 1);
     (0..x).for_each(|i| {
         ff.add_edge(s, i, 1);
@@ -24,5 +25,6 @@ fn main() {
     xy.iter().for_each(|&(x, y)| {
         ff.add_edge(x, y, 1);
     });
+
     println!("{}", ff.flow(s, t)); // source -> sink
 }

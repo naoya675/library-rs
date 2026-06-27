@@ -1,8 +1,8 @@
 // verification-helper: IGNORE https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B
 
-use itertools::Join;
 use proconio::input;
 
+use itertools::Join;
 use topological_sort::topological_sort;
 
 fn main() {

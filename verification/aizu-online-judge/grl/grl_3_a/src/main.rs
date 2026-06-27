@@ -16,6 +16,7 @@ fn main() {
 
     let mut a = ll.articulation().iter().map(|&v| v).collect::<Vec<_>>();
     a.sort();
+
     for &v in &a {
         println!("{}", v);
     }

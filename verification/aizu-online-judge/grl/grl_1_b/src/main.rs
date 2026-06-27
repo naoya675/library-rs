@@ -12,6 +12,7 @@ fn main() {
         std: [(usize, usize, i64); e],
     }
     let (cycle, res) = bellman_ford(v, &std, r);
+
     if cycle {
         println!("NEGATIVE CYCLE");
         return;

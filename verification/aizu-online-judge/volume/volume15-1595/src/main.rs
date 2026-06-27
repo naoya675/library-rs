@@ -25,6 +25,7 @@ fn actual_main() {
     });
 
     let res = g.run();
+
     for i in 0..n {
         println!("{}", (n - 1) * 2 - res[i]);
     }

@@ -20,6 +20,7 @@ fn main() {
         queries: [Query; q],
     }
     let mut treap = ImplicitTreap::<i64, ()>::from_slice(&a, |x, y| std::cmp::min(x, y), i64::MAX, |_, x| x, |_, _| (), ());
+
     for query in queries {
         match query {
             Query0(l, r) => {

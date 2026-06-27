@@ -20,6 +20,7 @@ fn main() {
     if n > 1 {
         factors.push(n);
     }
+
     let n = factors.iter().product::<usize>();
     let s = factors.iter().map(|p| p.to_string()).collect::<Vec<_>>();
     println!("{}: {}", n, s.join(" "));

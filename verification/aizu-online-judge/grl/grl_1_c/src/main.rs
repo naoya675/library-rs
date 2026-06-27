@@ -1,8 +1,8 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C
 
-use itertools::Join;
 use proconio::input;
 
+use itertools::Join;
 use warshall_floyd::warshall_floyd;
 
 fn main() {
@@ -12,6 +12,7 @@ fn main() {
         std: [(usize, usize, i64); e],
     }
     let (cycle, res) = warshall_floyd(v, &std);
+
     if cycle {
         println!("NEGATIVE CYCLE");
         return;

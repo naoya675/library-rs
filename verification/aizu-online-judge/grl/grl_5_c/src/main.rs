@@ -16,21 +16,19 @@ fn main() {
 fn actual_main() {
     input! {
         n: usize,
-    }
-    let mut hld = HeavyLightDecomposition::new(n);
-    for i in 0..n {
-        input! { k: usize, c: [usize; k], }
-        c.iter().for_each(|&c| {
-            hld.add_edge(i, c, 0);
-            hld.add_edge(c, i, 0);
-        });
-    }
-    hld.init(0);
-
-    input! {
+        c: [[usize]; n],
         q: usize,
         uv: [(usize, usize); q],
     }
+    let mut hld = HeavyLightDecomposition::new(n);
+    for (i, c) in c.iter().enumerate() {
+        for &c in c {
+            hld.add_edge(i, c, 0);
+            hld.add_edge(c, i, 0);
+        }
+    }
+    hld.init(0);
+
     for &(u, v) in &uv {
         println!("{}", hld.lca(u, v));
     }

@@ -18,6 +18,7 @@ fn main() {
         queries: [Query; q],
     }
     let mut treap = Treap::new();
+
     for query in queries {
         match query {
             Query0(x) => {

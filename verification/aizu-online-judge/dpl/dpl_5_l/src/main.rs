@@ -13,5 +13,6 @@ fn main() {
         k: usize,
     }
     let dp = partition_number::<Mint>(n, k);
+
     println!("{}", if n >= k { dp[n - k] } else { Mint::new(0) });
 }

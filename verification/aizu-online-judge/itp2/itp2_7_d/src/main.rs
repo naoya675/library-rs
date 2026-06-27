@@ -19,20 +19,21 @@ fn main() {
         queries: [Query; q],
     }
     let mut map = TreapMap::<usize, usize>::new();
-    let mut element = 0;
+    let mut cnt = 0;
+
     for query in queries {
         match query {
             Query0(x) => {
                 *map.entry(x).or_insert(0) += 1;
-                element += 1;
-                println!("{}", element);
+                cnt += 1;
+                println!("{}", cnt);
             }
             Query1(x) => {
                 println!("{}", map.get(&x).copied().unwrap_or(0));
             }
             Query2(x) => {
                 if let Some(c) = map.remove(&x) {
-                    element -= c;
+                    cnt -= c;
                 }
             }
             Query3(l, r) => {

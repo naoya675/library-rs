@@ -14,5 +14,6 @@ fn main() {
         k: usize,
     }
     let mut bi = Binomial::<Mint>::new();
+
     println!("{}", bi.fact(k) * stirling_number_second::<Mint>(n, k));
 }

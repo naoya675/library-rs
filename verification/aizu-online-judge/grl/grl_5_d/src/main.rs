@@ -24,22 +24,20 @@ fn main() {
 fn actual_main() {
     input! {
         n: usize,
-    }
-    let mut hld = HeavyLightDecomposition::new(n);
-    for i in 0..n {
-        input! { k: usize, c: [usize; k], }
-        c.iter().for_each(|&c| {
-            hld.add_edge(i, c, 0);
-            hld.add_edge(c, i, 0);
-        });
-    }
-    hld.init(0);
-
-    let mut ft = FenwickTreeAbstract::<i64>::new(n, |x, y| x + y, 0, |x| -x);
-    input! {
+        c: [[usize]; n],
         q: usize,
         queries: [Query; q],
     }
+    let mut hld = HeavyLightDecomposition::new(n);
+    for (i, c) in c.iter().enumerate() {
+        for &c in c {
+            hld.add_edge(i, c, 0);
+            hld.add_edge(c, i, 0);
+        }
+    }
+    hld.init(0);
+    let mut ft = FenwickTreeAbstract::<i64>::new(n, |x, y| x + y, 0, |x| -x);
+
     for query in queries {
         match query {
             Query0(v, w) => ft.add(hld.index(v).0, w),

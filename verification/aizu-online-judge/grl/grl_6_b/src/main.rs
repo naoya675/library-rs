@@ -17,5 +17,6 @@ fn main() {
     }
 
     let (max_flow, min_cost) = mcf.flow_with(0, v - 1, f);
+
     println!("{}", if max_flow < f { -1 } else { min_cost });
 }

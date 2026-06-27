@@ -23,6 +23,7 @@ fn main() {
             uf.merge(group[0], group[i]);
         }
     }
+
     for &(u, v) in &uv {
         println!("{}", if uf.same(u, v) { 1 } else { 0 });
     }
