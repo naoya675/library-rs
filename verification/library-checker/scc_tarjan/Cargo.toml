@@ -1,9 +1,0 @@
-[package]
-name = "scc_tarjan"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-itertools = { path = "../../../macro/itertools" }
-proconio = { version = "0.5.0", features = ["derive"] }
-strongly-connected-components-tarjan = { path = "../../../graph/strongly-connected-components-tarjan" }

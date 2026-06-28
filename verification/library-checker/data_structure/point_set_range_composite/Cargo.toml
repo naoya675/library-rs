@@ -1,0 +1,10 @@
+[package]
+name = "point_set_range_composite"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+modint = { path = "../../../../math/modint/modint" }
+query = { path = '../../../../macro/query' }
+segment-tree = { path = "../../../../data-structure/segment-tree/segment-tree" }

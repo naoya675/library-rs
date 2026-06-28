@@ -1,9 +1,0 @@
-[package]
-name = "zalgorithm"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-itertools = "0.14.0"
-proconio = { version = "0.5.0", features = ["derive"] }
-z-algorithm = { path = "../../../string/z-algorithm" }

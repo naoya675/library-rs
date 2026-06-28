@@ -1,9 +1,0 @@
-[package]
-name = "enumerate_primes-eratosthenes-segment"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-proconio = { version = "0.5.0", features = ["derive"] }
-eratosthenes-segment = { path = "../../../math/eratosthenes-segment" }
-itertools = { path = "../../../macro/itertools" }

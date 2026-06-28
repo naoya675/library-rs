@@ -1,0 +1,10 @@
+[package]
+name = "tree_path_composite_sum"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+itertools = { path = "../../../../macro/itertools" }
+modint = { path = "../../../../math/modint/modint" }
+rerooting = { path = "../../../../tree/rerooting" }

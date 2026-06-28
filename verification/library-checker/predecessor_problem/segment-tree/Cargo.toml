@@ -1,9 +1,0 @@
-[package]
-name = "predecessor_problem_segment_tree"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-proconio = { version = "0.5.0", features = ["derive"] }
-segment-tree = { path = "../../../../data-structure/segment-tree/segment-tree" }
-query = { path = "../../../../macro/query" }

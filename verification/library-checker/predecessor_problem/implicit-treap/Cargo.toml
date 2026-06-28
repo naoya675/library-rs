@@ -1,9 +1,0 @@
-[package]
-name = "predecessor_problem_implicit_treap"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-proconio = { version = "0.5.0", features = ["derive"] }
-implicit-treap = { path = "../../../../data-structure/balanced-binary-search-tree/implicit-treap" }
-query = { path = "../../../../macro/query" }

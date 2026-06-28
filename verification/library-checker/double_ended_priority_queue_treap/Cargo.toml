@@ -1,9 +1,0 @@
-[package]
-name = "double_ended_priority_queue_treap"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-proconio = { version = "0.5.0", features = ["derive"] }
-treap-map = { path = "../../../data-structure/balanced-binary-search-tree/treap-map" }
-query = { path = "../../../macro/query" }

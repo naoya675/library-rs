@@ -1,0 +1,10 @@
+[package]
+name = "vertex_add_path_sum"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+euler-tour = { path = "../../../../tree/euler-tour" }
+fenwick-tree = { path = '../../../../data-structure/fenwick-tree' }
+query = { path = '../../../../macro/query' }
