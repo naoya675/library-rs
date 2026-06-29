@@ -88,6 +88,10 @@ impl SuccinctIndexableDictionary {
         k - self.rank1(k)
     }
 
+    pub fn rank(&self, bit: bool, k: usize) -> usize {
+        if bit { self.rank1(k) } else { self.rank0(k) }
+    }
+
     pub fn select1(&self, k: usize) -> usize {
         assert!(k < self.count_ones);
         let mut hi = self.size;
@@ -116,6 +120,10 @@ impl SuccinctIndexableDictionary {
             }
         }
         lo
+    }
+
+    pub fn select(&self, bit: bool, k: usize) -> usize {
+        if bit { self.select1(k) } else { self.select0(k) }
     }
 
     fn pop_count(mut x: u64) -> u64 {
