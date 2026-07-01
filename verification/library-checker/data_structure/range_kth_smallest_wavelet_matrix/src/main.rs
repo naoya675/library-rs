@@ -13,7 +13,7 @@ fn main() {
     }
     let wm = WaveletMatrix::new(&a);
 
-    for (l, r, k) in queries {
+    for &(l, r, k) in &queries {
         println!("{}", wm.kth_smallest(l, r, k));
     }
 }

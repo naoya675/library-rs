@@ -115,6 +115,72 @@ impl WaveletMatrix {
         ret
     }
 
+    // [l, r)
+    pub fn kth_largest(&self, l: usize, r: usize, k: usize) -> u64 {
+        self.kth_smallest(l, r, r - l - 1 - k)
+    }
+
+    // [l, r)
+    pub fn range_min(&self, l: usize, r: usize) -> u64 {
+        self.kth_smallest(l, r, 0)
+    }
+
+    // [l, r)
+    pub fn range_max(&self, l: usize, r: usize) -> u64 {
+        self.kth_smallest(l, r, r - l - 1)
+    }
+
+    // [l, r)
+    pub fn range_freq(&self, l: usize, r: usize, x: u64, y: u64) -> usize {
+        assert!(x <= y);
+        self.range_freq_less(l, r, y) - self.range_freq_less(l, r, x)
+    }
+
+    // [l, r)
+    pub fn range_freq_less(&self, l: usize, r: usize, upper: u64) -> usize {
+        assert!(l <= r && r <= self.size);
+        if !(upper < 1 << self.size_log) {
+            return r - l;
+        }
+        let mut lo = l;
+        let mut hi = r;
+        let mut ret = 0;
+        for i in 0..self.size_log {
+            let bit = (upper >> (self.size_log - 1 - i)) & 1 == 1;
+            let lo0 = self.succ(false, i, lo);
+            let hi0 = self.succ(false, i, hi);
+            if bit {
+                ret += hi0 - lo0;
+                lo = self.succ(true, i, lo);
+                hi = self.succ(true, i, hi);
+            } else {
+                lo = lo0;
+                hi = hi0;
+            }
+        }
+        ret
+    }
+
+    // [l, r)
+    pub fn prev_value(&self, l: usize, r: usize, x: u64, y: u64) -> Option<u64> {
+        let count = self.range_freq(l, r, x, y);
+        if count == 0 {
+            None
+        } else {
+            Some(self.kth_smallest(l, r, self.range_freq_less(l, r, x) + count - 1))
+        }
+    }
+
+    // [l, r)
+    pub fn next_value(&self, l: usize, r: usize, x: u64, y: u64) -> Option<u64> {
+        let count = self.range_freq(l, r, x, y);
+        if count == 0 {
+            None
+        } else {
+            Some(self.kth_smallest(l, r, self.range_freq_less(l, r, x)))
+        }
+    }
+
     fn succ(&self, bit: bool, i: usize, k: usize) -> usize {
         self.matrix[i].rank(bit, k) + if bit { self.zero_count[i] } else { 0 }
     }
