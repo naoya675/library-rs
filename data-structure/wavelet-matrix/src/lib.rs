@@ -167,23 +167,15 @@ impl WaveletMatrix {
     }
 
     // [l, r)
-    pub fn prev_value(&self, l: usize, r: usize, lower: u64, upper: u64) -> Option<u64> {
-        let count = self.range_freq(l, r, lower, upper);
-        if count == 0 {
-            None
-        } else {
-            Some(self.kth_smallest(l, r, self.range_freq_less(l, r, lower) + count - 1))
-        }
+    pub fn prev_value(&self, l: usize, r: usize, upper: u64) -> Option<u64> {
+        let freq = self.range_freq_less(l, r, upper);
+        if freq == 0 { None } else { Some(self.kth_smallest(l, r, freq - 1)) }
     }
 
     // [l, r)
-    pub fn next_value(&self, l: usize, r: usize, lower: u64, upper: u64) -> Option<u64> {
-        let count = self.range_freq(l, r, lower, upper);
-        if count == 0 {
-            None
-        } else {
-            Some(self.kth_smallest(l, r, self.range_freq_less(l, r, lower)))
-        }
+    pub fn next_value(&self, l: usize, r: usize, lower: u64) -> Option<u64> {
+        let freq = self.range_freq_less(l, r, lower);
+        if freq == r - l { None } else { Some(self.kth_smallest(l, r, freq)) }
     }
 
     // [l, r)

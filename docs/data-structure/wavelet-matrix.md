@@ -3,8 +3,8 @@ title: Wavelet Matrix
 documentation_of: //data-structure/wavelet-matrix/src/lib.rs
 ---
 
-A data structure that stores a sequence of non-negative integers less than $2^B$ as a stack of $B$ bit vectors partitioned by bit position from MSB to LSB, where $B$ is the bit length.
-Supports `access`, `rank`, and `kth_smallest` queries in $O(B)$ time and `select` in $O(B \log n)$ time, where $n$ is the sequence length.
+A data structure that stores a sequence of non-negative integers in $[0, \sigma)$ as a stack of $\lceil \log \sigma \rceil$ bit vectors partitioned by bit position from MSB to LSB, where $\sigma$ is the alphabet size.
+Supports `access`, `rank`, and `kth_smallest` queries in $O(\log \sigma)$ time and `select` in $O(\log \sigma \cdot \log n)$ time, where $n$ is the sequence length.
 
 ## Reference
 - Claude, Navarro, Ordóñez, ["The wavelet matrix: An efficient wavelet tree for large alphabets"](https://doi.org/10.1016/j.is.2014.06.002), Information Systems vol. 47 2015, pp. 15-32.
