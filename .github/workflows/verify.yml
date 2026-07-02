@@ -61,17 +61,25 @@ jobs:
               with:
                   cache-pip: true
 
-            - name: Cache judge data
-              uses: actions/cache@v4
+            - name: Restore judge data cache
+              uses: actions/cache/restore@v4
               with:
                   path: .competitive-verifier/cache
                   key: ${{ runner.os }}-verify-cache-${{ needs.setup.outputs.hash }}
                   restore-keys: ${{ runner.os }}-verify-cache-
 
             - name: Download problems
+              continue-on-error: true
               uses: competitive-verifier/actions/download-problems@v2
               env:
                   YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+
+            - name: Save judge data cache
+              if: always()
+              uses: actions/cache/save@v4
+              with:
+                  path: .competitive-verifier/cache
+                  key: ${{ runner.os }}-verify-cache-${{ needs.setup.outputs.hash }}
 
     verify:
         runs-on: ubuntu-latest
