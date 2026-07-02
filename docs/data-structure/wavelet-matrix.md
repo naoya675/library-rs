@@ -26,6 +26,7 @@ Supports `access`, `rank`, and `kth_smallest` queries in $O(B)$ time and `select
 - [https://takeda25.hatenablog.jp/entry/20120820/1345455442](https://takeda25.hatenablog.jp/entry/20120820/1345455442)
 - [https://takeda25.hatenablog.jp/entry/20130303/1362301095](https://takeda25.hatenablog.jp/entry/20130303/1362301095)
 - [https://takeda25.hatenablog.jp/entry/20130505/1367730870](https://takeda25.hatenablog.jp/entry/20130505/1367730870)
+<!--- [https://trap.jp/post/2713/](https://trap.jp/post/2713/)-->
 <!--- [https://www.scribd.com/doc/102636443/Wavelet-Matrix](https://www.scribd.com/doc/102636443/Wavelet-Matrix)-->
 <!--- [https://www.slideshare.net/slideshow/the-wavelet-matrix/62929724](https://www.slideshare.net/slideshow/the-wavelet-matrix/62929724)-->
 

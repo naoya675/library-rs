@@ -6,6 +6,7 @@ pub struct WaveletMatrix {
     size_log: usize,
     matrix: Vec<SuccinctIndexableDictionary>,
     zero_count: Vec<usize>,
+    sum: Vec<Vec<u64>>,
 }
 
 impl WaveletMatrix {
@@ -17,6 +18,7 @@ impl WaveletMatrix {
 
         let mut matrix = vec![SuccinctIndexableDictionary::new(size); size_log];
         let mut zero_count = vec![0; size_log];
+        let mut sum = vec![vec![0; size + 1]; size_log + 1];
         let mut cur = v.to_vec();
         for (i, level) in (0..size_log).rev().enumerate() {
             for (j, &x) in cur.iter().enumerate() {
@@ -37,7 +39,13 @@ impl WaveletMatrix {
                     nxt.push(x);
                 }
             }
+            for j in 0..size {
+                sum[i][j + 1] = sum[i][j] + cur[j];
+            }
             cur = nxt;
+        }
+        for j in 0..size {
+            sum[size_log][j + 1] = sum[size_log][j] + cur[j];
         }
 
         Self {
@@ -45,6 +53,7 @@ impl WaveletMatrix {
             size_log,
             matrix,
             zero_count,
+            sum,
         }
     }
 
@@ -115,28 +124,24 @@ impl WaveletMatrix {
         ret
     }
 
-    // [l, r)
     pub fn kth_largest(&self, l: usize, r: usize, k: usize) -> u64 {
         self.kth_smallest(l, r, r - l - 1 - k)
     }
 
-    // [l, r)
     pub fn range_min(&self, l: usize, r: usize) -> u64 {
         self.kth_smallest(l, r, 0)
     }
 
-    // [l, r)
     pub fn range_max(&self, l: usize, r: usize) -> u64 {
         self.kth_smallest(l, r, r - l - 1)
     }
 
     // [l, r)
-    pub fn range_freq(&self, l: usize, r: usize, x: u64, y: u64) -> usize {
-        assert!(x <= y);
-        self.range_freq_less(l, r, y) - self.range_freq_less(l, r, x)
+    pub fn range_freq(&self, l: usize, r: usize, lower: u64, upper: u64) -> usize {
+        assert!(lower <= upper);
+        self.range_freq_less(l, r, upper) - self.range_freq_less(l, r, lower)
     }
 
-    // [l, r)
     pub fn range_freq_less(&self, l: usize, r: usize, upper: u64) -> usize {
         assert!(l <= r && r <= self.size);
         if !(upper < 1 << self.size_log) {
@@ -162,23 +167,92 @@ impl WaveletMatrix {
     }
 
     // [l, r)
-    pub fn prev_value(&self, l: usize, r: usize, x: u64, y: u64) -> Option<u64> {
-        let count = self.range_freq(l, r, x, y);
+    pub fn prev_value(&self, l: usize, r: usize, lower: u64, upper: u64) -> Option<u64> {
+        let count = self.range_freq(l, r, lower, upper);
         if count == 0 {
             None
         } else {
-            Some(self.kth_smallest(l, r, self.range_freq_less(l, r, x) + count - 1))
+            Some(self.kth_smallest(l, r, self.range_freq_less(l, r, lower) + count - 1))
         }
     }
 
     // [l, r)
-    pub fn next_value(&self, l: usize, r: usize, x: u64, y: u64) -> Option<u64> {
-        let count = self.range_freq(l, r, x, y);
+    pub fn next_value(&self, l: usize, r: usize, lower: u64, upper: u64) -> Option<u64> {
+        let count = self.range_freq(l, r, lower, upper);
         if count == 0 {
             None
         } else {
-            Some(self.kth_smallest(l, r, self.range_freq_less(l, r, x)))
+            Some(self.kth_smallest(l, r, self.range_freq_less(l, r, lower)))
         }
+    }
+
+    // [l, r)
+    pub fn range_sum(&self, l: usize, r: usize) -> u64 {
+        assert!(l <= r && r <= self.size);
+        self.sum[0][r] - self.sum[0][l]
+    }
+
+    pub fn range_sum_less(&self, l: usize, r: usize, upper: u64) -> u64 {
+        assert!(l <= r && r <= self.size);
+        if !(upper < 1 << self.size_log) {
+            return self.range_sum(l, r);
+        }
+        let mut lo = l;
+        let mut hi = r;
+        let mut ret = 0;
+        for i in 0..self.size_log {
+            let bit = (upper >> (self.size_log - 1 - i)) & 1 == 1;
+            let lo0 = self.succ(false, i, lo);
+            let hi0 = self.succ(false, i, hi);
+            if bit {
+                ret += self.sum[i + 1][hi0] - self.sum[i + 1][lo0];
+                lo = self.succ(true, i, lo);
+                hi = self.succ(true, i, hi);
+            } else {
+                lo = lo0;
+                hi = hi0;
+            }
+        }
+        ret
+    }
+
+    pub fn range_sum_within(&self, l: usize, r: usize, lower: u64, upper: u64) -> u64 {
+        assert!(lower <= upper);
+        self.range_sum_less(l, r, upper) - self.range_sum_less(l, r, lower)
+    }
+
+    pub fn smallest_k_sum(&self, l: usize, r: usize, mut k: usize) -> u64 {
+        assert!(l <= r && r <= self.size);
+        assert!(k <= r - l);
+        if k == 0 {
+            return 0;
+        }
+        let mut lo = l;
+        let mut hi = r;
+        let mut val = 0;
+        let mut ret = 0;
+        for i in 0..self.size_log {
+            let lo0 = self.succ(false, i, lo);
+            let hi0 = self.succ(false, i, hi);
+            let zeros = hi0 - lo0;
+            if zeros <= k {
+                k -= zeros;
+                val |= 1u64 << (self.size_log - 1 - i);
+                ret += self.sum[i + 1][hi0] - self.sum[i + 1][lo0];
+                lo = self.succ(true, i, lo);
+                hi = self.succ(true, i, hi);
+            } else {
+                lo = lo0;
+                hi = hi0;
+            }
+        }
+        ret + val * k as u64
+    }
+
+    pub fn largest_k_sum(&self, l: usize, r: usize, k: usize) -> u64 {
+        assert!(l <= r && r <= self.size);
+        assert!(k <= r - l);
+        self.range_sum(l, r) - self.smallest_k_sum(l, r, r - l - k)
     }
 
     fn succ(&self, bit: bool, i: usize, k: usize) -> usize {

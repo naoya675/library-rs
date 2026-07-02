@@ -1,0 +1,8 @@
+[package]
+name = "static_range_sum_with_upper_bound_wavelet_matrix"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+wavelet-matrix = { path = "../../../../data-structure/wavelet-matrix" }
