@@ -173,9 +173,8 @@ Returns all components as a list of lists. The order of components and elements 
 - [https://cp-algorithms.com/data_structures/disjoint_set_union.html](https://cp-algorithms.com/data_structures/disjoint_set_union.html)
 - [https://noshi91.hatenablog.com/entry/2018/04/17/183132](https://noshi91.hatenablog.com/entry/2018/04/17/183132)
 - [https://qiita.com/HMMNRST/items/0d4906b40e9cdf0da0e4](https://qiita.com/HMMNRST/items/0d4906b40e9cdf0da0e4)
-- [https://atcoder.jp/contests/abc451/editorial/18130](https://atcoder.jp/contests/abc451/editorial/18130)
 
 ## Verified
 - [https://atcoder.jp/contests/abc126/tasks/abc126_d](https://atcoder.jp/contests/abc126/tasks/abc126_d) ([submission](https://atcoder.jp/contests/abc126/submissions/74954211))
 - [https://atcoder.jp/contests/abc126/tasks/abc126_e](https://atcoder.jp/contests/abc126/tasks/abc126_e) ([submission](https://atcoder.jp/contests/abc126/submissions/74954212))
-- [https://atcoder.jp/contests/abc451/tasks/abc451_f](https://atcoder.jp/contests/abc451/tasks/abc451_f) ([submission](https://atcoder.jp/contests/abc451/submissions/74954220))
+- [https://atcoder.jp/contests/abc451/tasks/abc451_f](https://atcoder.jp/contests/abc451/tasks/abc451_f) ([submission](https://atcoder.jp/contests/abc451/submissions/74954220) / [editorial](https://atcoder.jp/contests/abc451/editorial/18130))
