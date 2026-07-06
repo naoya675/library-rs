@@ -33,6 +33,17 @@ Merges the set that contains $x$ and the set that contains $y$. Returns the repr
 **Complexity**
 - $O(\log n)$
 
+## snapshot
+
+```rust
+fn snapshot(&self) -> usize
+```
+
+Returns a handle representing the current state, which can be passed to `rollback_to` later.
+
+**Complexity**
+- $O(1)$
+
 ## rollback
 
 ```rust
@@ -43,6 +54,20 @@ Undoes the last `merge` operation. If `merge` was a no-op (the two elements were
 
 **Complexity**
 - $O(1)$
+
+## rollback_to
+
+```rust
+fn rollback_to(&mut self, snap: usize)
+```
+
+Undoes `merge` operations until the state matches the one captured by `snap`.
+
+**Constraints**
+- `snap` is a value previously returned by `snapshot`, and no `rollback` past that point has been performed since.
+
+**Complexity**
+- $O(k)$ where $k$ is the number of operations undone
 
 ## same
 

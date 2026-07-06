@@ -34,11 +34,21 @@ impl UnionFindWithRollback {
         x
     }
 
+    pub fn snapshot(&self) -> usize {
+        self.history.len()
+    }
+
     pub fn rollback(&mut self) {
         if let Some(Some(y)) = self.history.pop() {
             let x = self.par[y];
             self.siz[x] -= self.siz[y];
             self.par[y] = y;
+        }
+    }
+
+    pub fn rollback_to(&mut self, snap: usize) {
+        while self.history.len() > snap {
+            self.rollback();
         }
     }
 
