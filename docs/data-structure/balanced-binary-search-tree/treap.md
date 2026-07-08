@@ -273,6 +273,7 @@ Returns an iterator that visits the elements in ascending order.
 <!--- [https://yaox.hatenadiary.jp/entry/2024/12/14/000500](https://yaox.hatenadiary.jp/entry/2024/12/14/000500)-->
 <!--- [https://yaox.hatenadiary.jp/entry/2024/12/16/000500](https://yaox.hatenadiary.jp/entry/2024/12/16/000500)-->
 <!--- [https://yaox.hatenadiary.jp/entry/2024/12/17/031154](https://yaox.hatenadiary.jp/entry/2024/12/17/031154)-->
+<!--- [https://www.youtube.com/watch?v=6x0UlIBLRsc](https://www.youtube.com/watch?v=6x0UlIBLRsc)-->
 - [https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268](https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268)
 - Implicit Treap
     - [https://qiita.com/hamamu/items/570e7c36bf73913cbeb8](https://qiita.com/hamamu/items/570e7c36bf73913cbeb8)
