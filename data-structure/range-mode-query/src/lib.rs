@@ -93,7 +93,6 @@ impl RangeModeQuery {
                 cur.freq += 1;
             }
         }
-
         (self.a[cur.mode], cur.freq)
     }
 }
