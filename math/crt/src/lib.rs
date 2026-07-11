@@ -1,4 +1,4 @@
-use ext_gcd::ext_gcd;
+use ext_gcd::inv_gcd;
 
 pub fn crt(r: &[i64], m: &[i64]) -> Option<(i64, i64)> {
     assert_eq!(r.len(), m.len());
@@ -18,12 +18,11 @@ pub fn crt(r: &[i64], m: &[i64]) -> Option<(i64, i64)> {
             }
             continue;
         }
-        let (g, x, _) = ext_gcd(m0, m1);
+        let (g, im) = inv_gcd(m0, m1);
         if (r1 - r0) % g != 0 {
             return None;
         }
         let u1 = m1 / g;
-        let im = x.rem_euclid(u1);
         let k = (r1 - r0) / g % u1 * im % u1;
         r0 += k * m0;
         m0 *= u1;

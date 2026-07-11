@@ -62,3 +62,4 @@ $$
 - [https://zenn.dev/herumi/articles/finite-field-02-sub](https://zenn.dev/herumi/articles/finite-field-02-sub)
 - [https://zenn.dev/herumi/articles/finite-field-03-mul](https://zenn.dev/herumi/articles/finite-field-03-mul)
 - [https://zenn.dev/herumi/articles/finite-field-04-mul](https://zenn.dev/herumi/articles/finite-field-04-mul)
+- [https://zenn.dev/mizar/scraps/78af18c6802d65](https://zenn.dev/mizar/scraps/78af18c6802d65)

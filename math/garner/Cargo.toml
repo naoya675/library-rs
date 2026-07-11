@@ -1,0 +1,7 @@
+[package]
+name = "garner"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ext-gcd = { path = "../ext-gcd" }

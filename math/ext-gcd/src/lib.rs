@@ -10,3 +10,13 @@ pub fn ext_gcd(a: i64, b: i64) -> (i64, i64, i64) {
     }
     (r0, s0, t0)
 }
+
+pub fn inv_gcd(a: i64, b: i64) -> (i64, i64) {
+    let (g, x, _) = ext_gcd(a, b);
+    (g, x.rem_euclid(b / g))
+}
+
+pub fn inv_mod(a: i64, m: i64) -> Option<i64> {
+    let (g, x) = inv_gcd(a, m);
+    if g == 1 { Some(x) } else { None }
+}
