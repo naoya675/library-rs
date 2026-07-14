@@ -21,7 +21,7 @@ fn main() {
     sorted.dedup();
     let a: Vec<usize> = a.iter().map(|v| sorted.lower_bound(v)).collect();
 
-    let mut dp = vec![Mint::new(0); a.len() + 1];
+    let mut dp = vec![Mint::new(0); a.len()];
     let mut sum = Mint::new(1);
     for i in 0..n {
         let tmp = dp[a[i]];

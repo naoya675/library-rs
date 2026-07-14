@@ -1,0 +1,10 @@
+[package]
+name = "bitwise_and_convolution"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+itertools = "0.14.0"
+proconio = { version = "0.5.0", features = ["derive"] }
+modint = { path = "../../../../math/modint/modint" }
+zeta-mobius = { path = "../../../../math/zeta-mobius" }
