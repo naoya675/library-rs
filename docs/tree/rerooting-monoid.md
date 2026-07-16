@@ -1,5 +1,5 @@
 ---
-title: (Monoid)
+title:
 documentation_of: //tree/rerooting/src/monoid.rs
 ---
 

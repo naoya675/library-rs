@@ -1,5 +1,5 @@
 ---
-title: (Monoid)
+title:
 documentation_of: //data-structure/segment-tree/lazy-segment-tree/src/monoid.rs
 ---
 
