@@ -1,7 +1,8 @@
 pub fn subset_zeta<T: Copy + std::ops::AddAssign>(a: &mut [T]) {
     let n = a.len();
     assert!(n.is_power_of_two());
-    for i in 0..n.trailing_zeros() {
+    let log_n = n.trailing_zeros() as usize;
+    for i in 0..log_n {
         let bit = 1 << i;
         for j in 0..n {
             if j & bit != 0 {
@@ -15,7 +16,8 @@ pub fn subset_zeta<T: Copy + std::ops::AddAssign>(a: &mut [T]) {
 pub fn subset_mobius<T: Copy + std::ops::SubAssign>(a: &mut [T]) {
     let n = a.len();
     assert!(n.is_power_of_two());
-    for i in 0..n.trailing_zeros() {
+    let log_n = n.trailing_zeros() as usize;
+    for i in 0..log_n {
         let bit = 1 << i;
         for j in 0..n {
             if j & bit != 0 {
@@ -29,7 +31,8 @@ pub fn subset_mobius<T: Copy + std::ops::SubAssign>(a: &mut [T]) {
 pub fn superset_zeta<T: Copy + std::ops::AddAssign>(a: &mut [T]) {
     let n = a.len();
     assert!(n.is_power_of_two());
-    for i in 0..n.trailing_zeros() {
+    let log_n = n.trailing_zeros() as usize;
+    for i in 0..log_n {
         let bit = 1 << i;
         for j in 0..n {
             if j & bit == 0 {
@@ -43,7 +46,8 @@ pub fn superset_zeta<T: Copy + std::ops::AddAssign>(a: &mut [T]) {
 pub fn superset_mobius<T: Copy + std::ops::SubAssign>(a: &mut [T]) {
     let n = a.len();
     assert!(n.is_power_of_two());
-    for i in 0..n.trailing_zeros() {
+    let log_n = n.trailing_zeros() as usize;
+    for i in 0..log_n {
         let bit = 1 << i;
         for j in 0..n {
             if j & bit == 0 {
