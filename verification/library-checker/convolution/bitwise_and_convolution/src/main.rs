@@ -3,8 +3,8 @@
 use itertools::Itertools;
 use proconio::input;
 
+use and_convolution::and_convolution;
 use modint::Modint;
-use zeta_mobius::{superset_mobius, superset_zeta};
 
 type Mint = Modint<998244353>;
 
@@ -12,18 +12,15 @@ fn main() {
     input! {
         n: usize,
     }
-    let sz = 1 << n;
+    let n = 1 << n;
     input! {
-        a: [u64; sz],
-        b: [u64; sz],
+        a: [i64; n],
+        b: [i64; n],
     }
-    let mut a: Vec<Mint> = a.iter().map(|&v| Mint::new(v as i64)).collect();
-    let mut b: Vec<Mint> = b.iter().map(|&v| Mint::new(v as i64)).collect();
+    let a = a.iter().map(|&a| Mint::new(a)).collect::<Vec<_>>();
+    let b = b.iter().map(|&b| Mint::new(b)).collect::<Vec<_>>();
 
-    superset_zeta(&mut a);
-    superset_zeta(&mut b);
-    let mut c: Vec<Mint> = (0..sz).map(|i| a[i] * b[i]).collect();
-    superset_mobius(&mut c);
+    let c = and_convolution(a, b);
 
     println!("{}", c.iter().join(" "));
 }
