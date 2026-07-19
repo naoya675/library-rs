@@ -1,0 +1,7 @@
+[package]
+name = "xor-convolution"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+walsh-hadamard = { path = "../walsh-hadamard" }
