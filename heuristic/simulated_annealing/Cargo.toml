@@ -1,0 +1,8 @@
+[package]
+name = "simulated_annealing"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+time-keeper = { path = "../../heuristic/time-keeper" }
+xorshift-64 = { path = "../../math/xorshift-64" }

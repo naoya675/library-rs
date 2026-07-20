@@ -12,3 +12,6 @@ documentation_of: //math/zeta-mobius/src/lib.rs
 - [https://qiita.com/convexineq/items/afc84dfb9ee4ec4a67d5](https://qiita.com/convexineq/items/afc84dfb9ee4ec4a67d5)
 - [https://qiita.com/izu_nori/items/9e93c4263c11b3b98cd5](https://qiita.com/izu_nori/items/9e93c4263c11b3b98cd5)
 - [https://ynucpc.github.io/material/summer-seminar2021_5.pdf](https://ynucpc.github.io/material/summer-seminar2021_5.pdf)
+
+## Verified
+- [https://atcoder.jp/contests/abc423/tasks/abc423_f](https://atcoder.jp/contests/abc423/tasks/abc423_f) ([submission](https://atcoder.jp/contests/abc423/submissions/77686757))
