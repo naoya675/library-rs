@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-zeta-mobius = { path = "../zeta-mobius" }
+zeta-mobius = { path = "../../math/zeta-mobius" }

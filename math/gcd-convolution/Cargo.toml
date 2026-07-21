@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-divisor-zeta-mobius = { path = "../divisor-zeta-mobius" }
+divisor-zeta-mobius = { path = "../../math/divisor-zeta-mobius" }

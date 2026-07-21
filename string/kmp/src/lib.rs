@@ -1,3 +1,40 @@
+pub struct Kmp<T> {
+    pattern: Vec<T>,
+    failure: Vec<usize>,
+}
+
+impl<T: Copy + PartialEq> Kmp<T> {
+    pub fn new(pattern: &[T]) -> Self {
+        Self {
+            pattern: pattern.to_vec(),
+            failure: kmp_table(pattern),
+        }
+    }
+
+    pub fn pattern_matching(&self, target: &[T]) -> Vec<usize> {
+        let m = self.pattern.len();
+        let mut j = 0;
+        let mut res = vec![];
+        for i in 0..target.len() {
+            while j > 0 && target[i] != self.pattern[j] {
+                j = self.failure[j - 1];
+            }
+            if target[i] == self.pattern[j] {
+                j += 1;
+            }
+            if j == m {
+                res.push(i + 1 - m);
+                j = self.failure[j - 1];
+            }
+        }
+        res
+    }
+
+    pub fn failure(&self) -> &[usize] {
+        &self.failure
+    }
+}
+
 pub fn kmp_table<T: Copy + PartialEq>(pattern: &[T]) -> Vec<usize> {
     if pattern.len() == 0 {
         return vec![];

@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-succinct-indexable-dictionary = { path = "../succinct-indexable-dictionary" }
+succinct-indexable-dictionary = { path = "../../data-structure/succinct-indexable-dictionary" }
