@@ -1,12 +1,14 @@
 {%- for top in page.data.top -%}
 <h2>{{ top.type }}</h2>
 
-{%- comment -%} Pre-pass: collect all groups (path excluding last two segments {libname}/src/). {%- endcomment -%}
+{%- comment -%} Pre-pass: the key of a category is its path without the trailing "src/", so that keys sort by library name ("treap" precedes "treap-map", while "treap/src/" does not). The group is the key without its last segment. {%- endcomment -%}
 {%- assign group_names = "" -%}
+{%- assign key_names = "" -%}
 {%- for category in top.categories -%}
-    {%- assign parts = category.name | split: "/" -%}
+    {%- assign key = category.name | remove: "/src/" -%}
+    {%- assign parts = key | split: "/" -%}
     {%- assign parts_size = parts | size -%}
-    {%- assign limit = parts_size | minus: 2 -%}
+    {%- assign limit = parts_size | minus: 1 -%}
     {%- assign group = "" -%}
     {%- for part in parts -%}
         {%- assign idx = forloop.index0 -%}
@@ -19,45 +21,40 @@
         {%- endif -%}
     {%- endfor -%}
     {%- assign group_names = group_names | append: group | append: "|" -%}
+    {%- assign key_names = key_names | append: key | append: "|" -%}
 {%- endfor -%}
 {%- assign group_list = group_names | split: "|" | uniq | sort -%}
+{%- assign key_list = key_names | split: "|" | uniq | sort -%}
 
 {%- for current_group in group_list -%}
 {%- if current_group == "" -%}{%- continue -%}{%- endif -%}
 <h3>{{ current_group }}</h3>
 <ul>
-{%- for category in top.categories -%}
-    {%- assign parts = category.name | split: "/" -%}
-    {%- assign parts_size = parts | size -%}
-    {%- assign limit = parts_size | minus: 2 -%}
-    {%- assign group = "" -%}
-    {%- for part in parts -%}
-        {%- assign idx = forloop.index0 -%}
-        {%- if idx < limit -%}
-            {%- if group == "" -%}
-                {%- assign group = part -%}
-            {%- else -%}
-                {%- capture group -%}{{ group }}/{{ part }}{%- endcapture -%}
-            {%- endif -%}
+{%- capture prefix -%}{{ current_group }}/{%- endcapture -%}
+{%- for current_key in key_list -%}
+    {%- comment -%} Skip keys of other groups: what is left after the prefix must be a single library name. {%- endcomment -%}
+    {%- assign lib = current_key | remove_first: prefix -%}
+    {%- if lib contains "/" -%}{%- continue -%}{%- endif -%}
+
+    {%- for category in top.categories -%}
+        {%- assign key = category.name | remove: "/src/" -%}
+        {%- if key == current_key -%}
+            {%- for item in category.pages -%}
+                {%- if site.filename-index -%}
+                    {%- assign name = item.filename -%}
+                {%- else -%}
+                    {%- assign name = item.path -%}
+                {%- endif -%}
+
+                {%- if item.title -%}
+                    {%- capture link_title -%}{{item.title | xml_escape }} <small>({{ name | xml_escape }})</small>{%- endcapture -%}
+                {%- else -%}
+                    {%- capture link_title -%}{{name | xml_escape }}{%- endcapture -%}
+                {%- endif -%}
+            <li><a href="{{ item.path | relative_url }}">{{ site.icons[item.icon] }} {{ link_title | xml_escape }}</a></li>
+            {%- endfor -%}
         {%- endif -%}
     {%- endfor -%}
-
-    {%- if group == current_group -%}
-        {%- for item in category.pages -%}
-            {%- if site.filename-index -%}
-                {%- assign name = item.filename -%}
-            {%- else -%}
-                {%- assign name = item.path -%}
-            {%- endif -%}
-
-            {%- if item.title -%}
-                {%- capture link_title -%}{{item.title | xml_escape }} <small>({{ name | xml_escape }})</small>{%- endcapture -%}
-            {%- else -%}
-                {%- capture link_title -%}{{name | xml_escape }}{%- endcapture -%}
-            {%- endif -%}
-        <li><a href="{{ item.path | relative_url }}">{{ site.icons[item.icon] }} {{ link_title | xml_escape }}</a></li>
-        {%- endfor -%}
-    {%- endif -%}
 {%- endfor -%}
 </ul>
 {%- endfor -%}
