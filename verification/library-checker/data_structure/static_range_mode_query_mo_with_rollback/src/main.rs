@@ -1,7 +1,5 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/static_range_mode_query
 
-use std::cell::{Cell, RefCell};
-
 use proconio::input;
 
 use lower_bound::LowerBound;
@@ -18,54 +16,55 @@ fn main() {
     sorted.sort();
     sorted.dedup();
     let a: Vec<usize> = a.iter().map(|v| sorted.lower_bound(v)).collect();
-
     let mut mo = MoWithRollback::new(n, q);
     for &(l, r) in &lr {
         mo.add_query(l, r);
     }
-    let cnt = RefCell::new(vec![0; a.len()]);
-    let best_val = Cell::new(0);
-    let best_val_snap = Cell::new(0);
-    let best_cnt = Cell::new(0);
-    let best_cnt_snap = Cell::new(0);
-    let history_snap = Cell::new(0);
-    let history: RefCell<Vec<usize>> = RefCell::new(vec![]);
+
+    struct State {
+        cnt: Vec<usize>,
+        best: (usize, usize),
+        best_snap: (usize, usize),
+        history: Vec<usize>,
+        history_snap: usize,
+    }
+
+    let mut state = State {
+        cnt: vec![0; sorted.len()],
+        best: (0, 0),
+        best_snap: (0, 0),
+        history: vec![],
+        history_snap: 0,
+    };
     let mut res = vec![(0, 0); q];
     mo.run_queries(
-        |i| {
+        &mut state,
+        |st, i| {
             let c = a[i];
-            let mut cnt = cnt.borrow_mut();
-            cnt[c] += 1;
-            if cnt[c] > best_cnt.get() {
-                best_val.set(sorted[c]);
-                best_cnt.set(cnt[c]);
+            st.cnt[c] += 1;
+            if st.cnt[c] > st.best.1 {
+                st.best = (sorted[c], st.cnt[c]);
             }
-            history.borrow_mut().push(c);
+            st.history.push(c);
         },
-        || {
-            cnt.borrow_mut().fill(0);
-            best_val.set(0);
-            best_cnt.set(0);
-            history.borrow_mut().clear();
+        |st| {
+            st.cnt.fill(0);
+            st.best = (0, 0);
+            st.history.clear();
         },
-        || {
-            best_val_snap.set(best_val.get());
-            best_cnt_snap.set(best_cnt.get());
-            history_snap.set(history.borrow().len());
+        |st| {
+            st.best_snap = st.best;
+            st.history_snap = st.history.len();
         },
-        || {
-            let target = history_snap.get();
-            let mut h = history.borrow_mut();
-            let mut cnt = cnt.borrow_mut();
-            while h.len() > target {
-                let c = h.pop().unwrap();
-                cnt[c] -= 1;
+        |st| {
+            while st.history.len() > st.history_snap {
+                let c = st.history.pop().unwrap();
+                st.cnt[c] -= 1;
             }
-            best_val.set(best_val_snap.get());
-            best_cnt.set(best_cnt_snap.get());
+            st.best = st.best_snap;
         },
-        |qid| {
-            res[qid] = (best_val.get(), best_cnt.get());
+        |st, qid| {
+            res[qid] = st.best;
         },
     );
 

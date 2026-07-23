@@ -10,4 +10,4 @@ documentation_of: //data-structure/mo-with-rollback/src/lib.rs
 <!-- - [https://ei1333.github.io/library/other/mo-rollback.hpp](https://ei1333.github.io/library/other/mo-rollback.hpp) -->
 
 ## Verified
-- [https://codeforces.com/gym/100513/problem/A](https://codeforces.com/gym/100513/problem/A) ([submission](https://codeforces.com/gym/100513/submission/381556865))
+- [https://codeforces.com/gym/100513/problem/A](https://codeforces.com/gym/100513/problem/A) ([submission](https://codeforces.com/gym/100513/submission/384731835))

@@ -14,5 +14,5 @@ documentation_of: //data-structure/mo/src/lib.rs
 <!--- [https://ei1333.github.io/library/other/mo.hpp](https://ei1333.github.io/library/other/mo.hpp)-->
 
 ## Verified
-- [https://atcoder.jp/contests/abc174/tasks/abc174_f](https://atcoder.jp/contests/abc174/tasks/abc174_f) ([submission](https://atcoder.jp/contests/abc174/submissions/75111028))
-- [https://atcoder.jp/contests/abc293/tasks/abc293_g](https://atcoder.jp/contests/abc293/tasks/abc293_g) ([submission](https://atcoder.jp/contests/abc293/submissions/75111030))
+- [https://atcoder.jp/contests/abc174/tasks/abc174_f](https://atcoder.jp/contests/abc174/tasks/abc174_f) ([submission](https://atcoder.jp/contests/abc174/submissions/77935710))
+- [https://atcoder.jp/contests/abc293/tasks/abc293_g](https://atcoder.jp/contests/abc293/tasks/abc293_g) ([submission](https://atcoder.jp/contests/abc293/submissions/77935712))

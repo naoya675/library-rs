@@ -1,7 +1,5 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/static_range_count_distinct
 
-use std::cell::{Cell, RefCell};
-
 use proconio::input;
 
 use lower_bound::LowerBound;
@@ -27,24 +25,32 @@ fn main() {
         }
     }
 
-    let freq = RefCell::new(vec![0; x.len()]);
-    let cnt = Cell::new(0);
+    struct State {
+        freq: Vec<usize>,
+        cnt: usize,
+    }
+
+    let mut state = State {
+        freq: vec![0; x.len()],
+        cnt: 0,
+    };
     let mut res = vec![0; q];
     mo.run_queries_simple(
-        |i| {
-            if freq.borrow()[a[i]] == 0 {
-                cnt.set(cnt.get() + 1);
+        &mut state,
+        |state, i| {
+            if state.freq[a[i]] == 0 {
+                state.cnt += 1;
             }
-            freq.borrow_mut()[a[i]] += 1;
+            state.freq[a[i]] += 1;
         },
-        |i| {
-            freq.borrow_mut()[a[i]] -= 1;
-            if freq.borrow()[a[i]] == 0 {
-                cnt.set(cnt.get() - 1);
+        |state, i| {
+            state.freq[a[i]] -= 1;
+            if state.freq[a[i]] == 0 {
+                state.cnt -= 1;
             }
         },
-        |idx| {
-            res[qid[idx]] = cnt.get();
+        |state, idx| {
+            res[qid[idx]] = state.cnt;
         },
     );
 

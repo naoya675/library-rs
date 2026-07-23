@@ -16,13 +16,13 @@ impl Mo {
         self.lr.push((l, r));
     }
 
-    pub fn run_queries<AL, AR, EL, ER, Q>(&self, mut add_left: AL, mut add_right: AR, mut erase_left: EL, mut erase_right: ER, mut query: Q)
+    pub fn run_queries<S, AL, AR, EL, ER, Q>(&self, state: &mut S, mut add_left: AL, mut add_right: AR, mut erase_left: EL, mut erase_right: ER, mut query: Q)
     where
-        AL: FnMut(usize),
-        AR: FnMut(usize),
-        EL: FnMut(usize),
-        ER: FnMut(usize),
-        Q: FnMut(usize),
+        AL: FnMut(&mut S, usize),
+        AR: FnMut(&mut S, usize),
+        EL: FnMut(&mut S, usize),
+        ER: FnMut(&mut S, usize),
+        Q: FnMut(&mut S, usize),
     {
         let ord = self.sort_queries();
         let mut l = 0;
@@ -30,29 +30,29 @@ impl Mo {
         for &idx in &ord {
             while l > self.lr[idx].0 {
                 l -= 1;
-                add_left(l);
+                add_left(state, l);
             }
             while r < self.lr[idx].1 {
-                add_right(r);
+                add_right(state, r);
                 r += 1;
             }
             while l < self.lr[idx].0 {
-                erase_left(l);
+                erase_left(state, l);
                 l += 1;
             }
             while r > self.lr[idx].1 {
                 r -= 1;
-                erase_right(r);
+                erase_right(state, r);
             }
-            query(idx);
+            query(state, idx);
         }
     }
 
-    pub fn run_queries_simple<A, E, Q>(&self, mut add: A, mut erase: E, mut query: Q)
+    pub fn run_queries_simple<S, A, E, Q>(&self, state: &mut S, mut add: A, mut erase: E, mut query: Q)
     where
-        A: FnMut(usize),
-        E: FnMut(usize),
-        Q: FnMut(usize),
+        A: FnMut(&mut S, usize),
+        E: FnMut(&mut S, usize),
+        Q: FnMut(&mut S, usize),
     {
         let ord = self.sort_queries();
         let mut l = 0;
@@ -60,21 +60,21 @@ impl Mo {
         for &idx in &ord {
             while l > self.lr[idx].0 {
                 l -= 1;
-                add(l);
+                add(state, l);
             }
             while r < self.lr[idx].1 {
-                add(r);
+                add(state, r);
                 r += 1;
             }
             while l < self.lr[idx].0 {
-                erase(l);
+                erase(state, l);
                 l += 1;
             }
             while r > self.lr[idx].1 {
                 r -= 1;
-                erase(r);
+                erase(state, r);
             }
-            query(idx);
+            query(state, idx);
         }
     }
 

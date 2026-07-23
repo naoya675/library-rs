@@ -16,26 +16,26 @@ impl MoWithRollback {
         self.lr.push((l, r));
     }
 
-    pub fn run_queries<A, R, SN, RB, Q>(&self, mut add: A, mut reset: R, mut snapshot: SN, mut rollback: RB, mut query: Q)
+    pub fn run_queries<S, A, R, SS, RB, Q>(&self, state: &mut S, mut add: A, mut reset: R, mut snapshot: SS, mut rollback: RB, mut query: Q)
     where
-        A: FnMut(usize),
-        R: FnMut(),
-        SN: FnMut(),
-        RB: FnMut(),
-        Q: FnMut(usize),
+        A: FnMut(&mut S, usize),
+        R: FnMut(&mut S),
+        SS: FnMut(&mut S),
+        RB: FnMut(&mut S),
+        Q: FnMut(&mut S, usize),
     {
         let w = self.w;
         let ord = self.sort_queries();
-        reset();
+        reset(state);
         for &idx in &ord {
             let (l, r) = self.lr[idx];
             if r - l < w {
-                snapshot();
+                snapshot(state);
                 for i in l..r {
-                    add(i);
+                    add(state, i);
                 }
-                query(idx);
-                rollback();
+                query(state, idx);
+                rollback(state);
             }
         }
         let mut nr = 0;
@@ -47,20 +47,20 @@ impl MoWithRollback {
             }
             let block = l / w;
             if last_block != Some(block) {
-                reset();
+                reset(state);
                 last_block = Some(block);
                 nr = (block + 1) * w;
             }
             while nr < r {
-                add(nr);
+                add(state, nr);
                 nr += 1;
             }
-            snapshot();
+            snapshot(state);
             for j in (l..(block + 1) * w).rev() {
-                add(j);
+                add(state, j);
             }
-            query(idx);
-            rollback();
+            query(state, idx);
+            rollback(state);
         }
     }
 

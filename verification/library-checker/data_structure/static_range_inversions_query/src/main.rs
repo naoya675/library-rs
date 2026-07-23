@@ -1,7 +1,5 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/static_range_inversions_query
 
-use std::cell::{Cell, RefCell};
-
 use proconio::input;
 
 use fenwick_tree::FenwickTree;
@@ -24,30 +22,39 @@ fn main() {
         mo.add_query(l, r);
     }
 
-    let ft = RefCell::new(FenwickTree::<i64>::new(x.len()));
-    let inv = Cell::new(0);
+    struct State {
+        ft: FenwickTree<i64>,
+        inv: i64, // number of inversions
+    }
+
+    let mut state = State {
+        ft: FenwickTree::new(x.len()),
+        inv: 0,
+    };
     let mut res = vec![0; q];
     mo.run_queries(
-        |i| {
-            inv.set(inv.get() + ft.borrow().sum(0, a[i]));
-            ft.borrow_mut().add(a[i], 1);
+        &mut state,
+        |state, i| {
+            state.inv += state.ft.sum(0, a[i]);
+            state.ft.add(a[i], 1);
         },
-        |i| {
-            inv.set(inv.get() + ft.borrow().sum(a[i] + 1, x.len()));
-            ft.borrow_mut().add(a[i], 1);
+        |state, i| {
+            state.inv += state.ft.sum(a[i] + 1, x.len());
+            state.ft.add(a[i], 1);
         },
-        |i| {
-            ft.borrow_mut().add(a[i], -1);
-            inv.set(inv.get() - ft.borrow().sum(0, a[i]));
+        |state, i| {
+            state.ft.add(a[i], -1);
+            state.inv -= state.ft.sum(0, a[i]);
         },
-        |i| {
-            ft.borrow_mut().add(a[i], -1);
-            inv.set(inv.get() - ft.borrow().sum(a[i] + 1, x.len()));
+        |state, i| {
+            state.ft.add(a[i], -1);
+            state.inv -= state.ft.sum(a[i] + 1, x.len());
         },
-        |idx| {
-            res[idx] = inv.get();
+        |state, idx| {
+            res[idx] = state.inv;
         },
     );
+
     for i in 0..q {
         println!("{}", res[i]);
     }
