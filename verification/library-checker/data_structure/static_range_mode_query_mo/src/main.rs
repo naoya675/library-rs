@@ -42,7 +42,7 @@ fn main() {
             if st.cnt[c] > 0 {
                 st.cnt_vec[st.cnt[c]].remove(&c);
             }
-            st.cnt[c] = st.cnt[c] + 1;
+            st.cnt[c] += 1;
             st.cnt_vec[st.cnt[c]].insert(c);
             if st.best_cnt < st.cnt[c] {
                 st.best_cnt = st.cnt[c];
@@ -55,7 +55,7 @@ fn main() {
             if st.best_cnt == st.cnt[c] && st.cnt_vec[st.cnt[c]].is_empty() {
                 st.best_cnt = st.cnt[c] - 1;
             }
-            st.cnt[c] = st.cnt[c] - 1;
+            st.cnt[c] -= 1;
             if st.cnt[c] > 0 {
                 st.cnt_vec[st.cnt[c]].insert(c);
             }

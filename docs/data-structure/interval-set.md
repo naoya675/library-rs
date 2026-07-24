@@ -118,13 +118,16 @@ Returns the minimum excludant starting from $p$: the smallest value $\geq p$ tha
 **Complexity**
 - $O(\log n)$
 
-## inner_update
+## update_inner
 
 ```rust
-fn inner_update<F, G>(&mut self, l: T, r: T, val: VAL, add: F, del: G)
+fn update_inner<S, F, G>(&mut self, l: T, r: T, val: VAL, state: &mut S, add: F, del: G)
 ```
 
-Updates the range $[l, r)$ to value `val`. Calls `del(l, r, &val)` for each removed interval and `add(l, r, &val)` for each added interval. `add` and `del` must be inverse operations of each other.
+Updates the range $[l, r)$ to value `val`.
+Calls `del(state, l, r, &val)` for each removed interval and `add(state, l, r, &val)` for each added interval.
+`add` and `del` must be inverse operations of each other.
+`state` is passed to both callbacks so that they can share mutable data without interior mutability.
 
 **Constraints**
 - $l \leq r$
@@ -146,10 +149,10 @@ Updates the range $[l, r)$ to value `val` without callbacks.
 **Complexity**
 - $O(k \log n)$
 
-## inner_insert
+## insert_inner
 
 ```rust
-fn inner_insert<F, G>(&mut self, l: T, r: T, add: F, del: G)
+fn insert_inner<S, F, G>(&mut self, l: T, r: T, state: &mut S, add: F, del: G)
 ```
 
 Inserts the range $[l, r)$ with the `identity` value, with add/del callbacks.
@@ -174,13 +177,15 @@ Inserts the range $[l, r)$ with the `identity` value.
 **Complexity**
 - $O(k \log n)$
 
-## inner_erase
+## erase_inner
 
 ```rust
-fn inner_erase<F, G>(&mut self, l: T, r: T, add: F, del: G)
+fn erase_inner<S, F, G>(&mut self, l: T, r: T, state: &mut S, add: F, del: G)
 ```
 
-Erases all intervals in the range $[l, r)$, with add/del callbacks. `add` is called for remaining pieces after splitting, `del` for removed pieces. `add` and `del` must be inverse operations of each other.
+Erases all intervals in the range $[l, r)$, with add/del callbacks.
+`add` is called for remaining pieces after splitting, `del` for removed pieces.
+`add` and `del` must be inverse operations of each other.
 
 **Constraints**
 - $l \leq r$
@@ -221,7 +226,7 @@ Returns an iterator over all intervals as $(l, r,$ `val`$)$ tuples, sorted by $l
 <!--- [https://github.com/drken1215/algorithm/blob/master/DataStructure/intervals_management.cpp](https://github.com/drken1215/algorithm/blob/master/DataStructure/intervals_management.cpp)-->
 
 ## Verified
-<!--- [https://atcoder.jp/contests/abc255/tasks/abc255_h](https://atcoder.jp/contests/abc255/tasks/abc255_h) ([submission]())-->
-<!--- [https://atcoder.jp/contests/abc256/tasks/abc256_h](https://atcoder.jp/contests/abc256/tasks/abc256_h) ([submission]())-->
-- [https://atcoder.jp/contests/abc330/tasks/abc330_e](https://atcoder.jp/contests/abc330/tasks/abc330_e) ([submission](https://atcoder.jp/contests/abc330/submissions/75110998))
-- [https://atcoder.jp/contests/past202012-open/tasks/past202012_n](https://atcoder.jp/contests/past202012-open/tasks/past202012_n) ([submission](https://atcoder.jp/contests/past202012-open/submissions/75111004))
+- [https://atcoder.jp/contests/abc255/tasks/abc255_h](https://atcoder.jp/contests/abc255/tasks/abc255_h) ([submission](https://atcoder.jp/contests/abc255/submissions/77985941))
+- [https://atcoder.jp/contests/abc256/tasks/abc256_h](https://atcoder.jp/contests/abc256/tasks/abc256_h) ([submission](https://atcoder.jp/contests/abc256/submissions/77985942))
+- [https://atcoder.jp/contests/abc330/tasks/abc330_e](https://atcoder.jp/contests/abc330/tasks/abc330_e) ([submission](https://atcoder.jp/contests/abc330/submissions/77985950))
+- [https://atcoder.jp/contests/past202012-open/tasks/past202012_n](https://atcoder.jp/contests/past202012-open/tasks/past202012_n) ([submission](https://atcoder.jp/contests/past202012-open/submissions/77985959))

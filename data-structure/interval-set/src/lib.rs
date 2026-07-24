@@ -81,14 +81,14 @@ where
     }
 
     pub fn update(&mut self, l: T, r: T, val: VAL) {
-        self.update_inner(l, r, val, |_, _, _| {}, |_, _, _| {});
+        self.update_inner(l, r, val, &mut (), |_, _, _, _| {}, |_, _, _, _| {});
     }
 
     // update [l, r) with value val
-    pub fn update_inner<F, G>(&mut self, mut l: T, mut r: T, val: VAL, mut add: F, mut del: G)
+    pub fn update_inner<S, F, G>(&mut self, mut l: T, mut r: T, val: VAL, state: &mut S, mut add: F, mut del: G)
     where
-        F: FnMut(T, T, &VAL),
-        G: FnMut(T, T, &VAL),
+        F: FnMut(&mut S, T, T, &VAL),
+        G: FnMut(&mut S, T, T, &VAL),
     {
         assert!(l <= r);
         if l == r {
@@ -105,7 +105,7 @@ where
                         let nr = *nr;
                         let nval = nval.clone();
                         r = nr;
-                        del(key, nr, &nval);
+                        del(state, key, nr, &nval);
                         self.map.remove(&key);
                     }
                 }
@@ -114,17 +114,17 @@ where
             let (nr, nval) = self.map.remove(&key).unwrap();
             if nr <= r {
                 // fully contained in [l, r)
-                del(key, nr, &nval);
+                del(state, key, nr, &nval);
             } else {
                 if nval == val {
                     // extend r
                     r = nr;
-                    del(key, nr, &nval);
+                    del(state, key, nr, &nval);
                 } else {
                     // split, reinsert [r, nr)
-                    del(key, nr, &nval);
+                    del(state, key, nr, &nval);
                     self.map.insert(r, (nr, nval.clone()));
-                    add(r, nr, &nval);
+                    add(state, r, nr, &nval);
                 }
             }
         }
@@ -136,7 +136,7 @@ where
                 // adjacent on the left
                 if nval == val {
                     l = nl;
-                    del(nl, nr, &nval);
+                    del(state, nl, nr, &nval);
                     self.map.remove(&nl);
                 }
             } else if l < nr {
@@ -145,49 +145,49 @@ where
                     // merge
                     l = l.min(nl);
                     r = r.max(nr);
-                    del(nl, nr, &nval);
+                    del(state, nl, nr, &nval);
                     self.map.remove(&nl);
                 } else {
                     // split, reinsert right piece [r, nr)
                     if r < nr {
                         self.map.insert(r, (nr, nval.clone()));
-                        add(r, nr, &nval);
+                        add(state, r, nr, &nval);
                     }
-                    del(nl, nr, &nval);
+                    del(state, nl, nr, &nval);
                     self.map.remove(&nl);
                     // reinsert left piece [nl, l)
                     self.map.insert(nl, (l, nval.clone()));
-                    add(nl, l, &nval);
+                    add(state, nl, l, &nval);
                 }
             }
         }
 
         // insert the new interval [l, r)
         self.map.insert(l, (r, val.clone()));
-        add(l, r, &val);
+        add(state, l, r, &val);
     }
 
     pub fn insert(&mut self, l: T, r: T) {
-        self.update_inner(l, r, self.identity.clone(), |_, _, _| {}, |_, _, _| {});
+        self.update_inner(l, r, self.identity.clone(), &mut (), |_, _, _, _| {}, |_, _, _, _| {});
     }
 
-    pub fn insert_inner<F, G>(&mut self, l: T, r: T, add: F, del: G)
+    pub fn insert_inner<S, F, G>(&mut self, l: T, r: T, state: &mut S, add: F, del: G)
     where
-        F: FnMut(T, T, &VAL),
-        G: FnMut(T, T, &VAL),
+        F: FnMut(&mut S, T, T, &VAL),
+        G: FnMut(&mut S, T, T, &VAL),
     {
-        self.update_inner(l, r, self.identity.clone(), add, del);
+        self.update_inner(l, r, self.identity.clone(), state, add, del);
     }
 
     pub fn erase(&mut self, l: T, r: T) {
-        self.erase_inner(l, r, |_, _, _| {}, |_, _, _| {});
+        self.erase_inner(l, r, &mut (), |_, _, _, _| {}, |_, _, _, _| {});
     }
 
     // erase [l, r)
-    pub fn erase_inner<F, G>(&mut self, l: T, r: T, mut add: F, mut del: G)
+    pub fn erase_inner<S, F, G>(&mut self, l: T, r: T, state: &mut S, mut add: F, mut del: G)
     where
-        F: FnMut(T, T, &VAL),
-        G: FnMut(T, T, &VAL),
+        F: FnMut(&mut S, T, T, &VAL),
+        G: FnMut(&mut S, T, T, &VAL),
     {
         assert!(l <= r);
         if l == r {
@@ -200,12 +200,12 @@ where
             let (nr, nval) = self.map.remove(&key).unwrap();
             if nr <= r {
                 // fully contained in [l, r)
-                del(key, nr, &nval);
+                del(state, key, nr, &nval);
             } else {
                 // extends beyond r: split, reinsert [r, nr)
-                del(key, nr, &nval);
+                del(state, key, nr, &nval);
                 self.map.insert(r, (nr, nval.clone()));
-                add(r, nr, &nval);
+                add(state, r, nr, &nval);
             }
         }
 
@@ -216,13 +216,13 @@ where
                 // split, reinsert right piece [r, nr)
                 if r < nr {
                     self.map.insert(r, (nr, nval.clone()));
-                    add(r, nr, &nval);
+                    add(state, r, nr, &nval);
                 }
-                del(nl, nr, &nval);
+                del(state, nl, nr, &nval);
                 self.map.remove(&nl);
                 // reinsert left piece [nl, l)
                 self.map.insert(nl, (l, nval.clone()));
-                add(nl, l, &nval);
+                add(state, nl, l, &nval);
             }
         }
     }

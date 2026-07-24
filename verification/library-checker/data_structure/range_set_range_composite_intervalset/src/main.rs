@@ -1,7 +1,5 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_set_range_composite
 
-use std::cell::RefCell;
-
 use proconio::input;
 
 use interval_set::IntervalSet;
@@ -37,7 +35,7 @@ fn pow_affine(f: (Mint, Mint), mut n: u64) -> (Mint, Mint) {
 }
 
 struct State {
-    st: RefCell<SegmentTree<(Mint, Mint)>>,
+    st: SegmentTree<(Mint, Mint)>,
     set: IntervalSet<usize, ((Mint, Mint), u64)>,
     e: (Mint, Mint),
     time: u64,
@@ -47,7 +45,7 @@ impl State {
     fn new(n: usize) -> Self {
         let e = (Mint::new(1), Mint::new(0));
         Self {
-            st: RefCell::new(SegmentTree::new(n, op_affine, e)),
+            st: SegmentTree::new(n, op_affine, e),
             set: IntervalSet::new((e, 0)),
             e,
             time: 0,
@@ -56,15 +54,17 @@ impl State {
 
     fn apply(&mut self, l: usize, r: usize, val: (Mint, Mint)) {
         self.time += 1;
+        let e = self.e;
         self.set.update_inner(
             l,
             r,
             (val, self.time),
-            |a, b, v| {
-                self.st.borrow_mut().set(a, pow_affine(v.0, (b - a) as u64));
+            &mut self.st,
+            |st, a, b, v| {
+                st.set(a, pow_affine(v.0, (b - a) as u64));
             },
-            |a, _, _| {
-                self.st.borrow_mut().set(a, self.e);
+            |st, a, _, _| {
+                st.set(a, e);
             },
         );
     }
@@ -98,7 +98,7 @@ fn main() {
             Query1(l, r, x) => {
                 state.apply_split(l);
                 state.apply_split(r);
-                let (a, b) = state.st.borrow().prod(l, r);
+                let (a, b) = state.st.prod(l, r);
                 println!("{}", Mint::new(x) * a + b);
             }
         }
