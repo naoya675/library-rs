@@ -81,7 +81,8 @@ Returns the number of elements in the set that contains $x$.
 fn groups(&mut self) -> Vec<Vec<usize>>
 ```
 
-Divides the elements into sets and returns the list of them. Both of the orders of the sets and the elements are undefined.
+Divides the elements into sets and returns the list of them.
+Both of the orders of the sets and the elements are undefined.
 
 **Complexity**
 - $O(n)$

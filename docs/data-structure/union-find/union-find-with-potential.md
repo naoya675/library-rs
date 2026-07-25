@@ -97,7 +97,8 @@ Returns $a_y^{-1} \cdot a_x$. Requires $x$ and $y$ to be in the same set.
 fn groups(&mut self) -> Vec<Vec<usize>>
 ```
 
-Divides the elements into sets and returns the list of them. Both of the orders of the sets and the elements are undefined.
+Divides the elements into sets and returns the list of them.
+Both of the orders of the sets and the elements are undefined.
 
 **Complexity**
 - $O(n)$
