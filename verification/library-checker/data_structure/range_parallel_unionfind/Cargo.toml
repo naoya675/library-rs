@@ -1,0 +1,9 @@
+[package]
+name = "range_parallel_unionfind"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proconio = { version = "0.5.0", features = ["derive"] }
+modint = { path = "../../../../math/modint/modint" }
+range-parallel-union-find = { path = "../../../../data-structure/union-find/range-parallel-union-find" }
