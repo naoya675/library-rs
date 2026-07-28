@@ -3,7 +3,7 @@ title: Interval Set
 documentation_of: //data-structure/interval-set/src/lib.rs
 ---
 
-Manages a set of non-overlapping half-open intervals $[l, r)$ with associated values. Adjacent intervals with the same value are automatically merged. Supports update, insert, erase with optional add/del callbacks.
+Manages a set of non-overlapping half-open intervals $[l, r)$ with associated values. Adjacent intervals with the same value are automatically merged. Supports update, insert, remove with optional add/del callbacks.
 
 ## new
 
@@ -177,13 +177,13 @@ Inserts the range $[l, r)$ with the `identity` value.
 **Complexity**
 - $O(k \log n)$
 
-## erase_inner
+## remove_inner
 
 ```rust
-fn erase_inner<S, F, G>(&mut self, l: T, r: T, state: &mut S, add: F, del: G)
+fn remove_inner<S, F, G>(&mut self, l: T, r: T, state: &mut S, add: F, del: G)
 ```
 
-Erases all intervals in the range $[l, r)$, with add/del callbacks.
+Removes all intervals in the range $[l, r)$, with add/del callbacks.
 `add` is called for remaining pieces after splitting, `del` for removed pieces.
 `add` and `del` must be inverse operations of each other.
 
@@ -193,13 +193,13 @@ Erases all intervals in the range $[l, r)$, with add/del callbacks.
 **Complexity**
 - $O(k \log n)$
 
-## erase
+## remove
 
 ```rust
-fn erase(&mut self, l: T, r: T)
+fn remove(&mut self, l: T, r: T)
 ```
 
-Erases all intervals in the range $[l, r)$ without callbacks.
+Removes all intervals in the range $[l, r)$ without callbacks.
 
 **Constraints**
 - $l \leq r$

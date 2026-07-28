@@ -179,12 +179,12 @@ where
         self.update_inner(l, r, self.identity.clone(), state, add, del);
     }
 
-    pub fn erase(&mut self, l: T, r: T) {
-        self.erase_inner(l, r, &mut (), |_, _, _, _| {}, |_, _, _, _| {});
+    pub fn remove(&mut self, l: T, r: T) {
+        self.remove_inner(l, r, &mut (), |_, _, _, _| {}, |_, _, _, _| {});
     }
 
-    // erase [l, r)
-    pub fn erase_inner<S, F, G>(&mut self, l: T, r: T, state: &mut S, mut add: F, mut del: G)
+    // remove [l, r)
+    pub fn remove_inner<S, F, G>(&mut self, l: T, r: T, state: &mut S, mut add: F, mut del: G)
     where
         F: FnMut(&mut S, T, T, &VAL),
         G: FnMut(&mut S, T, T, &VAL),

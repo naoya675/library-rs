@@ -7,9 +7,6 @@ A treap whose nodes are ordered by their implicit position in the sequence (trac
 Supports positional insertion/removal, range product over a monoid, range action through lazy propagation, and range reversal in $O(\log n)$ expected time.
 The action is parameterized in the same style as a lazy segment tree by `op`, `e`, `mapping`, `composition`, and `id`.
 
-<details class="api-accordion" markdown="1">
-<summary>API Reference</summary>
-
 ## new
 
 ```rust
@@ -216,8 +213,6 @@ Returns the smallest $l$ such that $g$ applied to the product of $[l, r)$ return
 
 **Complexity**
 - $O(\log n)$ expected
-
-</details>
 
 ## Reference
 - [https://cp-algorithms.com/data_structures/treap.html](https://cp-algorithms.com/data_structures/treap.html)

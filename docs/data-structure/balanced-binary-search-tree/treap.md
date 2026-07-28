@@ -6,9 +6,6 @@ documentation_of: //data-structure/balanced-binary-search-tree/treap/src/lib.rs
 A randomized self-balancing binary search tree that maintains the BST property by key and a max-heap property by a random priority assigned to each node.
 Operates as an ordered set over a key type `T: Ord`, supporting predecessor/successor, $k$-th element, split/merge, and set operations in $O(\log n)$ expected time.
 
-<details class="api-accordion" markdown="1">
-<summary>API Reference</summary>
-
 ## new
 
 ```rust
@@ -251,8 +248,6 @@ Returns an iterator that visits the elements in ascending order.
 
 **Complexity**
 - $O(n)$ for full traversal
-
-</details>
 
 ## Reference
 - Guy E. Blelloch and Margaret Reid-Miller, ["Fast Set Operations Using Treaps"](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.pdf), SPAA 1998.
