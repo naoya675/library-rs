@@ -24,7 +24,6 @@ fn main() {
     for (i, &x) in a.iter().enumerate() {
         pos.entry(x).or_insert(Treap::new()).insert(i);
     }
-    let mut res = vec![];
 
     for &query in &queries {
         match query {
@@ -38,12 +37,8 @@ fn main() {
                     Some(t) => t.lower_bound(&r) - t.lower_bound(&l),
                     None => 0,
                 };
-                res.push(cnt);
+                println!("{}", cnt);
             }
         }
-    }
-
-    for &v in &res {
-        println!("{}", v);
     }
 }
