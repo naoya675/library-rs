@@ -1,0 +1,6 @@
+max_width = 160
+
+# imports_granularity = "Module"
+# group_imports = "StdExternalCrate"
+# reorder_imports = true
+# reorder_modules = true

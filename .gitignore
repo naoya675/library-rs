@@ -1,6 +1,5 @@
 target
 Cargo.lock
-rustfmt.toml
 
 verify.sh
 verify.json
