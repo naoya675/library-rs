@@ -118,6 +118,20 @@ Returns the minimum excludant starting from $p$: the smallest value $\geq p$ tha
 **Complexity**
 - $O(\log n)$
 
+## update
+
+```rust
+fn update(&mut self, l: T, r: T, val: VAL)
+```
+
+Updates the range $[l, r)$ to value `val` without callbacks.
+
+**Constraints**
+- $l \leq r$
+
+**Complexity**
+- $O(k \log n)$
+
 ## update_inner
 
 ```rust
@@ -135,13 +149,13 @@ Calls `del(state, l, r, &val)` for each removed interval and `add(state, l, r, &
 **Complexity**
 - $O(k \log n)$ where $k$ is the number of intervals affected
 
-## update
+## insert
 
 ```rust
-fn update(&mut self, l: T, r: T, val: VAL)
+fn insert(&mut self, l: T, r: T)
 ```
 
-Updates the range $[l, r)$ to value `val` without callbacks.
+Inserts the range $[l, r)$ with the `identity` value.
 
 **Constraints**
 - $l \leq r$
@@ -163,13 +177,13 @@ Inserts the range $[l, r)$ with the `identity` value, with add/del callbacks.
 **Complexity**
 - $O(k \log n)$
 
-## insert
+## remove
 
 ```rust
-fn insert(&mut self, l: T, r: T)
+fn remove(&mut self, l: T, r: T)
 ```
 
-Inserts the range $[l, r)$ with the `identity` value.
+Removes all intervals in the range $[l, r)$ without callbacks.
 
 **Constraints**
 - $l \leq r$
@@ -186,20 +200,6 @@ fn remove_inner<S, F, G>(&mut self, l: T, r: T, state: &mut S, add: F, del: G)
 Removes all intervals in the range $[l, r)$, with add/del callbacks.
 `add` is called for remaining pieces after splitting, `del` for removed pieces.
 `add` and `del` must be inverse operations of each other.
-
-**Constraints**
-- $l \leq r$
-
-**Complexity**
-- $O(k \log n)$
-
-## remove
-
-```rust
-fn remove(&mut self, l: T, r: T)
-```
-
-Removes all intervals in the range $[l, r)$ without callbacks.
 
 **Constraints**
 - $l \leq r$
