@@ -1,11 +1,11 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_E
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use fenwick_tree_abstract::FenwickTreeAbstract;
 use heavy_light_decomposition::HeavyLightDecomposition;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(v: usize, w: i64),
         1 => Query1(v: usize),
@@ -28,6 +28,8 @@ fn actual_main() {
         q: usize,
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let mut hld = HeavyLightDecomposition::new(n);
     for (i, c) in c.iter().enumerate() {
         for &c in c {
@@ -36,7 +38,7 @@ fn actual_main() {
         }
     }
     hld.init(0);
-    let mut ft = vec![FenwickTreeAbstract::<i64>::new(n + 1, |x, y| x + y, 0, |x| -x); 2];
+    let mut ft = vec![FenwickTreeAbstract::new(n + 1, |x, y| x + y, 0, |x| -x); 2];
 
     for query in queries {
         match query {
@@ -55,7 +57,7 @@ fn actual_main() {
                     let sum_r = ft[0].sum(0, r) + ft[1].sum(0, r) * r as i64;
                     res += sum_r - sum_l;
                 });
-                println!("{}", res);
+                output!(out, res);
             }
         }
     }

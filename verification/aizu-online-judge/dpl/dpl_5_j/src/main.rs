@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_J
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use modint::Modint;
 use partition_number::partition_number;
@@ -12,5 +12,7 @@ fn main() {
         n: usize,
         k: usize,
     }
-    println!("{}", partition_number::<Mint>(n, k)[n]);
+    let mut out = Output::new();
+
+    output!(out, partition_number::<Mint>(n, k)[n].value());
 }

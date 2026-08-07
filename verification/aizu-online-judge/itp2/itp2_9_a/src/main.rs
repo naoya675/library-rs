@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_9_A
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use treap::Treap;
 
@@ -11,15 +11,17 @@ fn main() {
         m: usize,
         b: [usize; m],
     }
+    let mut out = Output::new();
+
     let mut treap = Treap::new();
-    for &x in &a {
+    for x in a {
         treap.insert(x);
     }
-    for &x in &b {
+    for x in b {
         treap.insert(x);
     }
 
     for &v in treap.iter() {
-        println!("{}", v);
+        output!(out, v);
     }
 }

@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use dijkstra::dijkstra;
 
@@ -11,12 +11,20 @@ fn main() {
         r: usize,
         std: [(usize, usize, i64); e],
     }
+    let mut out = Output::new();
+
     let mut graph = vec![vec![]; v];
-    std.iter().for_each(|&(s, t, d)| graph[s].push((t, d)));
+    for (s, t, d) in std {
+        graph[s].push((t, d));
+    }
 
     let res = dijkstra(v, &graph, r);
 
-    for i in 0..v {
-        println!("{}", if res[i] != i64::MAX { res[i].to_string() } else { "INF".to_string() });
+    for &res in &res {
+        if res < i64::MAX {
+            output!(out, res);
+        } else {
+            output!(out, "INF");
+        }
     }
 }

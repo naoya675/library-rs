@@ -1,10 +1,12 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0157
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use longest_increasing_subsequence::longest_increasing_subsequence_2d;
 
 fn main() {
+    let mut out = Output::new();
+
     loop {
         input! {
             n: usize,
@@ -19,6 +21,6 @@ fn main() {
         }
         p.extend(q);
 
-        println!("{}", longest_increasing_subsequence_2d(&p, true).len());
+        output!(out, longest_increasing_subsequence_2d(&p, true).len());
     }
 }

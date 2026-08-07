@@ -1,10 +1,10 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use lazy_segment_tree::LazySegmentTree;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(s: usize, t: usize, x: i64),
         1 => Query1(s: usize, t: usize),
@@ -17,8 +17,10 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let init = vec![(0, 1); n];
-    let mut lst = LazySegmentTree::<(i64, i64), Option<i64>>::from_slice(
+    let mut lst = LazySegmentTree::from_slice(
         &init,
         |x, y| (x.0 + y.0, x.1 + y.1),
         (0, 0),
@@ -34,7 +36,7 @@ fn main() {
         match query {
             Query0(s, t, x) => lst.apply(s, t + 1, Some(x)),
             Query1(s, t) => {
-                println!("{}", lst.prod(s, t + 1).0);
+                output!(out, lst.prod(s, t + 1).0);
             }
         }
     }

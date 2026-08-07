@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use bellman_ford::bellman_ford;
 
@@ -11,13 +11,19 @@ fn main() {
         r: usize,
         std: [(usize, usize, i64); e],
     }
+    let mut out = Output::new();
+
     let (cycle, res) = bellman_ford(v, &std, r);
 
     if cycle {
-        println!("NEGATIVE CYCLE");
+        output!(out, "NEGATIVE CYCLE");
         return;
     }
-    for i in 0..v {
-        println!("{}", if res[i] != i64::MAX { res[i].to_string() } else { "INF".to_string() });
+    for &res in &res {
+        if res < i64::MAX {
+            output!(out, res);
+        } else {
+            output!(out, "INF");
+        }
     }
 }

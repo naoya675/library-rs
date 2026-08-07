@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_B
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use binomial::Binomial;
 use montgomery_modint_64::MontgomeryModint64;
@@ -12,7 +12,9 @@ fn main() {
         n: usize,
         k: usize,
     }
+    let mut out = Output::new();
+
     let mut bi = Binomial::<Mint>::new();
 
-    println!("{}", bi.perm(k, n));
+    output!(out, bi.perm(k, n).value());
 }

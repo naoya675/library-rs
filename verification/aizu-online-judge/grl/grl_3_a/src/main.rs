@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use low_link::LowLink;
 
@@ -10,14 +10,18 @@ fn main() {
         e: usize,
         st: [(usize, usize); e],
     }
+    let mut out = Output::new();
+
     let mut ll = LowLink::new(v);
-    st.iter().for_each(|&(s, t)| ll.add_edge(s, t));
+    for (s, t) in st {
+        ll.add_edge(s, t);
+    }
     ll.build();
 
-    let mut a = ll.articulation().iter().map(|&v| v).collect::<Vec<_>>();
-    a.sort();
+    let mut aps = ll.articulation().iter().map(|&v| v).collect::<Vec<_>>();
+    aps.sort();
 
-    for &v in &a {
-        println!("{}", v);
+    for v in aps {
+        output!(out, v);
     }
 }

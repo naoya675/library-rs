@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use wavelet_matrix::WaveletMatrix;
 
@@ -11,6 +11,8 @@ fn main() {
         q: usize,
         queries: [(usize, usize, i64); q],
     }
+    let mut out = Output::new();
+
     let offset = 1 << 20;
     let a = a.iter().map(|&a| (a + offset) as u64).collect::<Vec<_>>();
     let wm = WaveletMatrix::new(&a);
@@ -25,6 +27,6 @@ fn main() {
             (None, Some(n)) => n - d,
             (None, None) => unreachable!(),
         };
-        println!("{}", res);
+        output!(out, res);
     }
 }

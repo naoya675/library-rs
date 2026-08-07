@@ -1,15 +1,16 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A
 
-use proconio::input;
+use fast_io::{Output, input};
 
 use linear_sieve::LinearSieve;
 
 fn main() {
     input! {
-        n: usize,
+        mut n: usize,
     }
+    let mut out = Output::new();
+
     let sieve = LinearSieve::new((n as f64).sqrt() as usize + 1);
-    let mut n = n;
     let mut factors = vec![];
     for p in sieve.primes() {
         while n % p == 0 {
@@ -22,6 +23,7 @@ fn main() {
     }
 
     let n = factors.iter().product::<usize>();
-    let s = factors.iter().map(|p| p.to_string()).collect::<Vec<_>>();
-    println!("{}: {}", n, s.join(" "));
+    out.print(n);
+    out.print(": ");
+    out.println_iter(&factors, " ");
 }

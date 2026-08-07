@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_D
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use union_find::UnionFind;
 
@@ -12,12 +12,14 @@ fn main() {
         q: usize,
         queries: [(usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut uf = UnionFind::new(n);
-    for &(s, t) in &st {
+    for (s, t) in st {
         uf.merge(s, t);
     }
 
-    for &(s, t) in &queries {
-        println!("{}", if uf.same(s, t) { "yes" } else { "no" })
+    for (s, t) in queries {
+        output!(out, if uf.same(s, t) { "yes" } else { "no" });
     }
 }

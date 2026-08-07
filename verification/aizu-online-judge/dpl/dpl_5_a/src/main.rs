@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_A
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use modint::Modint;
 
@@ -11,5 +11,7 @@ fn main() {
         n: u64,
         k: u64,
     }
-    println!("{}", Mint::from(k).pow(n));
+    let mut out = Output::new();
+
+    output!(out, Mint::from(k).pow(n).value());
 }

@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-proconio = { version = "0.5.0", features = ["derive"] }
-fenwick-tree-abstract = { path = '../../../../data-structure/fenwick-tree-abstract' }
+fast-io = { path = "../../../../macro/fast-io" }
+fenwick-tree-abstract = { path = "../../../../data-structure/fenwick-tree-abstract" }
 heavy-light-decomposition = { path = "../../../../tree/heavy-light-decomposition" }
-query = { path = '../../../../macro/query' }

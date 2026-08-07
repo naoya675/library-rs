@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_D
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use longest_increasing_subsequence::longest_increasing_subsequence;
 
@@ -9,6 +9,7 @@ fn main() {
         n: usize,
         a: [usize; n],
     }
+    let mut out = Output::new();
 
-    println!("{}", longest_increasing_subsequence(&a, true).len());
+    output!(out, longest_increasing_subsequence(&a, true).len());
 }

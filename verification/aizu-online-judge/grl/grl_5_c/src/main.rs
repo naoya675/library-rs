@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use heavy_light_decomposition::HeavyLightDecomposition;
 
@@ -20,6 +20,8 @@ fn actual_main() {
         q: usize,
         uv: [(usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut hld = HeavyLightDecomposition::new(n);
     for (i, c) in c.iter().enumerate() {
         for &c in c {
@@ -29,7 +31,7 @@ fn actual_main() {
     }
     hld.init(0);
 
-    for &(u, v) in &uv {
-        println!("{}", hld.lca(u, v));
+    for (u, v) in uv {
+        output!(out, hld.lca(u, v));
     }
 }

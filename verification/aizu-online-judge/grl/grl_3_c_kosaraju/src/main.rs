@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use strongly_connected_components_kosaraju::StronglyConnectedComponents;
 use union_find::UnionFind;
@@ -13,8 +13,12 @@ fn main() {
         q: usize,
         uv: [(usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut scc = StronglyConnectedComponents::new(v);
-    st.iter().for_each(|&(s, t)| scc.add_edge(s, t));
+    for (s, t) in st {
+        scc.add_edge(s, t);
+    }
 
     let mut uf = UnionFind::new(v);
     let groups = scc.scc();
@@ -24,7 +28,7 @@ fn main() {
         }
     }
 
-    for &(u, v) in &uv {
-        println!("{}", if uf.same(u, v) { 1 } else { 0 });
+    for (u, v) in uv {
+        output!(out, if uf.same(u, v) { 1 } else { 0 });
     }
 }

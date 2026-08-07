@@ -1,15 +1,15 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_7_D
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use treap_map::TreapMap;
 
-query::define_query! {
+define_query! {
     Query {
-        0 => Query0(x: usize),
-        1 => Query1(x: usize),
-        2 => Query2(x: usize),
-        3 => Query3(l: usize, r: usize), // dump [l, r]
+        0 => Query0(x: i64),
+        1 => Query1(x: i64),
+        2 => Query2(x: i64),
+        3 => Query3(l: i64, r: i64), // dump [l, r]
     }
 }
 
@@ -18,7 +18,9 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut map = TreapMap::<usize, usize>::new();
+    let mut out = Output::new();
+
+    let mut map = TreapMap::new();
     let mut cnt = 0;
 
     for query in queries {
@@ -26,10 +28,10 @@ fn main() {
             Query0(x) => {
                 *map.entry(x).or_insert(0) += 1;
                 cnt += 1;
-                println!("{}", cnt);
+                output!(out, cnt);
             }
             Query1(x) => {
-                println!("{}", map.get(&x).copied().unwrap_or(0));
+                output!(out, map.get(&x).copied().unwrap_or(0));
             }
             Query2(x) => {
                 if let Some(c) = map.remove(&x) {
@@ -42,7 +44,7 @@ fn main() {
                 for k in lo..hi {
                     let (&key, &cnt) = map.kth(k);
                     for _ in 0..cnt {
-                        println!("{}", key);
+                        output!(out, key);
                     }
                 }
             }

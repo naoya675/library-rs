@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use modint::Modint;
 use stirling_number_second::stirling_number_second;
@@ -12,5 +12,7 @@ fn main() {
         n: usize,
         k: usize,
     }
-    println!("{}", stirling_number_second::<Mint>(n, k));
+    let mut out = Output::new();
+
+    output!(out, stirling_number_second::<Mint>(n, k).value());
 }

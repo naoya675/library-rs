@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_6_D
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use lower_bound::LowerBound;
 use upper_bound::UpperBound;
@@ -8,11 +8,13 @@ use upper_bound::UpperBound;
 fn main() {
     input! {
         n: usize,
-        a: [usize; n],
+        a: [i64; n],
         q: usize,
-        k: [usize; q],
+        k: [i64; q],
     }
-    for &k in &k {
-        println!("{} {}", a.lower_bound(&k), a.upper_bound(&k));
+    let mut out = Output::new();
+
+    for k in k {
+        output!(out, a.lower_bound(&k), a.upper_bound(&k));
     }
 }

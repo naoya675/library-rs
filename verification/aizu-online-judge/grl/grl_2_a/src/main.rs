@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use kruskal::minimum_spanning_tree;
 
@@ -10,5 +10,7 @@ fn main() {
         e: usize,
         mut stw: [(usize, usize, i64); e],
     }
-    println!("{}", minimum_spanning_tree(v, &mut stw).0);
+    let mut out = Output::new();
+
+    output!(out, minimum_spanning_tree(v, &mut stw).0);
 }

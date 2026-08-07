@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use maxflow::Maxflow;
 
@@ -10,10 +10,12 @@ fn main() {
         e: usize,
         uvc: [(usize, usize, i64); e],
     }
-    let mut mf = Maxflow::new(v);
-    uvc.iter().for_each(|&(u, v, c)| {
-        mf.add_edge(u, v, c);
-    });
+    let mut out = Output::new();
 
-    println!("{}", mf.flow(0, v - 1));
+    let mut mf = Maxflow::new(v);
+    for (u, v, c) in uvc {
+        mf.add_edge(u, v, c);
+    }
+
+    output!(out, mf.flow(0, v - 1));
 }

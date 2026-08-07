@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-proconio = { version = "0.5.0", features = ["derive"] }
 bell-number = { path = "../../../../math/bell-number" }
+fast-io = { path = "../../../../macro/fast-io" }
 modint = { path = "../../../../math/modint/modint" }

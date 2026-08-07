@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D
 
-use proconio::{input, marker::Chars};
+use fast_io::{Output, input, output};
 
 use aho_corasick::AhoCorasick;
 
@@ -10,6 +10,8 @@ fn main() {
         q: usize,
         p: [Chars; q],
     }
+    let mut out = Output::new();
+
     let mut ac = AhoCorasick::new(75, '0'); // '0'-'9', 'A'-'Z', 'a'-'z'
     for i in 0..q {
         ac.insert(&p[i]);
@@ -18,7 +20,7 @@ fn main() {
 
     let res = ac.matches(&t);
 
-    for i in 0..q {
-        println!("{}", if res[i] == 0 { 0 } else { 1 });
+    for &res in &res {
+        output!(out, if res == 0 { 0 } else { 1 });
     }
 }

@@ -1,8 +1,7 @@
 // verification-helper: IGNORE https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
-use itertools::Join;
 use topological_sort::topological_sort;
 
 fn main() {
@@ -11,8 +10,14 @@ fn main() {
         e: usize,
         st: [(usize, usize); e],
     }
-    let mut graph = vec![vec![]; v];
-    st.iter().for_each(|&(s, t)| graph[s].push(t));
+    let mut out = Output::new();
 
-    println!("{}", topological_sort(v, &graph).unwrap().iter().join("\n"));
+    let mut graph = vec![vec![]; v];
+    for (s, t) in st {
+        graph[s].push(t);
+    }
+
+    for v in topological_sort(v, &graph).unwrap() {
+        output!(out, v);
+    }
 }

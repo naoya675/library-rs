@@ -1,11 +1,13 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_K
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 fn main() {
     input! {
         n: usize,
         k: usize,
     }
-    println!("{}", if n <= k { 1 } else { 0 });
+    let mut out = Output::new();
+
+    output!(out, if n <= k { 1 } else { 0 });
 }

@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use fenwick_tree::FenwickTree;
 use lower_bound::LowerBound;
@@ -10,6 +10,8 @@ fn main() {
         n: usize,
         a: [i64; n],
     }
+    let mut out = Output::new();
+
     let mut x = a.clone();
     x.sort();
     let mut ft = FenwickTree::<i64>::new(n);
@@ -21,5 +23,5 @@ fn main() {
         ft.add(p, 1);
     }
 
-    println!("{}", res);
+    output!(out, res);
 }

@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use bell_number::bell_number;
 use modint::Modint;
@@ -12,5 +12,7 @@ fn main() {
         n: usize,
         k: usize,
     }
-    println!("{}", bell_number::<Mint>(n, k));
+    let mut out = Output::new();
+
+    output!(out, bell_number::<Mint>(n, k).value());
 }

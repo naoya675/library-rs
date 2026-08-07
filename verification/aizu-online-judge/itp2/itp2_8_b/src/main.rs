@@ -1,31 +1,37 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_8_B
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use treap_map::TreapMap;
+
+define_query! {
+    Query {
+        0 => Query0(key: String, x: i64),
+        1 => Query1(key: String),
+        2 => Query2(key: String),
+    }
+}
 
 fn main() {
     input! {
         q: usize,
+        queries: [Query; q],
     }
-    let mut map = TreapMap::<String, i64>::new();
+    let mut out = Output::new();
 
-    for _ in 0..q {
-        input! { t: usize }
-        match t {
-            0 => {
-                input! { key: String, x: i64 }
+    let mut map = TreapMap::new();
+
+    for query in queries {
+        match query {
+            Query0(key, x) => {
                 map.insert(key, x);
             }
-            1 => {
-                input! { key: String }
-                println!("{}", map.get(&key).copied().unwrap_or(0));
+            Query1(key) => {
+                output!(out, map.get(&key).copied().unwrap_or(0));
             }
-            2 => {
-                input! { key: String }
+            Query2(key) => {
                 map.remove(&key);
             }
-            _ => unreachable!(),
         }
     }
 }

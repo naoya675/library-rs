@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_E
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use binomial::Binomial;
 use modint::Modint;
@@ -12,7 +12,9 @@ fn main() {
         n: usize,
         k: usize,
     }
+    let mut out = Output::new();
+
     let mut bi = Binomial::<Mint>::new();
 
-    println!("{}", bi.comb(k, n));
+    output!(out, bi.comb(k, n).value());
 }

@@ -2,11 +2,13 @@
 
 use std::collections::{HashMap, HashSet, VecDeque};
 
-use proconio::{input, marker::Chars};
+use fast_io::{Output, input, output};
 
 use ahu::labels;
 
 fn main() {
+    let mut out = Output::new();
+
     loop {
         input! {
             h1: usize,
@@ -23,11 +25,11 @@ fn main() {
         }
         let tree1 = p2tree(&p1, h1, w1);
         let tree2 = p2tree(&p2, h2, w2);
-        let mut canonical: HashMap<Vec<usize>, usize> = HashMap::new();
+        let mut canonical = HashMap::new();
         let l1 = labels(&tree1, 0, &mut canonical)[0];
         let l2 = labels(&tree2, 0, &mut canonical)[0];
 
-        println!("{}", if l1 == l2 { "yes" } else { "no" });
+        output!(out, if l1 == l2 { "yes" } else { "no" });
     }
 }
 

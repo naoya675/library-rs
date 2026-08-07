@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3022
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use block_cut_tree::BlockCutTree;
 
@@ -20,6 +20,8 @@ fn actual_main() {
         w: [usize; n],
         uv: [(usize, usize); m],
     }
+    let mut out = Output::new();
+
     let mut bct = BlockCutTree::new(n);
     for &(u, v) in &uv {
         bct.add_edge(u - 1, v - 1);
@@ -74,7 +76,7 @@ fn actual_main() {
 
     dfs(&mut env, 0, None);
 
-    for i in 0..n {
-        println!("{}", env.res[i]);
+    for &res in &env.res {
+        output!(out, res);
     }
 }

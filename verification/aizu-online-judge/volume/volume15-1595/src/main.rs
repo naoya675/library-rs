@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use rerooting::Rerooting;
 
@@ -18,15 +18,17 @@ fn actual_main() {
         n: usize,
         uv: [(usize, usize); n - 1],
     }
-    let mut g = Rerooting::<usize, usize, _, _, _, _>::new(n, |x, y| std::cmp::max(x, y), || 0, |_| 0, |x, _, _, w| x + w);
-    uv.iter().for_each(|&(u, v)| {
+    let mut out = Output::new();
+
+    let mut g = Rerooting::new(n, |x, y| std::cmp::max(x, y), || 0, |_| 0, |x, _, _, w| x + w);
+    for &(u, v) in &uv {
         g.add_edge(u - 1, v - 1, 1);
         g.add_edge(v - 1, u - 1, 1);
-    });
+    }
 
     let res = g.run();
 
-    for i in 0..n {
-        println!("{}", (n - 1) * 2 - res[i]);
+    for &res in &res {
+        output!(out, (n - 1) * 2 - res);
     }
 }
