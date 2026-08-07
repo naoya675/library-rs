@@ -20,7 +20,7 @@ fn main() {
 
     let res = ac.matches(&t);
 
-    for &res in &res {
+    for res in res {
         output!(out, if res == 0 { 0 } else { 1 });
     }
 }

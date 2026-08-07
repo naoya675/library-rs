@@ -17,7 +17,7 @@ fn main() {
     let a = a.iter().map(|&a| (a + offset) as u64).collect::<Vec<_>>();
     let wm = WaveletMatrix::new(&a);
 
-    for &(l, r, d) in &queries {
+    for (l, r, d) in queries {
         let d = (d + offset) as u64;
         let prev = wm.prev_value(l, r + 1, d + 1);
         let next = wm.next_value(l, r + 1, d);

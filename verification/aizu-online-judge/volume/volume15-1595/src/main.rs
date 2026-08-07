@@ -21,14 +21,14 @@ fn actual_main() {
     let mut out = Output::new();
 
     let mut g = Rerooting::new(n, |x, y| std::cmp::max(x, y), || 0, |_| 0, |x, _, _, w| x + w);
-    for &(u, v) in &uv {
+    for (u, v) in uv {
         g.add_edge(u - 1, v - 1, 1);
         g.add_edge(v - 1, u - 1, 1);
     }
 
     let res = g.run();
 
-    for &res in &res {
+    for res in res {
         output!(out, (n - 1) * 2 - res);
     }
 }

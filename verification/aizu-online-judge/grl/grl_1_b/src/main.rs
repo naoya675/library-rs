@@ -19,7 +19,7 @@ fn main() {
         output!(out, "NEGATIVE CYCLE");
         return;
     }
-    for &res in &res {
+    for res in res {
         if res < i64::MAX {
             output!(out, res);
         } else {

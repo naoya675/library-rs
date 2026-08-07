@@ -23,7 +23,7 @@ fn actual_main() {
     let mut out = Output::new();
 
     let mut bct = BlockCutTree::new(n);
-    for &(u, v) in &uv {
+    for (u, v) in uv {
         bct.add_edge(u - 1, v - 1);
     }
     bct.build();
@@ -76,7 +76,7 @@ fn actual_main() {
 
     dfs(&mut env, 0, None);
 
-    for &res in &env.res {
+    for res in env.res {
         output!(out, res);
     }
 }

@@ -20,7 +20,7 @@ fn main() {
 
     let res = dijkstra(v, &graph, r);
 
-    for &res in &res {
+    for res in res {
         if res < i64::MAX {
             output!(out, res);
         } else {

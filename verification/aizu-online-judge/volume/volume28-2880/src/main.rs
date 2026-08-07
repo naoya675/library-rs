@@ -25,7 +25,7 @@ fn main() {
 
     let mut set = IntervalSet::<usize, usize>::new(0);
     let mut res = vec![false; q];
-    for &(_, q, i, s, t) in &query {
+    for (_, q, i, s, t) in query {
         match q {
             0 => {
                 res[i] = set.same(s, t) || s >= t;
@@ -37,7 +37,7 @@ fn main() {
         }
     }
 
-    for &res in &res {
+    for res in res {
         output!(out, if res { "Yes" } else { "No" });
     }
 }
