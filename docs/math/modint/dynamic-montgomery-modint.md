@@ -7,11 +7,11 @@ documentation_of: //math/modint/dynamic-montgomery-modint/src/lib.rs
 
 ## Montgomery form
 
-Montgomery form の構造については [Montgomery Modint]({{ site.baseurl }}/math/montgomery-modint/src/lib.rs) を参照。
+Montgomery form の構造については [Montgomery Modint]({{ site.baseurl }}/math/modint/montgomery-modint/src/lib.rs) を参照。
 
 ## Montgomery reduction
 
-Montgomery reduction の構造については [Montgomery Modint]({{ site.baseurl }}/math/montgomery-modint/src/lib.rs) を参照。
+Montgomery reduction の構造については [Montgomery Modint]({{ site.baseurl }}/math/modint/montgomery-modint/src/lib.rs) を参照。
 
 ## Reference
 - [https://rsk0315.hatenablog.com/entry/2022/11/27/060616](https://rsk0315.hatenablog.com/entry/2022/11/27/060616)

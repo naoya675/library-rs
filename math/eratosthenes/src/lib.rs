@@ -21,7 +21,7 @@ pub fn eratosthenes(n: usize) -> Vec<usize> {
     let mut lpf = vec![1; n + 1];
     let mut i = 2;
     while i <= n {
-        if lpf[i] == 0 {
+        if lpf[i] == 1 {
             lpf[i] = i;
             if i <= n / i {
                 let mut j = i * i;

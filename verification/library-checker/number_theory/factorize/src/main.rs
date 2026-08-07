@@ -3,7 +3,7 @@
 use proconio::input;
 
 use itertools::Join;
-use pollard_rho::factorize;
+use pollard_rho::factors_dup;
 
 fn main() {
     input! {
@@ -11,7 +11,7 @@ fn main() {
         a: [u64; q],
     }
     for &a in &a {
-        let res = factorize(a);
+        let res = factors_dup(a);
         println!("{} {}", res.len(), res.iter().join(" "));
     }
 }

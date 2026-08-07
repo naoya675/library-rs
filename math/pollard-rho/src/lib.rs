@@ -4,14 +4,19 @@ use xorshift_64::XorShift64;
 
 type Mint = DynamicMontgomeryModint<DefaultId>;
 
-pub fn factorize(n: u64) -> Vec<u64> {
+pub fn factors_dup(n: u64) -> Vec<u64> {
     let mut res = vec![];
-    factorize_inner(n, &mut res);
+    factors_dup_inner(n, &mut res);
     res.sort();
     res
 }
 
-fn factorize_inner(n: u64, res: &mut Vec<u64>) {
+pub fn factors(n: u64) -> Vec<(u64, u32)> {
+    let dup = factors_dup(n);
+    dup.chunk_by(|a, b| a == b).map(|f| (f[0], f.len() as u32)).collect()
+}
+
+fn factors_dup_inner(n: u64, res: &mut Vec<u64>) {
     if n <= 1 {
         return;
     }
@@ -20,8 +25,8 @@ fn factorize_inner(n: u64, res: &mut Vec<u64>) {
         res.push(p);
         return;
     }
-    factorize_inner(p, res);
-    factorize_inner(n / p, res);
+    factors_dup_inner(p, res);
+    factors_dup_inner(n / p, res);
 }
 
 fn pollard_rho_floyd(n: u64) -> u64 {

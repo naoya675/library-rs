@@ -45,35 +45,21 @@ impl EratosthenesFactorization {
         if n < 2 { None } else { Some(self.lpf[n]) }
     }
 
-    pub fn factors_dup(&self, mut n: usize) -> Vec<usize> {
-        let mut res = vec![];
-        while n > 1 {
-            res.push(self.lpf[n]);
-            n /= self.lpf[n];
-        }
-        res
+    pub fn factors_dup(&self, n: usize) -> Vec<usize> {
+        self.factors_dup_iter(n).collect()
     }
 
-    pub fn factorize(&self, mut n: usize) -> Vec<(usize, u32)> {
-        let mut res = vec![];
-        while n > 1 {
-            res.push((self.lpf[n], self.lpf_e[n].1));
-            n /= self.lpf_e[n].0;
-        }
-        res
+    pub fn factors(&self, n: usize) -> Vec<(usize, u32)> {
+        self.factors_iter(n).collect()
     }
 
     pub fn euler_phi(&self, n: usize) -> usize {
-        let mut res = n;
-        for (p, _) in self.factorize(n) {
-            res = res / p * (p - 1);
-        }
-        res
+        self.factors_iter(n).map(|(p, e)| p.pow(e - 1) * (p - 1)).product()
     }
 
     pub fn mobius(&self, n: usize) -> i32 {
         let mut res = 1;
-        for (_, e) in self.factorize(n) {
+        for (_, e) in self.factors_iter(n) {
             if e >= 2 {
                 return 0;
             }
@@ -84,7 +70,7 @@ impl EratosthenesFactorization {
 
     pub fn divisors(&self, n: usize) -> Vec<usize> {
         let mut res = vec![1];
-        for (p, e) in self.factorize(n) {
+        for (p, e) in self.factors_iter(n) {
             let mut tmp = vec![];
             let mut pp = 1;
             for _ in 1..=e {
@@ -98,10 +84,22 @@ impl EratosthenesFactorization {
     }
 
     pub fn divisors_count(&self, n: usize) -> usize {
-        self.factorize(n).iter().map(|&(_, e)| e as usize + 1).product()
+        self.factors_iter(n).map(|(_, e)| e as usize + 1).product()
     }
 
     pub fn primes(&self) -> &[usize] {
         &self.primes
+    }
+
+    fn factors_dup_iter(&self, n: usize) -> impl Iterator<Item = usize> + '_ {
+        std::iter::successors(Some(n), move |&n| Some(n / self.lpf[n]))
+            .take_while(|&n| n > 1)
+            .map(move |n| self.lpf[n])
+    }
+
+    fn factors_iter(&self, n: usize) -> impl Iterator<Item = (usize, u32)> + '_ {
+        std::iter::successors(Some(n), move |&n| Some(n / self.lpf_e[n].0))
+            .take_while(|&n| n > 1)
+            .map(move |n| (self.lpf[n], self.lpf_e[n].1))
     }
 }

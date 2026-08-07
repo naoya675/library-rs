@@ -7,7 +7,7 @@ documentation_of: //math/modint/montgomery-modint-64/src/lib.rs
 
 ## Montgomery form
 
-Montgomery form の構造については [Montgomery Modint]({{ site.baseurl }}/math/montgomery-modint/src/lib.rs) を参照。
+Montgomery form の構造については [Montgomery Modint]({{ site.baseurl }}/math/modint/montgomery-modint/src/lib.rs) を参照。
 
 ## Montgomery reduction + 乗算 (Multiplication)
 
