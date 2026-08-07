@@ -1,13 +1,13 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/unionfind_with_potential_non_commutative_group
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use modint::Modint;
 use union_find_with_potential::UnionFindWithPotential;
 
 type Mint = Modint<998244353>;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(u: usize, v: usize, x: i64, y: i64, z: i64, w: i64),
         1 => Query1(u: usize, v: usize),
@@ -57,20 +57,22 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut uf = UnionFindWithPotential::<Matrix>::new(n, Matrix::mul, Matrix::identity(), Matrix::inv);
+    let mut out = Output::new();
+
+    let mut uf = UnionFindWithPotential::new(n, Matrix::mul, Matrix::identity(), Matrix::inv);
 
     for query in queries {
         match query {
             Query0(u, v, x, y, z, w) => {
                 let m = Matrix::new([[Mint::new(x), Mint::new(y)], [Mint::new(z), Mint::new(w)]]);
-                println!("{}", if uf.merge(u, v, m).is_some() { 1 } else { 0 });
+                output!(out, if uf.merge(u, v, m).is_some() { 1 } else { 0 });
             }
             Query1(u, v) => {
                 if uf.same(u, v) {
                     let m = uf.diff(u, v).mat;
-                    println!("{} {} {} {}", m[0][0], m[0][1], m[1][0], m[1][1]);
+                    output!(out, m[0][0].value(), m[0][1].value(), m[1][0].value(), m[1][1].value());
                 } else {
-                    println!("-1");
+                    output!(out, -1);
                 }
             }
         }

@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/bipartitematching
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use maxflow::Maxflow;
 
@@ -20,6 +20,8 @@ fn actual_main() {
         m: usize,
         ab: [(usize, usize); m],
     }
+    let mut out = Output::new();
+
     let mut mf = Maxflow::new(l + r + 2);
     let s = l + r;
     let t = l + r + 1;
@@ -31,11 +33,10 @@ fn actual_main() {
     }
     let eid = ab.iter().map(|&(a, b)| mf.add_edge(a, l + b, 1)).collect::<Vec<_>>();
 
-    println!("{}", mf.flow(s, t));
-    for i in 0..m {
-        if mf.get_edge(eid[i]).flow > 0 {
-            let (a, b) = ab[i];
-            println!("{} {}", a, b);
+    output!(out, mf.flow(s, t));
+    for (&eid, &(a, b)) in eid.iter().zip(&ab) {
+        if mf.get_edge(eid).flow > 0 {
+            output!(out, a, b);
         }
     }
 }

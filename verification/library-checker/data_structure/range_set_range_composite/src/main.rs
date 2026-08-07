@@ -1,13 +1,13 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_set_range_composite
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use lazy_segment_tree::LazySegmentTree;
 use modint::Modint;
 
 type Mint = Modint<998244353>;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(l: usize, r: usize, c: i64, d: i64),
         1 => Query1(l: usize, r: usize, x: i64),
@@ -40,8 +40,10 @@ fn main() {
         ab: [(i64, i64); n],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let ab = ab.iter().map(|&(a, b)| ((Mint::new(a), Mint::new(b)), 1)).collect::<Vec<_>>();
-    let mut lst = LazySegmentTree::<((Mint, Mint), u64), Option<(Mint, Mint)>>::from_slice(
+    let mut lst = LazySegmentTree::from_slice(
         &ab,
         |x, y| {
             let ((a1, b1), l1) = x;
@@ -64,7 +66,7 @@ fn main() {
             }
             Query1(l, r, x) => {
                 let ((a, b), _) = lst.prod(l, r);
-                println!("{}", Mint::new(x) * a + b);
+                output!(out, (Mint::new(x) * a + b).value());
             }
         }
     }

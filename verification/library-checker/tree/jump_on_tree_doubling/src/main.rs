@@ -2,7 +2,7 @@
 
 use std::collections::VecDeque;
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use doubling::Doubling;
 
@@ -13,8 +13,10 @@ fn main() {
         ab: [(usize, usize); n - 1],
         sti: [(usize, usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut graph = vec![vec![]; n];
-    for &(a, b) in &ab {
+    for (a, b) in ab {
         graph[a].push(b);
         graph[b].push(a);
     }
@@ -35,15 +37,15 @@ fn main() {
     db.doubling(&f, &vec![0; n]);
 
     let log = (n.next_power_of_two().ilog2() + 1) as usize;
-    for &(s, t, i) in &sti {
+    for (s, t, i) in sti {
         let l = lca(&db, &depth, log, s, t);
         let d = depth[s] + depth[t] - 2 * depth[l];
         if i > d {
-            println!("-1");
+            output!(out, -1);
         } else if i <= depth[s] - depth[l] {
-            println!("{}", db.kth(s, i).0);
+            output!(out, db.kth(s, i).0);
         } else {
-            println!("{}", db.kth(t, d - i).0);
+            output!(out, db.kth(t, d - i).0);
         }
     }
 }

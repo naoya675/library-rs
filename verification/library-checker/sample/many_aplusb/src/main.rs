@@ -10,8 +10,8 @@ fn main() {
 
     for _ in 0..t {
         input! {
-            a: u64,
-            b: u64,
+            a: i64,
+            b: i64,
         }
         output!(out, a + b);
     }

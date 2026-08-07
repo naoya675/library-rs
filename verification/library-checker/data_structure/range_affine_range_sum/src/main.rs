@@ -1,13 +1,13 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_affine_range_sum
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use lazy_segment_tree::LazySegmentTree;
 use modint::Modint;
 
 type Mint = Modint<998244353>;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(l: usize, r: usize, b: i64, c: i64),
         1 => Query1(l: usize, r: usize),
@@ -21,8 +21,10 @@ fn main() {
         a: [i64; n],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();
-    let mut lst = LazySegmentTree::<(Mint, Mint), (Mint, Mint)>::from_slice(
+    let mut lst = LazySegmentTree::from_slice(
         &a,
         |x, y| (x.0 + y.0, x.1 + y.1),
         (Mint::new(0), Mint::new(0)),
@@ -35,7 +37,7 @@ fn main() {
         match query {
             Query0(l, r, b, c) => lst.apply(l, r, (Mint::new(b), Mint::new(c))),
             Query1(l, r) => {
-                println!("{}", lst.prod(l, r).0);
+                output!(out, lst.prod(l, r).0.value());
             }
         }
     }

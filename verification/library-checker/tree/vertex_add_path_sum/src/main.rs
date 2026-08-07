@@ -1,11 +1,11 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/vertex_add_path_sum
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use euler_tour::EulerTour;
 use fenwick_tree::FenwickTree;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(p: usize, x: i64),
         1 => Query1(u: usize, v: usize),
@@ -29,17 +29,19 @@ fn actual_main() {
         uv: [(usize, usize); n - 1],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let mut et = EulerTour::new(n);
-    uv.iter().for_each(|&(u, v)| {
+    for (u, v) in uv {
         et.add_edge(u, v, 0);
         et.add_edge(v, u, 0);
-    });
+    }
     et.init(0);
     let mut ft = FenwickTree::<i64>::new(n + n);
-    for i in 0..n {
+    for (i, &a) in a.iter().enumerate() {
         let index = et.index(i);
-        ft.add(index.0, a[i]);
-        ft.add(index.1, -a[i]);
+        ft.add(index.0, a);
+        ft.add(index.1, -a);
     }
 
     for query in queries {
@@ -52,7 +54,7 @@ fn actual_main() {
             Query1(u, v) => {
                 let mut res = 0;
                 et.for_each(u, v, |l, r| res += ft.sum(l, r));
-                println!("{}", res);
+                output!(out, res);
             }
         }
     }

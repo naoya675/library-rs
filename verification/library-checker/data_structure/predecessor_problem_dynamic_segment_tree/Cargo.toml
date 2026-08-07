@@ -1,0 +1,8 @@
+[package]
+name = "predecessor_problem_dynamic_segment_tree"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+dynamic-segment-tree = { path = "../../../../data-structure/segment-tree/dynamic-segment-tree" }
+fast-io = { path = "../../../../macro/fast-io" }

@@ -1,8 +1,7 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/scc
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
-use itertools::Join;
 use strongly_connected_components_tarjan::StronglyConnectedComponents;
 
 fn main() {
@@ -20,12 +19,18 @@ fn actual_main() {
         m: usize,
         ab: [(usize, usize); m],
     }
+    let mut out = Output::new();
+
     let mut scc = StronglyConnectedComponents::new(n);
-    ab.iter().for_each(|&(a, b)| scc.add_edge(a, b));
+    for (a, b) in ab {
+        scc.add_edge(a, b);
+    }
     let groups = scc.scc();
 
-    println!("{}", groups.len());
+    output!(out, groups.len());
     for group in groups {
-        println!("{} {}", group.len(), group.iter().join(" "));
+        out.print(group.len());
+        out.print(" ");
+        out.println_iter(&group, " ");
     }
 }

@@ -1,0 +1,8 @@
+[package]
+name = "predecessor_problem_implicit_treap"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+fast-io = { path = "../../../../macro/fast-io" }
+implicit-treap = { path = "../../../../data-structure/balanced-binary-search-tree/implicit-treap" }

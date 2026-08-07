@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/static_range_count_distinct
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use lower_bound::LowerBound;
 use mo::Mo;
@@ -9,9 +9,11 @@ fn main() {
     input! {
         n: usize,
         q: usize,
-        a: [usize; n],
+        a: [i64; n],
         lr: [(usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut x = a.clone();
     x.sort();
     x.dedup();
@@ -54,7 +56,7 @@ fn main() {
         },
     );
 
-    for i in 0..q {
-        println!("{}", res[i]);
+    for res in res {
+        output!(out, res);
     }
 }

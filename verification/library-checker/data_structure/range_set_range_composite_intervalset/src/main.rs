@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_set_range_composite
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use interval_set::IntervalSet;
 use modint::Modint;
@@ -8,7 +8,7 @@ use segment_tree::SegmentTree;
 
 type Mint = Modint<998244353>;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(l: usize, r: usize, c: i64, d: i64),
         1 => Query1(l: usize, r: usize, x: i64),
@@ -70,10 +70,10 @@ impl State {
     }
 
     fn apply_split(&mut self, p: usize) {
-        if let Some((a, _, val)) = self.set.get(p) {
-            if a < p {
-                self.apply(a, p, val.0);
-            }
+        if let Some((a, _, val)) = self.set.get(p)
+            && a < p
+        {
+            self.apply(a, p, val.0);
         }
     }
 }
@@ -85,6 +85,8 @@ fn main() {
         ab: [(i64, i64); n],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let mut state = State::new(n);
     for (i, &(a, b)) in ab.iter().enumerate() {
         state.apply(i, i + 1, (Mint::new(a), Mint::new(b)));
@@ -99,7 +101,7 @@ fn main() {
                 state.apply_split(l);
                 state.apply_split(r);
                 let (a, b) = state.st.prod(l, r);
-                println!("{}", Mint::new(x) * a + b);
+                output!(out, (Mint::new(x) * a + b).value());
             }
         }
     }

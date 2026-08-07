@@ -1,13 +1,13 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/point_set_range_composite
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use modint::Modint;
 use segment_tree::SegmentTree;
 
 type Mint = Modint<998244353>;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(p: usize, c: i64, d: i64),
         1 => Query1(l: usize, r: usize, x: i64),
@@ -21,15 +21,17 @@ fn main() {
         ab: [(i64, i64); n],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let ab = ab.iter().map(|&(a, b)| (Mint::new(a), Mint::new(b))).collect::<Vec<_>>();
-    let mut st = SegmentTree::<(Mint, Mint)>::from_slice(&ab, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), (Mint::new(1), Mint::new(0)));
+    let mut st = SegmentTree::from_slice(&ab, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), (Mint::new(1), Mint::new(0)));
 
     for query in queries {
         match query {
             Query0(p, c, d) => st.set(p, (Mint::new(c), Mint::new(d))),
             Query1(l, r, x) => {
                 let (a, b) = st.prod(l, r);
-                println!("{}", Mint::new(x) * a + b);
+                output!(out, (Mint::new(x) * a + b).value());
             }
         }
     }

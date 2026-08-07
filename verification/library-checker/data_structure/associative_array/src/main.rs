@@ -1,10 +1,10 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/associative_array
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use dynamic_segment_tree::DynamicSegmentTree;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(k: usize, v: i64),
         1 => Query1(k: usize),
@@ -16,7 +16,9 @@ fn main() {
         q: usize,
         queries: [Query; q],
     }
-    let mut st = DynamicSegmentTree::<i64>::new(1 << 60, |a, b| a + b, 0);
+    let mut out = Output::new();
+
+    let mut st = DynamicSegmentTree::new(1 << 60, |a, b| a + b, 0);
 
     for query in queries {
         match query {
@@ -24,7 +26,7 @@ fn main() {
                 st.set(k, v);
             }
             Query1(k) => {
-                println!("{}", st.get(k));
+                output!(out, st.get(k));
             }
         }
     }

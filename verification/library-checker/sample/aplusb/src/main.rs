@@ -4,8 +4,8 @@ use fast_io::{Output, input, output};
 
 fn main() {
     input! {
-        a: u64,
-        b: u64,
+        a: i64,
+        b: i64,
     }
     let mut out = Output::new();
     output!(out, a + b);

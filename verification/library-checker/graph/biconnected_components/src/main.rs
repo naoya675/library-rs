@@ -1,9 +1,8 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/biconnected_components
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use biconnected_components::BiConnectedComponents;
-use itertools::Join;
 
 fn main() {
     std::thread::Builder::new()
@@ -20,8 +19,10 @@ fn actual_main() {
         m: usize,
         ab: [(usize, usize); m],
     }
+    let mut out = Output::new();
+
     let mut bcc = BiConnectedComponents::new(n);
-    for &(a, b) in &ab {
+    for (a, b) in ab {
         bcc.add_edge(a, b);
     }
     bcc.build();
@@ -43,14 +44,16 @@ fn actual_main() {
             vec
         })
         .collect::<Vec<_>>();
-    for v in 0..n {
-        if !in_component[v] {
+    for (v, &used) in in_component.iter().enumerate() {
+        if !used {
             components.push(vec![v]);
         }
     }
 
-    println!("{}", components.len());
-    for comp in &components {
-        println!("{} {}", comp.len(), comp.iter().join(" "));
+    output!(out, components.len());
+    for comp in components {
+        out.print(comp.len());
+        out.print(" ");
+        out.println_iter(&comp, " ");
     }
 }

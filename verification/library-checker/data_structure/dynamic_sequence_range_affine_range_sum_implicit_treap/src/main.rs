@@ -1,13 +1,13 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use implicit_treap::ImplicitTreap;
 use modint::Modint;
 
 type Mint = Modint<998244353>;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(i: usize, x: i64),
         1 => Query1(i: usize),
@@ -24,6 +24,8 @@ fn main() {
         a: [i64; n],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let a = a.iter().map(|&a| (Mint::new(a), Mint::new(1))).collect::<Vec<_>>();
     let mut treap = ImplicitTreap::from_slice(
         &a,
@@ -49,7 +51,7 @@ fn main() {
                 treap.apply(l, r, (Mint::new(b), Mint::new(c)));
             }
             Query4(l, r) => {
-                println!("{}", treap.prod(l, r).0);
+                output!(out, treap.prod(l, r).0.value());
             }
         }
     }

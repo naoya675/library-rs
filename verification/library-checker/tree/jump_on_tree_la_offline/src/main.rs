@@ -2,7 +2,7 @@
 
 use std::collections::VecDeque;
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use doubling::Doubling;
 use level_ancestor_offline::level_ancestor_offline;
@@ -14,8 +14,10 @@ fn main() {
         ab: [(usize, usize); n - 1],
         sti: [(usize, usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut graph = vec![vec![]; n];
-    for &(a, b) in &ab {
+    for (a, b) in ab {
         graph[a].push(b);
         graph[b].push(a);
     }
@@ -36,7 +38,7 @@ fn main() {
 
     let log = (n.next_power_of_two().ilog2() + 1) as usize;
     let mut queries = vec![];
-    for &(s, t, i) in &sti {
+    for (s, t, i) in sti {
         let l = lca(&db, &depth, log, s, t);
         let d = depth[s] + depth[t] - 2 * depth[l];
         if i > d {
@@ -49,11 +51,11 @@ fn main() {
     }
     let res = level_ancestor_offline(&graph, 0, &queries);
 
-    for i in 0..q {
-        if let Some(v) = res[i] {
-            println!("{}", v);
+    for res in res {
+        if let Some(v) = res {
+            output!(out, v);
         } else {
-            println!("-1");
+            output!(out, -1);
         }
     }
 }

@@ -1,0 +1,8 @@
+[package]
+name = "predecessor_problem_treap"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+fast-io = { path = "../../../../macro/fast-io" }
+treap = { path = "../../../../data-structure/balanced-binary-search-tree/treap" }

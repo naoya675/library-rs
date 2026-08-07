@@ -1,0 +1,8 @@
+[package]
+name = "enumerate_primes_eratosthenes_segment"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+eratosthenes-segment = { path = "../../../../math/eratosthenes-segment" }
+fast-io = { path = "../../../../macro/fast-io" }

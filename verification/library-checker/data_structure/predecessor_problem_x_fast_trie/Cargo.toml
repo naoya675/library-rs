@@ -1,0 +1,8 @@
+[package]
+name = "predecessor_problem_x_fast_trie"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+fast-io = { path = "../../../../macro/fast-io" }
+x-fast-trie = { path = "../../../../data-structure/trie/x-fast-trie" }

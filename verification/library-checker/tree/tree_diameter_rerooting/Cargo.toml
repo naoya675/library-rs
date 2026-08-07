@@ -1,0 +1,8 @@
+[package]
+name = "tree_diameter_rerooting"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+fast-io = { path = "../../../../macro/fast-io" }
+rerooting = { path = "../../../../tree/rerooting" }

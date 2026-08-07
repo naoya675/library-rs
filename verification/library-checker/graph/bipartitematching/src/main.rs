@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/bipartitematching
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use hopcroft_karp::HopcroftKarp;
 
@@ -20,14 +20,16 @@ fn actual_main() {
         m: usize,
         ab: [(usize, usize); m],
     }
+    let mut out = Output::new();
+
     let mut hk = HopcroftKarp::new(l, r);
-    for &(a, b) in &ab {
+    for (a, b) in ab {
         hk.add_edge(a, b);
     }
     let matching = hk.solve();
 
-    println!("{}", matching.len());
-    for &(a, b) in &matching {
-        println!("{} {}", a, b);
+    output!(out, matching.len());
+    for (a, b) in matching {
+        output!(out, a, b);
     }
 }

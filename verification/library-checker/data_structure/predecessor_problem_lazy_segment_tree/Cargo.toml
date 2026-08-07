@@ -1,0 +1,8 @@
+[package]
+name = "predecessor_problem_lazy_segment_tree"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+fast-io = { path = "../../../../macro/fast-io" }
+lazy-segment-tree = { path = "../../../../data-structure/segment-tree/lazy-segment-tree" }

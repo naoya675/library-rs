@@ -1,8 +1,7 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/factorize
 
-use proconio::input;
+use fast_io::{Output, input};
 
-use itertools::Join;
 use pollard_rho::factors_dup;
 
 fn main() {
@@ -10,8 +9,12 @@ fn main() {
         q: usize,
         a: [u64; q],
     }
-    for &a in &a {
+    let mut out = Output::new();
+
+    for a in a {
         let res = factors_dup(a);
-        println!("{} {}", res.len(), res.iter().join(" "));
+        out.print(res.len());
+        out.print(" ");
+        out.println_iter(&res, " ");
     }
 }

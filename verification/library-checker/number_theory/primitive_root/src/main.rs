@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/primitive_root
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use primitive_root::primitive_root;
 
@@ -9,7 +9,9 @@ fn main() {
         q: usize,
         p: [u64; q],
     }
-    for &p in &p {
-        println!("{}", primitive_root(p));
+    let mut out = Output::new();
+
+    for p in p {
+        output!(out, primitive_root(p));
     }
 }

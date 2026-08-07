@@ -1,18 +1,19 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/aho_corasick
 
-use proconio::{input, marker::Chars};
+use fast_io::{Output, input, output};
 
 use aho_corasick::AhoCorasick;
-use itertools::Join;
 
 fn main() {
     input! {
         n: usize,
         s: [Chars; n],
     }
+    let mut out = Output::new();
+
     let mut ac = AhoCorasick::new(26, 'a');
-    for i in 0..n {
-        ac.insert(&s[i]);
+    for s in &s {
+        ac.insert(s);
     }
     ac.build(true);
 
@@ -20,9 +21,9 @@ fn main() {
     index[0] = Some(0);
     let mut ps = vec![(0, 0)];
     let mut v = vec![];
-    for i in 0..n {
+    for s in &s {
         let mut now = 0;
-        for &c in &s[i] {
+        for &c in s {
             let next = ac.goto(now, c);
             let fail = ac.fail(next);
             if index[next].is_none() {
@@ -34,11 +35,11 @@ fn main() {
         v.push(now);
     }
 
-    println!("{}", ps.len());
+    output!(out, ps.len());
     for &(p, s) in &ps[1..] {
         let p = index[p].unwrap();
         let s = index[s].unwrap();
-        println!("{} {}", p, s);
+        output!(out, p, s);
     }
-    println!("{}", v.iter().map(|&v| index[v].unwrap()).join(" "));
+    out.println_iter(v.iter().map(|&v| index[v].unwrap()), " ");
 }

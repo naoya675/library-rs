@@ -1,16 +1,17 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/zalgorithm
 
-use proconio::{input, marker::Chars};
+use fast_io::{Output, input};
 
-use itertools::Join;
 use z_algorithm_online::ZAlgorithm;
 
 fn main() {
     input! {
         s: Chars,
     }
+    let mut out = Output::new();
+
     let mut za = ZAlgorithm::new();
     za.build(&s);
 
-    println!("{}", za.get().iter().join(" "));
+    out.println_iter(za.get(), " ");
 }

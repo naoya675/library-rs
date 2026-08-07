@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/static_range_inversions_query
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use fenwick_tree::FenwickTree;
 use lower_bound::LowerBound;
@@ -10,15 +10,17 @@ fn main() {
     input! {
         n: usize,
         q: usize,
-        a: [usize; n],
+        a: [i64; n],
         lr: [(usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut x = a.clone();
     x.sort();
     x.dedup();
     let a: Vec<usize> = a.iter().map(|&a| x.lower_bound(&a)).collect();
     let mut mo = Mo::new(n, q);
-    for &(l, r) in &lr {
+    for (l, r) in lr {
         mo.add_query(l, r);
     }
 
@@ -55,7 +57,7 @@ fn main() {
         },
     );
 
-    for i in 0..q {
-        println!("{}", res[i]);
+    for res in res {
+        output!(out, res);
     }
 }

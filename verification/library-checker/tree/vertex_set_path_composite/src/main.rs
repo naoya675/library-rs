@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/vertex_set_path_composite
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use euler_tour::EulerTour;
 use modint::Modint;
@@ -8,7 +8,7 @@ use segment_tree::SegmentTree;
 
 type Mint = Modint<998244353>;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(p: usize, c: i64, d: i64),
         1 => Query1(u: usize, v: usize, x: i64),
@@ -32,8 +32,10 @@ fn actual_main() {
         uv: [(usize, usize); n - 1],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let mut et = EulerTour::new(n);
-    for &(u, v) in &uv {
+    for (u, v) in uv {
         et.add_edge(u, v, 0);
         et.add_edge(v, u, 0);
     }
@@ -47,8 +49,7 @@ fn actual_main() {
     let e = affine(1, 0);
     let mut st1 = SegmentTree::<(Mint, Mint)>::new(n + n, |x, y| (x.0 * y.0, x.1 * y.0 + y.1), e);
     let mut st2 = SegmentTree::<(Mint, Mint)>::new(n + n, |y, x| (x.0 * y.0, x.1 * y.0 + y.1), e);
-    for i in 0..n {
-        let (a, b) = ab[i];
+    for (i, &(a, b)) in ab.iter().enumerate() {
         let (in_idx, out_idx) = et.index(i);
         st1.set(in_idx, affine(a, b));
         st2.set(in_idx, affine(a, b));
@@ -79,7 +80,7 @@ fn actual_main() {
                         x.set(x.get() * a + b);
                     },
                 );
-                println!("{}", x.get());
+                output!(out, x.get().value());
             }
         }
     }

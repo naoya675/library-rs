@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/range_kth_smallest
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use persistent_segment_tree_pool::PersistentSegmentTreePool;
 
@@ -8,22 +8,24 @@ fn main() {
     input! {
         n: usize,
         q: usize,
-        a: [usize; n],
+        a: [i64; n],
         queries: [(usize, usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut sorted = a.clone();
     sorted.sort();
     sorted.dedup();
-    let mut versions: Vec<Option<u32>> = vec![None];
-    let mut pool = PersistentSegmentTreePool::<usize>::new(sorted.len(), |x, y| x + y, 0);
-    for &a in &a {
+    let mut versions = vec![None];
+    let mut pool = PersistentSegmentTreePool::new(sorted.len(), |x, y| x + y, 0);
+    for a in a {
         let v = versions.last().copied().unwrap();
         let rank = sorted.partition_point(|&x| x < a);
         let next = pool.apply(v, rank, 1);
         versions.push(next);
     }
 
-    for &(l, r, k) in &queries {
+    for (l, r, k) in queries {
         let mut hi = sorted.len();
         let mut lo = 0;
         while lo < hi {
@@ -35,6 +37,6 @@ fn main() {
                 lo = mi + 1;
             }
         }
-        println!("{}", sorted[hi]);
+        output!(out, sorted[hi]);
     }
 }

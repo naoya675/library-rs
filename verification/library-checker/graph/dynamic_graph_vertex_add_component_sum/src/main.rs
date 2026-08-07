@@ -1,11 +1,11 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use offline_dynamic_connectivity::OfflineDynamicConnectivity;
 use union_find_with_rollback_abstract::UnionFindWithRollbackAbstract;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(u: usize, v: usize),
         1 => Query1(u: usize, v: usize),
@@ -21,9 +21,11 @@ fn main() {
         a: [i64; n],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let mut dc = OfflineDynamicConnectivity::new(n, q);
-    for (t, &query) in queries.iter().enumerate() {
-        match query {
+    for (t, query) in queries.iter().enumerate() {
+        match *query {
             Query0(u, v) => dc.insert(t, u, v),
             Query1(u, v) => dc.remove(t, u, v),
             _ => {}
@@ -45,9 +47,9 @@ fn main() {
         },
     );
 
-    for (t, &query) in queries.iter().enumerate() {
+    for (t, query) in queries.iter().enumerate() {
         if matches!(query, Query3(_)) {
-            println!("{}", res[t]);
+            output!(out, res[t]);
         }
     }
 }

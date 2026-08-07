@@ -1,10 +1,10 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/ordered_set
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use treap::Treap;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(x: usize),
         1 => Query1(x: usize),
@@ -22,8 +22,10 @@ fn main() {
         a: [usize; n],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let mut treap = Treap::new();
-    for &x in &a {
+    for x in a {
         treap.insert(x);
     }
 
@@ -37,19 +39,27 @@ fn main() {
             }
             Query2(x) => {
                 if x <= treap.len() {
-                    println!("{}", treap.kth(x - 1));
+                    output!(out, treap.kth(x - 1));
                 } else {
-                    println!("-1");
+                    output!(out, -1);
                 }
             }
             Query3(x) => {
-                println!("{}", treap.upper_bound(&x));
+                output!(out, treap.upper_bound(&x));
             }
             Query4(x) => {
-                println!("{}", treap.predecessor(&x).map(|&y| y as i64).unwrap_or(-1));
+                if let Some(&y) = treap.predecessor(&x) {
+                    output!(out, y);
+                } else {
+                    output!(out, -1);
+                }
             }
             Query5(x) => {
-                println!("{}", treap.successor(&x).map(|&y| y as i64).unwrap_or(-1));
+                if let Some(&y) = treap.successor(&x) {
+                    output!(out, y);
+                } else {
+                    output!(out, -1);
+                }
             }
         }
     }

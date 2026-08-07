@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/shortest_path
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use dijkstra::dijkstra_with_prev;
 
@@ -12,12 +12,16 @@ fn main() {
         t: usize,
         abc: [(usize, usize, i64); m],
     }
+    let mut out = Output::new();
+
     let mut graph = vec![vec![]; n];
-    abc.iter().for_each(|&(a, b, c)| graph[a].push((b, c)));
+    for (a, b, c) in abc {
+        graph[a].push((b, c));
+    }
 
     let (dist, prev) = dijkstra_with_prev(n, &graph, s);
     if dist[t] == i64::MAX {
-        println!("-1");
+        output!(out, -1);
         return;
     }
     let mut res = vec![t];
@@ -28,8 +32,8 @@ fn main() {
     }
     res.reverse();
 
-    println!("{} {}", dist[t], res.len() - 1);
+    output!(out, dist[t], res.len() - 1);
     for uv in res.windows(2) {
-        println!("{} {}", uv[0], uv[1]);
+        output!(out, uv[0], uv[1]);
     }
 }

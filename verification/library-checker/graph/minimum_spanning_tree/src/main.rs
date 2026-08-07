@@ -2,9 +2,8 @@
 
 use std::collections::HashMap;
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
-use itertools::Join;
 use kruskal::minimum_spanning_tree;
 
 fn main() {
@@ -13,7 +12,9 @@ fn main() {
         m: usize,
         mut abc: [(usize, usize, i64); m],
     }
-    let mut index: HashMap<(usize, usize, i64), usize> = HashMap::new();
+    let mut out = Output::new();
+
+    let mut index = HashMap::new();
     for (i, &e) in abc.iter().enumerate() {
         *index.entry(e).or_default() = i;
     }
@@ -21,6 +22,6 @@ fn main() {
     let (x, mst) = minimum_spanning_tree(n, &mut abc);
     let used = mst.iter().map(|e| index.get(e).unwrap()).collect::<Vec<_>>();
 
-    println!("{}", x);
-    println!("{}", used.iter().join(" "));
+    output!(out, x);
+    out.println_iter(&used, " ");
 }

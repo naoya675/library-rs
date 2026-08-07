@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/lca
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use euler_tour::EulerTour;
 
@@ -20,14 +20,16 @@ fn actual_main() {
         p: [usize; n - 1],
         uv: [(usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut et = EulerTour::new(n);
-    p.iter().enumerate().for_each(|(i, &p)| {
+    for (i, &p) in p.iter().enumerate() {
         et.add_edge(i + 1, p, 0);
         et.add_edge(p, i + 1, 0);
-    });
+    }
     et.init(0);
 
     for (u, v) in uv {
-        println!("{}", et.lca(u, v));
+        output!(out, et.lca(u, v));
     }
 }

@@ -13,8 +13,8 @@ fn main() {
     let mut out = Output::new();
 
     let mut ac = AhoCorasick::new(75, '0'); // '0'-'9', 'A'-'Z', 'a'-'z'
-    for i in 0..q {
-        ac.insert(&p[i]);
+    for p in p {
+        ac.insert(&p);
     }
     ac.build(true);
 

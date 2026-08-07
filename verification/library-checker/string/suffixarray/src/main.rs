@@ -1,15 +1,16 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/suffixarray
 
-use proconio::{input, marker::Chars};
+use fast_io::{Output, input};
 
-use itertools::Join;
 use suffix_array::suffix_array;
 
 fn main() {
     input! {
         s: Chars,
     }
+    let mut out = Output::new();
+
     let sa = suffix_array(&s);
 
-    println!("{}", sa.iter().join(" "));
+    out.println_iter(&sa, " ");
 }

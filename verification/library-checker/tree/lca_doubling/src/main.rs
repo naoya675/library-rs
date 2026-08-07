@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/lca
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use doubling::Doubling;
 
@@ -11,6 +11,8 @@ fn main() {
         p: [usize; n - 1],
         uv: [(usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut db = Doubling::<usize>::new(n, n, |x, y| x + y, 0);
     let mut f = vec![0; n];
     let mut d = vec![0; n];
@@ -23,7 +25,7 @@ fn main() {
 
     let log = (n.next_power_of_two().ilog2() + 1) as usize;
     for (u, v) in uv {
-        println!("{}", lca(&db, &d, log, u, v));
+        output!(out, lca(&db, &d, log, u, v));
     }
 }
 

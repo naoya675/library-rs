@@ -2,7 +2,7 @@
 
 use std::collections::HashSet;
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use lower_bound::LowerBound;
 use mo::Mo;
@@ -11,15 +11,17 @@ fn main() {
     input! {
         n: usize,
         q: usize,
-        a: [usize; n],
+        a: [i64; n],
         lr: [(usize, usize); q],
     }
+    let mut out = Output::new();
+
     let mut sorted = a.clone();
     sorted.sort();
     sorted.dedup();
     let a: Vec<usize> = a.iter().map(|v| sorted.lower_bound(v)).collect();
     let mut mo = Mo::new(n, q);
-    for &(l, r) in &lr {
+    for (l, r) in lr {
         mo.add_query(l, r);
     }
 
@@ -67,7 +69,7 @@ fn main() {
         },
     );
 
-    for i in 0..q {
-        println!("{} {}", res[i].0, res[i].1);
+    for (mode, freq) in res {
+        output!(out, mode, freq);
     }
 }

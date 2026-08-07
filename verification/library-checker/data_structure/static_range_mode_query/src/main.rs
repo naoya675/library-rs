@@ -1,6 +1,6 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/static_range_mode_query
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use range_mode_query::RangeModeQuery;
 
@@ -11,10 +11,12 @@ fn main() {
         a: [i64; n],
         lr: [(usize, usize); q],
     }
+    let mut out = Output::new();
+
     let rmq = RangeModeQuery::new(&a);
 
-    for &(l, r) in &lr {
+    for (l, r) in lr {
         let (mode, freq) = rmq.query(l, r);
-        println!("{} {}", mode, freq);
+        output!(out, mode, freq);
     }
 }

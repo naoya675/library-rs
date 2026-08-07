@@ -1,0 +1,8 @@
+[package]
+name = "predecessor_problem_segment_tree"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+fast-io = { path = "../../../../macro/fast-io" }
+segment-tree = { path = "../../../../data-structure/segment-tree/segment-tree" }

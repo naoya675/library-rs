@@ -1,11 +1,11 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/vertex_add_subtree_sum
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use euler_tour::EulerTour;
 use fenwick_tree::FenwickTree;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(p: usize, x: i64),
         1 => Query1(u: usize),
@@ -29,16 +29,18 @@ fn actual_main() {
         p: [usize; n - 1],
         queries: [Query; q],
     }
+    let mut out = Output::new();
+
     let mut et = EulerTour::new(n);
-    p.iter().enumerate().for_each(|(i, &p)| {
+    for (i, &p) in p.iter().enumerate() {
         et.add_edge(i + 1, p, 0);
         et.add_edge(p, i + 1, 0);
-    });
+    }
     et.init(0);
     let mut ft = FenwickTree::<i64>::new(n + n);
-    for i in 0..n {
+    for (i, &a) in a.iter().enumerate() {
         let index = et.index(i);
-        ft.add(index.0, a[i]);
+        ft.add(index.0, a);
     }
 
     for query in queries {
@@ -50,7 +52,7 @@ fn actual_main() {
             Query1(u) => {
                 let mut res = 0;
                 et.for_each_subtree(u, |l, r| res += ft.sum(l, r));
-                println!("{}", res);
+                output!(out, res);
             }
         }
     }

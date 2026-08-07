@@ -2,11 +2,11 @@
 
 use std::collections::HashMap;
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use treap::Treap;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(k: usize, v: i64),
         1 => Query1(l: usize, r: usize, x: i64),
@@ -20,12 +20,14 @@ fn main() {
         mut a: [i64; n],
         queries: [Query; q],
     }
-    let mut pos: HashMap<i64, Treap<usize>> = HashMap::new();
+    let mut out = Output::new();
+
+    let mut pos = HashMap::new();
     for (i, &x) in a.iter().enumerate() {
         pos.entry(x).or_insert(Treap::new()).insert(i);
     }
 
-    for &query in &queries {
+    for query in queries {
         match query {
             Query0(k, v) => {
                 pos.get_mut(&a[k]).unwrap().remove(&k);
@@ -37,7 +39,7 @@ fn main() {
                     Some(t) => t.lower_bound(&r) - t.lower_bound(&l),
                     None => 0,
                 };
-                println!("{}", cnt);
+                output!(out, cnt);
             }
         }
     }

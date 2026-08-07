@@ -4,7 +4,7 @@
 // - https://noshi91.hatenablog.com/entry/2023/02/26/135340
 // - https://atcoder.jp/contests/abc446/editorial/16429
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
 use lower_bound::LowerBound;
 use modint::Modint;
@@ -16,6 +16,8 @@ fn main() {
         n: usize,
         a: [usize; n],
     }
+    let mut out = Output::new();
+
     let mut sorted = a.clone();
     sorted.sort();
     sorted.dedup();
@@ -29,5 +31,5 @@ fn main() {
         sum += sum - tmp;
     }
 
-    println!("{}", sum - Mint::new(1));
+    output!(out, (sum - Mint::new(1)).value());
 }

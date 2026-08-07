@@ -17,8 +17,8 @@ fn main() {
     let mut ft = FenwickTree::<i64>::new(n);
     let mut res = 0;
 
-    for i in 0..n {
-        let p = x.lower_bound(&a[i]);
+    for a in &a {
+        let p = x.lower_bound(a);
         res += ft.sum(p + 1, n);
         ft.add(p, 1);
     }

@@ -1,10 +1,10 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/point_add_range_sum
 
-use proconio::input;
+use fast_io::{Output, define_query, input, output};
 
 use fenwick_tree_abstract::FenwickTreeAbstract;
 
-query::define_query! {
+define_query! {
     Query {
         0 => Query0(p: usize, x: i64),
         1 => Query1(l: usize, r: usize),
@@ -18,7 +18,9 @@ fn main() {
         a: [i64; n],
         queries: [Query; q],
     }
-    let mut ft = FenwickTreeAbstract::<i64>::from_slice(&a, |x, y| x + y, 0, |x| -x);
+    let mut out = Output::new();
+
+    let mut ft = FenwickTreeAbstract::from_slice(&a, |x, y| x + y, 0, |x| -x);
 
     for query in queries {
         match query {
@@ -26,7 +28,7 @@ fn main() {
                 ft.add(p, x);
             }
             Query1(l, r) => {
-                println!("{}", ft.sum(l, r));
+                output!(out, ft.sum(l, r));
             }
         }
     }

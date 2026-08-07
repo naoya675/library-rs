@@ -1,8 +1,7 @@
 // verification-helper: PROBLEM https://judge.yosupo.jp/problem/two_edge_connected_components
 
-use proconio::input;
+use fast_io::{Output, input, output};
 
-use itertools::Join;
 use two_edge_connected_components::TwoEdgeConnectedComponents;
 
 fn main() {
@@ -20,14 +19,20 @@ fn actual_main() {
         m: usize,
         ab: [(usize, usize); m],
     }
+    let mut out = Output::new();
+
     let mut ecc = TwoEdgeConnectedComponents::new(n);
-    ab.iter().for_each(|&(a, b)| ecc.add_edge(a, b));
+    for (a, b) in ab {
+        ecc.add_edge(a, b);
+    }
 
     ecc.build();
     let group = ecc.group();
 
-    println!("{}", group.len());
+    output!(out, group.len());
     for g in group {
-        println!("{} {}", g.len(), g.iter().join(" "));
+        out.print(g.len());
+        out.print(" ");
+        out.println_iter(g, " ");
     }
 }
