@@ -53,6 +53,8 @@ $$
 は整数であり、$r \cdot M \equiv 0 \pmod{M}$ より、$\text{reduce}(v) \equiv v \cdot R^{-1} \pmod{M}$ が成り立つ。
 
 ## Reference
+- Peter L. Montgomery, ["Modular multiplication without trial division"](https://doi.org/10.1090/S0025-5718-1985-0777282-X), Mathematics of Computation vol. 44(170) 1985, pp. 519-521.
+<!--- Peter L. Montgomery, ["Modular multiplication without trial division"](https://www.ams.org/journals/mcom/1985-44-170/S0025-5718-1985-0777282-X/S0025-5718-1985-0777282-X.pdf), Mathematics of Computation vol. 44(170) 1985, pp. 519-521.-->
 - [https://andantesoft.hatenablog.com/entry/2025/05/21/164352](https://andantesoft.hatenablog.com/entry/2025/05/21/164352)
 - [https://drken1215.hatenablog.com/entry/2023/05/23/233000](https://drken1215.hatenablog.com/entry/2023/05/23/233000)
 - [https://ei1333.hateblo.jp/entry/2020/01/16/173956](https://ei1333.hateblo.jp/entry/2020/01/16/173956)

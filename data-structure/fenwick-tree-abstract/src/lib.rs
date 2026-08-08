@@ -2,10 +2,10 @@
 pub struct FenwickTreeAbstract<T> {
     tree: Vec<T>,
     size: usize,
-    // Abelian Group: operation (associative, commutative) + identity element + inverse element
     op: fn(T, T) -> T,
     e: T,
     inv: fn(T) -> T,
+    // abelian group (T, op, e, inv)
 }
 
 impl<T: Copy> FenwickTreeAbstract<T> {

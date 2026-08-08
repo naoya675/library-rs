@@ -80,8 +80,8 @@ Returns the number of elements in the set that contains $x$.
 - $O(\log^2 n)$
 
 ## Reference
-- S. Conchon and J.-C. Filliâtre, ["A Persistent Union-Find Data Structure"](https://usr.lmf.cnrs.fr/~jcf/publis/puf-wml07.pdf), Workshop on ML (2007).
-- [https://37zigen.com/persistent-array/](https://37zigen.com/persistent-array/)
+- Sylvain Conchon and Jean-Christophe Filliâtre, ["A persistent union-find data structure"](https://doi.org/10.1145/1292535.1292541), ML 2007, pp. 37-46.
+<!--- Sylvain Conchon and Jean-Christophe Filliâtre, ["A persistent union-find data structure"](https://usr.lmf.cnrs.fr/~jcf/publis/puf-wml07.pdf), ML 2007, pp. 37-46.-->
+- [https://37zigen.com/persistent-array/](https://web.archive.org/web/20260122234903/https://37zigen.com/persistent-array/)
 - [https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree)
 - [https://noshi91.hatenablog.com/entry/2018/05/30/191943](https://noshi91.hatenablog.com/entry/2018/05/30/191943)
-- [https://qiita.com/hotman78/items/9c643feae1de087e6fc5](https://qiita.com/hotman78/items/9c643feae1de087e6fc5)

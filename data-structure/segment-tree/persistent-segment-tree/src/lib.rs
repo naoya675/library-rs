@@ -13,6 +13,7 @@ pub struct PersistentSegmentTree<T> {
     root: Option<Rc<Node<T>>>,
     op: fn(T, T) -> T,
     e: T,
+    // monoid (T, op, e)
 }
 
 impl<T: Copy> PersistentSegmentTree<T> {

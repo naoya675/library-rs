@@ -5,5 +5,5 @@ edition = "2024"
 
 [dependencies]
 fast-io = { path = "../../../../macro/fast-io" }
-fenwick-tree-abstract = { path = "../../../../data-structure/fenwick-tree-abstract" }
+fenwick-tree-range-add = { path = "../../../../data-structure/fenwick-tree-range-add" }
 heavy-light-decomposition = { path = "../../../../tree/heavy-light-decomposition" }

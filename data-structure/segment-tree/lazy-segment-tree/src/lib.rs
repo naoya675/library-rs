@@ -1,16 +1,16 @@
 #[derive(Debug, Clone)]
 pub struct LazySegmentTree<T, F> {
-    tree: Vec<T>,
-    lazy: Vec<F>,
+    n: usize,
     size: usize,
     size_log: usize,
-    // Monoids: operation (associativity) + identity element
+    tree: Vec<T>,
+    lazy: Vec<F>,
     op: fn(T, T) -> T,
     e: T,
     mapping: fn(F, T) -> T,
     composition: fn(F, F) -> F,
     id: F,
-    n: usize,
+    // monoids (T, op, e), (F, composition, id)
 }
 
 impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
@@ -18,16 +18,16 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         let size = n.next_power_of_two();
         let size_log = size.ilog2() as usize;
         Self {
-            tree: vec![e; 2 * size],
-            lazy: vec![id; 2 * size],
+            n,
             size,
             size_log,
+            tree: vec![e; 2 * size],
+            lazy: vec![id; 2 * size],
             op,
             e,
             mapping,
             composition,
             id,
-            n,
         }
     }
 
@@ -37,16 +37,16 @@ impl<T: Copy, F: Copy> LazySegmentTree<T, F> {
         let size = n.next_power_of_two();
         let size_log = size.ilog2() as usize;
         let mut st = Self {
-            tree: vec![e; 2 * size],
-            lazy: vec![id; 2 * size],
+            n,
             size,
             size_log,
+            tree: vec![e; 2 * size],
+            lazy: vec![id; 2 * size],
             op,
             e,
             mapping,
             composition,
             id,
-            n,
         };
         for k in 0..n {
             st.tree[k + size] = v[k];

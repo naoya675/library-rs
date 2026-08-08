@@ -69,9 +69,11 @@ The receiver is not modified.
 - $O(1)$
 
 ## Reference
-- Chris Okasaki, ["Purely Functional Data Structures"](https://www.cs.cmu.edu/~rwh/students/okasaki.pdf), CMU PhD Thesis 1996.
-- Chris Okasaki, ["Purely Functional Data Structures"](https://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Functional%20Programming/Chris_Okasaki-Purely_Functional_Data_Structures-Cambridge_University_Press%281998%29.pdf), Cambridge University Press 1998.
-- [https://37zigen.com/bankers-queue/](https://37zigen.com/bankers-queue/)
-- [https://www.mathenachia.blog/persistent-queue/](https://www.mathenachia.blog/persistent-queue/)
+- Chris Okasaki, ["Purely Functional Data Structures"](https://doi.org/10.1017/cbo9780511530104), Cambridge University Press 1998.
+<!--- Chris Okasaki, ["Purely Functional Data Structures"](https://www.cs.cmu.edu/~rwh/students/okasaki.pdf), PhD thesis, Carnegie Mellon University 1996.-->
+<!--- Chris Okasaki, ["Purely Functional Data Structures"](https://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Functional%20Programming/Chris_Okasaki-Purely_Functional_Data_Structures-Cambridge_University_Press%281998%29.pdf), Cambridge University Press 1998.-->
 - [https://noshi91.hatenablog.com/entry/2019/02/04/175100](https://noshi91.hatenablog.com/entry/2019/02/04/175100)
-<!--- [https://github.com/noshi91/Library/blob/master/data_structure/persistent_stack.cpp](https://github.com/noshi91/Library/blob/master/data_structure/persistent_stack.cpp)-->
+
+- Persistent Queue
+    - [https://37zigen.com/bankers-queue/](https://web.archive.org/web/20260212044313/https://37zigen.com/bankers-queue/)
+    - [https://www.mathenachia.blog/persistent-queue/](https://www.mathenachia.blog/persistent-queue/)

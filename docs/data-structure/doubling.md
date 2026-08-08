@@ -53,4 +53,4 @@ Starting from node $x$, follows the successor function $k$ times. Returns the pa
 ## Reference
 
 ## Verified
-- [https://atcoder.jp/contests/typical90/tasks/typical90_bf](https://atcoder.jp/contests/typical90/tasks/typical90_bf) ([submission](https://atcoder.jp/contests/typical90/submissions/74954254))
+- [https://atcoder.jp/contests/typical90/tasks/typical90_bf](https://atcoder.jp/contests/typical90/tasks/typical90_bf) ([submission](https://atcoder.jp/contests/typical90/submissions/78163404))

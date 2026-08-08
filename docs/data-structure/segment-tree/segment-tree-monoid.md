@@ -13,7 +13,7 @@ documentation_of: //data-structure/segment-tree/segment-tree/src/monoid.rs
     - [https://zenn.dev/magurofly/articles/0b3805b3614126](https://zenn.dev/magurofly/articles/0b3805b3614126)
     - [https://atcoder.jp/contests/abc223/editorial/2774](https://atcoder.jp/contests/abc223/editorial/2774)
     - Parenthesis Sequence
-        - [https://37zigen.com/parenthesis/](https://37zigen.com/parenthesis/)
+        - [https://37zigen.com/parenthesis/](https://web.archive.org/web/20260212030535/https://37zigen.com/parenthesis/)
         - [https://betrue12.hateblo.jp/entry/2020/05/10/224429](https://betrue12.hateblo.jp/entry/2020/05/10/224429)
 
 - Range Maximum Subarray Sum (Prefix Sum, Suffix Sum)

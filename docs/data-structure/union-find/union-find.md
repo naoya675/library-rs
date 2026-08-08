@@ -88,17 +88,18 @@ Both of the orders of the sets and the elements are undefined.
 - $O(n)$
 
 ## Reference
-- [https://atcoder.github.io/ac-library/production/document_en/dsu.html](https://atcoder.github.io/ac-library/production/document_en/dsu.html)
+- [https://info.atcoder.jp/entry/algorithm_lectures/ackermann_function](https://info.atcoder.jp/entry/algorithm_lectures/ackermann_function)
 - [https://info.atcoder.jp/entry/algorithm_lectures/unionfind_complexity](https://info.atcoder.jp/entry/algorithm_lectures/unionfind_complexity)
+- [https://atcoder.github.io/ac-library/production/document_en/dsu.html](https://atcoder.github.io/ac-library/production/document_en/dsu.html)
 - [https://37zigen.com/union-find/](https://web.archive.org/web/20260212044546/https://37zigen.com/union-find/)
 - [https://37zigen.com/union-find-complexity-1/](https://web.archive.org/web/20260122234335/https://37zigen.com/union-find-complexity-1/)
 - [https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree)
-- [https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3](https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3)
 - [https://qiita.com/alumite14/items/1444e03b2d27a8452e61](https://qiita.com/alumite14/items/1444e03b2d27a8452e61)
 - [https://qiita.com/alumite14/items/1fd477a14cf5c3019326](https://qiita.com/alumite14/items/1fd477a14cf5c3019326)
 - [https://qiita.com/alumite14/items/f4c355720f2a6da88ca5](https://qiita.com/alumite14/items/f4c355720f2a6da88ca5)
+- [https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3](https://qiita.com/sysdev/items/0d300dbb3a1e499ca2a3)
 - [http://topcoder.g.hatena.ne.jp/iwiwi/20131226/1388062106](https://web.archive.org/web/20181213115442/http://topcoder.g.hatena.ne.jp/iwiwi/20131226/1388062106)
 - [https://torus711.hatenablog.com/entry/2020/11/16/205309](https://torus711.hatenablog.com/entry/2020/11/16/205309)
 
 ## Verified
-- [https://atcoder.jp/contests/practice2/tasks/practice2_a](https://atcoder.jp/contests/practice2/tasks/practice2_a) ([submission](https://atcoder.jp/contests/practice2/submissions/74955251))
+- [https://atcoder.jp/contests/practice2/tasks/practice2_a](https://atcoder.jp/contests/practice2/tasks/practice2_a) ([submission](https://atcoder.jp/contests/practice2/submissions/78163483))

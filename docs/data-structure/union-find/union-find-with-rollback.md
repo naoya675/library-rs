@@ -124,10 +124,8 @@ Both of the orders of the sets and the elements are undefined.
 - $O(n \log n)$
 
 ## Reference
-- [https://drken1215.hatenablog.com/entry/2020/11/02/201400](https://drken1215.hatenablog.com/entry/2020/11/02/201400)
-- [https://drken1215.hatenablog.com/entry/2023/06/10/032900](https://drken1215.hatenablog.com/entry/2023/06/10/032900)
 - [https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree)
 
 ## Verified
-- [https://atcoder.jp/contests/abc302/tasks/abc302_h](https://atcoder.jp/contests/abc302/tasks/abc302_h) ([submission](https://atcoder.jp/contests/abc302/submissions/75479665) / [editorial](https://atcoder.jp/contests/abc302/editorial/6409))
-- ([https://atcoder.jp/contests/arc111/tasks/arc111_b](https://atcoder.jp/contests/arc111/tasks/arc111_b) ([submission](https://atcoder.jp/contests/arc111/submissions/75479687)))
+- [https://atcoder.jp/contests/abc302/tasks/abc302_h](https://atcoder.jp/contests/abc302/tasks/abc302_h) ([submission](https://atcoder.jp/contests/abc302/submissions/78161529), [editorial](https://atcoder.jp/contests/abc302/editorial/6409))
+- [https://codeforces.com/gym/100513/problem/A](https://codeforces.com/gym/100513/problem/A) ([submission](https://codeforces.com/gym/100513/submission/386013852))

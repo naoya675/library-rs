@@ -250,28 +250,28 @@ Returns an iterator that visits the elements in ascending order.
 - $O(n)$ for full traversal
 
 ## Reference
-- Guy E. Blelloch and Margaret Reid-Miller, ["Fast Set Operations Using Treaps"](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.pdf), SPAA 1998.
-    - [https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.html](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.html)
-    - [https://www.cs.cmu.edu/~scandal/treaps.html](https://www.cs.cmu.edu/~scandal/treaps.html)
-    <!--- [https://www.cs.cmu.edu/~scandal/papers/treaps-spaa98.pdf](https://www.cs.cmu.edu/~scandal/papers/treaps-spaa98.pdf)-->
-    <!--- [https://www.cs.umd.edu/class/fall2020/cmsc420-0201/Lects/lect08-treap.pdf](https://www.cs.umd.edu/class/fall2020/cmsc420-0201/Lects/lect08-treap.pdf)-->
-- R. Seidel and C. R. Aragon, ["Randomized search trees"](https://link.springer.com/article/10.1007/BF01940876), Algorithmica 16 (1996), 464–497.
-- [https://betrue12.hateblo.jp/entry/2020/08/05/204120](https://betrue12.hateblo.jp/entry/2020/08/05/204120)
+- Raimund Seidel and Cecilia R. Aragon, ["Randomized search trees"](https://doi.org/10.1007/BF01940876), Algorithmica vol. 16(4-5) 1996, pp. 464-497.
+- Guy E. Blelloch and Margaret Reid-Miller, ["Fast set operations using treaps"](https://doi.org/10.1145/277651.277660), SPAA 1998, pp. 16-26.
 - [https://cp-algorithms.com/data_structures/treap.html](https://cp-algorithms.com/data_structures/treap.html)
 - [https://ferin-tech.hatenablog.com/entry/2020/01/29/155239](https://ferin-tech.hatenablog.com/entry/2020/01/29/155239)
 - [https://qiita.com/drken/items/1b7e6e459c24a83bb7fd](https://qiita.com/drken/items/1b7e6e459c24a83bb7fd)
-- [https://qiita.com/tubo28/items/f058582e457f6870a800](https://qiita.com/tubo28/items/f058582e457f6870a800)
-<!--- [https://usaco.guide/adv/treaps?lang=cpp](https://usaco.guide/adv/treaps?lang=cpp)-->
 - [https://www.slideshare.net/slideshow/2-12188757/12188757](https://www.slideshare.net/slideshow/2-12188757/12188757)
+
+<!--
+- [https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.html](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.html)
+- [https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.pdf](https://www.cs.cmu.edu/afs/cs.cmu.edu/project/scandal/public/papers/treaps-spaa98.pdf)
+- [https://www.cs.umd.edu/class/fall2020/cmsc420-0201/Lects/lect08-treap.pdf](https://www.cs.umd.edu/class/fall2020/cmsc420-0201/Lects/lect08-treap.pdf)
+- [https://www.cs.cmu.edu/~scandal/treaps.html](https://www.cs.cmu.edu/~scandal/treaps.html)
+- [https://www.cs.cmu.edu/~scandal/papers/treaps-spaa98.pdf](https://www.cs.cmu.edu/~scandal/papers/treaps-spaa98.pdf)
+-->
+
+<!--
+- [https://betrue12.hateblo.jp/entry/2020/08/05/204120](https://betrue12.hateblo.jp/entry/2020/08/05/204120)
 - [http://www.prefield.com/algorithm/container/treap.html](https://web.archive.org/web/20200221155641/http://www.prefield.com/algorithm/container/treap.html)
-<!--- [https://yaox.hatenadiary.jp/entry/2024/12/11/000500](https://yaox.hatenadiary.jp/entry/2024/12/11/000500)-->
-<!--- [https://yaox.hatenadiary.jp/entry/2024/12/14/000500](https://yaox.hatenadiary.jp/entry/2024/12/14/000500)-->
-<!--- [https://yaox.hatenadiary.jp/entry/2024/12/16/000500](https://yaox.hatenadiary.jp/entry/2024/12/16/000500)-->
-<!--- [https://yaox.hatenadiary.jp/entry/2024/12/17/031154](https://yaox.hatenadiary.jp/entry/2024/12/17/031154)-->
-<!--- [https://www.youtube.com/watch?v=6x0UlIBLRsc](https://www.youtube.com/watch?v=6x0UlIBLRsc)-->
+- [https://yaox.hatenadiary.jp/entry/2024/12/11/000500](https://yaox.hatenadiary.jp/entry/2024/12/11/000500)
+- [https://yaox.hatenadiary.jp/entry/2024/12/14/000500](https://yaox.hatenadiary.jp/entry/2024/12/14/000500)
+- [https://yaox.hatenadiary.jp/entry/2024/12/16/000500](https://yaox.hatenadiary.jp/entry/2024/12/16/000500)
+- [https://yaox.hatenadiary.jp/entry/2024/12/17/031154](https://yaox.hatenadiary.jp/entry/2024/12/17/031154)
+- [https://www.youtube.com/watch?v=6x0UlIBLRsc](https://www.youtube.com/watch?v=6x0UlIBLRsc)
 - [https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268](https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2268)
-- Implicit Treap
-    - [https://qiita.com/hamamu/items/570e7c36bf73913cbeb8](https://qiita.com/hamamu/items/570e7c36bf73913cbeb8)
-    - [https://xuzijian629.hatenablog.com/entry/2018/12/08/000452](https://xuzijian629.hatenablog.com/entry/2018/12/08/000452)
-    - [https://xuzijian629.hatenablog.com/entry/2019/10/25/234938](https://xuzijian629.hatenablog.com/entry/2019/10/25/234938)
-    <!--- [https://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3108610](https://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=3108610)-->
+-->

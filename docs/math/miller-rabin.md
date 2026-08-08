@@ -57,7 +57,8 @@ $k$ 個の素数を $a$ として用いた場合、次の範囲で決定的で�
 | $\lbrace 2, 7, 61 \rbrace$ | $n < 4{,}759{,}123{,}141$ |
 | $\lbrace 2, 325, 9375, 28178, 450775, 9780504, 1795265022 \rbrace$ | $n < 2^{64}$ |
 
-- [https://arxiv.org/pdf/1509.00864](https://arxiv.org/pdf/1509.00864)
+- Jonathan P. Sorenson and Jonathan Webster, ["Strong pseudoprimes to twelve prime bases"](https://doi.org/10.1090/mcom/3134), Mathematics of Computation vol. 86(304) 2017, pp. 985-1003.
+<!--- Jonathan P. Sorenson and Jonathan Webster, ["Strong pseudoprimes to twelve prime bases"](https://doi.org/10.48550/arXiv.1509.00864), Mathematics of Computation vol. 86(304) 2017, pp. 985-1003.-->
 - [https://miller-rabin.appspot.com/](https://web.archive.org/web/20260225175716/https://miller-rabin.appspot.com/)
 - [https://oeis.org/A006945](https://oeis.org/A006945)
 - [https://oeis.org/A014233](https://oeis.org/A014233)
@@ -66,10 +67,9 @@ $k$ 個の素数を $a$ として用いた場合、次の範囲で決定的で�
 - [https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1955-17.pdf](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/1955-17.pdf)
 
 ## Reference
-- [https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)
-- G. L. Miller, ["Riemann's hypothesis and tests for primality"](https://www.sciencedirect.com/science/article/abs/pii/S0022000076800438), Journal of Computer and System Sciences 13 (1976), 300–317.
-- M. O. Rabin, ["Probabilistic algorithm for testing primality"](https://www.sciencedirect.com/science/article/abs/pii/0022314X80900840), Journal of Number Theory 12 (1980), 128–138.
-- [https://37zigen.com/miller-rabin/](https://37zigen.com/miller-rabin/)
+- Gary L. Miller, ["Riemann's hypothesis and tests for primality"](https://doi.org/10.1016/S0022-0000(76)80043-8), Journal of Computer and System Sciences vol. 13(3) 1976, pp. 300-317.
+- Michael O. Rabin, ["Probabilistic algorithm for testing primality"](https://doi.org/10.1016/0022-314X(80)90084-0), Journal of Number Theory vol. 12(1) 1980, pp. 128-138.
+- [https://37zigen.com/miller-rabin/](https://web.archive.org/web/20251206060534/https://37zigen.com/miller-rabin/)
 - [https://drken1215.hatenablog.com/entry/2023/05/23/233000](https://drken1215.hatenablog.com/entry/2023/05/23/233000)
 - [https://qiita.com/srtk86/items/609737d50c9ef5f5dc59](https://qiita.com/srtk86/items/609737d50c9ef5f5dc59)
 - [https://tex2e.github.io/blog/crypto/miller-rabin-test](https://tex2e.github.io/blog/crypto/miller-rabin-test)

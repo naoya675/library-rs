@@ -12,4 +12,4 @@ documentation_of: //tree/rerooting/src/lib.rs
 - [https://atcoder.jp/contests/abc222/editorial/2749](https://atcoder.jp/contests/abc222/editorial/2749)
 
 ## Verified
-- [https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e](https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e) ([submission](https://atcoder.jp/contests/njpc2017/submissions/75095465))
+- [https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e](https://atcoder.jp/contests/njpc2017/tasks/njpc2017_e) ([submission](https://atcoder.jp/contests/njpc2017/submissions/78163384))

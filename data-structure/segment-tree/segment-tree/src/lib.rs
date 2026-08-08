@@ -1,12 +1,12 @@
 #[derive(Clone)]
 pub struct SegmentTree<T> {
-    tree: Vec<T>,
+    n: usize,
     size: usize,
     size_log: usize,
-    // Monoids: operation (associativity) + identity element
+    tree: Vec<T>,
     op: fn(T, T) -> T,
     e: T,
-    n: usize,
+    // monoid (T, op, e)
 }
 
 impl<T: Copy> SegmentTree<T> {
@@ -14,12 +14,12 @@ impl<T: Copy> SegmentTree<T> {
         let size = n.next_power_of_two();
         let size_log = size.ilog2() as usize;
         Self {
-            tree: vec![e; 2 * size],
+            n,
             size,
             size_log,
+            tree: vec![e; 2 * size],
             op,
             e,
-            n,
         }
     }
 
@@ -29,12 +29,12 @@ impl<T: Copy> SegmentTree<T> {
         let size = n.next_power_of_two();
         let size_log = size.ilog2() as usize;
         let mut st = Self {
-            tree: vec![e; 2 * size],
+            n,
             size,
             size_log,
+            tree: vec![e; 2 * size],
             op,
             e,
-            n,
         };
         for k in 0..n {
             st.tree[k + size] = v[k];

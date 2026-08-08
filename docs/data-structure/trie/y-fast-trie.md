@@ -126,9 +126,8 @@ Removes $x$ from the set and returns `true` if $x$ was present, otherwise does n
 - $O(\log B)$ amortized
 
 ## Reference
-- D. E. Willard, ["Log-logarithmic worst-case range queries are possible in space $\Theta(N)$"](https://www.sciencedirect.com/science/article/abs/pii/0020019083900753), Information Processing Letters 17 (1983), 81–84.
+- Dan E. Willard, ["Log-logarithmic worst-case range queries are possible in space $\Theta(N)$"](https://doi.org/10.1016/0020-0190(83)90075-3), Information Processing Letters vol. 17(2) 1983, pp. 81-84.
 - [https://courses.csail.mit.edu/6.851/spring14/scribe/L11.pdf](https://courses.csail.mit.edu/6.851/spring14/scribe/L11.pdf)
-- [https://en.wikipedia.org/wiki/Y-fast_trie](https://en.wikipedia.org/wiki/Y-fast_trie)
 - [https://inthebloom.github.io/post/uec-advent2024/](https://inthebloom.github.io/post/uec-advent2024/)
 - [https://qiita.com/goonew/items/6ffac4b5e48dc05ca884](https://qiita.com/goonew/items/6ffac4b5e48dc05ca884)
 - [https://web.stanford.edu/class/archive/cs/cs166/cs166.1206/lectures/15/Small15.pdf](https://web.stanford.edu/class/archive/cs/cs166/cs166.1206/lectures/15/Small15.pdf)

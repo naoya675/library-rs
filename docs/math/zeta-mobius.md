@@ -14,4 +14,4 @@ documentation_of: //math/zeta-mobius/src/lib.rs
 - [https://ynucpc.github.io/material/summer-seminar2021_5.pdf](https://ynucpc.github.io/material/summer-seminar2021_5.pdf)
 
 ## Verified
-- [https://atcoder.jp/contests/abc423/tasks/abc423_f](https://atcoder.jp/contests/abc423/tasks/abc423_f) ([submission](https://atcoder.jp/contests/abc423/submissions/77686757) / [editorial](https://x.com/kyopro_friends/status/1967230533097943145))
+- [https://atcoder.jp/contests/abc423/tasks/abc423_f](https://atcoder.jp/contests/abc423/tasks/abc423_f) ([submission](https://atcoder.jp/contests/abc423/submissions/78161741), [editorial](https://x.com/kyopro_friends/status/1967230533097943145))

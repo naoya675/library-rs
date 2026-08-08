@@ -176,6 +176,4 @@ Both of the orders of the sets and the elements are undefined.
 - $O(n \log n)$
 
 ## Reference
-- [https://drken1215.hatenablog.com/entry/2020/11/02/201400](https://drken1215.hatenablog.com/entry/2020/11/02/201400)
-- [https://drken1215.hatenablog.com/entry/2023/06/10/032900](https://drken1215.hatenablog.com/entry/2023/06/10/032900)
 - [https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree](https://ikatakos.com/pot/programming_algorithm/data_structure/union_find_tree)

@@ -2,7 +2,7 @@
 
 use fast_io::{Output, define_query, input, output};
 
-use fenwick_tree_abstract::FenwickTreeAbstract;
+use fenwick_tree_range_add::FenwickTreeRangeAdd;
 use heavy_light_decomposition::HeavyLightDecomposition;
 
 define_query! {
@@ -38,25 +38,16 @@ fn actual_main() {
         }
     }
     hld.init(0);
-    let mut ft = vec![FenwickTreeAbstract::new(n + 1, |x, y| x + y, 0, |x| -x); 2];
+    let mut ft = FenwickTreeRangeAdd::new(n);
 
     for query in queries {
         match query {
             Query0(v, w) => {
-                hld.for_each_edge(0, v, |l, r| {
-                    ft[0].add(l, -w * l as i64);
-                    ft[0].add(r, w * r as i64);
-                    ft[1].add(l, w);
-                    ft[1].add(r, -w);
-                });
+                hld.for_each_edge(0, v, |l, r| ft.add(l, r, w));
             }
             Query1(v) => {
                 let mut res = 0;
-                hld.for_each_edge(0, v, |l, r| {
-                    let sum_l = ft[0].sum(0, l) + ft[1].sum(0, l) * l as i64;
-                    let sum_r = ft[0].sum(0, r) + ft[1].sum(0, r) * r as i64;
-                    res += sum_r - sum_l;
-                });
+                hld.for_each_edge(0, v, |l, r| res += ft.sum(l, r));
                 output!(out, res);
             }
         }

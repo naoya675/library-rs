@@ -171,8 +171,7 @@ Returns the number of nodes in the trie.
 - $O(1)$
 
 ## Reference
-- [https://algo-logic.info/trie-tree/](https://algo-logic.info/trie-tree/)
 - [https://atcoder.jp/contests/abc403/editorial/12825](https://atcoder.jp/contests/abc403/editorial/12825)
 
 ## Verified
-- [https://atcoder.jp/contests/abc353/tasks/abc353_e](https://atcoder.jp/contests/abc353/tasks/abc353_e) ([submission](https://atcoder.jp/contests/abc353/submissions/75110911))
+- [https://atcoder.jp/contests/abc353/tasks/abc353_e](https://atcoder.jp/contests/abc353/tasks/abc353_e) ([submission](https://atcoder.jp/contests/abc353/submissions/78161725))

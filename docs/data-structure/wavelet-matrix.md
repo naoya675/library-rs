@@ -7,12 +7,11 @@ A data structure that stores a sequence of non-negative integers in $[0, \sigma)
 Supports `access`, `rank`, and `kth_smallest` queries in $O(\log \sigma)$ time and `select` in $O(\log \sigma \cdot \log n)$ time, where $n$ is the sequence length.
 
 ## Reference
-- Claude, Navarro, Ordóñez, ["The wavelet matrix: An efficient wavelet tree for large alphabets"](https://doi.org/10.1016/j.is.2014.06.002), Information Systems vol. 47 2015, pp. 15-32.
-- [https://ioinformatics.org/journal/v10_2016_19_37.pdf](https://ioinformatics.org/journal/v10_2016_19_37.pdf)
+- Francisco Claude, Gonzalo Navarro and Alberto Ordóñez, ["The wavelet matrix: An efficient wavelet tree for large alphabets"](https://doi.org/10.1016/j.is.2014.06.002), Information Systems vol. 47 2015, pp. 15-32.
+<!--- Robinson Castro, Nico Lehmann, Jorge Pérez and Bernardo Subercaseaux, ["Wavelet Trees for Competitive Programming"](https://doi.org/10.15388/ioi.2016.02), Olympiads in Informatics vol. 10 2016, pp. 19-37.-->
 - [https://info.atcoder.jp/entry/algorithm_lectures/wavelet_matrix_basic](https://info.atcoder.jp/entry/algorithm_lectures/wavelet_matrix_basic)
 - [https://info.atcoder.jp/entry/algorithm_lectures/wavelet_matrix_advanced](https://info.atcoder.jp/entry/algorithm_lectures/wavelet_matrix_advanced)
 <!--- [http://algoogle.hadrori.jp/algorithm/wavelet.html](https://web.archive.org/web/20210614003021/http://algoogle.hadrori.jp/algorithm/wavelet.html)-->
-<!--- [https://anta1.hatenadiary.org/entry/20130114/1358113488](https://anta1.hatenadiary.org/entry/20130114/1358113488)-->
 <!--- [https://blog.hamayanhamayan.com/entry/2017/06/13/103352](https://blog.hamayanhamayan.com/entry/2017/06/13/103352)-->
 <!--- [https://echizen-tm.hatenadiary.org/entry/20120801/1343837130](https://echizen-tm.hatenadiary.org/entry/20120801/1343837130)-->
 - [https://miti-7.hatenablog.com/entry/2018/04/28/152259](https://miti-7.hatenablog.com/entry/2018/04/28/152259)
@@ -26,13 +25,12 @@ Supports `access`, `rank`, and `kth_smallest` queries in $O(\log \sigma)$ time a
 - [https://takeda25.hatenablog.jp/entry/20120820/1345455442](https://takeda25.hatenablog.jp/entry/20120820/1345455442)
 - [https://takeda25.hatenablog.jp/entry/20130303/1362301095](https://takeda25.hatenablog.jp/entry/20130303/1362301095)
 - [https://takeda25.hatenablog.jp/entry/20130505/1367730870](https://takeda25.hatenablog.jp/entry/20130505/1367730870)
-<!--- [https://trap.jp/post/2713/](https://trap.jp/post/2713/)-->
 <!--- [https://www.scribd.com/doc/102636443/Wavelet-Matrix](https://www.scribd.com/doc/102636443/Wavelet-Matrix)-->
 <!--- [https://www.slideshare.net/slideshow/the-wavelet-matrix/62929724](https://www.slideshare.net/slideshow/the-wavelet-matrix/62929724)-->
 
-(k-th smallest)
-- [https://rsk0315.hatenablog.com/entry/2022/01/09/152028](https://rsk0315.hatenablog.com/entry/2022/01/09/152028)
-- [https://sune2.hatenadiary.org/entry/20131216/1387197255](https://sune2.hatenadiary.org/entry/20131216/1387197255)
-- [https://atcoder.jp/contests/adt_hard_20240424_3/editorial/3438](https://atcoder.jp/contests/adt_hard_20240424_3/editorial/3438)
+- k-th Smallest
+    - [https://rsk0315.hatenablog.com/entry/2022/01/09/152028](https://rsk0315.hatenablog.com/entry/2022/01/09/152028)
+    - [https://sune2.hatenadiary.org/entry/20131216/1387197255](https://sune2.hatenadiary.org/entry/20131216/1387197255)
+    - [https://atcoder.jp/contests/adt_hard_20240424_3/editorial/3438](https://atcoder.jp/contests/adt_hard_20240424_3/editorial/3438)
 
 <!--- [https://github.com/MitI-7/WaveletMatrix](https://github.com/MitI-7/WaveletMatrix)-->

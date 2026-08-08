@@ -8,4 +8,4 @@ documentation_of: //graph/two-sat/src/lib.rs
 - [https://qiita.com/sysdev/items/c6b707666541bacd22bf](https://qiita.com/sysdev/items/c6b707666541bacd22bf)
 
 ## Verified
-- [https://atcoder.jp/contests/practice2/tasks/practice2_h](https://atcoder.jp/contests/practice2/tasks/practice2_h) ([submission](https://atcoder.jp/contests/practice2/submissions/74961995))
+- [https://atcoder.jp/contests/practice2/tasks/practice2_h](https://atcoder.jp/contests/practice2/tasks/practice2_h) ([submission](https://atcoder.jp/contests/practice2/submissions/78163557))

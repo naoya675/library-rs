@@ -6,6 +6,7 @@ pub struct Doubling<T> {
     dpg: Vec<Vec<T>>,
     op: fn(T, T) -> T,
     e: T,
+    // monoid (T, op, e)
 }
 
 impl<T: Copy> Doubling<T> {

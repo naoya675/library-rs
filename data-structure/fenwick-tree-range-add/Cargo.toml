@@ -1,0 +1,7 @@
+[package]
+name = "fenwick-tree-range-add"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+fenwick-tree-abstract = { path = "../../data-structure/fenwick-tree-abstract" }

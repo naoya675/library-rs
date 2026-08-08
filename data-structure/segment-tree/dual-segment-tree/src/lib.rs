@@ -1,13 +1,14 @@
 #[derive(Debug, Clone)]
 pub struct DualSegmentTree<T, F> {
-    tree: Vec<T>,
-    lazy: Vec<F>,
+    n: usize,
     size: usize,
     size_log: usize,
+    tree: Vec<T>,
+    lazy: Vec<F>,
     mapping: fn(F, T) -> T,
     composition: fn(F, F) -> F,
     id: F,
-    n: usize,
+    // monoid (F, composition, id)
 }
 
 impl<T: Copy, F: Copy> DualSegmentTree<T, F> {
@@ -15,14 +16,14 @@ impl<T: Copy, F: Copy> DualSegmentTree<T, F> {
         let size = n.next_power_of_two();
         let size_log = size.ilog2() as usize;
         Self {
-            tree: vec![e; 2 * size],
-            lazy: vec![id; 2 * size],
+            n,
             size,
             size_log,
+            tree: vec![e; 2 * size],
+            lazy: vec![id; 2 * size],
             mapping,
             composition,
             id,
-            n,
         }
     }
 
@@ -32,14 +33,14 @@ impl<T: Copy, F: Copy> DualSegmentTree<T, F> {
         let size = n.next_power_of_two();
         let size_log = size.ilog2() as usize;
         let mut st = Self {
-            tree: vec![e; 2 * size],
-            lazy: vec![id; 2 * size],
+            n,
             size,
             size_log,
+            tree: vec![e; 2 * size],
+            lazy: vec![id; 2 * size],
             mapping,
             composition,
             id,
-            n,
         };
         for k in 0..n {
             st.tree[k + size] = v[k];

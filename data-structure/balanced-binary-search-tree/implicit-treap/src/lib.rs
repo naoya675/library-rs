@@ -19,12 +19,12 @@ struct Node<T, F> {
 pub struct ImplicitTreap<T, F> {
     root: Link<T, F>,
     rng: XorShift64,
-    // Monoids: operation (associativity) + identity element
     op: fn(T, T) -> T,
     e: T,
     mapping: fn(F, T) -> T,
     composition: fn(F, F) -> F,
     id: F,
+    // monoids (T, op, e), (F, composition, id)
 }
 
 impl<T: Copy, F: Copy> ImplicitTreap<T, F> {

@@ -4,10 +4,10 @@ pub struct UnionFindWithPotential<T> {
     par: Vec<usize>,
     siz: Vec<usize>,
     diff_potential: Vec<T>,
-    // (Abelian) Group: operation (associative) + identity element + inverse element
     op: fn(T, T) -> T,
     e: T,
     inv: fn(T) -> T,
+    // (abelian) group (T, op, e, inv)
 }
 
 impl<T: Copy + PartialEq + Eq> UnionFindWithPotential<T> {

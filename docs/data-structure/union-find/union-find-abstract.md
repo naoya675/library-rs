@@ -140,4 +140,4 @@ Both of the orders of the sets and the elements are undefined.
 - [https://inthebloom.github.io/post/unifying-segments-with-unionfind/](https://inthebloom.github.io/post/unifying-segments-with-unionfind/)
 
 ## Verified
-- [https://atcoder.jp/contests/acl1/tasks/acl1_a](https://atcoder.jp/contests/acl1/tasks/acl1_a) ([submission](https://atcoder.jp/contests/acl1/submissions/77991762))
+- [https://atcoder.jp/contests/acl1/tasks/acl1_a](https://atcoder.jp/contests/acl1/tasks/acl1_a) ([submission](https://atcoder.jp/contests/acl1/submissions/78163198))

@@ -4,9 +4,9 @@ pub struct UnionFindAbstract<T> {
     par: Vec<usize>,
     siz: Vec<usize>,
     val: Vec<T>,
-    // Commutative Monoid: operation (associative, commutative) + identity element
     op: fn(T, T) -> T,
     e: T,
+    // commutative monoid (T, op, e)
 }
 
 impl<T: Copy> UnionFindAbstract<T> {

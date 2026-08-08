@@ -135,5 +135,7 @@ Transitions from `node_id` by character $c$ and returns `(pattern_count, next_no
 - [https://noshi91.github.io/algorithm-encyclopedia/aho-corasick](https://noshi91.github.io/algorithm-encyclopedia/aho-corasick)
 - [https://atcoder.jp/contests/abc268/editorial/4793](https://atcoder.jp/contests/abc268/editorial/4793)
 
-<!--## Verified-->
-<!--- [https://atcoder.jp/contests/abc268/tasks/abc268_h](https://atcoder.jp/contests/abc268/tasks/abc268_h) ([submission]())-->
+<!--
+## Verified
+- [https://atcoder.jp/contests/abc268/tasks/abc268_h](https://atcoder.jp/contests/abc268/tasks/abc268_h) ([submission]())
+-->

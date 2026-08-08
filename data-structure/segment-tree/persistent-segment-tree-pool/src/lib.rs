@@ -11,6 +11,7 @@ pub struct PersistentSegmentTreePool<T> {
     nodes: Vec<Node<T>>,
     op: fn(T, T) -> T,
     e: T,
+    // monoid (T, op, e)
 }
 
 impl<T: Copy> PersistentSegmentTreePool<T> {

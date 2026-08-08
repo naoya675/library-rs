@@ -11,6 +11,7 @@ pub struct DynamicSegmentTree<T> {
     root: Option<Box<Node<T>>>,
     op: fn(T, T) -> T,
     e: T,
+    // monoid (T, op, e)
 }
 
 impl<T: Copy> DynamicSegmentTree<T> {

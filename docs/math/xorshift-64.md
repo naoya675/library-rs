@@ -69,4 +69,5 @@ Shuffles $a$ in place using Fisher-Yates.
 
 ## Reference
 - [https://www.jstatsoft.org/article/view/v008i14](https://www.jstatsoft.org/article/view/v008i14)
-- [https://blog.visvirial.com/articles/575](https://blog.visvirial.com/articles/575)
+<!--- [https://ikorin2.hatenablog.jp/entry/2024/08/15/191857](https://ikorin2.hatenablog.jp/entry/2024/08/15/191857)-->
+<!--- [https://blog.visvirial.com/articles/575](https://blog.visvirial.com/articles/575)-->
